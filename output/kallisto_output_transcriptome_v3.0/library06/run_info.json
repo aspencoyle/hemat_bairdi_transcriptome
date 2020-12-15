@@ -1,0 +1,13 @@
+{
+	"n_targets": 344944,
+	"n_bootstraps": 0,
+	"n_processed": 478,
+	"n_pseudoaligned": 336,
+	"n_unique": 106,
+	"p_pseudoaligned": 70.3,
+	"p_unique": 22.2,
+	"kallisto_version": "0.46.0",
+	"index_version": 10,
+	"start_time": "Mon Dec 14 19:09:22 2020",
+	"call": "kallisto quant -i /mnt/c/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/output/kallisto_index_v3.0.idx -o /mnt/c/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/output/kallisto_output_transcriptome_v3.0/library06 /mnt/c/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/output/libraries_merged/Library6_Read1_alllanes.fq.gz /mnt/c/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/output/libraries_merged/Library6_Read2_alllanes.fq.gz"
+}

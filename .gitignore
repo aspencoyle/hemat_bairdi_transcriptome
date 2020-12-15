@@ -1,0 +1,11 @@
+# Files to ignore
+
+# Ignore our data file, as it's quite big
+data/**
+
+# Ignore our merged libraries - also too big
+output/libraries_merged/**
+
+# Ignore the index we created for Kallisto - too big as well
+output/kallisto_index_v3.0.idx
+
