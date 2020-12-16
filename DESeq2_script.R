@@ -102,3 +102,84 @@ head(day_res05)
 temp_res05 <- results(temp.dds, alpha = 0.05)
 summary(temp_res05)
 head(temp_res05)
+
+# Create MA plot
+plotMA(day_res05, ylim = c(-2, 2))
+plotMA(temp_res05, ylim = c(-2, 2))
+
+# Create a plot of Log2 fold change vs. normalized counts
+# DAY PLOT
+day_tmp <- day.res
+plot(day_tmp$baseMean, day_tmp$log2FoldChange, pch = 20,
+     cex = 0.45, ylim = c(-20, 20), log = "x", col = "darkgray",
+     main = "Differences by Date (pval <= 0.005)",
+     xlab = "mean of normalized counts",
+     ylab = "Log2 Fold Change")
+# Get significant points, plot again so they're a diff color
+day_tmp.sig <- day.res[!is.na(day.res$padj) &
+                         day.res$padj <= 0.005, ]
+points(day_tmp.sig$baseMean, day_tmp.sig$log2FoldChange,
+       pch = 20, cex = 0.45, col = "red")
+abline(h=c(-1,1), col = "blue")
+# TEMPERATURE PLOT
+temp_tmp <- temp.res
+plot(temp_tmp$baseMean, temp_tmp$log2FoldChange, pch = 20,
+     cex = 0.45, ylim = c(-20, 20), log = "x", col = "darkgray",
+     main = "Differences by Temperature (pval <= 0.005)",
+     xlab = "mean of normalized counts",
+     ylab = "Log2 Fold Change")
+# Get significant points, plot again so they're a diff color
+temp_tmp.sig <- temp.res[!is.na(temp.res$padj) &
+                         temp.res$padj <= 0.005, ]
+points(temp_tmp.sig$baseMean, temp_tmp.sig$log2FoldChange,
+       pch = 20, cex = 0.45, col = "red")
+abline(h=c(-1,1), col = "blue")
+
+# Write significant day-differing genes to table
+write.table(day_tmp.sig, "graphs/DESeq_Option_2/Day_DEGlist.txt",
+            row.names = TRUE, col.names = FALSE, quote = FALSE,
+            sep = "\t")
+# Write significant temp-differing genes to table
+write.table(temp_tmp.sig, "graphs/DESeq_Option_2/Temp_DEGlist.txt",
+            row.names = TRUE, col.names = FALSE, quote = FALSE,
+            sep = "\t")
+
+#### OPTION 3: LOOK AT EACH PAIR SEPARATELY ####################
+# Comparison 1: Library 2 vs 6 (Day 2, lowered temp vs Day 0, ambient temp)
+# Comparison 2: Library 4 vs 6 (Day 2, elevated temp vs Day 0, ambient temp)
+# Comparison 3: Library 2 vs 4 (Day 2, lowered temp vs Day 2, elevated temp)
+# Comparison 4: Library 8 vs 10 (Day 2, all temps vs Day 17, all temps)
+
+# Comparison 1:
+two_six_data <- data[c(1,3)]
+# Comparison 2:
+four_six_data <- data[c(2,3)]
+# Comparison 3:
+two_four_data <- data[c(1,2)]
+# Comparison 4:
+eight_ten_data <- data[c(4,5)]
+
+# Create dataframe with information on the relevant comparison
+# Temperature data for Comparison 1
+two_six.colData <- data.frame(condition = factor(c("Low", "Ambient")),
+                              type = factor(rep("single-read", 2)))
+rownames(two_six.colData) <- colnames(two_six_data)
+# Temperature data for Comparison 2
+four_six.colData <- data.frame(condition = factor(c("High", "Ambient")),
+                               type = factor(rep("single-read", 2)))
+rownames(four_six.colData) <- colnames(four_six_data)
+# Temperature data for Comparison 3
+two_four.colData <- data.frame(condition = factor(c("Low", "High")),
+                               type = factor(rep("single-read", 2)))
+rownames(two_four.colData) <- colnames(two_four_data)
+# Date data for Comparison 4
+eight_ten.colData <- data.frame(condition = factor(c("Day 2", "Day 17")),
+                                type = factor(rep("single-read", 2)))
+rownames(eight_ten.colData) <- colnames(eight_ten_data)
+
+# Create DESeq objects
+# Object for Comparison 1
+two_six.dds <- DESeqDataSetFromMatrix(countData = (two_six_data),
+                                      colData = two_six.colData,
+                                      design = ~ condition)
+two_six.dds <- DESeq(two_six.dds)
