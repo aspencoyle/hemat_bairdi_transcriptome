@@ -9,3 +9,4 @@ output/libraries_merged/**
 # Ignore the index we created for Kallisto - too big as well
 output/kallisto_index_v3.0.idx
 
+.Rproj.user
