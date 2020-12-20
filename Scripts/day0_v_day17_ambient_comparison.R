@@ -37,10 +37,8 @@ str(data)
 # Round counts to integers (needed for DESeqDataSetFromMatrix()
 data <- round(data, digits = 0)
 
-#### OPTION 2: CREATE 2 DESEQ OBJECTS, BOTH FROM ALL DATA ##############################
-# ONE OBJECT EXAMINES EFFECT OF TEMPERATURE, THE OTHER OF DAY
-
-# Day and temperature data for libraries 2, 4, 6, 8, 10 (in order)
+# Day and temperature data for libraries 
+# 118, 132, 178, 463, 481, 485 (in order)
 deseq2.colData <- data.frame(day = factor(c(0, 0, 0, 17, 17, 17)),
                              temp = factor(c("Amb", "Amb", "Amb", "Amb", "Amb", "Amb")))
 
@@ -57,16 +55,16 @@ deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
 
 deseq2.dds <- DESeq(deseq2.dds)
 
+#Look at results
+deseq2.res <- results(deseq2.dds)
+deseq2.res
+summary(deseq2.res)
+
 # Shrink LFC estimates - used in some but not all analyses
 resultsNames(deseq2.dds)
 resLFC <- lfcShrink(deseq2.dds, coef = "day_17_vs_0", 
                     type = "apeglm")
 resLFC
-
-# Look at results
-deseq2.res <- results(deseq2.dds)
-deseq2.res
-summary(deseq2.res)
 
 # Dimensions of non-NA results with an adjusted p-value of <= 0.05
 dim(deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ])
@@ -92,7 +90,7 @@ plotMA(deseq_res05, ylim = c(-20, 20))
 deseq2_tmp <- deseq2.res
 plot(deseq2_tmp$baseMean, deseq2_tmp$log2FoldChange, pch = 20,
      cex = 0.45, ylim = c(-28, 28), log = "x", col = "darkgray",
-     main = "Differences by Date (pval <= 0.005)",
+     main = "Differences by Date (padj <= 0.005)",
      xlab = "mean of normalized counts",
      ylab = "Log2 Fold Change")
 # Get significant points, plot again so they're a diff color
@@ -118,7 +116,9 @@ plotDispEsts(deseq2.dds)
 
 
 # Write significant day-differing genes to table
-table_path <- "/mnt/c/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/graphs/day0_day17_ambient/signif_genes.txt"
+write.table(deseq2_tmp.sig, "0vs17_DEGlist.txt",
+            row.names = TRUE, col.names = FALSE, quote = FALSE,
+            sep = "\t")
 write.table(deseq2_tmp.sig, "0vs17_DEGlist_wcols.txt",
             row.names = TRUE, col.names = TRUE, quote = FALSE,
             sep = "\t")

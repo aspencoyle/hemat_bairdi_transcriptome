@@ -1,0 +1,13 @@
+{
+	"n_targets": 344944,
+	"n_bootstraps": 0,
+	"n_processed": 28208357,
+	"n_pseudoaligned": 19615607,
+	"n_unique": 6235845,
+	"p_pseudoaligned": 69.5,
+	"p_unique": 22.1,
+	"kallisto_version": "0.46.0",
+	"index_version": 10,
+	"start_time": "Fri Dec 18 13:07:36 2020",
+	"call": "kallisto quant -i /mnt/c/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/output/kallisto_index_v3.0.idx -o /mnt/c/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/output/kallisto_indivlibs_transcriptome_v3.0/id294 /mnt/c/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/data/indiv_libraries/294_R1_D2_elev.fastp-trim.fq /mnt/c/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/data/indiv_libraries/294_R2_D2_elev.fastp-trim.fq"
+}
