@@ -11,7 +11,14 @@
 
 ##############################################
 
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install("limma")
+
 library(tidyverse)
+library(GSEABase)
+library(topGO)
 
 # Absolute path that leads to DESeq2 output file
 deseq_output_filepath <- "C:/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/graphs/elev_v_low_day02/Elev_vsLow_DEGlist_wcols.txt"
@@ -54,6 +61,4 @@ output_path <- "C:/Users/acoyl/Documents/GitHub/hemat_bairdii_transcriptome/outp
 # Create our file of accession IDs separated by a newline
 write_lines(x = accession_IDs, file = output_path, sep = "\n")
 
-
-length(blastkey$Transcript_ID)
-sum(!is.na(blastkey$Gene_ID))
+test <- read.table(text = accession_IDs)
