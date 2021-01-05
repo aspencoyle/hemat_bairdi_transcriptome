@@ -42,7 +42,7 @@ trans_four <- import_DEGs(filepath4)
 # temperature-comparison genes
 sum(trans_two %in% trans_one)
 sum(trans_two %in% trans_three)
-trans_two[trans_two %in% trans_four]
+sum(trans_two %in% trans_four)
 # Results are 2, 0, 2 - minimal overlap.
 # As a result, only including temp comparisons in Venn diagram
 
@@ -81,7 +81,7 @@ venn.diagram(x = temp_DEGs,
 # How many unique transcript IDs do we have for all our DEGs?
 all_IDs <- c(trans_one, trans_two, trans_three, trans_four)
 length(unique(all_IDs))
-# How many total Accession IDs do we have for our DEGs?
+# How many total transcript IDs do we have for our DEGs?
 length(all_IDs)
 # Percentage that are unique
 length(unique(all_IDs)) / length(all_IDs)
