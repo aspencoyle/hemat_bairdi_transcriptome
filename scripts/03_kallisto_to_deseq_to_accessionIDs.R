@@ -35,7 +35,7 @@ exp_design <- data.frame(day = factor(c(0, 0, 0, 17, 17, 17)),
 deseq_analysis(kallisto_path = "../output/kallisto_indivlibs_transcriptome_v3.0/day0_day17_matrix/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/day0_day17_ambient",
-               variable = as.formula("~day"))
+               variable = as.formula("day"))
 
 # AMBIENT VS. LOW-TEMPERATURE, DAY 0-2, INDIVIDUAL LIBRARIES
 
@@ -50,7 +50,7 @@ exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb",
 deseq_analysis(kallisto_path = "../output/kallisto_indivlibs_transcriptome_v3.0/day02_amb_vs_low_matrix/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/amb_v_low_day02",
-               variable = as.formula("~temp"))
+               variable = as.formula("temp"))
 
 # ELEVATED VS. LOW-TEMPERATURE, DAY 0-2, INDIVIDUAL LIBRARIES
 
@@ -64,7 +64,7 @@ exp_design <- data.frame(temp = factor(c("Elev", "Elev", "Elev",
 deseq_analysis(kallisto_path = "../output/kallisto_indivlibs_transcriptome_v3.0/day02_elev_vs_low_matrix/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/elev_v_low_day02",
-               variable = as.formula("~temp"))
+               variable = as.formula("temp"))
 
 # ELEVATED VS. AMBIENT TEMPERATURE, DAY 0-2, INDIVIDUAL LIBRARIES
 
@@ -80,7 +80,7 @@ exp_design <- data.frame(temp = factor(c("Elev", "Elev", "Elev",
 deseq_analysis(kallisto_path = "../output/kallisto_indivlibs_transcriptome_v3.0/day02_elev_vs_amb_matrix/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/elev_v_amb_day02",
-               variable = as.formula("~temp"))
+               variable = as.formula("temp"))
 
 #### Turning transcripts into gene IDs -------------------
 # Take DESeq2 output and turn it into a newline-separated 

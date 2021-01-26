@@ -57,7 +57,8 @@ deseq_analysis <- function(kallisto_path,
   # Create DESeq object that looks at effect of day
   deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
                                        colData = experiment_table,
-                                       design = variable)
+                                       design = as.formula(paste0("~", variable)))
+ 
   deseq2.dds <- DESeq(deseq2.dds)
   
   #Look at results
@@ -112,7 +113,7 @@ deseq_analysis <- function(kallisto_path,
   vsd <- vst(deseq2.dds, blind = FALSE)
   head(assay(vsd), 3)
   # Create plot
-  plotPCA(vsd, intgroup = "day")
+  plotPCA(vsd, intgroup = variable)
   dev.copy(png, file.path(output_path, "PCA_plot.png"))
   dev.off()
   
