@@ -91,37 +91,37 @@ deseq_analysis(kallisto_path = "../output/kallisto_indivlibs_transcriptome_v3.0/
 # Ambient vs. Low Temperature
 transcripts_to_geneIDs(deseq_filepath = "../graphs/amb_v_low_day02/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/signif_accession_ids/Amb_vsLow_DEG_IDs.txt")
+                       output_path = "../output/accession_n_GOids/DEG_IDs/Amb_vsLow_DEG_IDs.txt")
 # Day 0 vs. Day 17, Ambient Temperature
 transcripts_to_geneIDs(deseq_filepath = "../graphs/day0_day17_ambient/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/signif_accession_ids/day0_day17_amb_DEG_IDs.txt")
+                       output_path = "../output/accession_n_GOids/DEG_IDs/day0_day17_amb_DEG_IDs.txt")
 # Elevated vs. Ambient Temperature
 transcripts_to_geneIDs(deseq_filepath = "../graphs/elev_v_amb_day02/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/signif_accession_ids/Elev_vsAmb_DEG_IDs.txt")
+                       output_path = "../output/accession_n_GOids/DEG_IDs/Elev_vsAmb_DEG_IDs.txt")
 # Elevated vs. Low Temperature
 transcripts_to_geneIDs(deseq_filepath = "../graphs/elev_v_low_day02/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/signif_accession_ids/Elev_vsLow_DEG_IDs.txt")
+                       output_path = "../output/accession_n_GOids/DEG_IDs/Elev_vsLow_DEG_IDs.txt")
 
 # Get all gene IDs for all genes, not just DEGs
 # Ambient vs. Low Temperature
 transcripts_to_geneIDs(deseq_filepath = "../graphs/amb_v_low_day02/AllGenes_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/signif_accession_ids/Amb_vsLow_All_GeneIDs.txt")
+                       output_path = "../output/accession_n_GOids/allgenes_IDs/Amb_vsLow_All_GeneIDs.txt")
 # Day 0 vs. Day 17, Ambient Temperature
 transcripts_to_geneIDs(deseq_filepath = "../graphs/day0_day17_ambient/AllGenes_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/signif_accession_ids/day0_day17_All_GeneIDs.txt")
+                       output_path = "../output/accession_n_GOids/allgenes_IDs/day0_day17_All_GeneIDs.txt")
 # Elevated vs. Ambient Temperature
 transcripts_to_geneIDs(deseq_filepath = "../graphs/elev_v_amb_day02/AllGenes_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/signif_accession_ids/Elev_vsAmb_All_GeneIDs.txt")
+                       output_path = "../output/accession_n_GOids/allgenes_IDs/Elev_vsAmb_All_GeneIDs.txt")
 # Elevated vs. Low Temperature
 transcripts_to_geneIDs(deseq_filepath = "../graphs/elev_v_low_day02/AllGenes_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/signif_accession_ids/Elev_vsLow_All_GeneIDs.txt")
+                       output_path = "../output/accession_n_GOids/allgenes_IDs/Elev_vsLow_All_GeneIDs.txt")
 
 #### Creating Venn diagram showing overlap in DEG --------------
 # 2 diagrams created in total
@@ -196,10 +196,10 @@ length(unique(all_IDs)) / length(all_IDs)
 # PART 2: OVERLAP IN DEG ACCESSION IDS
 
 # Links to newline-separated file of accession IDs
-filepath1 <- "../output/signif_accession_ids/Amb_vsLow_DEG_IDs.txt"
-filepath2 <- "../output/signif_accession_ids/day0_day17_amb_DEG_IDs.txt"
-filepath3 <- "../output/signif_accession_ids/Elev_vsAmb_DEG_IDs.txt"
-filepath4 <- "../output/signif_accession_ids/Elev_vsLow_DEG_IDs.txt"
+filepath1 <- "../output/accession_n_GOids/DEG_IDs/Amb_vsLow_DEG_IDs.txt"
+filepath2 <- "../output/accession_n_GOids/DEG_IDs/day0_day17_amb_DEG_IDs.txt"
+filepath3 <- "../output/accession_n_GOids/DEG_IDs/Elev_vsAmb_DEG_IDs.txt"
+filepath4 <- "../output/accession_n_GOids/DEG_IDs/Elev_vsLow_DEG_IDs.txt"
 
 # Use our created function to import vector of DEG Accession IDs
 # Using unlist to make it a vector, since we're reading in directly
