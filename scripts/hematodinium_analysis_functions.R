@@ -143,7 +143,7 @@ deseq_analysis <- function(kallisto_path,
 
 #### transcripts_to_geneIDs(): turns DESeq2 output to UniProt accessions --------------------------------
 # deseq_filepath: leads to file containing gene list from DESeq2
-# blast_filepath: path that leads to transcript ID/gene Id table
+# blast_filepath: path that leads to transcript ID/gene ID table
 # output_path: path to a new newline-separated file
 
 transcripts_to_geneIDs <- function(deseq_filepath, 
@@ -193,3 +193,48 @@ import_DEGs <- function(filepath) {
   transcripts <- full_data$Transcript_ID
   return(transcripts)
 } 
+
+#### geneIDs_pvals(): Turn DESeq2 output into CSV of gene IDs and p-values --------------------
+# P-values are unadjusted
+# Creates one of the input files for GO-MWU
+
+# input_file: DESeq2 output file containing transcript IDs and unadjusted p-values
+# blast_file: path that leads to transcript ID/gene ID table
+# output_file: path to the output file, ending in .csv
+
+geneIDs_pvals <- function(input_file, blast_file, output_file) {
+  # Import gene list
+  transcript_data <- read.table(input_file,
+                                header = TRUE, sep = "\t")
+  # Transcript IDs are rownames - move them into first column
+  transcript_data <- tibble::rownames_to_column(transcript_data, 
+                                                "Transcript_ID")
+  # Read BLAST data into R
+  blast_data <- read.table(blast_file, header = FALSE,
+                           sep = "\t")
+  # Columns have no names - add names for first two columns
+  colnames(blast_data)[1:2] <- c("Transcript_ID", "Gene_ID")
+  
+  # Turn the first two columns of BLAST data into a Transcript ID/Gene ID key
+  blastkey <- blast_data %>%
+    select(Transcript_ID, Gene_ID)
+  
+  # Add Gene ID column to transcript data, using Transcript ID column to match
+  transcript_data <- left_join(transcript_data, blastkey, by = "Transcript_ID")
+  
+  # Select only the Transcript ID, p-value, and Gene ID columns
+  transcript_key <- transcript_data[,c("Transcript_ID", "pvalue", "Gene_ID")]
+  
+  # Separate Gene ID to specifically get Uniprot accession ID
+  transcript_key <- separate(data = transcript_key, col = Gene_ID, into = c("sp", "Accession_ID", "species"), 
+                             sep = "\\|")
+  
+  # Remove all columns except transcript ID, accession ID, and p-value
+  # and remove all rows with an NA accession ID
+  transcript_key <- transcript_key[!is.na(transcript_key$Accession_ID), c(4, 2)]
+  
+  rownames(transcript_key) <- NULL
+  write.csv(transcript_key, output_file, row.names = FALSE,
+            quote = FALSE)
+}  
+ 
