@@ -1,0 +1,1174 @@
+name	term	lev	seq	value
+"monocarboxylic acid metabolic process"	GO:0032787	2	Q9TSM4	4.764445131056e-09
+"monocarboxylic acid metabolic process"	GO:0032787	2	Q9NR19	0.568360225685096
+"monocarboxylic acid metabolic process"	GO:0032787	2	P11966	0.4747841052323
+"monocarboxylic acid metabolic process"	GO:0032787	2	P52030	0.37072181015433
+"monocarboxylic acid metabolic process"	GO:0032787	2	Q91WG5	0.946130705500741
+"monocarboxylic acid metabolic process"	GO:0032787	2	Q5ZJG8	0.262703069694666
+"monocarboxylic acid metabolic process"	GO:0032787	2	Q6P6Z8	7.87278624477789e-10
+"positive regulation of transport"	GO:0051050	2	Q9TSM4	4.764445131056e-09
+"positive regulation of transport"	GO:0051050	2	Q4R562	0.728400579689854
+"positive regulation of transport"	GO:0051050	2	Q13148	0.675746488191163
+"positive regulation of transport"	GO:0051050	2	P70531	0.642571502142462
+"positive regulation of transport"	GO:0051050	2	Q99996	0.76781147294691
+"positive regulation of transport"	GO:0051050	2	Q06124	0.975675418349719
+"positive regulation of transport"	GO:0051050	2	Q9JI92	2.46674020902428e-09
+"organic hydroxy compound metabolic process"	GO:1901615	3	Q9NR19	0.568360225685096
+"organic hydroxy compound metabolic process"	GO:1901615	3	P15330	4.65985828004248e-11
+"organic hydroxy compound metabolic process"	GO:1901615	3	P42867	0.748390483779565
+"organic hydroxy compound metabolic process"	GO:1901615	3	Q14739	0.91894991458029
+"organic hydroxy compound metabolic process"	GO:1901615	3	Q9DB73	0.512717986025154
+"negative regulation of RNA biosynthetic process"	GO:0000122;GO:0045892;GO:1903507;GO:1902679	4	Q2KI95	6.66787092359834e-05
+"negative regulation of RNA biosynthetic process"	GO:0000122;GO:0045892;GO:1903507;GO:1902679	4	A6H6W9	0.864942378180103
+"negative regulation of RNA biosynthetic process"	GO:0000122;GO:0045892;GO:1903507;GO:1902679	4	Q6KC79	0.210059322884478
+"negative regulation of RNA biosynthetic process"	GO:0000122;GO:0045892;GO:1903507;GO:1902679	4	P15330	4.65985828004248e-11
+"negative regulation of RNA biosynthetic process"	GO:0000122;GO:0045892;GO:1903507;GO:1902679	4	Q8BK35	0.525156570621304
+"negative regulation of RNA biosynthetic process"	GO:0000122;GO:0045892;GO:1903507;GO:1902679	4	P55853	7.24265645089213e-06
+"negative regulation of RNA biosynthetic process"	GO:0000122;GO:0045892;GO:1903507;GO:1902679	4	Q9V460	7.25755330029272e-06
+"negative regulation of RNA biosynthetic process"	GO:0000122;GO:0045892;GO:1903507;GO:1902679	4	P17141	0.93383455936809
+"negative regulation of RNA biosynthetic process"	GO:0000122;GO:0045892;GO:1903507;GO:1902679	4	Q28G71	1.60961740064391e-09
+"cellular process involved in reproduction in multicellular organism"	GO:0022412	2	Q92879	2.3126911475947e-14
+"cellular process involved in reproduction in multicellular organism"	GO:0022412	2	Q03017	0.0603773146818647
+"cellular process involved in reproduction in multicellular organism"	GO:0022412	2	Q95TJ9	0.0636520744375205
+"cellular process involved in reproduction in multicellular organism"	GO:0022412	2	P0CG53	0.663363679349069
+"cellular process involved in reproduction in multicellular organism"	GO:0022412	2	P17141	0.93383455936809
+"ATP metabolic process"	GO:0046034	2	P52030	0.37072181015433
+"ATP metabolic process"	GO:0046034	2	Q9D0M3	0.00477441246836349
+"ATP metabolic process"	GO:0046034	2	Q6P6Z8	7.87278624477789e-10
+"ATP metabolic process"	GO:0046034	2	Q25691	0.887737408199791
+"ATP metabolic process"	GO:0046034	2	Q86W56	0.564881430370255
+"developmental process involved in reproduction"	GO:0003006	2	Q92879	2.3126911475947e-14
+"developmental process involved in reproduction"	GO:0003006	2	Q6KC79	0.210059322884478
+"developmental process involved in reproduction"	GO:0003006	2	Q03017	0.0603773146818647
+"developmental process involved in reproduction"	GO:0003006	2	Q06124	0.975675418349719
+"developmental process involved in reproduction"	GO:0003006	2	Q23979	0.967908222677984
+"developmental process involved in reproduction"	GO:0003006	2	P0CG53	0.663363679349069
+"developmental process involved in reproduction"	GO:0003006	2	P54359	0.925257620269918
+"developmental process involved in reproduction"	GO:0003006	2	Q8NF91	0.286520787026721
+"developmental process involved in reproduction"	GO:0003006	2	P17141	0.93383455936809
+"protein localization to organelle"	GO:0033365;GO:0072594	2	Q6KC79	0.210059322884478
+"protein localization to organelle"	GO:0033365;GO:0072594	2	Q60HE1	0.526888934831255
+"protein localization to organelle"	GO:0033365;GO:0072594	2	Q9Y0H4	0.0866312509371894
+"protein localization to organelle"	GO:0033365;GO:0072594	2	Q5ZJN2	0.0682690877280059
+"protein localization to organelle"	GO:0033365;GO:0072594	2	Q8BK35	0.525156570621304
+"protein localization to organelle"	GO:0033365;GO:0072594	2	Q6P2B1	3.76761956017317e-09
+"protein localization to organelle"	GO:0033365;GO:0072594	2	P55853	7.24265645089213e-06
+"protein localization to organelle"	GO:0033365;GO:0072594	2	P46776	0.0975854413849127
+"immune system process"	GO:0006955;GO:0002376	2	Q03017	0.0603773146818647
+"immune system process"	GO:0006955;GO:0002376	2	P15330	4.65985828004248e-11
+"immune system process"	GO:0006955;GO:0002376	2	P90893	2.68751703584277e-05
+"immune system process"	GO:0006955;GO:0002376	2	P53634	2.85526035845107e-05
+"immune system process"	GO:0006955;GO:0002376	2	P21902	0.232051798782638
+"immune system process"	GO:0006955;GO:0002376	2	O97366	0.996487298711199
+"immune system process"	GO:0006955;GO:0002376	2	P35559	1.22748719760042e-12
+"immune system process"	GO:0006955;GO:0002376	2	Q06124	0.975675418349719
+"regulation of protein localization"	GO:0032880	2	Q6KC79	0.210059322884478
+"regulation of protein localization"	GO:0032880	2	Q13148	0.675746488191163
+"regulation of protein localization"	GO:0032880	2	Q9Y0H4	0.0866312509371894
+"regulation of protein localization"	GO:0032880	2	Q06124	0.975675418349719
+"regulation of protein localization"	GO:0032880	2	Q8CGY8	3.9645300012545e-09
+"positive regulation of kinase activity"	GO:0033674	3	P67774	4.95532077650757e-11
+"positive regulation of kinase activity"	GO:0033674	3	Q06124	0.975675418349719
+"positive regulation of kinase activity"	GO:0033674	3	Q91WG5	0.946130705500741
+"positive regulation of kinase activity"	GO:0033674	3	Q9Y241	0.265444702511941
+"positive regulation of kinase activity"	GO:0033674	3	P45985	3.10560697175906e-10
+"positive regulation of kinase activity"	GO:0033674	3	Q969S3	0.314190473351431
+"positive regulation of kinase activity"	GO:0033674	3	P70266	1.01367790659803e-09
+"proteolysis"	GO:0006508	2	Q4R562	0.728400579689854
+"proteolysis"	GO:0006508	2	Q923W9	0.62988606398409
+"proteolysis"	GO:0006508	2	Q9Y0H4	0.0866312509371894
+"proteolysis"	GO:0006508	2	P35559	1.22748719760042e-12
+"proteolysis"	GO:0006508	2	P08001	1.38329877009289e-09
+"proteolysis"	GO:0006508	2	P90893	2.68751703584277e-05
+"proteolysis"	GO:0006508	2	P0CG53	0.663363679349069
+"proteolysis"	GO:0006508	2	P53634	2.85526035845107e-05
+"proteolysis"	GO:0006508	2	Q8CGY8	3.9645300012545e-09
+"proteolysis"	GO:0006508	2	P21902	0.232051798782638
+"proteolysis"	GO:0006508	2	O97366	0.996487298711199
+"proteolysis"	GO:0006508	2	P60467	6.50731681117072e-06
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q92879	2.3126911475947e-14
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q6KC79	0.210059322884478
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q13148	0.675746488191163
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q9VL14	3.47322769411218e-08
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	P15330	4.65985828004248e-11
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q9V9W8	4.33234735672142e-09
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q9VIW7	0.545632872924119
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q8CGY8	3.9645300012545e-09
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q9V460	7.25755330029272e-06
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q9UL18	1.76108969416594e-15
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q6P268	0.153776016995697
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q06124	0.975675418349719
+"positive regulation of gene expression"	GO:0051254;GO:0045935;GO:0010628	3	Q63016	1.64232530857158e-10
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	Q92879	2.3126911475947e-14
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	Q9D084	0.346870037060789
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	Q6DH88	1.70700990964354e-09
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	Q8BK35	0.525156570621304
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	Q9Y241	0.265444702511941
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	Q9VLV5	0.456344385263672
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	O08585	0.797252536806928
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	Q5F499	0.740873751840592
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	P0DKM0	0.741276577433566
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	Q9UL18	1.76108969416594e-15
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	Q99L47	0.484264379831342
+"protein-containing complex subunit organization"	GO:0034622;GO:0065003;GO:0043933	4	P53634	2.85526035845107e-05
+"regulation of mitotic cell cycle"	GO:0007346	3	Q9CPY4	7.22799465751205e-12
+"regulation of mitotic cell cycle"	GO:0007346	3	Q5ZJN2	0.0682690877280059
+"regulation of mitotic cell cycle"	GO:0007346	3	Q99996	0.76781147294691
+"regulation of mitotic cell cycle"	GO:0007346	3	Q8BK35	0.525156570621304
+"regulation of mitotic cell cycle"	GO:0007346	3	Q06124	0.975675418349719
+"regulation of mitotic cell cycle"	GO:0007346	3	Q95TJ9	0.0636520744375205
+"regulation of mitotic cell cycle"	GO:0007346	3	Q9JI92	2.46674020902428e-09
+"cell development"	GO:0048468	3	Q92879	2.3126911475947e-14
+"cell development"	GO:0048468	3	Q2KI95	6.66787092359834e-05
+"cell development"	GO:0048468	3	Q03017	0.0603773146818647
+"cell development"	GO:0048468	3	P15330	4.65985828004248e-11
+"cell development"	GO:0048468	3	Q9CQ69	0.542691258065252
+"cell development"	GO:0048468	3	Q06124	0.975675418349719
+"cell development"	GO:0048468	3	Q32LP4	0.847221921211293
+"cell development"	GO:0048468	3	P0CG53	0.663363679349069
+"cell development"	GO:0048468	3	P17141	0.93383455936809
+"chemical homeostasis"	GO:0048878	2	Q9TSM4	4.764445131056e-09
+"chemical homeostasis"	GO:0048878	2	Q02942	0.00525565652792064
+"chemical homeostasis"	GO:0048878	2	Q06124	0.975675418349719
+"chemical homeostasis"	GO:0048878	2	Q32LP4	0.847221921211293
+"chemical homeostasis"	GO:0048878	2	Q93235	0.655012964880877
+"chemical homeostasis"	GO:0048878	2	Q8CGY8	3.9645300012545e-09
+"microtubule-based process"	GO:0007017	2	Q5ZJN2	0.0682690877280059
+"microtubule-based process"	GO:0007017	2	Q9EQW7	0.607055399746502
+"microtubule-based process"	GO:0007017	2	Q99996	0.76781147294691
+"microtubule-based process"	GO:0007017	2	P30622	0.860959814534292
+"microtubule-based process"	GO:0007017	2	P0CG53	0.663363679349069
+"microtubule-based process"	GO:0007017	2	O73787	3.27113066676487e-09
+"positive regulation of developmental process"	GO:0051094;GO:0045597	2	Q6KC79	0.210059322884478
+"positive regulation of developmental process"	GO:0051094;GO:0045597	2	P70531	0.642571502142462
+"positive regulation of developmental process"	GO:0051094;GO:0045597	2	P15330	4.65985828004248e-11
+"positive regulation of developmental process"	GO:0051094;GO:0045597	2	Q5ZJN2	0.0682690877280059
+"positive regulation of developmental process"	GO:0051094;GO:0045597	2	Q9V4A7	0.67768838528907
+"positive regulation of developmental process"	GO:0051094;GO:0045597	2	P55853	7.24265645089213e-06
+"positive regulation of developmental process"	GO:0051094;GO:0045597	2	Q9H4G4	4.90150532445314e-05
+"positive regulation of developmental process"	GO:0051094;GO:0045597	2	Q9JI92	2.46674020902428e-09
+"cellular amide metabolic process"	GO:0043603	2	Q498T4	3.50703317936794e-09
+"cellular amide metabolic process"	GO:0043603	2	Q9TSM4	4.764445131056e-09
+"cellular amide metabolic process"	GO:0043603	2	Q9NR19	0.568360225685096
+"cellular amide metabolic process"	GO:0043603	2	P11966	0.4747841052323
+"cellular amide metabolic process"	GO:0043603	2	Q98TF8	0.870280156930191
+"cellular amide metabolic process"	GO:0043603	2	P35559	1.22748719760042e-12
+"cellular amide metabolic process"	GO:0043603	2	Q95V34	0.66685928388011
+"cellular amide metabolic process"	GO:0043603	2	P62866	0.827247002648035
+"cellular amide metabolic process"	GO:0043603	2	Q9VUJ0	0.127744200339299
+"cellular amide metabolic process"	GO:0043603	2	Q6P6Z8	7.87278624477789e-10
+"cellular amide metabolic process"	GO:0043603	2	P46776	0.0975854413849127
+"developmental growth"	GO:0048589;GO:0040007	2	Q6KC79	0.210059322884478
+"developmental growth"	GO:0048589;GO:0040007	2	Q9V9W8	4.33234735672142e-09
+"developmental growth"	GO:0048589;GO:0040007	2	Q06124	0.975675418349719
+"developmental growth"	GO:0048589;GO:0040007	2	P45985	3.10560697175906e-10
+"developmental growth"	GO:0048589;GO:0040007	2	Q32LP4	0.847221921211293
+"developmental growth"	GO:0048589;GO:0040007	2	P54359	0.925257620269918
+"organophosphate biosynthetic process"	GO:0090407;GO:1901137	2	Q9NR19	0.568360225685096
+"organophosphate biosynthetic process"	GO:0090407;GO:1901137	2	P11966	0.4747841052323
+"organophosphate biosynthetic process"	GO:0090407;GO:1901137	2	P42867	0.748390483779565
+"organophosphate biosynthetic process"	GO:0090407;GO:1901137	2	Q8BGS7	0.781629652516677
+"organophosphate biosynthetic process"	GO:0090407;GO:1901137	2	Q6B855	0.713482608601604
+"organophosphate biosynthetic process"	GO:0090407;GO:1901137	2	Q9D0M3	0.00477441246836349
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	Q2KI95	6.66787092359834e-05
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	Q03017	0.0603773146818647
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	Q6P268	0.153776016995697
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	Q06124	0.975675418349719
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	O01479	0.0535619096956723
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	P54359	0.925257620269918
+"macromolecule catabolic process"	GO:0044265;GO:0009057	2	Q4R562	0.728400579689854
+"macromolecule catabolic process"	GO:0044265;GO:0009057	2	Q9Y0H4	0.0866312509371894
+"macromolecule catabolic process"	GO:0044265;GO:0009057	2	P35559	1.22748719760042e-12
+"macromolecule catabolic process"	GO:0044265;GO:0009057	2	P46776	0.0975854413849127
+"macromolecule catabolic process"	GO:0044265;GO:0009057	2	P0CG53	0.663363679349069
+"macromolecule catabolic process"	GO:0044265;GO:0009057	2	Q9UL18	1.76108969416594e-15
+"macromolecule catabolic process"	GO:0044265;GO:0009057	2	P60467	6.50731681117072e-06
+"macromolecule catabolic process"	GO:0044265;GO:0009057	2	Q6MJV1	0.920811356380479
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	P67774	4.95532077650757e-11
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	Q4R562	0.728400579689854
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	Q99996	0.76781147294691
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	Q06124	0.975675418349719
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	Q91WG5	0.946130705500741
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	Q9Y241	0.265444702511941
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	P45985	3.10560697175906e-10
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	Q9JI92	2.46674020902428e-09
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	Q8CGY8	3.9645300012545e-09
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	Q969S3	0.314190473351431
+"positive regulation of phosphate metabolic process"	GO:0001934;GO:0042327;GO:0045937;GO:0010562	3	P70266	1.01367790659803e-09
+"organelle assembly"	GO:0070925	5	Q9D084	0.346870037060789
+"organelle assembly"	GO:0070925	5	Q5ZJN2	0.0682690877280059
+"organelle assembly"	GO:0070925	5	O01479	0.0535619096956723
+"organelle assembly"	GO:0070925	5	Q6NVR8	0.809898756937042
+"organelle assembly"	GO:0070925	5	Q7Z2Z2	7.22030622847689e-05
+"positive regulation of intracellular signal transduction"	GO:1902533	3	B3KU38	3.90662681460476e-09
+"positive regulation of intracellular signal transduction"	GO:1902533	3	Q06124	0.975675418349719
+"positive regulation of intracellular signal transduction"	GO:1902533	3	Q95TJ9	0.0636520744375205
+"positive regulation of intracellular signal transduction"	GO:1902533	3	P45985	3.10560697175906e-10
+"positive regulation of intracellular signal transduction"	GO:1902533	3	Q9H4G4	4.90150532445314e-05
+"positive regulation of intracellular signal transduction"	GO:1902533	3	Q969S3	0.314190473351431
+"positive regulation of intracellular signal transduction"	GO:1902533	3	P0CG53	0.663363679349069
+"positive regulation of intracellular signal transduction"	GO:1902533	3	Q9UL18	1.76108969416594e-15
+"positive regulation of intracellular signal transduction"	GO:1902533	3	O42400	1.19429128295469e-09
+"cellular response to organic substance"	GO:0071310	4	Q9TSM4	4.764445131056e-09
+"cellular response to organic substance"	GO:0071310	4	P70531	0.642571502142462
+"cellular response to organic substance"	GO:0071310	4	Q99996	0.76781147294691
+"cellular response to organic substance"	GO:0071310	4	Q06124	0.975675418349719
+"cellular response to organic substance"	GO:0071310	4	P45985	3.10560697175906e-10
+"cellular response to organic substance"	GO:0071310	4	Q8CGY8	3.9645300012545e-09
+"regulation of intracellular signal transduction"	GO:1902531	2	Q2KI95	6.66787092359834e-05
+"regulation of intracellular signal transduction"	GO:1902531	2	B3KU38	3.90662681460476e-09
+"regulation of intracellular signal transduction"	GO:1902531	2	Q8BK35	0.525156570621304
+"regulation of intracellular signal transduction"	GO:1902531	2	Q06124	0.975675418349719
+"regulation of intracellular signal transduction"	GO:1902531	2	Q95TJ9	0.0636520744375205
+"regulation of intracellular signal transduction"	GO:1902531	2	Q6NN85	0.623006644902977
+"regulation of intracellular signal transduction"	GO:1902531	2	P45985	3.10560697175906e-10
+"regulation of intracellular signal transduction"	GO:1902531	2	Q9H4G4	4.90150532445314e-05
+"regulation of intracellular signal transduction"	GO:1902531	2	Q969S3	0.314190473351431
+"regulation of intracellular signal transduction"	GO:1902531	2	P0CG53	0.663363679349069
+"regulation of intracellular signal transduction"	GO:1902531	2	Q8CGY8	3.9645300012545e-09
+"regulation of intracellular signal transduction"	GO:1902531	2	Q9UL18	1.76108969416594e-15
+"regulation of intracellular signal transduction"	GO:1902531	2	O42400	1.19429128295469e-09
+"nucleobase-containing small molecule metabolic process"	GO:0055086	3	Q9NR19	0.568360225685096
+"nucleobase-containing small molecule metabolic process"	GO:0055086	3	P11966	0.4747841052323
+"nucleobase-containing small molecule metabolic process"	GO:0055086	3	P52030	0.37072181015433
+"nucleobase-containing small molecule metabolic process"	GO:0055086	3	P42867	0.748390483779565
+"nucleobase-containing small molecule metabolic process"	GO:0055086	3	P07902	0.961416598335619
+"nucleobase-containing small molecule metabolic process"	GO:0055086	3	Q9D0M3	0.00477441246836349
+"nucleobase-containing small molecule metabolic process"	GO:0055086	3	Q6P6Z8	7.87278624477789e-10
+"nucleobase-containing small molecule metabolic process"	GO:0055086	3	Q5F499	0.740873751840592
+"nucleobase-containing small molecule metabolic process"	GO:0055086	3	Q7Z2Z2	7.22030622847689e-05
+"nucleobase-containing small molecule metabolic process"	GO:0055086	3	Q86W56	0.564881430370255
+"positive regulation of protein kinase activity"	GO:0045860	6	P67774	4.95532077650757e-11
+"positive regulation of protein kinase activity"	GO:0045860	6	Q06124	0.975675418349719
+"positive regulation of protein kinase activity"	GO:0045860	6	Q91WG5	0.946130705500741
+"positive regulation of protein kinase activity"	GO:0045860	6	Q9Y241	0.265444702511941
+"positive regulation of protein kinase activity"	GO:0045860	6	P45985	3.10560697175906e-10
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	Q4R562	0.728400579689854
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	Q60HE1	0.526888934831255
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	Q9Y0H4	0.0866312509371894
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	Q5ZJN2	0.0682690877280059
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	Q9EQW7	0.607055399746502
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	Q08DS5	0.236687790738567
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	P35604	0.550040488387711
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	Q6P2B1	3.76761956017317e-09
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	P30622	0.860959814534292
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	Q76IC6	0.134558580379597
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	O08585	0.797252536806928
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	P46776	0.0975854413849127
+"amide transport"	GO:0015031;GO:0015833;GO:0042886;GO:0006886	4	P60467	6.50731681117072e-06
+"RNA processing"	GO:0006396	2	Q92879	2.3126911475947e-14
+"RNA processing"	GO:0006396	2	Q13148	0.675746488191163
+"RNA processing"	GO:0006396	2	Q8BK35	0.525156570621304
+"RNA processing"	GO:0006396	2	Q9VIW7	0.545632872924119
+"RNA processing"	GO:0006396	2	Q8BHD7	3.35755727745675e-12
+"RNA processing"	GO:0006396	2	Q9H2H8	0.693663692225673
+"RNA processing"	GO:0006396	2	Q6DRH5	0.407167853879209
+"RNA processing"	GO:0006396	2	Q1MTD3	0.131032776590245
+"RNA processing"	GO:0006396	2	Q9VLV5	0.456344385263672
+"RNA processing"	GO:0006396	2	Q8SX83	0.615372370305779
+"RNA processing"	GO:0006396	2	Q9UL18	1.76108969416594e-15
+"RNA processing"	GO:0006396	2	O35130	0.774386915359948
+"sulfur compound metabolic process"	GO:0006790	3	Q9TSM4	4.764445131056e-09
+"sulfur compound metabolic process"	GO:0006790	3	Q9NR19	0.568360225685096
+"sulfur compound metabolic process"	GO:0006790	3	P11966	0.4747841052323
+"sulfur compound metabolic process"	GO:0006790	3	Q6P6Z8	7.87278624477789e-10
+"sulfur compound metabolic process"	GO:0006790	3	P08761	0.576038168064453
+"cellular homeostasis"	GO:0019725	3	Q9TSM4	4.764445131056e-09
+"cellular homeostasis"	GO:0019725	3	P35559	1.22748719760042e-12
+"cellular homeostasis"	GO:0019725	3	P55853	7.24265645089213e-06
+"cellular homeostasis"	GO:0019725	3	Q32LP4	0.847221921211293
+"cellular homeostasis"	GO:0019725	3	Q93235	0.655012964880877
+"cellular homeostasis"	GO:0019725	3	Q8CGY8	3.9645300012545e-09
+"vesicle-mediated transport"	GO:0016192	3	O13154	0.0333949368219867
+"vesicle-mediated transport"	GO:0016192	3	Q9Y0H4	0.0866312509371894
+"vesicle-mediated transport"	GO:0016192	3	Q5ZJN2	0.0682690877280059
+"vesicle-mediated transport"	GO:0016192	3	Q9EQW7	0.607055399746502
+"vesicle-mediated transport"	GO:0016192	3	P35604	0.550040488387711
+"vesicle-mediated transport"	GO:0016192	3	O08585	0.797252536806928
+"vesicle-mediated transport"	GO:0016192	3	Q80TY0	0.163305131249154
+"vesicle-mediated transport"	GO:0016192	3	Q5F359	1.58864128104872e-09
+"vesicle-mediated transport"	GO:0016192	3	P53634	2.85526035845107e-05
+"vesicle-mediated transport"	GO:0016192	3	O95807	0.247479353936211
+"regulation of growth"	GO:0040008	2	Q6KC79	0.210059322884478
+"regulation of growth"	GO:0040008	2	Q5ZJN2	0.0682690877280059
+"regulation of growth"	GO:0040008	2	Q95TJ9	0.0636520744375205
+"regulation of growth"	GO:0040008	2	Q6B855	0.713482608601604
+"regulation of growth"	GO:0040008	2	Q9JI92	2.46674020902428e-09
+"regulation of cellular component size"	GO:0032535;GO:0090066	4	Q5ZJN2	0.0682690877280059
+"regulation of cellular component size"	GO:0032535;GO:0090066	4	O01479	0.0535619096956723
+"regulation of cellular component size"	GO:0032535;GO:0090066	4	Q6NN85	0.623006644902977
+"regulation of cellular component size"	GO:0032535;GO:0090066	4	Q3T035	2.9166326944775e-05
+"regulation of cellular component size"	GO:0032535;GO:0090066	4	Q8CGY8	3.9645300012545e-09
+"regulation of cellular component biogenesis"	GO:0044087	2	P70531	0.642571502142462
+"regulation of cellular component biogenesis"	GO:0044087	2	Q99996	0.76781147294691
+"regulation of cellular component biogenesis"	GO:0044087	2	Q8BK35	0.525156570621304
+"regulation of cellular component biogenesis"	GO:0044087	2	Q06124	0.975675418349719
+"regulation of cellular component biogenesis"	GO:0044087	2	P30622	0.860959814534292
+"regulation of cellular component biogenesis"	GO:0044087	2	O01479	0.0535619096956723
+"regulation of cellular component biogenesis"	GO:0044087	2	Q6NN85	0.623006644902977
+"regulation of cellular component biogenesis"	GO:0044087	2	Q3T035	2.9166326944775e-05
+"regulation of cellular component biogenesis"	GO:0044087	2	Q9JI92	2.46674020902428e-09
+"regulation of cellular component biogenesis"	GO:0044087	2	P09493	2.23105774059549e-09
+"regulation of proteolysis"	GO:0042176;GO:0030162;GO:1903050;GO:1903362	3	Q9Y0H4	0.0866312509371894
+"regulation of proteolysis"	GO:0042176;GO:0030162;GO:1903050;GO:1903362	3	Q8BK35	0.525156570621304
+"regulation of proteolysis"	GO:0042176;GO:0030162;GO:1903050;GO:1903362	3	Q8K4K3	2.34454901163337e-11
+"regulation of proteolysis"	GO:0042176;GO:0030162;GO:1903050;GO:1903362	3	P0CG53	0.663363679349069
+"regulation of proteolysis"	GO:0042176;GO:0030162;GO:1903050;GO:1903362	3	Q9JI92	2.46674020902428e-09
+"regulation of proteolysis"	GO:0042176;GO:0030162;GO:1903050;GO:1903362	3	P53634	2.85526035845107e-05
+"regulation of proteolysis"	GO:0042176;GO:0030162;GO:1903050;GO:1903362	3	Q8CGY8	3.9645300012545e-09
+"regulation of proteolysis"	GO:0042176;GO:0030162;GO:1903050;GO:1903362	3	P35559	1.22748719760042e-12
+"organonitrogen compound catabolic process"	GO:1901565	2	Q9Y0H4	0.0866312509371894
+"organonitrogen compound catabolic process"	GO:1901565	2	P35559	1.22748719760042e-12
+"organonitrogen compound catabolic process"	GO:1901565	2	P12694	0.0911087145980911
+"organonitrogen compound catabolic process"	GO:1901565	2	Q6MJV1	0.920811356380479
+"organonitrogen compound catabolic process"	GO:1901565	2	P60467	6.50731681117072e-06
+"peptide metabolic process"	GO:0006412;GO:0043043;GO:0006518;GO:0043604	5	Q498T4	3.50703317936794e-09
+"peptide metabolic process"	GO:0006412;GO:0043043;GO:0006518;GO:0043604	5	Q98TF8	0.870280156930191
+"peptide metabolic process"	GO:0006412;GO:0043043;GO:0006518;GO:0043604	5	Q95V34	0.66685928388011
+"peptide metabolic process"	GO:0006412;GO:0043043;GO:0006518;GO:0043604	5	P62866	0.827247002648035
+"peptide metabolic process"	GO:0006412;GO:0043043;GO:0006518;GO:0043604	5	Q9VUJ0	0.127744200339299
+"peptide metabolic process"	GO:0006412;GO:0043043;GO:0006518;GO:0043604	5	P46776	0.0975854413849127
+"peptide metabolic process"	GO:0006412;GO:0043043;GO:0006518;GO:0043604	5	Q9TSM4	4.764445131056e-09
+"peptide metabolic process"	GO:0006412;GO:0043043;GO:0006518;GO:0043604	5	P35559	1.22748719760042e-12
+"peptide metabolic process"	GO:0006412;GO:0043043;GO:0006518;GO:0043604	5	Q9NR19	0.568360225685096
+"peptide metabolic process"	GO:0006412;GO:0043043;GO:0006518;GO:0043604	5	P11966	0.4747841052323
+"animal organ morphogenesis"	GO:0009887	2	Q6KC79	0.210059322884478
+"animal organ morphogenesis"	GO:0009887	2	Q13796	2.02881241341894e-09
+"animal organ morphogenesis"	GO:0009887	2	Q9V9W8	4.33234735672142e-09
+"animal organ morphogenesis"	GO:0009887	2	Q32LP4	0.847221921211293
+"animal organ morphogenesis"	GO:0009887	2	Q23979	0.967908222677984
+"regulation of protein-containing complex assembly"	GO:0043254	5	Q99996	0.76781147294691
+"regulation of protein-containing complex assembly"	GO:0043254	5	Q8BK35	0.525156570621304
+"regulation of protein-containing complex assembly"	GO:0043254	5	Q06124	0.975675418349719
+"regulation of protein-containing complex assembly"	GO:0043254	5	P30622	0.860959814534292
+"regulation of protein-containing complex assembly"	GO:0043254	5	O01479	0.0535619096956723
+"regulation of protein-containing complex assembly"	GO:0043254	5	Q6NN85	0.623006644902977
+"regulation of protein-containing complex assembly"	GO:0043254	5	Q3T035	2.9166326944775e-05
+"regulation of translation"	GO:0006417;GO:0010608;GO:0034248	3	Q92879	2.3126911475947e-14
+"regulation of translation"	GO:0006417;GO:0010608;GO:0034248	3	Q13148	0.675746488191163
+"regulation of translation"	GO:0006417;GO:0010608;GO:0034248	3	Q8BHD7	3.35755727745675e-12
+"regulation of translation"	GO:0006417;GO:0010608;GO:0034248	3	Q9VUJ0	0.127744200339299
+"regulation of translation"	GO:0006417;GO:0010608;GO:0034248	3	Q6NVR8	0.809898756937042
+"regulation of translation"	GO:0006417;GO:0010608;GO:0034248	3	Q9UL18	1.76108969416594e-15
+"lipid metabolic process"	GO:0008610;GO:0044255;GO:0006629	4	Q9TSM4	4.764445131056e-09
+"lipid metabolic process"	GO:0008610;GO:0044255;GO:0006629	4	Q9NR19	0.568360225685096
+"lipid metabolic process"	GO:0008610;GO:0044255;GO:0006629	4	P42867	0.748390483779565
+"lipid metabolic process"	GO:0008610;GO:0044255;GO:0006629	4	Q91WG5	0.946130705500741
+"lipid metabolic process"	GO:0008610;GO:0044255;GO:0006629	4	Q8BGS7	0.781629652516677
+"lipid metabolic process"	GO:0008610;GO:0044255;GO:0006629	4	Q5ZJG8	0.262703069694666
+"lipid metabolic process"	GO:0008610;GO:0044255;GO:0006629	4	Q14739	0.91894991458029
+"lipid metabolic process"	GO:0008610;GO:0044255;GO:0006629	4	Q9DB73	0.512717986025154
+"lipid metabolic process"	GO:0008610;GO:0044255;GO:0006629	4	Q06124	0.975675418349719
+"cytoskeleton organization"	GO:0007010	5	Q13796	2.02881241341894e-09
+"cytoskeleton organization"	GO:0007010	5	O13154	0.0333949368219867
+"cytoskeleton organization"	GO:0007010	5	Q5ZJN2	0.0682690877280059
+"cytoskeleton organization"	GO:0007010	5	Q99996	0.76781147294691
+"cytoskeleton organization"	GO:0007010	5	P30622	0.860959814534292
+"cytoskeleton organization"	GO:0007010	5	O01479	0.0535619096956723
+"cytoskeleton organization"	GO:0007010	5	Q6NN85	0.623006644902977
+"cytoskeleton organization"	GO:0007010	5	P18091	0.694049487708396
+"cytoskeleton organization"	GO:0007010	5	O73787	3.27113066676487e-09
+"cytoskeleton organization"	GO:0007010	5	Q9JI92	2.46674020902428e-09
+"cytoskeleton organization"	GO:0007010	5	P09493	2.23105774059549e-09
+"cytoskeleton organization"	GO:0007010	5	Q8NF91	0.286520787026721
+"mRNA metabolic process"	GO:0006397;GO:0016071	2	Q92879	2.3126911475947e-14
+"mRNA metabolic process"	GO:0006397;GO:0016071	2	Q13148	0.675746488191163
+"mRNA metabolic process"	GO:0006397;GO:0016071	2	Q8BHD7	3.35755727745675e-12
+"mRNA metabolic process"	GO:0006397;GO:0016071	2	Q9H2H8	0.693663692225673
+"mRNA metabolic process"	GO:0006397;GO:0016071	2	Q1MTD3	0.131032776590245
+"mRNA metabolic process"	GO:0006397;GO:0016071	2	Q9VLV5	0.456344385263672
+"mRNA metabolic process"	GO:0006397;GO:0016071	2	Q8SX83	0.615372370305779
+"mRNA metabolic process"	GO:0006397;GO:0016071	2	P46776	0.0975854413849127
+"mRNA metabolic process"	GO:0006397;GO:0016071	2	Q9UL18	1.76108969416594e-15
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	Q2KI95	6.66787092359834e-05
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	Q4R562	0.728400579689854
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	Q03017	0.0603773146818647
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	Q9Y0H4	0.0866312509371894
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	Q8BK35	0.525156570621304
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	Q95TJ9	0.0636520744375205
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	Q9Y241	0.265444702511941
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	Q6NN85	0.623006644902977
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	O42400	1.19429128295469e-09
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	Q06124	0.975675418349719
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	P80303	0.248943875850145
+"negative regulation of response to stimulus"	GO:0009968;GO:0010648;GO:0023057;GO:0048585	2	Q8CGY8	3.9645300012545e-09
+"generation of precursor metabolites and energy"	GO:0006091	3	Q9NR19	0.568360225685096
+"generation of precursor metabolites and energy"	GO:0006091	3	P52030	0.37072181015433
+"generation of precursor metabolites and energy"	GO:0006091	3	Q9CQ69	0.542691258065252
+"generation of precursor metabolites and energy"	GO:0006091	3	Q91WG5	0.946130705500741
+"generation of precursor metabolites and energy"	GO:0006091	3	Q6B855	0.713482608601604
+"generation of precursor metabolites and energy"	GO:0006091	3	Q9D0M3	0.00477441246836349
+"generation of precursor metabolites and energy"	GO:0006091	3	Q6P6Z8	7.87278624477789e-10
+"generation of precursor metabolites and energy"	GO:0006091	3	Q9W1G0	8.70860887054368e-05
+"positive regulation of multicellular organismal process"	GO:0051240	2	Q6KC79	0.210059322884478
+"positive regulation of multicellular organismal process"	GO:0051240	2	P70531	0.642571502142462
+"positive regulation of multicellular organismal process"	GO:0051240	2	Q5ZJN2	0.0682690877280059
+"positive regulation of multicellular organismal process"	GO:0051240	2	Q9V4A7	0.67768838528907
+"positive regulation of multicellular organismal process"	GO:0051240	2	P55853	7.24265645089213e-06
+"positive regulation of multicellular organismal process"	GO:0051240	2	Q06124	0.975675418349719
+"positive regulation of multicellular organismal process"	GO:0051240	2	Q9H4G4	4.90150532445314e-05
+"positive regulation of multicellular organismal process"	GO:0051240	2	Q9JI92	2.46674020902428e-09
+"positive regulation of multicellular organismal process"	GO:0051240	2	Q8CGY8	3.9645300012545e-09
+"positive regulation of multicellular organismal process"	GO:0051240	2	Q63016	1.64232530857158e-10
+"positive regulation of multicellular organismal process"	GO:0051240	2	P09493	2.23105774059549e-09
+"cellular response to abiotic stimulus"	GO:0071214;GO:0104004	2	Q6KC79	0.210059322884478
+"cellular response to abiotic stimulus"	GO:0071214;GO:0104004	2	Q06124	0.975675418349719
+"cellular response to abiotic stimulus"	GO:0071214;GO:0104004	2	P45985	3.10560697175906e-10
+"cellular response to abiotic stimulus"	GO:0071214;GO:0104004	2	Q56K04	0.000200166902931842
+"cellular response to abiotic stimulus"	GO:0071214;GO:0104004	2	Q863I2	0.527536722185222
+"macromolecule biosynthetic process"	GO:0034645;GO:0009059	4	Q498T4	3.50703317936794e-09
+"macromolecule biosynthetic process"	GO:0034645;GO:0009059	4	Q98TF8	0.870280156930191
+"macromolecule biosynthetic process"	GO:0034645;GO:0009059	4	Q95V34	0.66685928388011
+"macromolecule biosynthetic process"	GO:0034645;GO:0009059	4	P62866	0.827247002648035
+"macromolecule biosynthetic process"	GO:0034645;GO:0009059	4	Q9VUJ0	0.127744200339299
+"macromolecule biosynthetic process"	GO:0034645;GO:0009059	4	Q6DRH5	0.407167853879209
+"macromolecule biosynthetic process"	GO:0034645;GO:0009059	4	Q95TJ9	0.0636520744375205
+"macromolecule biosynthetic process"	GO:0034645;GO:0009059	4	P46776	0.0975854413849127
+"macromolecule biosynthetic process"	GO:0034645;GO:0009059	4	P17193	0.109140396611637
+"macromolecule biosynthetic process"	GO:0034645;GO:0009059	4	Q9V460	7.25755330029272e-06
+"multicellular organism development"	GO:0007275	2	Q92879	2.3126911475947e-14
+"multicellular organism development"	GO:0007275	2	Q9Y0H4	0.0866312509371894
+"multicellular organism development"	GO:0007275	2	Q9W0S9	0.28744511989099
+"multicellular organism development"	GO:0007275	2	P55853	7.24265645089213e-06
+"multicellular organism development"	GO:0007275	2	O01479	0.0535619096956723
+"multicellular organism development"	GO:0007275	2	Q95TJ9	0.0636520744375205
+"multicellular organism development"	GO:0007275	2	Q6NVR8	0.809898756937042
+"multicellular organism development"	GO:0007275	2	P09493	2.23105774059549e-09
+"multicellular organism development"	GO:0007275	2	P17141	0.93383455936809
+"multicellular organism development"	GO:0007275	2	O42400	1.19429128295469e-09
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q498T4	3.50703317936794e-09
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q9NR19	0.568360225685096
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	A5GFY8	0.566223409178028
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	P11966	0.4747841052323
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q98TF8	0.870280156930191
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q95V34	0.66685928388011
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	P62866	0.827247002648035
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q9VUJ0	0.127744200339299
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q8BGS7	0.781629652516677
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q9D0M3	0.00477441246836349
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	P46776	0.0975854413849127
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q9VAN0	1.7586318816826e-09
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q6DRH5	0.407167853879209
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q95TJ9	0.0636520744375205
+"organonitrogen compound biosynthetic process"	GO:1901566;GO:0044271	4	Q9V460	7.25755330029272e-06
+"cell projection organization"	GO:0030030	2	Q5ZJN2	0.0682690877280059
+"cell projection organization"	GO:0030030	2	Q06124	0.975675418349719
+"cell projection organization"	GO:0030030	2	Q6NN85	0.623006644902977
+"cell projection organization"	GO:0030030	2	Q23979	0.967908222677984
+"cell projection organization"	GO:0030030	2	P0CG53	0.663363679349069
+"cell projection organization"	GO:0030030	2	P09493	2.23105774059549e-09
+"negative regulation of transport"	GO:0051051	2	Q9TSM4	4.764445131056e-09
+"negative regulation of transport"	GO:0051051	2	O13154	0.0333949368219867
+"negative regulation of transport"	GO:0051051	2	Q06124	0.975675418349719
+"negative regulation of transport"	GO:0051051	2	Q9JI92	2.46674020902428e-09
+"negative regulation of transport"	GO:0051051	2	Q8CGY8	3.9645300012545e-09
+"positive regulation of protein modification process"	GO:0031401	2	P67774	4.95532077650757e-11
+"positive regulation of protein modification process"	GO:0031401	2	Q4R562	0.728400579689854
+"positive regulation of protein modification process"	GO:0031401	2	Q6KC79	0.210059322884478
+"positive regulation of protein modification process"	GO:0031401	2	Q99996	0.76781147294691
+"positive regulation of protein modification process"	GO:0031401	2	Q8BK35	0.525156570621304
+"positive regulation of protein modification process"	GO:0031401	2	Q06124	0.975675418349719
+"positive regulation of protein modification process"	GO:0031401	2	Q91WG5	0.946130705500741
+"positive regulation of protein modification process"	GO:0031401	2	Q8K4K3	2.34454901163337e-11
+"positive regulation of protein modification process"	GO:0031401	2	Q9Y241	0.265444702511941
+"positive regulation of protein modification process"	GO:0031401	2	P45985	3.10560697175906e-10
+"positive regulation of protein modification process"	GO:0031401	2	P0CG53	0.663363679349069
+"positive regulation of protein modification process"	GO:0031401	2	Q9JI92	2.46674020902428e-09
+"positive regulation of protein modification process"	GO:0031401	2	Q8CGY8	3.9645300012545e-09
+"regulation of cell population proliferation"	GO:0042127	4	Q923W9	0.62988606398409
+"regulation of cell population proliferation"	GO:0042127	4	Q5U241	0.927302198153066
+"regulation of cell population proliferation"	GO:0042127	4	P15330	4.65985828004248e-11
+"regulation of cell population proliferation"	GO:0042127	4	Q9JI92	2.46674020902428e-09
+"regulation of cell population proliferation"	GO:0042127	4	P09493	2.23105774059549e-09
+"negative regulation of cellular component organization"	GO:0051129	3	O13154	0.0333949368219867
+"negative regulation of cellular component organization"	GO:0051129	3	B3KU38	3.90662681460476e-09
+"negative regulation of cellular component organization"	GO:0051129	3	Q8BK35	0.525156570621304
+"negative regulation of cellular component organization"	GO:0051129	3	O01479	0.0535619096956723
+"negative regulation of cellular component organization"	GO:0051129	3	Q9Y241	0.265444702511941
+"negative regulation of cellular component organization"	GO:0051129	3	Q6NN85	0.623006644902977
+"negative regulation of cellular component organization"	GO:0051129	3	Q9JI92	2.46674020902428e-09
+"regulation of immune system process"	GO:0002682	2	Q03017	0.0603773146818647
+"regulation of immune system process"	GO:0002682	2	P15330	4.65985828004248e-11
+"regulation of immune system process"	GO:0002682	2	Q06124	0.975675418349719
+"regulation of immune system process"	GO:0002682	2	P45985	3.10560697175906e-10
+"regulation of immune system process"	GO:0002682	2	Q863I2	0.527536722185222
+"regulation of immune system process"	GO:0002682	2	P53634	2.85526035845107e-05
+"regulation of immune system process"	GO:0002682	2	Q9UL18	1.76108969416594e-15
+"homeostatic process"	GO:0042592	3	Q9TSM4	4.764445131056e-09
+"homeostatic process"	GO:0042592	3	P35559	1.22748719760042e-12
+"homeostatic process"	GO:0042592	3	Q02942	0.00525565652792064
+"homeostatic process"	GO:0042592	3	P55853	7.24265645089213e-06
+"homeostatic process"	GO:0042592	3	Q06124	0.975675418349719
+"homeostatic process"	GO:0042592	3	Q6DRH5	0.407167853879209
+"homeostatic process"	GO:0042592	3	Q32LP4	0.847221921211293
+"homeostatic process"	GO:0042592	3	Q93235	0.655012964880877
+"homeostatic process"	GO:0042592	3	P0CG53	0.663363679349069
+"homeostatic process"	GO:0042592	3	Q8CGY8	3.9645300012545e-09
+"ribose phosphate metabolic process"	GO:0009150;GO:0006163;GO:0009259;GO:0072521;GO:0009117;GO:0019693;GO:0006753	6	Q9NR19	0.568360225685096
+"ribose phosphate metabolic process"	GO:0009150;GO:0006163;GO:0009259;GO:0072521;GO:0009117;GO:0019693;GO:0006753	6	P11966	0.4747841052323
+"ribose phosphate metabolic process"	GO:0009150;GO:0006163;GO:0009259;GO:0072521;GO:0009117;GO:0019693;GO:0006753	6	P52030	0.37072181015433
+"ribose phosphate metabolic process"	GO:0009150;GO:0006163;GO:0009259;GO:0072521;GO:0009117;GO:0019693;GO:0006753	6	Q9D0M3	0.00477441246836349
+"ribose phosphate metabolic process"	GO:0009150;GO:0006163;GO:0009259;GO:0072521;GO:0009117;GO:0019693;GO:0006753	6	Q6P6Z8	7.87278624477789e-10
+"ribose phosphate metabolic process"	GO:0009150;GO:0006163;GO:0009259;GO:0072521;GO:0009117;GO:0019693;GO:0006753	6	Q5F499	0.740873751840592
+"ribose phosphate metabolic process"	GO:0009150;GO:0006163;GO:0009259;GO:0072521;GO:0009117;GO:0019693;GO:0006753	6	Q7Z2Z2	7.22030622847689e-05
+"ribose phosphate metabolic process"	GO:0009150;GO:0006163;GO:0009259;GO:0072521;GO:0009117;GO:0019693;GO:0006753	6	Q6B855	0.713482608601604
+"regulation of response to external stimulus"	GO:0032101	3	Q92879	2.3126911475947e-14
+"regulation of response to external stimulus"	GO:0032101	3	Q03017	0.0603773146818647
+"regulation of response to external stimulus"	GO:0032101	3	P15330	4.65985828004248e-11
+"regulation of response to external stimulus"	GO:0032101	3	Q8BK35	0.525156570621304
+"regulation of response to external stimulus"	GO:0032101	3	Q06124	0.975675418349719
+"regulation of response to external stimulus"	GO:0032101	3	P80303	0.248943875850145
+"regulation of response to external stimulus"	GO:0032101	3	Q863I2	0.527536722185222
+"regulation of response to external stimulus"	GO:0032101	3	P53634	2.85526035845107e-05
+"pattern specification process"	GO:0007389;GO:0003002	2	Q03017	0.0603773146818647
+"pattern specification process"	GO:0007389;GO:0003002	2	P15330	4.65985828004248e-11
+"pattern specification process"	GO:0007389;GO:0003002	2	Q9Y0H4	0.0866312509371894
+"pattern specification process"	GO:0007389;GO:0003002	2	Q9V9W8	4.33234735672142e-09
+"pattern specification process"	GO:0007389;GO:0003002	2	Q23979	0.967908222677984
+"pattern specification process"	GO:0007389;GO:0003002	2	Q8SX83	0.615372370305779
+"chromosome organization"	GO:0051276	2	Q6KC79	0.210059322884478
+"chromosome organization"	GO:0051276	2	Q5U241	0.927302198153066
+"chromosome organization"	GO:0051276	2	Q9D084	0.346870037060789
+"chromosome organization"	GO:0051276	2	P55853	7.24265645089213e-06
+"chromosome organization"	GO:0051276	2	Q6DRH5	0.407167853879209
+"chromosome organization"	GO:0051276	2	Q8CG47	0.0302601326953955
+"actin filament-based process"	GO:0030036;GO:0030029	2	Q13796	2.02881241341894e-09
+"actin filament-based process"	GO:0030036;GO:0030029	2	O13154	0.0333949368219867
+"actin filament-based process"	GO:0030036;GO:0030029	2	O01479	0.0535619096956723
+"actin filament-based process"	GO:0030036;GO:0030029	2	Q6NN85	0.623006644902977
+"actin filament-based process"	GO:0030036;GO:0030029	2	P18091	0.694049487708396
+"actin filament-based process"	GO:0030036;GO:0030029	2	Q9JI92	2.46674020902428e-09
+"actin filament-based process"	GO:0030036;GO:0030029	2	P09493	2.23105774059549e-09
+"actin filament-based process"	GO:0030036;GO:0030029	2	Q23979	0.967908222677984
+"establishment of protein localization to membrane"	GO:0090150;GO:0072657	3	Q60HE1	0.526888934831255
+"establishment of protein localization to membrane"	GO:0090150;GO:0072657	3	Q5ZJN2	0.0682690877280059
+"establishment of protein localization to membrane"	GO:0090150;GO:0072657	3	Q9EQW7	0.607055399746502
+"establishment of protein localization to membrane"	GO:0090150;GO:0072657	3	P30622	0.860959814534292
+"establishment of protein localization to membrane"	GO:0090150;GO:0072657	3	Q76IC6	0.134558580379597
+"establishment of protein localization to membrane"	GO:0090150;GO:0072657	3	P46776	0.0975854413849127
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	Q13148	0.675746488191163
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	B3KU38	3.90662681460476e-09
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	Q06124	0.975675418349719
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	Q95TJ9	0.0636520744375205
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	P45985	3.10560697175906e-10
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	Q9H4G4	4.90150532445314e-05
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	Q969S3	0.314190473351431
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	P0CG53	0.663363679349069
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	Q9JI92	2.46674020902428e-09
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	P53634	2.85526035845107e-05
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	Q8SX83	0.615372370305779
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	Q9UL18	1.76108969416594e-15
+"positive regulation of cell communication"	GO:0010647;GO:0023056;GO:0009967	3	O42400	1.19429128295469e-09
+"response to hormone"	GO:0009725	2	Q2KI95	6.66787092359834e-05
+"response to hormone"	GO:0009725	2	P70531	0.642571502142462
+"response to hormone"	GO:0009725	2	Q9D0M3	0.00477441246836349
+"response to hormone"	GO:0009725	2	Q8CGY8	3.9645300012545e-09
+"response to hormone"	GO:0009725	2	P70266	1.01367790659803e-09
+"proteolysis involved in cellular protein catabolic process"	GO:0051603	2	Q4R562	0.728400579689854
+"proteolysis involved in cellular protein catabolic process"	GO:0051603	2	Q9Y0H4	0.0866312509371894
+"proteolysis involved in cellular protein catabolic process"	GO:0051603	2	P35559	1.22748719760042e-12
+"proteolysis involved in cellular protein catabolic process"	GO:0051603	2	P0CG53	0.663363679349069
+"proteolysis involved in cellular protein catabolic process"	GO:0051603	2	P53634	2.85526035845107e-05
+"proteolysis involved in cellular protein catabolic process"	GO:0051603	2	P60467	6.50731681117072e-06
+"positive regulation of cellular component organization"	GO:0051130	3	Q4R562	0.728400579689854
+"positive regulation of cellular component organization"	GO:0051130	3	Q6KC79	0.210059322884478
+"positive regulation of cellular component organization"	GO:0051130	3	P70531	0.642571502142462
+"positive regulation of cellular component organization"	GO:0051130	3	Q5ZJN2	0.0682690877280059
+"positive regulation of cellular component organization"	GO:0051130	3	Q99996	0.76781147294691
+"positive regulation of cellular component organization"	GO:0051130	3	Q9V4A7	0.67768838528907
+"positive regulation of cellular component organization"	GO:0051130	3	P30622	0.860959814534292
+"positive regulation of cellular component organization"	GO:0051130	3	Q3T035	2.9166326944775e-05
+"positive regulation of cellular component organization"	GO:0051130	3	Q9JI92	2.46674020902428e-09
+"positive regulation of cellular component organization"	GO:0051130	3	Q8CGY8	3.9645300012545e-09
+"positive regulation of cellular component organization"	GO:0051130	3	P09493	2.23105774059549e-09
+"negative regulation of multicellular organismal process"	GO:0051241;GO:0051093	2	P67774	4.95532077650757e-11
+"negative regulation of multicellular organismal process"	GO:0051241;GO:0051093	2	Q06124	0.975675418349719
+"negative regulation of multicellular organismal process"	GO:0051241;GO:0051093	2	Q8K4K3	2.34454901163337e-11
+"negative regulation of multicellular organismal process"	GO:0051241;GO:0051093	2	P53634	2.85526035845107e-05
+"negative regulation of multicellular organismal process"	GO:0051241;GO:0051093	2	Q9UL18	1.76108969416594e-15
+"negative regulation of multicellular organismal process"	GO:0051241;GO:0051093	2	Q03017	0.0603773146818647
+"regulation of protein kinase activity"	GO:0071900;GO:0045859	5	P67774	4.95532077650757e-11
+"regulation of protein kinase activity"	GO:0071900;GO:0045859	5	Q06124	0.975675418349719
+"regulation of protein kinase activity"	GO:0071900;GO:0045859	5	Q95TJ9	0.0636520744375205
+"regulation of protein kinase activity"	GO:0071900;GO:0045859	5	Q8K4K3	2.34454901163337e-11
+"regulation of protein kinase activity"	GO:0071900;GO:0045859	5	Q9Y241	0.265444702511941
+"regulation of protein kinase activity"	GO:0071900;GO:0045859	5	Q6NN85	0.623006644902977
+"regulation of protein kinase activity"	GO:0071900;GO:0045859	5	P45985	3.10560697175906e-10
+"regulation of protein kinase activity"	GO:0071900;GO:0045859	5	Q91WG5	0.946130705500741
+"anatomical structure morphogenesis"	GO:0009653	2	Q6KC79	0.210059322884478
+"anatomical structure morphogenesis"	GO:0009653	2	Q13796	2.02881241341894e-09
+"anatomical structure morphogenesis"	GO:0009653	2	Q9Y0H4	0.0866312509371894
+"anatomical structure morphogenesis"	GO:0009653	2	Q9V9W8	4.33234735672142e-09
+"anatomical structure morphogenesis"	GO:0009653	2	Q06124	0.975675418349719
+"anatomical structure morphogenesis"	GO:0009653	2	Q9VAS7	0.228277765715114
+"anatomical structure morphogenesis"	GO:0009653	2	Q6NN85	0.623006644902977
+"anatomical structure morphogenesis"	GO:0009653	2	Q32LP4	0.847221921211293
+"anatomical structure morphogenesis"	GO:0009653	2	Q23979	0.967908222677984
+"anatomical structure morphogenesis"	GO:0009653	2	P0CG53	0.663363679349069
+"anatomical structure morphogenesis"	GO:0009653	2	Q8SX83	0.615372370305779
+"anatomical structure morphogenesis"	GO:0009653	2	P09493	2.23105774059549e-09
+"regulation of vesicle-mediated transport"	GO:0060627	2	Q4R562	0.728400579689854
+"regulation of vesicle-mediated transport"	GO:0060627	2	P70531	0.642571502142462
+"regulation of vesicle-mediated transport"	GO:0060627	2	O13154	0.0333949368219867
+"regulation of vesicle-mediated transport"	GO:0060627	2	Q5ZJN2	0.0682690877280059
+"regulation of vesicle-mediated transport"	GO:0060627	2	Q9JI92	2.46674020902428e-09
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	Q9TSM4	4.764445131056e-09
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	Q4R562	0.728400579689854
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	Q9Y0H4	0.0866312509371894
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	P35559	1.22748719760042e-12
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	P12694	0.0911087145980911
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	P07902	0.961416598335619
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	P46776	0.0975854413849127
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	P0CG53	0.663363679349069
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	Q9UL18	1.76108969416594e-15
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	P60467	6.50731681117072e-06
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	P52030	0.37072181015433
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	Q6MJV1	0.920811356380479
+"catabolic process"	GO:0044248;GO:0009056;GO:1901575	2	Q6P6Z8	7.87278624477789e-10
+"regulation of cell differentiation"	GO:0045595	2	P67774	4.95532077650757e-11
+"regulation of cell differentiation"	GO:0045595	2	P70531	0.642571502142462
+"regulation of cell differentiation"	GO:0045595	2	Q03017	0.0603773146818647
+"regulation of cell differentiation"	GO:0045595	2	P15330	4.65985828004248e-11
+"regulation of cell differentiation"	GO:0045595	2	Q5ZJN2	0.0682690877280059
+"regulation of cell differentiation"	GO:0045595	2	Q9V4A7	0.67768838528907
+"regulation of cell differentiation"	GO:0045595	2	Q8BHD7	3.35755727745675e-12
+"regulation of cell differentiation"	GO:0045595	2	Q06124	0.975675418349719
+"regulation of cell differentiation"	GO:0045595	2	Q8K4K3	2.34454901163337e-11
+"regulation of cell differentiation"	GO:0045595	2	Q9H4G4	4.90150532445314e-05
+"regulation of cell differentiation"	GO:0045595	2	Q9JI92	2.46674020902428e-09
+"regulation of cell differentiation"	GO:0045595	2	Q9UL18	1.76108969416594e-15
+"ncRNA processing"	GO:0034470;GO:0034660	2	Q8BK35	0.525156570621304
+"ncRNA processing"	GO:0034470;GO:0034660	2	Q9VIW7	0.545632872924119
+"ncRNA processing"	GO:0034470;GO:0034660	2	Q6DRH5	0.407167853879209
+"ncRNA processing"	GO:0034470;GO:0034660	2	Q9UL18	1.76108969416594e-15
+"ncRNA processing"	GO:0034470;GO:0034660	2	O35130	0.774386915359948
+"supramolecular fiber organization"	GO:0007015;GO:0097435	5	Q13796	2.02881241341894e-09
+"supramolecular fiber organization"	GO:0007015;GO:0097435	5	O01479	0.0535619096956723
+"supramolecular fiber organization"	GO:0007015;GO:0097435	5	P18091	0.694049487708396
+"supramolecular fiber organization"	GO:0007015;GO:0097435	5	Q23979	0.967908222677984
+"supramolecular fiber organization"	GO:0007015;GO:0097435	5	Q3T035	2.9166326944775e-05
+"supramolecular fiber organization"	GO:0007015;GO:0097435	5	P09493	2.23105774059549e-09
+"supramolecular fiber organization"	GO:0007015;GO:0097435	5	Q5ZJN2	0.0682690877280059
+"supramolecular fiber organization"	GO:0007015;GO:0097435	5	P30622	0.860959814534292
+"regulation of supramolecular fiber organization"	GO:0032271;GO:1902903	2	Q99996	0.76781147294691
+"regulation of supramolecular fiber organization"	GO:0032271;GO:1902903	2	P30622	0.860959814534292
+"regulation of supramolecular fiber organization"	GO:0032271;GO:1902903	2	O01479	0.0535619096956723
+"regulation of supramolecular fiber organization"	GO:0032271;GO:1902903	2	Q6NN85	0.623006644902977
+"regulation of supramolecular fiber organization"	GO:0032271;GO:1902903	2	Q3T035	2.9166326944775e-05
+"regulation of supramolecular fiber organization"	GO:0032271;GO:1902903	2	P09493	2.23105774059549e-09
+"phosphorylation"	GO:0016310	3	P70531	0.642571502142462
+"phosphorylation"	GO:0016310	3	P52030	0.37072181015433
+"phosphorylation"	GO:0016310	3	Q91WG5	0.946130705500741
+"phosphorylation"	GO:0016310	3	Q8K4K3	2.34454901163337e-11
+"phosphorylation"	GO:0016310	3	Q9D0M3	0.00477441246836349
+"phosphorylation"	GO:0016310	3	Q6P6Z8	7.87278624477789e-10
+"phosphorylation"	GO:0016310	3	Q863I2	0.527536722185222
+"phosphorylation"	GO:0016310	3	P70266	1.01367790659803e-09
+"peptidyl-amino acid modification"	GO:0018193	3	F1PJP5	0.0386923414255358
+"peptidyl-amino acid modification"	GO:0018193	3	P55853	7.24265645089213e-06
+"peptidyl-amino acid modification"	GO:0018193	3	Q9H2H8	0.693663692225673
+"peptidyl-amino acid modification"	GO:0018193	3	Q76IC6	0.134558580379597
+"peptidyl-amino acid modification"	GO:0018193	3	Q863I2	0.527536722185222
+"peptidyl-amino acid modification"	GO:0018193	3	Q8CGY8	3.9645300012545e-09
+"movement of cell or subcellular component"	GO:0006928	2	Q13796	2.02881241341894e-09
+"movement of cell or subcellular component"	GO:0006928	2	Q9EQW7	0.607055399746502
+"movement of cell or subcellular component"	GO:0006928	2	Q9V4A7	0.67768838528907
+"movement of cell or subcellular component"	GO:0006928	2	Q06124	0.975675418349719
+"movement of cell or subcellular component"	GO:0006928	2	Q23979	0.967908222677984
+"movement of cell or subcellular component"	GO:0006928	2	P0CG53	0.663363679349069
+"movement of cell or subcellular component"	GO:0006928	2	Q8SX83	0.615372370305779
+"movement of cell or subcellular component"	GO:0006928	2	P09493	2.23105774059549e-09
+"movement of cell or subcellular component"	GO:0006928	2	Q6PKX4	0.668563333438081
+"positive regulation of cellular component biogenesis"	GO:0044089	2	P70531	0.642571502142462
+"positive regulation of cellular component biogenesis"	GO:0044089	2	Q99996	0.76781147294691
+"positive regulation of cellular component biogenesis"	GO:0044089	2	P30622	0.860959814534292
+"positive regulation of cellular component biogenesis"	GO:0044089	2	Q3T035	2.9166326944775e-05
+"positive regulation of cellular component biogenesis"	GO:0044089	2	Q9JI92	2.46674020902428e-09
+"positive regulation of cellular component biogenesis"	GO:0044089	2	P09493	2.23105774059549e-09
+"RNA splicing"	GO:0008380	2	Q13148	0.675746488191163
+"RNA splicing"	GO:0008380	2	Q9VIW7	0.545632872924119
+"RNA splicing"	GO:0008380	2	Q8BHD7	3.35755727745675e-12
+"RNA splicing"	GO:0008380	2	Q9H2H8	0.693663692225673
+"RNA splicing"	GO:0008380	2	Q9VLV5	0.456344385263672
+"RNA splicing"	GO:0008380	2	Q8SX83	0.615372370305779
+"cation transport"	GO:0015672;GO:0006812	2	P30715	1.29286312044433e-08
+"cation transport"	GO:0015672;GO:0006812	2	Q9D0M3	0.00477441246836349
+"cation transport"	GO:0015672;GO:0006812	2	Q32LP4	0.847221921211293
+"cation transport"	GO:0015672;GO:0006812	2	Q93235	0.655012964880877
+"cation transport"	GO:0015672;GO:0006812	2	Q25691	0.887737408199791
+"cation transport"	GO:0015672;GO:0006812	2	Q63016	1.64232530857158e-10
+"negative regulation of cellular protein metabolic process"	GO:0032269;GO:0051248	3	Q92879	2.3126911475947e-14
+"negative regulation of cellular protein metabolic process"	GO:0032269;GO:0051248	3	Q13148	0.675746488191163
+"negative regulation of cellular protein metabolic process"	GO:0032269;GO:0051248	3	P35559	1.22748719760042e-12
+"negative regulation of cellular protein metabolic process"	GO:0032269;GO:0051248	3	Q8BK35	0.525156570621304
+"negative regulation of cellular protein metabolic process"	GO:0032269;GO:0051248	3	Q91WG5	0.946130705500741
+"negative regulation of cellular protein metabolic process"	GO:0032269;GO:0051248	3	Q6NN85	0.623006644902977
+"negative regulation of cellular protein metabolic process"	GO:0032269;GO:0051248	3	Q6NVR8	0.809898756937042
+"negative regulation of cellular protein metabolic process"	GO:0032269;GO:0051248	3	Q9JI92	2.46674020902428e-09
+"negative regulation of cellular protein metabolic process"	GO:0032269;GO:0051248	3	Q8CGY8	3.9645300012545e-09
+"negative regulation of cellular protein metabolic process"	GO:0032269;GO:0051248	3	Q9UL18	1.76108969416594e-15
+"cellular response to DNA damage stimulus"	GO:0006974	4	Q6KC79	0.210059322884478
+"cellular response to DNA damage stimulus"	GO:0006974	4	Q9D084	0.346870037060789
+"cellular response to DNA damage stimulus"	GO:0006974	4	Q8BK35	0.525156570621304
+"cellular response to DNA damage stimulus"	GO:0006974	4	Q06124	0.975675418349719
+"cellular response to DNA damage stimulus"	GO:0006974	4	Q95TJ9	0.0636520744375205
+"cellular response to DNA damage stimulus"	GO:0006974	4	Q56K04	0.000200166902931842
+"cellular response to DNA damage stimulus"	GO:0006974	4	Q86W56	0.564881430370255
+"cell cycle process"	GO:0022402;GO:1903047	2	Q6KC79	0.210059322884478
+"cell cycle process"	GO:0022402;GO:1903047	2	Q5U241	0.927302198153066
+"cell cycle process"	GO:0022402;GO:1903047	2	Q9D084	0.346870037060789
+"cell cycle process"	GO:0022402;GO:1903047	2	Q5ZJN2	0.0682690877280059
+"cell cycle process"	GO:0022402;GO:1903047	2	Q99996	0.76781147294691
+"cell cycle process"	GO:0022402;GO:1903047	2	Q8BK35	0.525156570621304
+"cell cycle process"	GO:0022402;GO:1903047	2	P55853	7.24265645089213e-06
+"cell cycle process"	GO:0022402;GO:1903047	2	Q95TJ9	0.0636520744375205
+"cell cycle process"	GO:0022402;GO:1903047	2	P0CG53	0.663363679349069
+"cell cycle process"	GO:0022402;GO:1903047	2	P54359	0.925257620269918
+"cell cycle process"	GO:0022402;GO:1903047	2	Q8CG47	0.0302601326953955
+"positive regulation of organelle organization"	GO:0010638	4	Q6KC79	0.210059322884478
+"positive regulation of organelle organization"	GO:0010638	4	Q99996	0.76781147294691
+"positive regulation of organelle organization"	GO:0010638	4	P30622	0.860959814534292
+"positive regulation of organelle organization"	GO:0010638	4	Q3T035	2.9166326944775e-05
+"positive regulation of organelle organization"	GO:0010638	4	Q9JI92	2.46674020902428e-09
+"positive regulation of organelle organization"	GO:0010638	4	Q8CGY8	3.9645300012545e-09
+"positive regulation of organelle organization"	GO:0010638	4	P09493	2.23105774059549e-09
+"animal organ development"	GO:0048513	2	Q6KC79	0.210059322884478
+"animal organ development"	GO:0048513	2	Q13796	2.02881241341894e-09
+"animal organ development"	GO:0048513	2	Q9V9W8	4.33234735672142e-09
+"animal organ development"	GO:0048513	2	Q06124	0.975675418349719
+"animal organ development"	GO:0048513	2	Q6DRH5	0.407167853879209
+"animal organ development"	GO:0048513	2	Q6NN85	0.623006644902977
+"animal organ development"	GO:0048513	2	P0CG53	0.663363679349069
+"animal organ development"	GO:0048513	2	Q8SX83	0.615372370305779
+"animal organ development"	GO:0048513	2	P54359	0.925257620269918
+"animal organ development"	GO:0048513	2	P70266	1.01367790659803e-09
+"negative regulation of molecular function"	GO:0044092	3	Q9TSM4	4.764445131056e-09
+"negative regulation of molecular function"	GO:0044092	3	Q03017	0.0603773146818647
+"negative regulation of molecular function"	GO:0044092	3	Q99996	0.76781147294691
+"negative regulation of molecular function"	GO:0044092	3	Q91WG5	0.946130705500741
+"negative regulation of molecular function"	GO:0044092	3	Q8K4K3	2.34454901163337e-11
+"negative regulation of molecular function"	GO:0044092	3	Q6NN85	0.623006644902977
+"defense response to other organism"	GO:0098542;GO:0006952	3	C0KJQ4	0.129058719750298
+"defense response to other organism"	GO:0098542;GO:0006952	3	P15330	4.65985828004248e-11
+"defense response to other organism"	GO:0098542;GO:0006952	3	P90893	2.68751703584277e-05
+"defense response to other organism"	GO:0098542;GO:0006952	3	Q23979	0.967908222677984
+"defense response to other organism"	GO:0098542;GO:0006952	3	Q8SX83	0.615372370305779
+"defense response to other organism"	GO:0098542;GO:0006952	3	P21902	0.232051798782638
+"defense response to other organism"	GO:0098542;GO:0006952	3	O97366	0.996487298711199
+"regulation of transport"	GO:0051049	2	Q9TSM4	4.764445131056e-09
+"regulation of transport"	GO:0051049	2	Q4R562	0.728400579689854
+"regulation of transport"	GO:0051049	2	Q13148	0.675746488191163
+"regulation of transport"	GO:0051049	2	P70531	0.642571502142462
+"regulation of transport"	GO:0051049	2	O13154	0.0333949368219867
+"regulation of transport"	GO:0051049	2	Q5ZJN2	0.0682690877280059
+"regulation of transport"	GO:0051049	2	Q99996	0.76781147294691
+"regulation of transport"	GO:0051049	2	Q06124	0.975675418349719
+"regulation of transport"	GO:0051049	2	Q9JI92	2.46674020902428e-09
+"regulation of transport"	GO:0051049	2	Q8CGY8	3.9645300012545e-09
+"positive regulation of molecular function"	GO:0044093	3	Q9TSM4	4.764445131056e-09
+"positive regulation of molecular function"	GO:0044093	3	P67774	4.95532077650757e-11
+"positive regulation of molecular function"	GO:0044093	3	Q6KC79	0.210059322884478
+"positive regulation of molecular function"	GO:0044093	3	P35559	1.22748719760042e-12
+"positive regulation of molecular function"	GO:0044093	3	Q99996	0.76781147294691
+"positive regulation of molecular function"	GO:0044093	3	Q06124	0.975675418349719
+"positive regulation of molecular function"	GO:0044093	3	Q91WG5	0.946130705500741
+"positive regulation of molecular function"	GO:0044093	3	Q8K4K3	2.34454901163337e-11
+"positive regulation of molecular function"	GO:0044093	3	Q9Y241	0.265444702511941
+"positive regulation of molecular function"	GO:0044093	3	P45985	3.10560697175906e-10
+"positive regulation of molecular function"	GO:0044093	3	Q969S3	0.314190473351431
+"positive regulation of molecular function"	GO:0044093	3	P09493	2.23105774059549e-09
+"positive regulation of molecular function"	GO:0044093	3	P70266	1.01367790659803e-09
+"regulation of anatomical structure morphogenesis"	GO:0022603	2	P70531	0.642571502142462
+"regulation of anatomical structure morphogenesis"	GO:0022603	2	Q5ZJN2	0.0682690877280059
+"regulation of anatomical structure morphogenesis"	GO:0022603	2	Q9V4A7	0.67768838528907
+"regulation of anatomical structure morphogenesis"	GO:0022603	2	P55853	7.24265645089213e-06
+"regulation of anatomical structure morphogenesis"	GO:0022603	2	Q6NN85	0.623006644902977
+"regulation of anatomical structure morphogenesis"	GO:0022603	2	P09493	2.23105774059549e-09
+"regulation of anatomical structure morphogenesis"	GO:0022603	2	Q9UL18	1.76108969416594e-15
+"programmed cell death"	GO:0006915;GO:0012501;GO:0008219	3	A6H6W9	0.864942378180103
+"programmed cell death"	GO:0006915;GO:0012501;GO:0008219	3	Q6P268	0.153776016995697
+"programmed cell death"	GO:0006915;GO:0012501;GO:0008219	3	P45985	3.10560697175906e-10
+"programmed cell death"	GO:0006915;GO:0012501;GO:0008219	3	P89116	0.666017841931034
+"programmed cell death"	GO:0006915;GO:0012501;GO:0008219	3	Q5F499	0.740873751840592
+"programmed cell death"	GO:0006915;GO:0012501;GO:0008219	3	Q8CGY8	3.9645300012545e-09
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	P67774	4.95532077650757e-11
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	Q06124	0.975675418349719
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	Q91WG5	0.946130705500741
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	Q95TJ9	0.0636520744375205
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	Q8K4K3	2.34454901163337e-11
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	Q9Y241	0.265444702511941
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	Q6NN85	0.623006644902977
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	P45985	3.10560697175906e-10
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	Q969S3	0.314190473351431
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	P70266	1.01367790659803e-09
+"regulation of kinase activity"	GO:0043549;GO:0051347;GO:0051338;GO:0043085	3	P09493	2.23105774059549e-09
+"response to abiotic stimulus"	GO:0009628	2	Q6KC79	0.210059322884478
+"response to abiotic stimulus"	GO:0009628	2	P70531	0.642571502142462
+"response to abiotic stimulus"	GO:0009628	2	Q99996	0.76781147294691
+"response to abiotic stimulus"	GO:0009628	2	Q8BK35	0.525156570621304
+"response to abiotic stimulus"	GO:0009628	2	Q06124	0.975675418349719
+"response to abiotic stimulus"	GO:0009628	2	Q9VAS7	0.228277765715114
+"response to abiotic stimulus"	GO:0009628	2	P45985	3.10560697175906e-10
+"response to abiotic stimulus"	GO:0009628	2	Q32LP4	0.847221921211293
+"response to abiotic stimulus"	GO:0009628	2	Q56K04	0.000200166902931842
+"response to abiotic stimulus"	GO:0009628	2	Q863I2	0.527536722185222
+"regulation of ion transport"	GO:0060341;GO:0043269	3	Q9TSM4	4.764445131056e-09
+"regulation of ion transport"	GO:0060341;GO:0043269	3	Q6KC79	0.210059322884478
+"regulation of ion transport"	GO:0060341;GO:0043269	3	Q13148	0.675746488191163
+"regulation of ion transport"	GO:0060341;GO:0043269	3	Q06124	0.975675418349719
+"regulation of ion transport"	GO:0060341;GO:0043269	3	Q8CGY8	3.9645300012545e-09
+"regulation of ion transport"	GO:0060341;GO:0043269	3	Q99996	0.76781147294691
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	Q2KI95	6.66787092359834e-05
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	A6H6W9	0.864942378180103
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	Q6KC79	0.210059322884478
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	P15330	4.65985828004248e-11
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	Q9V9W8	4.33234735672142e-09
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	Q8BK35	0.525156570621304
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	P55853	7.24265645089213e-06
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	Q9Y241	0.265444702511941
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	Q8CGY8	3.9645300012545e-09
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	Q9V460	7.25755330029272e-06
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	Q9UL18	1.76108969416594e-15
+"regulation of transcription by RNA polymerase II"	GO:0006357	4	P17141	0.93383455936809
+"response to oxygen-containing compound"	GO:1901700	3	Q503Y4	0.141337852034608
+"response to oxygen-containing compound"	GO:1901700	3	P70531	0.642571502142462
+"response to oxygen-containing compound"	GO:1901700	3	Q99996	0.76781147294691
+"response to oxygen-containing compound"	GO:1901700	3	Q9D0M3	0.00477441246836349
+"response to oxygen-containing compound"	GO:1901700	3	P45985	3.10560697175906e-10
+"response to oxygen-containing compound"	GO:1901700	3	Q8CGY8	3.9645300012545e-09
+"response to oxygen-containing compound"	GO:1901700	3	P09493	2.23105774059549e-09
+"response to oxygen-containing compound"	GO:1901700	3	P70266	1.01367790659803e-09
+"regulation of cell cycle process"	GO:0010564	5	Q6KC79	0.210059322884478
+"regulation of cell cycle process"	GO:0010564	5	Q9CPY4	7.22799465751205e-12
+"regulation of cell cycle process"	GO:0010564	5	Q5ZJN2	0.0682690877280059
+"regulation of cell cycle process"	GO:0010564	5	Q9EQW7	0.607055399746502
+"regulation of cell cycle process"	GO:0010564	5	Q99996	0.76781147294691
+"regulation of cell cycle process"	GO:0010564	5	Q8BK35	0.525156570621304
+"regulation of cell cycle process"	GO:0010564	5	Q95TJ9	0.0636520744375205
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	Q9TSM4	4.764445131056e-09
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	Q9NR19	0.568360225685096
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	A5GFY8	0.566223409178028
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	P11966	0.4747841052323
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	P52030	0.37072181015433
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	Q91WG5	0.946130705500741
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	Q5ZJG8	0.262703069694666
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	Q6P6Z8	7.87278624477789e-10
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	Q9VAN0	1.7586318816826e-09
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	P12694	0.0911087145980911
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	3	P08761	0.576038168064453
+"positive regulation of catabolic process"	GO:0031331;GO:0009896	2	Q92879	2.3126911475947e-14
+"positive regulation of catabolic process"	GO:0031331;GO:0009896	2	Q13148	0.675746488191163
+"positive regulation of catabolic process"	GO:0031331;GO:0009896	2	Q8BK35	0.525156570621304
+"positive regulation of catabolic process"	GO:0031331;GO:0009896	2	Q8K4K3	2.34454901163337e-11
+"positive regulation of catabolic process"	GO:0031331;GO:0009896	2	P53634	2.85526035845107e-05
+"positive regulation of catabolic process"	GO:0031331;GO:0009896	2	Q9Y0H4	0.0866312509371894
+"cell division"	GO:0051301	2	Q5U241	0.927302198153066
+"cell division"	GO:0051301	2	Q9D084	0.346870037060789
+"cell division"	GO:0051301	2	Q9EQW7	0.607055399746502
+"cell division"	GO:0051301	2	Q95TJ9	0.0636520744375205
+"cell division"	GO:0051301	2	O08585	0.797252536806928
+"cell division"	GO:0051301	2	Q8CG47	0.0302601326953955
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	Q92879	2.3126911475947e-14
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	Q2KI95	6.66787092359834e-05
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	A6H6W9	0.864942378180103
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	Q6KC79	0.210059322884478
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	Q13148	0.675746488191163
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	P15330	4.65985828004248e-11
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	Q8BK35	0.525156570621304
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	P55853	7.24265645089213e-06
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	Q6NVR8	0.809898756937042
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	Q28G71	1.60961740064391e-09
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	Q9V460	7.25755330029272e-06
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	Q9UL18	1.76108969416594e-15
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	P17141	0.93383455936809
+"negative regulation of cellular macromolecule biosynthetic process"	GO:2000113;GO:0010558;GO:0031327;GO:0009890;GO:0051253;GO:0045934	3	Q8BHD7	3.35755727745675e-12
+"regulation of catabolic process"	GO:0031329;GO:0009894	2	Q92879	2.3126911475947e-14
+"regulation of catabolic process"	GO:0031329;GO:0009894	2	Q13148	0.675746488191163
+"regulation of catabolic process"	GO:0031329;GO:0009894	2	Q8BK35	0.525156570621304
+"regulation of catabolic process"	GO:0031329;GO:0009894	2	Q8K4K3	2.34454901163337e-11
+"regulation of catabolic process"	GO:0031329;GO:0009894	2	P0CG53	0.663363679349069
+"regulation of catabolic process"	GO:0031329;GO:0009894	2	Q9JI92	2.46674020902428e-09
+"regulation of catabolic process"	GO:0031329;GO:0009894	2	P53634	2.85526035845107e-05
+"regulation of catabolic process"	GO:0031329;GO:0009894	2	Q8CGY8	3.9645300012545e-09
+"regulation of catabolic process"	GO:0031329;GO:0009894	2	Q9Y0H4	0.0866312509371894
+"regulation of catabolic process"	GO:0031329;GO:0009894	2	Q91WG5	0.946130705500741
+"small molecule biosynthetic process"	GO:0046394;GO:0016053;GO:0044283	4	Q9TSM4	4.764445131056e-09
+"small molecule biosynthetic process"	GO:0046394;GO:0016053;GO:0044283	4	Q9NR19	0.568360225685096
+"small molecule biosynthetic process"	GO:0046394;GO:0016053;GO:0044283	4	A5GFY8	0.566223409178028
+"small molecule biosynthetic process"	GO:0046394;GO:0016053;GO:0044283	4	Q91WG5	0.946130705500741
+"small molecule biosynthetic process"	GO:0046394;GO:0016053;GO:0044283	4	Q5ZJG8	0.262703069694666
+"small molecule biosynthetic process"	GO:0046394;GO:0016053;GO:0044283	4	Q9VAN0	1.7586318816826e-09
+"small molecule biosynthetic process"	GO:0046394;GO:0016053;GO:0044283	4	P52030	0.37072181015433
+"small molecule biosynthetic process"	GO:0046394;GO:0016053;GO:0044283	4	Q14739	0.91894991458029
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	Q6KC79	0.210059322884478
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	Q60HE1	0.526888934831255
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	Q9Y0H4	0.0866312509371894
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	Q5ZJN2	0.0682690877280059
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	Q9EQW7	0.607055399746502
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	Q8BK35	0.525156570621304
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	Q6P2B1	3.76761956017317e-09
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	P55853	7.24265645089213e-06
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	P30622	0.860959814534292
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	Q76IC6	0.134558580379597
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	P46776	0.0975854413849127
+"cellular macromolecule localization"	GO:0034613;GO:0070727	3	P54359	0.925257620269918
+"cell differentiation"	GO:0030154	2	Q2KI95	6.66787092359834e-05
+"cell differentiation"	GO:0030154	2	Q6KC79	0.210059322884478
+"cell differentiation"	GO:0030154	2	Q06124	0.975675418349719
+"cell differentiation"	GO:0030154	2	Q6GVM6	3.11720474041767e-09
+"cell differentiation"	GO:0030154	2	Q14739	0.91894991458029
+"cell differentiation"	GO:0030154	2	Q8NF91	0.286520787026721
+"cell cycle"	GO:0007049	2	P67774	4.95532077650757e-11
+"cell cycle"	GO:0007049	2	Q9EQW7	0.607055399746502
+"cell cycle"	GO:0007049	2	Q06124	0.975675418349719
+"cell cycle"	GO:0007049	2	P30622	0.860959814534292
+"cell cycle"	GO:0007049	2	Q6NN85	0.623006644902977
+"cell cycle"	GO:0007049	2	O08585	0.797252536806928
+"cell cycle"	GO:0007049	2	Q28G71	1.60961740064391e-09
+"regulation of proteasomal protein catabolic process"	GO:0061136	3	Q8BK35	0.525156570621304
+"regulation of proteasomal protein catabolic process"	GO:0061136	3	Q8K4K3	2.34454901163337e-11
+"regulation of proteasomal protein catabolic process"	GO:0061136	3	P0CG53	0.663363679349069
+"regulation of proteasomal protein catabolic process"	GO:0061136	3	Q9JI92	2.46674020902428e-09
+"regulation of proteasomal protein catabolic process"	GO:0061136	3	Q8CGY8	3.9645300012545e-09
+"regulation of cell cycle"	GO:0051726	2	Q6KC79	0.210059322884478
+"regulation of cell cycle"	GO:0051726	2	Q13148	0.675746488191163
+"regulation of cell cycle"	GO:0051726	2	Q9CPY4	7.22799465751205e-12
+"regulation of cell cycle"	GO:0051726	2	Q5ZJN2	0.0682690877280059
+"regulation of cell cycle"	GO:0051726	2	Q9EQW7	0.607055399746502
+"regulation of cell cycle"	GO:0051726	2	Q99996	0.76781147294691
+"regulation of cell cycle"	GO:0051726	2	Q8BK35	0.525156570621304
+"regulation of cell cycle"	GO:0051726	2	Q06124	0.975675418349719
+"regulation of cell cycle"	GO:0051726	2	Q95TJ9	0.0636520744375205
+"regulation of cell cycle"	GO:0051726	2	Q9JI92	2.46674020902428e-09
+"regulation of cell cycle"	GO:0051726	2	P54359	0.925257620269918
+"regulation of organelle organization"	GO:0033043	3	Q6KC79	0.210059322884478
+"regulation of organelle organization"	GO:0033043	3	Q9CPY4	7.22799465751205e-12
+"regulation of organelle organization"	GO:0033043	3	Q99996	0.76781147294691
+"regulation of organelle organization"	GO:0033043	3	B3KU38	3.90662681460476e-09
+"regulation of organelle organization"	GO:0033043	3	P30622	0.860959814534292
+"regulation of organelle organization"	GO:0033043	3	O01479	0.0535619096956723
+"regulation of organelle organization"	GO:0033043	3	Q9Y241	0.265444702511941
+"regulation of organelle organization"	GO:0033043	3	Q6NN85	0.623006644902977
+"regulation of organelle organization"	GO:0033043	3	Q3T035	2.9166326944775e-05
+"regulation of organelle organization"	GO:0033043	3	Q9JI92	2.46674020902428e-09
+"regulation of organelle organization"	GO:0033043	3	Q8CGY8	3.9645300012545e-09
+"regulation of organelle organization"	GO:0033043	3	P09493	2.23105774059549e-09
+"positive regulation of cell death"	GO:0010942;GO:0043065;GO:0043068	2	Q92879	2.3126911475947e-14
+"positive regulation of cell death"	GO:0010942;GO:0043065;GO:0043068	2	A6H6W9	0.864942378180103
+"positive regulation of cell death"	GO:0010942;GO:0043065;GO:0043068	2	P45985	3.10560697175906e-10
+"positive regulation of cell death"	GO:0010942;GO:0043065;GO:0043068	2	Q969S3	0.314190473351431
+"positive regulation of cell death"	GO:0010942;GO:0043065;GO:0043068	2	P0CG53	0.663363679349069
+"positive regulation of cell death"	GO:0010942;GO:0043065;GO:0043068	2	P53634	2.85526035845107e-05
+"carbohydrate metabolic process"	GO:0005975	3	P11966	0.4747841052323
+"carbohydrate metabolic process"	GO:0005975	3	P52030	0.37072181015433
+"carbohydrate metabolic process"	GO:0005975	3	Q91WG5	0.946130705500741
+"carbohydrate metabolic process"	GO:0005975	3	P07902	0.961416598335619
+"carbohydrate metabolic process"	GO:0005975	3	Q6P6Z8	7.87278624477789e-10
+"carbohydrate metabolic process"	GO:0005975	3	Q9W1G0	8.70860887054368e-05
+"carbohydrate metabolic process"	GO:0005975	3	Q86W56	0.564881430370255
+"carbohydrate metabolic process"	GO:0005975	3	P70266	1.01367790659803e-09
+"regulation of mitotic cell cycle phase transition"	GO:1901990;GO:1901987	3	Q9CPY4	7.22799465751205e-12
+"regulation of mitotic cell cycle phase transition"	GO:1901990;GO:1901987	3	Q5ZJN2	0.0682690877280059
+"regulation of mitotic cell cycle phase transition"	GO:1901990;GO:1901987	3	Q99996	0.76781147294691
+"regulation of mitotic cell cycle phase transition"	GO:1901990;GO:1901987	3	Q8BK35	0.525156570621304
+"regulation of mitotic cell cycle phase transition"	GO:1901990;GO:1901987	3	Q95TJ9	0.0636520744375205
+"multicellular organismal reproductive process"	GO:0048609	2	Q03017	0.0603773146818647
+"multicellular organismal reproductive process"	GO:0048609	2	Q06124	0.975675418349719
+"multicellular organismal reproductive process"	GO:0048609	2	Q6GVM6	3.11720474041767e-09
+"multicellular organismal reproductive process"	GO:0048609	2	Q8NF91	0.286520787026721
+"multicellular organismal reproductive process"	GO:0048609	2	P17141	0.93383455936809
+"response to organic substance"	GO:0010033	3	Q2KI95	6.66787092359834e-05
+"response to organic substance"	GO:0010033	3	Q9TSM4	4.764445131056e-09
+"response to organic substance"	GO:0010033	3	Q503Y4	0.141337852034608
+"response to organic substance"	GO:0010033	3	P70531	0.642571502142462
+"response to organic substance"	GO:0010033	3	P15330	4.65985828004248e-11
+"response to organic substance"	GO:0010033	3	Q99996	0.76781147294691
+"response to organic substance"	GO:0010033	3	Q06124	0.975675418349719
+"response to organic substance"	GO:0010033	3	Q9D0M3	0.00477441246836349
+"response to organic substance"	GO:0010033	3	P45985	3.10560697175906e-10
+"response to organic substance"	GO:0010033	3	P53634	2.85526035845107e-05
+"response to organic substance"	GO:0010033	3	Q8CGY8	3.9645300012545e-09
+"response to organic substance"	GO:0010033	3	P70266	1.01367790659803e-09
+"response to organic substance"	GO:0010033	3	P60467	6.50731681117072e-06
+"positive regulation of cell migration"	GO:0030335;GO:2000147;GO:0040017;GO:0051272	4	Q6KC79	0.210059322884478
+"positive regulation of cell migration"	GO:0030335;GO:2000147;GO:0040017;GO:0051272	4	Q5ZJN2	0.0682690877280059
+"positive regulation of cell migration"	GO:0030335;GO:2000147;GO:0040017;GO:0051272	4	Q9H4G4	4.90150532445314e-05
+"positive regulation of cell migration"	GO:0030335;GO:2000147;GO:0040017;GO:0051272	4	Q863I2	0.527536722185222
+"positive regulation of cell migration"	GO:0030335;GO:2000147;GO:0040017;GO:0051272	4	Q9JI92	2.46674020902428e-09
+"cellular response to oxygen-containing compound"	GO:1901701	3	P70531	0.642571502142462
+"cellular response to oxygen-containing compound"	GO:1901701	3	Q99996	0.76781147294691
+"cellular response to oxygen-containing compound"	GO:1901701	3	P45985	3.10560697175906e-10
+"cellular response to oxygen-containing compound"	GO:1901701	3	Q8CGY8	3.9645300012545e-09
+"cellular response to oxygen-containing compound"	GO:1901701	3	P09493	2.23105774059549e-09
+"ion transmembrane transport"	GO:0055085;GO:0098655;GO:0034220	4	Q9D0M3	0.00477441246836349
+"ion transmembrane transport"	GO:0055085;GO:0098655;GO:0034220	4	Q32LP4	0.847221921211293
+"ion transmembrane transport"	GO:0055085;GO:0098655;GO:0034220	4	Q93235	0.655012964880877
+"ion transmembrane transport"	GO:0055085;GO:0098655;GO:0034220	4	Q25691	0.887737408199791
+"ion transmembrane transport"	GO:0055085;GO:0098655;GO:0034220	4	Q63016	1.64232530857158e-10
+"ion transmembrane transport"	GO:0055085;GO:0098655;GO:0034220	4	P60467	6.50731681117072e-06
+"DNA metabolic process"	GO:0006259	4	Q7LHG5	0.158406490472654
+"DNA metabolic process"	GO:0006259	4	Q6KC79	0.210059322884478
+"DNA metabolic process"	GO:0006259	4	Q9D084	0.346870037060789
+"DNA metabolic process"	GO:0006259	4	Q9NBX4	0.357726274416379
+"DNA metabolic process"	GO:0006259	4	P10394	0.15761713281428
+"DNA metabolic process"	GO:0006259	4	Q8BK35	0.525156570621304
+"DNA metabolic process"	GO:0006259	4	Q6DRH5	0.407167853879209
+"DNA metabolic process"	GO:0006259	4	Q95TJ9	0.0636520744375205
+"DNA metabolic process"	GO:0006259	4	Q6R2W3	0.651958123546519
+"organic cyclic compound biosynthetic process"	GO:1901362	2	Q9NR19	0.568360225685096
+"organic cyclic compound biosynthetic process"	GO:1901362	2	P11966	0.4747841052323
+"organic cyclic compound biosynthetic process"	GO:1901362	2	Q6DRH5	0.407167853879209
+"organic cyclic compound biosynthetic process"	GO:1901362	2	Q95TJ9	0.0636520744375205
+"organic cyclic compound biosynthetic process"	GO:1901362	2	Q5ZJG8	0.262703069694666
+"organic cyclic compound biosynthetic process"	GO:1901362	2	Q9D0M3	0.00477441246836349
+"organic cyclic compound biosynthetic process"	GO:1901362	2	Q14739	0.91894991458029
+"organic cyclic compound biosynthetic process"	GO:1901362	2	Q9DB73	0.512717986025154
+"organic cyclic compound biosynthetic process"	GO:1901362	2	Q9V460	7.25755330029272e-06
+"regulation of multicellular organismal development"	GO:2000026	2	Q6KC79	0.210059322884478
+"regulation of multicellular organismal development"	GO:2000026	2	P70531	0.642571502142462
+"regulation of multicellular organismal development"	GO:2000026	2	Q5ZJN2	0.0682690877280059
+"regulation of multicellular organismal development"	GO:2000026	2	Q9V4A7	0.67768838528907
+"regulation of multicellular organismal development"	GO:2000026	2	Q06124	0.975675418349719
+"regulation of multicellular organismal development"	GO:2000026	2	P53634	2.85526035845107e-05
+"regulation of multicellular organismal development"	GO:2000026	2	Q9UL18	1.76108969416594e-15
+"regulation of cytoskeleton organization"	GO:0051493	2	Q9CPY4	7.22799465751205e-12
+"regulation of cytoskeleton organization"	GO:0051493	2	Q99996	0.76781147294691
+"regulation of cytoskeleton organization"	GO:0051493	2	B3KU38	3.90662681460476e-09
+"regulation of cytoskeleton organization"	GO:0051493	2	P30622	0.860959814534292
+"regulation of cytoskeleton organization"	GO:0051493	2	O01479	0.0535619096956723
+"regulation of cytoskeleton organization"	GO:0051493	2	Q6NN85	0.623006644902977
+"regulation of cytoskeleton organization"	GO:0051493	2	Q3T035	2.9166326944775e-05
+"regulation of cytoskeleton organization"	GO:0051493	2	P09493	2.23105774059549e-09
+"positive regulation of macromolecule biosynthetic process"	GO:0045944;GO:0045893;GO:1903508;GO:1902680;GO:0010557;GO:0031328;GO:0009891	4	Q6KC79	0.210059322884478
+"positive regulation of macromolecule biosynthetic process"	GO:0045944;GO:0045893;GO:1903508;GO:1902680;GO:0010557;GO:0031328;GO:0009891	4	P15330	4.65985828004248e-11
+"positive regulation of macromolecule biosynthetic process"	GO:0045944;GO:0045893;GO:1903508;GO:1902680;GO:0010557;GO:0031328;GO:0009891	4	Q9V9W8	4.33234735672142e-09
+"positive regulation of macromolecule biosynthetic process"	GO:0045944;GO:0045893;GO:1903508;GO:1902680;GO:0010557;GO:0031328;GO:0009891	4	Q8CGY8	3.9645300012545e-09
+"positive regulation of macromolecule biosynthetic process"	GO:0045944;GO:0045893;GO:1903508;GO:1902680;GO:0010557;GO:0031328;GO:0009891	4	Q9V460	7.25755330029272e-06
+"positive regulation of macromolecule biosynthetic process"	GO:0045944;GO:0045893;GO:1903508;GO:1902680;GO:0010557;GO:0031328;GO:0009891	4	Q9UL18	1.76108969416594e-15
+"positive regulation of macromolecule biosynthetic process"	GO:0045944;GO:0045893;GO:1903508;GO:1902680;GO:0010557;GO:0031328;GO:0009891	4	Q9VL14	3.47322769411218e-08
+"positive regulation of macromolecule biosynthetic process"	GO:0045944;GO:0045893;GO:1903508;GO:1902680;GO:0010557;GO:0031328;GO:0009891	4	P45985	3.10560697175906e-10
+"cell surface receptor signaling pathway"	GO:0007166	2	P15330	4.65985828004248e-11
+"cell surface receptor signaling pathway"	GO:0007166	2	Q9Y0H4	0.0866312509371894
+"cell surface receptor signaling pathway"	GO:0007166	2	Q9V9W8	4.33234735672142e-09
+"cell surface receptor signaling pathway"	GO:0007166	2	Q9V4A7	0.67768838528907
+"cell surface receptor signaling pathway"	GO:0007166	2	Q06124	0.975675418349719
+"cell surface receptor signaling pathway"	GO:0007166	2	P45985	3.10560697175906e-10
+"cell surface receptor signaling pathway"	GO:0007166	2	Q863I2	0.527536722185222
+"cell surface receptor signaling pathway"	GO:0007166	2	Q8SX83	0.615372370305779
+"cell surface receptor signaling pathway"	GO:0007166	2	Q9UL18	1.76108969416594e-15
+"cell surface receptor signaling pathway"	GO:0007166	2	O42400	1.19429128295469e-09
+"cellular response to chemical stimulus"	GO:0070887	3	Q9TSM4	4.764445131056e-09
+"cellular response to chemical stimulus"	GO:0070887	3	P70531	0.642571502142462
+"cellular response to chemical stimulus"	GO:0070887	3	Q99996	0.76781147294691
+"cellular response to chemical stimulus"	GO:0070887	3	Q8BK35	0.525156570621304
+"cellular response to chemical stimulus"	GO:0070887	3	Q06124	0.975675418349719
+"cellular response to chemical stimulus"	GO:0070887	3	P45985	3.10560697175906e-10
+"cellular response to chemical stimulus"	GO:0070887	3	P08761	0.576038168064453
+"cellular response to chemical stimulus"	GO:0070887	3	Q56K04	0.000200166902931842
+"cellular response to chemical stimulus"	GO:0070887	3	Q863I2	0.527536722185222
+"cellular response to chemical stimulus"	GO:0070887	3	Q8CGY8	3.9645300012545e-09
+"cellular response to chemical stimulus"	GO:0070887	3	P09493	2.23105774059549e-09
+"regulation of MAPK cascade"	GO:0043410;GO:0043408	2	Q06124	0.975675418349719
+"regulation of MAPK cascade"	GO:0043410;GO:0043408	2	P45985	3.10560697175906e-10
+"regulation of MAPK cascade"	GO:0043410;GO:0043408	2	Q9H4G4	4.90150532445314e-05
+"regulation of MAPK cascade"	GO:0043410;GO:0043408	2	Q969S3	0.314190473351431
+"regulation of MAPK cascade"	GO:0043410;GO:0043408	2	O42400	1.19429128295469e-09
+"regulation of MAPK cascade"	GO:0043410;GO:0043408	2	Q6NN85	0.623006644902977
+"intracellular signal transduction"	GO:0035556	2	Q9VL14	3.47322769411218e-08
+"intracellular signal transduction"	GO:0035556	2	P15330	4.65985828004248e-11
+"intracellular signal transduction"	GO:0035556	2	Q91WG5	0.946130705500741
+"intracellular signal transduction"	GO:0035556	2	P80303	0.248943875850145
+"intracellular signal transduction"	GO:0035556	2	P45985	3.10560697175906e-10
+"intracellular signal transduction"	GO:0035556	2	Q969S3	0.314190473351431
+"intracellular signal transduction"	GO:0035556	2	Q92963	0.666984926625007
+"intracellular signal transduction"	GO:0035556	2	Q9NYR9	0.223922034869714
+"intracellular signal transduction"	GO:0035556	2	Q56K04	0.000200166902931842
+"intracellular signal transduction"	GO:0035556	2	Q863I2	0.527536722185222
+"intracellular signal transduction"	GO:0035556	2	Q9JI92	2.46674020902428e-09
+"intracellular signal transduction"	GO:0035556	2	Q8CGY8	3.9645300012545e-09
+"organelle localization"	GO:0051656;GO:0051640	3	Q13796	2.02881241341894e-09
+"organelle localization"	GO:0051656;GO:0051640	3	Q5ZJN2	0.0682690877280059
+"organelle localization"	GO:0051656;GO:0051640	3	Q9EQW7	0.607055399746502
+"organelle localization"	GO:0051656;GO:0051640	3	Q08DS5	0.236687790738567
+"organelle localization"	GO:0051656;GO:0051640	3	P55853	7.24265645089213e-06
+"organelle localization"	GO:0051656;GO:0051640	3	Q6NN85	0.623006644902977
+"organelle localization"	GO:0051656;GO:0051640	3	Q23979	0.967908222677984
+"organelle localization"	GO:0051656;GO:0051640	3	P0CG53	0.663363679349069
+"organelle localization"	GO:0051656;GO:0051640	3	Q99996	0.76781147294691
+"organelle localization"	GO:0051656;GO:0051640	3	Q8CGY8	3.9645300012545e-09
+"response to endogenous stimulus"	GO:0009719;GO:0010243;GO:1901698	2	Q2KI95	6.66787092359834e-05
+"response to endogenous stimulus"	GO:0009719;GO:0010243;GO:1901698	2	Q9TSM4	4.764445131056e-09
+"response to endogenous stimulus"	GO:0009719;GO:0010243;GO:1901698	2	P70531	0.642571502142462
+"response to endogenous stimulus"	GO:0009719;GO:0010243;GO:1901698	2	Q99996	0.76781147294691
+"response to endogenous stimulus"	GO:0009719;GO:0010243;GO:1901698	2	Q06124	0.975675418349719
+"response to endogenous stimulus"	GO:0009719;GO:0010243;GO:1901698	2	Q9D0M3	0.00477441246836349
+"response to endogenous stimulus"	GO:0009719;GO:0010243;GO:1901698	2	Q8CGY8	3.9645300012545e-09
+"response to endogenous stimulus"	GO:0009719;GO:0010243;GO:1901698	2	P70266	1.01367790659803e-09
+"response to endogenous stimulus"	GO:0009719;GO:0010243;GO:1901698	2	P60467	6.50731681117072e-06
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	Q92879	2.3126911475947e-14
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	Q2KI95	6.66787092359834e-05
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	A6H6W9	0.864942378180103
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	Q13148	0.675746488191163
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	P70531	0.642571502142462
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	Q8BK35	0.525156570621304
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	Q9Y241	0.265444702511941
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	P45985	3.10560697175906e-10
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	Q969S3	0.314190473351431
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	P0CG53	0.663363679349069
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	P53634	2.85526035845107e-05
+"regulation of cell death"	GO:0010941;GO:0042981;GO:0043067	2	Q8CGY8	3.9645300012545e-09
+"regulation of response to stress"	GO:0080134	4	Q92879	2.3126911475947e-14
+"regulation of response to stress"	GO:0080134	4	Q03017	0.0603773146818647
+"regulation of response to stress"	GO:0080134	4	Q06124	0.975675418349719
+"regulation of response to stress"	GO:0080134	4	Q969S3	0.314190473351431
+"regulation of response to stress"	GO:0080134	4	P53634	2.85526035845107e-05
+"regulation of response to stress"	GO:0080134	4	Q8CGY8	3.9645300012545e-09
+"regulation of response to stress"	GO:0080134	4	Q86W56	0.564881430370255
+"regulation of response to stress"	GO:0080134	4	O42400	1.19429128295469e-09
+"organophosphate metabolic process"	GO:0019637	2	Q9NR19	0.568360225685096
+"organophosphate metabolic process"	GO:0019637	2	P11966	0.4747841052323
+"organophosphate metabolic process"	GO:0019637	2	P52030	0.37072181015433
+"organophosphate metabolic process"	GO:0019637	2	P42867	0.748390483779565
+"organophosphate metabolic process"	GO:0019637	2	Q8BGS7	0.781629652516677
+"organophosphate metabolic process"	GO:0019637	2	Q6B855	0.713482608601604
+"organophosphate metabolic process"	GO:0019637	2	Q9D0M3	0.00477441246836349
+"organophosphate metabolic process"	GO:0019637	2	Q6P6Z8	7.87278624477789e-10
+"organophosphate metabolic process"	GO:0019637	2	Q5F499	0.740873751840592
+"organophosphate metabolic process"	GO:0019637	2	Q7Z2Z2	7.22030622847689e-05
+"organophosphate metabolic process"	GO:0019637	2	P70266	1.01367790659803e-09
+"heterocycle biosynthetic process"	GO:0018130;GO:0019438;GO:0034654	4	Q9NR19	0.568360225685096
+"heterocycle biosynthetic process"	GO:0018130;GO:0019438;GO:0034654	4	P11966	0.4747841052323
+"heterocycle biosynthetic process"	GO:0018130;GO:0019438;GO:0034654	4	Q6DRH5	0.407167853879209
+"heterocycle biosynthetic process"	GO:0018130;GO:0019438;GO:0034654	4	Q95TJ9	0.0636520744375205
+"heterocycle biosynthetic process"	GO:0018130;GO:0019438;GO:0034654	4	Q9D0M3	0.00477441246836349
+"heterocycle biosynthetic process"	GO:0018130;GO:0019438;GO:0034654	4	Q9V460	7.25755330029272e-06
+"negative regulation of cell death"	GO:0060548	2	Q2KI95	6.66787092359834e-05
+"negative regulation of cell death"	GO:0060548	2	P70531	0.642571502142462
+"negative regulation of cell death"	GO:0060548	2	Q9Y241	0.265444702511941
+"negative regulation of cell death"	GO:0060548	2	P45985	3.10560697175906e-10
+"negative regulation of cell death"	GO:0060548	2	Q8CGY8	3.9645300012545e-09
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	C0KJQ4	0.129058719750298
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	Q03017	0.0603773146818647
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	P15330	4.65985828004248e-11
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	Q99L47	0.484264379831342
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	P90893	2.68751703584277e-05
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	Q23979	0.967908222677984
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	Q8SX83	0.615372370305779
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	P21902	0.232051798782638
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	O97366	0.996487298711199
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	Q8CGY8	3.9645300012545e-09
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	Q13148	0.675746488191163
+"biological process involved in interspecies interaction between organisms"	GO:0051707;GO:0043207;GO:0044419;GO:0009607	2	P46776	0.0975854413849127
+"tissue development"	GO:0009888	3	P67774	4.95532077650757e-11
+"tissue development"	GO:0009888	3	Q9V9W8	4.33234735672142e-09
+"tissue development"	GO:0009888	3	Q95TJ9	0.0636520744375205
+"tissue development"	GO:0009888	3	Q23979	0.967908222677984
+"tissue development"	GO:0009888	3	P0CG53	0.663363679349069
+"tissue development"	GO:0009888	3	P54359	0.925257620269918
+"regulation of locomotion"	GO:0030334;GO:2000145;GO:0040012;GO:0051270	3	Q6KC79	0.210059322884478
+"regulation of locomotion"	GO:0030334;GO:2000145;GO:0040012;GO:0051270	3	Q5ZJN2	0.0682690877280059
+"regulation of locomotion"	GO:0030334;GO:2000145;GO:0040012;GO:0051270	3	Q9V4A7	0.67768838528907
+"regulation of locomotion"	GO:0030334;GO:2000145;GO:0040012;GO:0051270	3	Q9H4G4	4.90150532445314e-05
+"regulation of locomotion"	GO:0030334;GO:2000145;GO:0040012;GO:0051270	3	Q863I2	0.527536722185222
+"regulation of locomotion"	GO:0030334;GO:2000145;GO:0040012;GO:0051270	3	Q9JI92	2.46674020902428e-09
+"regulation of locomotion"	GO:0030334;GO:2000145;GO:0040012;GO:0051270	3	P09493	2.23105774059549e-09

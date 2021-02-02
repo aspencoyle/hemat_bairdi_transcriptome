@@ -26,19 +26,21 @@ source("hematodinium_analysis_functions.R")
 # Ambient and low-temp treatments
 geneIDs_pvals(input_file = "../graphs/amb_v_low_day02/AllGenes_wcols.txt",
               blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-              output_file = "../output/input_for_GO-MWU/Amb_vsLow_day02.csv")
+              output_file = "../scripts/07_running_GO-MWU/Amb_vsLow_day02pvals.csv")
 
 # Day 0 and day 17 treatments
 geneIDs_pvals(input_file = "../graphs/day0_day17_ambient/AllGenes_wcols.txt",
               blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-              output_file = "../output/input_for_GO-MWU/day0_day17_amb.csv")
+              output_file = "../scripts/07_running_GO-MWU/day0_day17_ambpvals.csv")
 
 # Elevated and ambient treatments
 geneIDs_pvals(input_file = "../graphs/elev_v_amb_day02/AllGenes_wcols.txt",
               blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-              output_file = "../output/input_for_GO-MWU/Elev_vsAmb_day02.csv")
+              output_file = "../scripts/07_running_GO-MWU/Elev_vsAmb_day02pvals.csv")
 
 # Elevated and low-temp treatments
 geneIDs_pvals(input_file = "../graphs/elev_v_low_day02/AllGenes_wcols.txt",
               blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-              output_file = "../output/input_for_GO-MWU/Elev_vsLow_day02.csv")
+              output_file = "../scripts/07_running_GO-MWU/Elev_vsLow_day02pvals.csv")
+
+
