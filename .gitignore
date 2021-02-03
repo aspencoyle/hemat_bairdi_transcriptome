@@ -3,6 +3,9 @@
 # Ignore our data file, as it's quite big
 data/**
 
+Ignore the indices we create for Kallisto - too big
+output/*.idx
+
 # Ignore our merged libraries - also too big
 output/libraries_merged/**
 
