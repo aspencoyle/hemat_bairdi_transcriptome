@@ -3,12 +3,14 @@
 # Roberts Lab, UW - School of Aquatic and Fishery Science
 # 2021-01-29
 
-# This script produces the input needed for GO-MWU, which is:
+# This script produces the CSV needed for GO-MWU, which is:
+# A CSV 2-column table of gene IDs and unadjusted p-values
+#     - Header line required (contents irrelevant)
+
+# GO-MWU also requires another input file, which we already created
 # 1. A tab-delim 2-column table of gene IDs and GO terms
 #     - No header
 #     - Only one line per gene
-# 2. A CSV 2-column table of gene IDs and unadjusted p-values
-#     - Header line required (contents irrelevant)
 
 # We have three relevant tables:
 # 1. A table of gene IDs and GO terms (already matches Table 1)
