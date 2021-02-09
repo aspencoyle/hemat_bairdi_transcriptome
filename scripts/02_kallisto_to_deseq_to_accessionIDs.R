@@ -85,7 +85,7 @@ transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/elev2_vs_amb02_
 # Ambient Day 0+2+17 + Elevated Day 0 + Lowered Day 0 vs. Elevated Day 2
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/amb0217_elev0_low0_vs_elev2/AllGenes_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
-                       output_path = "../output/accession_n_GOids/amb0217_elev0_low0_vs_elev2_All_GeneIDs.txt")
+                       output_path = "../output/accession_n_GOids/allgenes_IDs/amb0217_elev0_low0_vs_elev2_All_GeneIDs.txt")
 
 #### Creating Venn diagram showing overlap in DEG --------------
 # 2 diagrams created in total
