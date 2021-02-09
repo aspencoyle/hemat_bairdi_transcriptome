@@ -113,7 +113,8 @@ deseq_analysis <- function(kallisto_path,
   vsd <- vst(deseq2.dds, blind = FALSE)
   head(assay(vsd), 3)
   # Create plot
-  plotPCA(vsd, intgroup = variable)
+  PCA_plot <- plotPCA(vsd, intgroup = variable)
+  print(PCA_plot)
   dev.copy(png, file.path(output_path, "PCA_plot.png"))
   dev.off()
   

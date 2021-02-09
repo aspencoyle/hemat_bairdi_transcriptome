@@ -24,63 +24,42 @@ source("hematodinium_analysis_functions.R")
 # If attempting to redo a specific graph or table,
 # the file DESeq_demonstration.R may be helpful
 
-# DAY 0 VS DAY 17, AMBIENT TEMPERATURE, INDIVIDUAL LIBRARIES
+# ELEVATED DAY 2 VS. AMBIENT DAY 0+2, INDIV LIBRARIES ONLY
 
 # Day and temperature data for libraries 
-# 118, 132, 178, 463, 481, 485 (in order)
+# 178, 118, 132, 359, 349, 334, 272, 294, 280 (in order)
 # Order should match columns of Kallisto output matrix created by Trinity
-exp_design <- data.frame(day = factor(c(0, 0, 0, 17, 17, 17)),
-           temp = factor(c("Amb", "Amb", "Amb", "Amb", "Amb", "Amb")))
-
-deseq_analysis(kallisto_path = "../output/kallisto_indivlibs_transcriptome_v3.0/day0_day17_matrix/kallisto.isoform.counts.matrix",
+exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb", "Amb", "Amb", "Amb",
+                                         "Elev", "Elev", "Elev")),
+                         day = factor(c(0, 0, 0, 2, 2, 2, 2, 2, 2)))
+  
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/elev2_vs_amb02_indiv_only/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
-               output_path = "../graphs/day0_day17_ambient",
-               variable = as.formula("day"))
+               output_path = "../graphs/DESeq2_output/elev2_vs_amb02_indiv_only",
+               variable = "temp")
 
-# AMBIENT VS. LOW-TEMPERATURE, DAY 0-2, INDIVIDUAL LIBRARIES
+# ALL ELEVATED AND AMBIENT LIBRARIES, BOTH POOLED AND INDIVIDUAL
 
 # Day and temperature data for libraries
-# 118, 132, 178, 334, 349, 359, 151, 254
-exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb",
-                                             "Amb", "Amb", "Amb",
-                                             "Low", "Low")),
-                             day = factor(c(0, 0, 0, 2, 2, 2, 
-                                            0, 2)))
+# 178, 359, 463, 118, 349, 481, 132, 334, 485, 151, 173, 072, 
+# 127, 380821, 272, 294, 280, 380825 (in order)
+exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb", 
+                                         "Amb", "Amb", "Amb",
+                                         "Amb", "Amb", "Amb",
+                                         "Amb", "Amb", "Amb",
+                                         "Amb", "Amb", "Elev",
+                                         "Elev", "Elev", "Elev")),
+                             day = factor(c(0, 2, 17, 
+                                            0, 2, 17, 
+                                            0, 2, 17, 
+                                            0, 0, 0, 
+                                            0, 2, 2,
+                                            2, 2, 2)))
 
-deseq_analysis(kallisto_path = "../output/kallisto_indivlibs_transcriptome_v3.0/day02_amb_vs_low_matrix/kallisto.isoform.counts.matrix",
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/amb0217_elev0_low0_vs_elev2/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
-               output_path = "../graphs/amb_v_low_day02",
-               variable = as.formula("temp"))
-
-# ELEVATED VS. LOW-TEMPERATURE, DAY 0-2, INDIVIDUAL LIBRARIES
-
-# Day and temperature data for libraries
-# 127, 173, 72, 272, 280, 294, 151, 254
-exp_design <- data.frame(temp = factor(c("Elev", "Elev", "Elev",
-                                             "Elev", "Elev", "Elev",
-                                             "Low", "Low")),
-                             day = factor(c(0, 0, 0, 2, 2, 2, 0, 2)))
-
-deseq_analysis(kallisto_path = "../output/kallisto_indivlibs_transcriptome_v3.0/day02_elev_vs_low_matrix/kallisto.isoform.counts.matrix",
-               experiment_table = exp_design,
-               output_path = "../graphs/elev_v_low_day02",
-               variable = as.formula("temp"))
-
-# ELEVATED VS. AMBIENT TEMPERATURE, DAY 0-2, INDIVIDUAL LIBRARIES
-
-# Day and temperature data for libraries
-# 127, 173, 72, 272, 280, 294, 118, 132, 178, 334, 349, 359
-exp_design <- data.frame(temp = factor(c("Elev", "Elev", "Elev",
-                                             "Elev", "Elev", "Elev",
-                                             "Amb", "Amb", "Amb", "Amb", 
-                                             "Amb", "Amb")),
-                             day = factor(c(0, 0, 0, 2, 2, 2, 
-                                            0, 0, 0, 2, 2, 2)))
-
-deseq_analysis(kallisto_path = "../output/kallisto_indivlibs_transcriptome_v3.0/day02_elev_vs_amb_matrix/kallisto.isoform.counts.matrix",
-               experiment_table = exp_design,
-               output_path = "../graphs/elev_v_amb_day02",
-               variable = as.formula("temp"))
+               output_path = "../graphs/DESeq2_output/amb0217_elev0_low0_vs_elev2",
+               variable = "temp")
 
 #### Turning transcripts into gene IDs -------------------
 # Take DESeq2 output and turn it into a newline-separated 
@@ -88,40 +67,25 @@ deseq_analysis(kallisto_path = "../output/kallisto_indivlibs_transcriptome_v3.0/
 
 # Get all gene IDs for all DEGs
 
-# Ambient vs. Low Temperature
-transcripts_to_geneIDs(deseq_filepath = "../graphs/amb_v_low_day02/DEGlist_wcols.txt", 
-                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/accession_n_GOids/DEG_IDs/Amb_vsLow_DEG_IDs.txt")
-# Day 0 vs. Day 17, Ambient Temperature
-transcripts_to_geneIDs(deseq_filepath = "../graphs/day0_day17_ambient/DEGlist_wcols.txt", 
-                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/accession_n_GOids/DEG_IDs/day0_day17_amb_DEG_IDs.txt")
-# Elevated vs. Ambient Temperature
-transcripts_to_geneIDs(deseq_filepath = "../graphs/elev_v_amb_day02/DEGlist_wcols.txt", 
-                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/accession_n_GOids/DEG_IDs/Elev_vsAmb_DEG_IDs.txt")
-# Elevated vs. Low Temperature
-transcripts_to_geneIDs(deseq_filepath = "../graphs/elev_v_low_day02/DEGlist_wcols.txt", 
-                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/accession_n_GOids/DEG_IDs/Elev_vsLow_DEG_IDs.txt")
+# Elevated Day 2 vs. Ambient Day 0+2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/elev2_vs_amb02_indiv_only/DEGlist_wcols.txt", 
+                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                       output_path = "../output/accession_n_GOids/DEG_IDs/elev2_vs_amb02_indiv_only_DEG_IDs.txt")
+# Ambient Day 0+2+17 + Elevated Day 0 + Lowered Day 0 vs. Elevated Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/amb0217_elev0_low0_vs_elev2/DEGlist_wcols.txt", 
+                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                       output_path = "../output/accession_n_GOids/DEG_IDs/amb0217_elev0_low0_vs_elev2_DEG_IDs.txt")
+
 
 # Get all gene IDs for all genes, not just DEGs
 # Ambient vs. Low Temperature
-transcripts_to_geneIDs(deseq_filepath = "../graphs/amb_v_low_day02/AllGenes_wcols.txt", 
-                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/accession_n_GOids/allgenes_IDs/Amb_vsLow_All_GeneIDs.txt")
-# Day 0 vs. Day 17, Ambient Temperature
-transcripts_to_geneIDs(deseq_filepath = "../graphs/day0_day17_ambient/AllGenes_wcols.txt", 
-                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/accession_n_GOids/allgenes_IDs/day0_day17_All_GeneIDs.txt")
-# Elevated vs. Ambient Temperature
-transcripts_to_geneIDs(deseq_filepath = "../graphs/elev_v_amb_day02/AllGenes_wcols.txt", 
-                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/accession_n_GOids/allgenes_IDs/Elev_vsAmb_All_GeneIDs.txt")
-# Elevated vs. Low Temperature
-transcripts_to_geneIDs(deseq_filepath = "../graphs/elev_v_low_day02/AllGenes_wcols.txt", 
-                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-                       output_path = "../output/accession_n_GOids/allgenes_IDs/Elev_vsLow_All_GeneIDs.txt")
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/elev2_vs_amb02_indiv_only/AllGenes_wcols.txt", 
+                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                       output_path = "../output/accession_n_GOids/allgenes_IDs/elev2_vs_amb02_indiv_only_All_GeneIDs.txt")
+# Ambient Day 0+2+17 + Elevated Day 0 + Lowered Day 0 vs. Elevated Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/amb0217_elev0_low0_vs_elev2/AllGenes_wcols.txt", 
+                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                       output_path = "../output/accession_n_GOids/amb0217_elev0_low0_vs_elev2_All_GeneIDs.txt")
 
 #### Creating Venn diagram showing overlap in DEG --------------
 # 2 diagrams created in total
