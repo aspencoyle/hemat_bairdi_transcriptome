@@ -7,7 +7,7 @@ data/**
 output/*.idx
 
 # Ignore the matrices we create for DESeq2 - also too big
-output/kallisto_matrices/*/*.matrix
+output/kallisto_matrices/**
 
 # Ignore our merged libraries - also too big
 output/libraries_merged/**

@@ -14,3 +14,8 @@ Shell script created by Sam White to take newline-separated Uniprot accession ID
 
 05_GO-MWU_prep
 GO-MWU needs two input files - a tab-delimited 2-column table of gene IDs and GO terms with no header and one line per gene, and a 2-column CSV of gene IDs and GO terms with a header. We already created the former when we ran 04_uniprot2go.sh in our 03_uniprot_to_go.ipynb script (although we do have some genes on multiple lines, which we'll clean up later). This script creates the latter file
+
+06_running_GO-MWU
+This folder contains: 
+    1: an R script I created that runs GO-MWU (titled 06_running_GO-MWU)
+    2: all files needed for running GO-MWU, available [here](https://github.com/z0on/GO_MWU)

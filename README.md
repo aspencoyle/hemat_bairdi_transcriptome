@@ -14,13 +14,18 @@ Roberts Lab, UW-SAFS
 
 *Libraries*
 
-[Individual and pooled libraries downloaded from here](https://owl.fish.washington.edu/nightingales/C_bairdi/). Also available - along with which libraries match to which treatments - at [this Google doc](https://docs.google.com/spreadsheets/d/1d17yg5F5gKKC66O8QkTIlPxljJeuX7ZsG46pkBr1lNQ/edit#gid=0)
+
+[Trimmed individual libraries downloaded from here](https://gannet.fish.washington.edu/Atumefaciens/20200318_cbai_RNAseq_fastp_trimming/) at 22:00 PST on 2021-02-02
+
+[Pooled libraries downloaded from here](https://gannet.fish.washington.edu/Atumefaciens/20200414_cbai_RNAseq_fastp_trimming/) at 24:00 PST on 2021-02-02
+
+Mapping between libraries and treatments is available [at this Google doc](https://docs.google.com/spreadsheets/d/1d17yg5F5gKKC66O8QkTIlPxljJeuX7ZsG46pkBr1lNQ/edit#gid=0)
 
 *Transcriptome*
 
-[Transcriptome v3.0 downloaded from here](https://owl.fish.washington.edu/halfshell/genomic-databank/cbai_transcriptome_v3.0.fasta). 
+[Transcriptomes downloaded from here](https://owl.fish.washington.edu/halfshell/genomic-databank/). at 01:00 PST on 2021-02-03
 
-Further information for transcriptome 3.0 (including BLASTx annotation, GO terms annotation, etc) [available here](https://github.com/RobertsLab/resources/wiki/Genomic-Resources)
+Transcriptome checksums, along with additional information (including BLASTx annotation, GO terms annotation, etc) [available here](https://github.com/RobertsLab/resources/wiki/Genomic-Resources)
 
 **Tool Information**
 
