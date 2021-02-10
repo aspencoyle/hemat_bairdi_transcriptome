@@ -1,3 +1,6 @@
+Aidan Coyle, afcoyle@uw.edu
+Updated 2021-02-10
+
 **Outline of each script and contents:**
 
 **01_download_libraries_run_kallisto.ipynb** 
