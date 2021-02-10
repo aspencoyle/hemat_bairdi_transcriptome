@@ -44,7 +44,7 @@ gomwuStats(input, goDatabase, goAnnotations, goDivision,
 
 windows()
 results=gomwuPlot(input,goAnnotations,goDivision,
-                  absValue=-log(0.05,10),  # genes with the measure value exceeding this will be counted as "good genes". This setting is for signed log-pvalues. Specify absValue=0.001 if you are doing Fisher's exact test for standard GO enrichment or analyzing a WGCNA module (all non-zero genes = "good genes").
+                  absValue=0.05,  # genes with the measure value exceeding this will be counted as "good genes". This setting is for signed log-pvalues. Specify absValue=0.001 if you are doing Fisher's exact test for standard GO enrichment or analyzing a WGCNA module (all non-zero genes = "good genes").
                   #	absValue=1, # un-remark this if you are using log2-fold changes
                   level1=0.1, # FDR threshold for plotting. Specify level1=1 to plot all GO categories containing genes exceeding the absValue.
                   level2=0.05, # FDR cutoff to print in regular (not italic) font.
@@ -125,7 +125,7 @@ gomwuStats(input, goDatabase, goAnnotations, goDivision,
 
 windows()
 results=gomwuPlot(input,goAnnotations,goDivision,
-                  absValue=-log(0.05,10),  # genes with the measure value exceeding this will be counted as "good genes". This setting is for signed log-pvalues. Specify absValue=0.001 if you are doing Fisher's exact test for standard GO enrichment or analyzing a WGCNA module (all non-zero genes = "good genes").
+                  absValue=0.05,  # genes with the measure value exceeding this will be counted as "good genes". This setting is for signed log-pvalues. Specify absValue=0.001 if you are doing Fisher's exact test for standard GO enrichment or analyzing a WGCNA module (all non-zero genes = "good genes").
                   #	absValue=1, # un-remark this if you are using log2-fold changes
                   level1=0.1, # FDR threshold for plotting. Specify level1=1 to plot all GO categories containing genes exceeding the absValue.
                   level2=0.05, # FDR cutoff to print in regular (not italic) font.
