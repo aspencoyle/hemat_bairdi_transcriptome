@@ -238,4 +238,58 @@ geneIDs_pvals <- function(input_file, blast_file, output_file) {
   write.csv(transcript_key, output_file, row.names = FALSE,
             quote = FALSE)
 }  
- 
+
+
+#### uniprot_to_GO() ------------------------------------------
+# Inputs:
+# - A newline-separated file of accession IDs
+# - A downloaded uncompressed copy of the SwissProt database, available at https://www.uniprot.org/uniprot/ with all GO terms included
+
+# Output:
+# - A tab-separated two-column table of accession IDs and GO terms
+#     - This is one of the two inputs needed for GO-MWU
+
+# Function arguments:
+#   - accession_path: path to newline-separated file of accession IDs
+#   - swissprot_db: path to a recently-downloaded uncompressed copy of 
+#     the SwissProt database with all GO terms included, 
+#     available here: https://www.uniprot.org/uniprot/ 
+
+uniprot_to_GO <- function(accession_path, swissprot_path, output_path) {
+  # Read in file of accession IDs
+  accessionIDs <- read.table(file = accession_path,
+                             header = FALSE,
+                             col.names = "accessionID")
+  
+  # Read in uniprot data table containing all GO terms
+  uniprot_info <- read.delim(file = swissprot_path, 
+                             header = TRUE,
+                             fill = TRUE,
+                             sep = '\t')
+  
+  
+  # Rename first column
+  colnames(uniprot_info)[1] <- "accessionID"
+  
+  # Left join
+  all_terms <- left_join(accessionIDs, uniprot_info, by = "accessionID")
+  
+  # See how many unmatched terms we have
+  sum(is.na(all_terms$Gene.ontology.IDs))
+  
+  # Select those unmatched terms, assign them to a new table
+  unmatched_terms <- all_terms[is.na(all_terms$Gene.ontology.IDs),]
+  
+  # Remove all unmatched terms from main table
+  all_terms <- all_terms[!is.na(all_terms$Gene.ontology.IDs),]
+  
+  # Select only accession IDs and GO IDs in new table
+  GO_terms <- all_terms %>%
+    select(accessionID, Gene.ontology.IDs)
+  
+  write.table(x = GO_terms, file = output_path, sep = "\t",
+              row.names = FALSE, 
+              col.names = FALSE,
+              quote = FALSE)
+  
+}

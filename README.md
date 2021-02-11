@@ -27,6 +27,11 @@ Mapping between libraries and treatments is available [at this Google doc](https
 
 Transcriptome checksums, along with additional information (including BLASTx annotation, GO terms annotation, etc) [available here](https://github.com/RobertsLab/resources/wiki/Genomic-Resources)
 
+*Swiss-Prot Database*
+
+[Swiss-Prot database manually downloaded from here](https://www.uniprot.org/uniprot/?) at 15:00 on 2021-02-09.
+Downloaded an uncompressed .tab file that includes all GO terms
+
 **Tool Information**
 
 R: 

@@ -35,14 +35,24 @@ geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb0217_elev0_low0_vs_elev2/
               blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
               output_file = "../scripts/06_running_GO-MWU/amb0217_elev0_low0_vs_elev2_pvals.csv")
 
-# Elevated and ambient treatments
-geneIDs_pvals(input_file = "../graphs/elev_v_amb_day02/AllGenes_wcols.txt",
-              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-              output_file = "../scripts/07_running_GO-MWU/Elev_vsAmb_day02pvals.csv")
+# Elevated Day 0 vs. Elevated Day 2, indiv. libraries only
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/elev0_vs_elev2_indiv/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/elev0_vs_elev2_indiv_pvals.csv")
 
-# Elevated and low-temp treatments
-geneIDs_pvals(input_file = "../graphs/elev_v_low_day02/AllGenes_wcols.txt",
-              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v3.0.txt",
-              output_file = "../scripts/07_running_GO-MWU/Elev_vsLow_day02pvals.csv")
+# Ambient Day 0 vs. Ambient Day 2, indiv. libraries only
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb0_vs_amb2_indiv/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/amb0_vs_amb2_indiv_pvals.csv")
+
+# Ambient Day 0 vs. Ambient Day 17, indiv. libraries only
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb0_vs_amb17_indiv/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/amb0_vs_amb17_indiv_pvals.csv")
+
+# Ambient Day 2 vs. Ambient Day 17, indiv. libraries only
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb2_vs_amb17_indiv/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/amb2_vs_amb17_indiv_pvals.csv")
 
 
