@@ -75,6 +75,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/elev0_vs_elev2_indiv
                variable = "temp")
 
 # AMBIENT DAY 0 VS. AMBIENT DAY 2, INDIVIDUAL LIBRARIES ONLY
+# 178, 118, 132, 359, 349, 334
 # Order should match columns of Kallisto output matrix created by Trinity (kallisto.isoform.counts.matrix)
 exp_design <- data.frame(day = factor(c(0, 0, 0, 
                                         2, 2, 2)),
@@ -87,6 +88,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/amb0_vs_amb2_indiv/k
                variable = "day")
 
 # AMBIENT DAY 0 VS. AMBIENT DAY 17, INDIVIDUAL LIBRARIES ONLY
+#178, 118, 132, 463, 481, 485
 # Order should match columns of Kallisto output matrix created by Trinity (kallisto.isoform.counts.matrix)
 exp_design <- data.frame(day = factor(c(0, 0, 0, 
                                         17, 17, 17)),
@@ -99,6 +101,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/amb0_vs_amb17_indiv/
                variable = "day")
 
 # AMBIENT DAY 2 VS. AMBIENT DAY 17, INDIVIDUAL LIBRARIES ONLY
+# 359, 349, 334, 463, 481, 485
 # Order should match columns of Kallisto output matrix created by Trinity (kallisto.isoform.counts.matrix)
 exp_design <- data.frame(day = factor(c(2, 2, 2, 
                                         17, 17, 17)),
@@ -109,6 +112,19 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/amb2_vs_amb17_indiv/
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/amb2_vs_amb17_indiv",
                variable = "day")
+
+# AMBIENT DAY 2 VS. ELEVATED DAY 2, INDIVIDUAL LIBRARIES ONLY
+# 359, 349, 334, 272, 294, 280
+# Order should match columns of Kallisto output matrix created by Trinity (kallisto.isoform.counts.matrix)
+exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
+                                         "elev", "elev", "elev")),
+                         day = factor(c(2, 2, 2,
+                                        2, 2, 2)))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/amb2_vs_elev2_indiv/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/amb2_vs_elev2_indiv",
+               variable = "temp")
 
 
 
@@ -142,6 +158,10 @@ transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/amb0_vs_amb17_i
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/amb2_vs_amb17_indiv/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
                        output_path = "../output/accession_n_GOids/DEG_IDs/amb2_vs_amb17_indiv_DEG_IDs.txt")
+# Ambient Day 2 vs. Elevated Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/amb2_vs_elev2_indiv/DEGlist_wcols.txt", 
+                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                       output_path = "../output/accession_n_GOids/DEG_IDs/amb2_vs_elev2_indiv_DEG_IDs.txt")
 
 
 
@@ -170,7 +190,10 @@ transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/amb0_vs_amb17_i
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/amb2_vs_amb17_indiv/AllGenes_wcols.txt", 
                        blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
                        output_path = "../output/accession_n_GOids/allgenes_IDs/amb2_vs_amb17_indiv_All_GeneIDs.txt")
-
+# Ambient Day 2 vs. Elevated Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/amb2_vs_elev2_indiv/AllGenes_wcols.txt", 
+                       blast_filepath = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                       output_path = "../output/accession_n_GOids/allgenes_IDs/amb2_vs_elev2_indiv_All_GeneIDs.txt")
 
 
 #### Creating Venn diagram showing overlap in DEG --------------

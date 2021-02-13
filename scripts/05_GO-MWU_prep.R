@@ -55,4 +55,8 @@ geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb2_vs_amb17_indiv/AllGenes
               blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
               output_file = "../scripts/06_running_GO-MWU/amb2_vs_amb17_indiv_pvals.csv")
 
+# Ambient Day 2 vs. Elevated Day 2, indiv. libraries only
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb2_vs_elev2_indiv/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/amb2_vs_elev2_indiv_pvals.csv")
 
