@@ -32,6 +32,9 @@ Transcriptome checksums, along with additional information (including BLASTx ann
 [Swiss-Prot database manually downloaded from here](https://www.uniprot.org/uniprot/?) at 15:00 on 2021-02-09.
 Downloaded an uncompressed .tab file that includes all GO terms
 
+*Alveolata Database*
+[All _Alveolata_ nucleotide sequences downloaded from here](https://www.ncbi.nlm.nih.gov/nuccore/?term=txid33630[Organism:exp]) at 17:00 on 2021-02-16
+
 **Tool Information**
 
 R: 
