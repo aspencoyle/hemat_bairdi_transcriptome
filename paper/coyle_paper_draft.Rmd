@@ -1,0 +1,91 @@
+---
+title: "Differential Expression in _Hematodinium sp._"
+author: "Aidan Coyle"
+date: "2/17/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r add_packages}
+library("kableExtra")
+library("tidyverse")
+```
+
+IMPORTANT: Much of my methods in this draft are based on Grace's wording for her paper's methods (since I'm using her samples, much of my method is hers). Check if this is OK or if it needs to be rewritten from scratch (or heavily rephrased). 
+
+
+## Methods
+
+### Collection
+
+400 male _C. bairdi_ were collected using crab pots from Stephen's Passage in southeastern Alaska in late October 2017. Collections were made by the Alaska Department of Fish and Game (ADF&G). Stephen's Passage was selected due a consistently high prevalence of _Hematodinium_, approximately 50% (ADF&G, unpub. data), and due to its proximity to Juneau, AK. Crab were transported to Ted Stevens Marine Research Institute (TSMRI, NOAA facility, Juneau, AK) within TK hours of capture. Upon arrival, they were placed in TK liter flow-through seawater tanks at 7.5°C - the benthic water temperature within Stephen's Passage at time of capture. 
+
+### Verification of Infection with _Hematodinium_
+200 µl of hemolymph was withdrawn from each individual and preserved in 800 µl 95% ethanol. 200 µl of the ethanol-preserved hemolymph was centrifuged, and the supernatant was discarded. The pelleted material was then air-dried. DNA was extracted using invertebrate lysis buffer and following Ivanova et al.(2006). Extraction proctocol was modified by performing two washes with Wash Buffer and adjusting eluted DNA (50 µl) to 10 mM Tris-CI, pH 8.0, and 0.1 mM EDTA. The extracted DNA was subjected to two rounds of PCR with two primer pairs designed for the small subunit (SSU) rRNA gene of _Hematodinium_ spp. - Univ-F-15 / Hemat-R-1654 (Gruebl et al. 2002), and Hemat 18Sf / Hemat 18Sr (Bower et al. 2004). Post-PCR, reaction aliquots were pooled and visualized on ethidium bromide-stained 2% agarose gels. Samples were scored as positive if both _Hematodinium_ spp. bands were visible on the gel, and scored as negative when neither fragment amplified. Samples where one band amplified were scored as TK.
+
+### Varying Temperature
+All crabs acclimated at 7.5&deg;C for nine days. 120 crabs were then [TK randomly?] selected for temperature treatments. Crabs that did not appear to have recovered from capture stress were not selected. A 0.2 ml sample of hemolymph was taken from each selected crab and preserved in 1200 µl RNAlater.10 infected crabs were placed in each of six replicate tanks, along with 10 uninfected crabs. Over the course of two days (day 0 to day 2), the water temperature in three tanks was gradually elevated to 10&deg;C. In the remaining three tanks, water temperature was maintained at 7.5&deg;C. After two days (day 2), and at the conclusion of the temperature trial (day 17), another 0.2 ml [TK: verify amt] of hemolymph was sampled and preserved in RNAlater for each surviving crab.
+
+### RNA Extraction and Sequencing
+Hemolymph samples (n = TK) were centrifuged at 14000 g for 10 minutes. RNA was extracted with  Quick DNA/RNA Microprep Plus kit (Zymo Research) using the manufacturer's protocol. 2 µl samples were run on Qubit 3.0 using the Qubit RNA HS Kit (Invitrogen) to determine RNA quantification. Six infected crabs were selected [TK: based on RNA yield?] - three from the elevated-temperature treatment group and three from the ambient-temperature treatment group.RNA was sent to the Northwest Genomics Center at Foege Hall at the University of Washington for library construction and sequencing. Libraries were created from all available samples of the selected crabs (Table 1). Due to a mass mortality event within those tanks, no libraries from day 17 are available for the elevated-temperature treatment group.
+
+```{r indiv_libraries, echo = FALSE}
+crabIDs <- c("A", "B", "C", "G", "H", "I")
+temps <- c(rep("Ambient", 3), rep("Elevated", 3))
+day0ID <- c(178, 118, 132, 173, 072, 127)
+day2ID <- c(359, 349, 334, 272, 294, 280)
+day17ID <- c(463, 481, 485, NA, NA, NA)
+
+lib_table <- data.frame(crabIDs, temps, day0ID, 
+                        day2ID, day17ID)
+colnames(lib_table) <- c("Crab ID", "Treatment group", "Day 0 sample ID", "Day 2 sample ID", "Day 17 sample ID")
+
+knitr::kable(lib_table, caption = "Individual libraries of infected crab", align = "c")
+
+```
+### Transcriptome Assembly and Annotation
+TK. Believe Grace's chapter describes Transcriptome 3.0, need to check if Transcriptome 2.0 construction method matches.
+
+### Differential Expression Analysis
+An index of TK transcriptome was created with kallisto (TK citation), and each library was pseudoaligned to obtain counts. An abundance matrix for each pairwise comparison (Table 2) was then created using Trinity (v2.TK, TK citation?). Differential contig expression was calculated using a negative binomial GLM [TK: check if correct] using the R package DESeq2. Read counts were normalized using size factors and fit to a negative binomial distribution. The Wald test for significance of GLM terms for each comparison was used to obtain unadjusted p-values. For comparisons of crabs at different temperatures, a table of significantly differentially-expressed transcripts (Benjamini-Hochberg adjusted p < 0.05) was also obtained (Table 2).
+
+```{r pairwise_comparison, echo = FALSE}
+
+crab1ids <- c(rep("A,B,C", 4), "G,H,I")
+crab1temp <- c(rep("Ambient", 5))
+crab1date <- c(0, 0, 2, 2, 0)
+crab2ids <- c(rep("A,B,C", 3), rep("G,H,I", 2))
+crab2temp <- c(rep("Ambient", 3), rep("Elevated", 2))
+crab2date <- c(2, 17, 17, 2, 2)
+
+DEGs <- c(rep("No", 3), rep("Yes",2))
+
+comps_table <- data.frame(crab1ids, crab1temp, crab1date,
+                          crab2ids, crab2temp, crab2date,
+                          DEGs)
+colnames(comps_table) <- c("Crab IDs", "Temp. when sampled", "Sample day", "Crab IDs", "Temp. when sampled", "Sample day", "DEGs analyzed individually?")
+
+kbl(comps_table, caption = "PairwiseComparisons",
+    col.names = colnames(comps_table),
+    align = "c") %>%
+  column_spec(1:7, width = "2cm") %>%
+  add_header_above(c("Pair 1" = 3, "Pair 2" = 3, " " = 1)) %>%
+  kable_styling(latex_options = c("striped", "scale_down"))
+  
+
+```
+
+### Enrichment Analysis
+For each comparison (Table 2), the output from DESeq2 was cross-referenced with the annotated transcriptome and the UniProt database (citation TK) to produce a table of UniProt Accession IDs and GO terms, along with a table of UniProt Accession IDs and unadjusted p-values. GO categories were then tested for significant enrichment with the R package GO-MWU (citation TK), which utilizes the Mann-Whitney U test. 
+
+### Individual DEG Examination
+Process TK, haven't completed this yet
+
+
+
+
+
+
