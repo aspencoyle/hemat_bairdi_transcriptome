@@ -1,0 +1,45 @@
+---
+title: "21_pull_transcriptIDs"
+author: "Aidan Coyle"
+date: "2/22/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+First, loading the required libraries
+```{r}
+library(tidyverse)
+```
+
+```{r}
+# Read in differentially-expressed transcript IDs
+# that have been BLASTed against Alveolata nucleotide
+# sequences
+amb_elev <- read.delim(file = "../output/BLASTn/alveolata/amb2_vs_elev2.tab",
+                       header = FALSE,
+                       fill = TRUE,
+                       sep = "\t")
+
+# Remove all but the first column
+amb_elev <- amb_elev[,1, drop = FALSE]
+
+# Change column name
+colnames(amb_elev) <- "Transcript_ID"
+
+# Read in our TPM file, which contains transcript IDs and gene IDs
+TPM_file <- read.table(file = "../output/TPM_counts/amb2_vs_elev2_DEG_TPMs.txt",
+                       header = TRUE)
+
+# Left join TPM file to transcript data
+amb_elev <- left_join(amb_elev, TPM_file, by = "Transcript_ID")
+
+# Select only entries with a non-NA value for gene ID
+amb_elev <- amb_elev[!is.na(amb_elev$Gene_ID),]
+
+```

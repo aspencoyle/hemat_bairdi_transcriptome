@@ -23,6 +23,7 @@ This produces a table containing the following:
 - The transcript and gene IDs for all inputted DEGs
 - All TPM counts from individual kallisto libraries for those DEGs
 
+
 First, loading the required libraries
 ```{r}
 library(tidyverse)
@@ -49,12 +50,12 @@ DEG_list <- read.table("../graphs/DESeq2_output/amb2_vs_elev2_indiv/DEGlist_wcol
                        header = TRUE,
                        sep = "\t")
 
-blast_data <- read.delim("../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt", 
+blast_data <- read.table("../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt", 
                          header = FALSE,
                          sep = "\t")
 
 # Specify file you want to write results to
-outpath <- "../output/TPM_counts/elev0_vs_elev2_DEG_TPMs.txt"
+outpath <- "../output/TPM_counts/amb2_vs_elev2_DEG_TPMs.txt"
 
 kallisto_path <- "../output/kallisto_libraries_bairdihemat_transcriptomev2.0/"
 
@@ -86,8 +87,6 @@ DEG_list <- left_join(DEG_list, blast_data, by = "Transcript_ID")
 DEG_list <- DEG_list[!is.na(DEG_list$Gene_ID),]
 
 head(DEG_list)
-
-
 ```
 
 We then extract the filenames for all kallisto files we want to match, and add a TPM column to our table for each kallisto file that we want to match
