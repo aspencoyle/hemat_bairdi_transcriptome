@@ -83,7 +83,7 @@ blast_data <- blast_data %>%
 DEG_list <- left_join(DEG_list, blast_data, by = "Transcript_ID")
 
 # Select only DEGs with transcript IDs that match to genes
-DEG_list <- DEG_list[!is.na(DEG_list$Gene_ID),]
+DEG_match <- DEG_list[!is.na(DEG_list$Gene_ID),]
 
 head(DEG_list)
 
