@@ -1,0 +1,52 @@
+---
+title: "13_BLASTn_output_analysis"
+author: "Aidan Coyle"
+date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Aidan Coyle, afcoyle@uw.edu
+
+Originally written 2021/02/25
+
+Roberts Lab, UW-SAFS
+
+Written for analysis of _Hematodinium_ differential gene expression
+
+
+```{r exploring}
+
+outfmt6 <- c("qseqid", "sseqid", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
+
+amb2_elev2_alveolata <- read.table(file = "../output/BLASTn/alveolata_publicseqs/amb2_vs_elev2.tab",
+                                   col.names = outfmt6)
+elev0_elev2_alveolata <- read.table(file = "../output/BLASTn/alveolata_publicseqs/elev0_vs_elev2.tab",
+                                    col.names = outfmt6)
+
+amb2_elev2_arthropoda <- read.table(file = "../output/BLASTn/arthropoda_publicseqs/amb2_vs_elev2.tab",
+                                    col.names = outfmt6)
+elev0_elev2_arthropoda <- read.table(file = "../output/BLASTn/arthropoda_publicseqs/elev0_vs_elev2.tab",
+                                     col.names = outfmt6)
+
+# Filter by e-value (bar = 10)
+eval <- 10^(-4)
+
+sum(amb2_elev2_alveolata$evalue <= eval)
+
+sum(amb2_elev2_arthropoda$evalue <= eval)
+
+sum(elev0_elev2_alveolata$evalue <= eval)
+
+sum(elev0_elev2_arthropoda$evalue <= eval)
+
+# Create table with transcript IDs and e-values for both alveolata and arthropoda
+
+# First, remove duplicate transcript IDs, keeping the one with the highest e-value
+
+
+
+```
