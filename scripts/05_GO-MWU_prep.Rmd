@@ -1,0 +1,81 @@
+---
+title: "05_GO-MWU_prep"
+author: "Aidan Coyle"
+date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Aidan Coyle, afcoyle@uw.edu
+
+Originally written 2021/01/29
+
+Roberts Lab, UW-SAFS
+
+Written for analysis of _Hematodinium_ differential gene expression
+
+# Purpose:
+
+This script produces the CSV needed for GO-MWU, which is a 2-column table of accession IDs and unadjusted p-values. A header line is required, although the contents are irrelevant.
+
+GO-MWU also requires another input file which we already created - a tab-delimited 2-column table of accession IDs and GO terms with no header and only 1 line per gene
+
+# Explanation of geneIDs_pvals():
+
+This script utilizes a function built for this analysis by me - geneids_pvals(). It is defined in hematodinium_analysis_functions.R
+
+### Inputs and Outputs
+
+input_file: DESeq2 output file containing transcript IDs and unadjusted p-values
+
+blast_file: path that leads to transcript ID/accession ID table. Optimally, use an annotated BLASTx table of the same transcriptome used to create the kallisto index
+
+output_file: path to the output file - a 2-column CSV of accession IDs and unadjusted p-values with a header line. This should be written to the same directory that you will run GO-MWU in.
+
+```{r pkgsnfunctions}
+library(tidyverse)
+
+source("hematodinium_analysis_functions.R")
+
+```
+
+# Obtaining CSVs
+
+```{r geneIDs_pvals} 
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/elev2_vs_amb02_indiv_only/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/elev2_vs_amb02_indiv_only_pvals.csv")
+
+# Elevated Day 2 vs. Ambient Day 0+2+17 + Elevated Day 0 + Lowered Day 0
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb0217_elev0_low0_vs_elev2/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/amb0217_elev0_low0_vs_elev2_pvals.csv")
+
+# Elevated Day 0 vs. Elevated Day 2, indiv. libraries only
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/elev0_vs_elev2_indiv/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/elev0_vs_elev2_indiv_pvals.csv")
+
+# Ambient Day 0 vs. Ambient Day 2, indiv. libraries only
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb0_vs_amb2_indiv/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/amb0_vs_amb2_indiv_pvals.csv")
+
+# Ambient Day 0 vs. Ambient Day 17, indiv. libraries only
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb0_vs_amb17_indiv/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/amb0_vs_amb17_indiv_pvals.csv")
+
+# Ambient Day 2 vs. Ambient Day 17, indiv. libraries only
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb2_vs_amb17_indiv/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/amb2_vs_amb17_indiv_pvals.csv")
+
+# Ambient Day 2 vs. Elevated Day 2, indiv. libraries only
+geneIDs_pvals(input_file = "../graphs/DESeq2_output/amb2_vs_elev2_indiv/AllGenes_wcols.txt",
+              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+              output_file = "../scripts/06_running_GO-MWU/amb2_vs_elev2_indiv_pvals.csv")
+```

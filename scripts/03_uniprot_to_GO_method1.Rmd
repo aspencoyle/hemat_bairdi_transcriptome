@@ -1,0 +1,108 @@
+---
+title: "03_uniprot_to_GO_method1"
+author: "Aidan Coyle"
+date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Aidan Coyle, afcoyle@uw.edu
+
+Originally written 2021/02/02
+
+Roberts Lab, UW-SAFS
+
+Written for analysis of _Hematodinium_ differential gene expression
+
+# Purpose:
+
+This is one of two methods used to obtain gene ontology (GO) terms from accession IDs. The other - available at 03_uniprot_to_GO_altmethod.ipynb - runs a shell script which pulls GO terms from a newline-separated file of accession IDs.
+
+Upside of this script (03_uniprot_to_GO_method1.Rmd): 
+
++ GO terms are obtained in minutes rather than days (when ran on local machine)
+
+Upside of alternative method (03_uniprot_to_GO_altmethod.ipynb):
+
++ Does not require a database to be manually downloaded
+
++ GO terms are always the most up-to-date (whereas a downloaded database may be outdated if not re-downloaded)
+
++ Does not require further processing (**if you use this script, you must remove duplicate lines via a script found partway through 03_uniprot_to_GO_altmethod.ipynb**)
+
+This script is generally preferred if you're examining more than a small number of accession IDs
+
+# Inputs: 
+
+To run this script, you must have the following:
+
++ A recently-downloaded, uncompressed copy of the Swiss-Prot database, with all GO terms included - available at https://www.uniprot.org/uniprot/
+
++ A newline-separated file of accession IDs 
+
+# Output:
+
++ A tab-separated two-column table of accession IDs and their respective GO terms
+
+**IMPORTANT** Prior to inputting this to GO-MWU, you MUST finish processing all files. Code to finish processing is found partway through 03_uniprot_to_GO_altmethod.ipynb
+
+```{r}
+library(tidyverse)
+source("hematodinium_analysis_functions.R")
+```
+
+# Description of uniprot_to_GO():
+
+This script utilizes a function I created - uniprot_to_GO() - available in hematodinium_analysis_functions.R
+
+Inputs:
+
+accession_path: A newline-separated file of accession IDs
+
+swissprot_path: path to a downloaded uncompressed copy of the SwissProt database with all GO terms included, available at https://www.uniprot.org/uniprot/
+
+output_path: path to output .txt file
+
+```{r}
+
+# Elevated Day 2 vs. Ambient Day 0+2. Individual libraries 
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/allgenes_IDs/elev0_vs_elev2_indiv_All_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/allgenes_IDs/elev0_vs_elev2_indiv_All_GOIDs.txt")
+
+# Ambient Day 0+2+17 + Elevated Day 0 + Lowered Day 2 vs. Elevated Day 2
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/allgenes_IDs/amb0217_elev0_low0_vs_elev2_All_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/allgenes_IDs/amb0217_elev0_low0_vs_elev2_All_GOIDs.txt")
+
+
+# Elevated Day 0 vs. Elevated Day 2. Individual libraries 
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/allgenes_IDs/elev0_vs_elev2_indiv_All_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/allgenes_IDs/elev0_vs_elev2_indiv_All_GOIDs.txt")
+
+
+# Ambient Day 0 vs. Ambient Day 2. Individual libraries
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/allgenes_IDs/amb0_vs_amb2_indiv_All_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
+              output_path = "../output/accession_n_GOids/allgenes_IDs/amb0_vs_amb2_indiv_All_GOIDs.txt")
+
+# Ambient Day 0 vs. Ambient Day 17. Individual libraries
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/allgenes_IDs/amb0_vs_amb17_indiv_All_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
+              output_path = "../output/accession_n_GOids/allgenes_IDs/amb0_vs_amb17_indiv_All_GOIDs.txt")
+
+# Ambient Day 2 vs. Ambient Day 17. Individual libraries
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/allgenes_IDs/amb2_vs_amb17_indiv_All_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
+              output_path = "../output/accession_n_GOids/allgenes_IDs/amb2_vs_amb17_indiv_All_GOIDs.txt")
+
+# Ambient Day 2 vs. Elevated Day 2. Individual libraries
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/allgenes_IDs/amb2_vs_elev2_indiv_All_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
+              output_path = "../output/accession_n_GOids/allgenes_IDs/amb2_vs_elev2_indiv_All_GOIDs.txt")
+
+```

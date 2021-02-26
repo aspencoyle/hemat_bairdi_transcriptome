@@ -1,0 +1,29 @@
+#!/bin/bash
+## Job Name
+#SBATCH --job-name=afcoyle_testblast
+## Allocation Definition
+#SBATCH --account=srlab
+#SBATCH --partition=srlab
+## Resources
+## Nodes
+#SBATCH --nodes=1
+## Walltime (days-hours:minutes:seconds format)
+#SBATCH --time=0-12:00:00
+## Memory per node
+#SBATCH --mem=120G
+##turn on e-mail notification
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=afcoyle@uw.edu
+## Specify the working directory for this job
+#SBATCH --chdir=/gscratch/scrubbed/afcoyle
+
+
+/gscratch/srlab/programs/ncbi-blast-2.8.1+/bin/blastn \
+-task="blastn" \
+-query /gscratch/scrubbed/afcoyle/data/amb2_vs_elev2_indiv_DEGs.fasta \
+-db /gscratch/scrubbed/afcoyle/output/alveolata_blastdb  \
+-out /gscratch/scrubbed/afcoyle/output/amb2_vs_elev2_indiv_alveolata_blastn.tab \
+-evalue 0.01 \
+-num_threads 40 \
+-max_target_seqs 1 \
+-outfmt 6
