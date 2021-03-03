@@ -17,6 +17,11 @@ Roberts Lab, UW-SAFS
 
 Written for analysis of _Hematodinium_ differential gene expression
 
+```{r pkgs}
+library(tidyverse)
+
+```
+
 
 ```{r exploring}
 
@@ -47,6 +52,66 @@ sum(elev0_elev2_arthropoda$evalue <= eval)
 
 # First, remove duplicate transcript IDs, keeping the one with the highest e-value
 
+amb2_elev2_alv <- amb2_elev2_alveolata %>%
+  select(qseqid, sseqid, evalue)
+
+amb2_elev2_alv <- amb2_elev2_alv[order(amb2_elev2_alv[ ,"qseqid"], -amb2_elev2_alv[ ,"evalue"]),]
+
+amb2_elev2_alv <- amb2_elev2_alv[!duplicated(amb2_elev2_alv$qseqid),]
+
+# Rename evalue column for ID post-join
+
+colnames(amb2_elev2_alv)[3] <- "alv_eval"
+
+# Doing the same to arthropoda
+amb2_elev2_arth <- amb2_elev2_arthropoda %>%
+  select(qseqid, sseqid, evalue)
+
+amb2_elev2_arth <- amb2_elev2_arth[order(amb2_elev2_arth[ ,"qseqid"], -amb2_elev2_arth[ ,"evalue"]),]
+
+amb2_elev2_arth <- amb2_elev2_arth[!duplicated(amb2_elev2_arth$qseqid),]
+
+# Rename evalue column for ID post-join
+
+colnames(amb2_elev2_arth)[3] <- "arth_eval"
+
+# Left join the two tables
+amb2_elev2 <- left_join(amb2_elev2_alv, amb2_elev2_arth, by = "qseqid")
+
+sum(as.numeric(amb2_elev2$alv_eval > amb2_elev2$arth_eval), na.rm = TRUE)
+
+
+#####################################
+# Do the same for comparing Elevated Day 0/2
+#####################################
+
+elev0_elev2_alv <- elev0_elev2_alveolata %>%
+  select(qseqid, sseqid, evalue)
+
+elev0_elev2_alv <- elev0_elev2_alv[order(elev0_elev2_alv[ ,"qseqid"], -elev0_elev2_alv[ ,"evalue"]),]
+
+elev0_elev2_alv <- elev0_elev2_alv[!duplicated(elev0_elev2_alv$qseqid),]
+
+# Rename evalue column for ID post-join
+
+colnames(elev0_elev2_alv)[3] <- "alv_eval"
+
+# Doing the same to arthropoda
+elev0_elev2_arth <- elev0_elev2_arthropoda %>%
+  select(qseqid, sseqid, evalue)
+
+elev0_elev2_arth <- elev0_elev2_arth[order(elev0_elev2_arth[ ,"qseqid"], -elev0_elev2_arth[ ,"evalue"]),]
+
+elev0_elev2_arth <- elev0_elev2_arth[!duplicated(elev0_elev2_arth$qseqid),]
+
+# Rename evalue column for ID post-join
+
+colnames(elev0_elev2_arth)[3] <- "arth_eval"
+
+# Left join the two tables
+elev0_elev2 <- left_join(elev0_elev2_alv, elev0_elev2_arth, by = "qseqid")
+
+sum(as.numeric(elev0_elev2$alv_eval > elev0_elev2$arth_eval), na.rm = TRUE)
 
 
 ```
