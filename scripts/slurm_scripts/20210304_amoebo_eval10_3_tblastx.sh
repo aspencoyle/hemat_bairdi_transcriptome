@@ -19,8 +19,7 @@
 
 
 
-/gscratch/srlab/programs/ncbi-blast-2.8.1+/bin/blastn \
--task="tblastx" \
+/gscratch/srlab/programs/ncbi-blast-2.8.1+/bin/tblastx \
 -query /gscratch/srlab/afcoyle/projects/21_ncbi_genome_blasts/data/cbai_hemat_transcriptomev2.0.fasta \
 -db /gscratch/srlab/afcoyle/projects/21_ncbi_genome_blasts/output/blastdbs/amoebo/amoebo_blastdb \
 -out /gscratch/srlab/afcoyle/projects/21_ncbi_genome_blasts/output/blastres/amoebo_eval10_3_tblastxres.tab \

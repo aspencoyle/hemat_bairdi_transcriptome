@@ -53,3 +53,14 @@ other attached packages:
 [19] GenomicRanges_1.42.0        GenomeInfoDb_1.26.2         IRanges_2.24.1             
 [22] S4Vectors_0.28.1            BiocGenerics_0.36.0         apeglm_1.12.0  
 ```
+## Folders:
+
+data: unmodified data files
+
+graphs: output from various R packages ran as part of analyses. Does include several tables
+
+output: output from analyses
+
+paper: publication
+
+scripts: code to run analyses. Does include some output within the GO-MWU directory, as it is required for GO-MWU to run.

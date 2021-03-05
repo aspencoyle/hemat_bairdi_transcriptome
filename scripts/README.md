@@ -9,7 +9,10 @@ Downloads individual and pooled libraries, downloads two transcriptomes, creates
 
 **02_kallisto_to_deseq_to_accessionIDs.R**
 
-As the name implies, takes our matrices of Kallisto counts (created in 01_download_libraries...) and analyzes using DESeq2, producing two files - one containing all transcript IDs, and another of differentially-expressed transcripts. Those files are then taken and compared to a previously-existing table of transcripts and genes, and genes are matched to transcripts, producing accession IDs. For visualization, it then creates Venn diagrams of the overlap in differentially-expressed transcript IDs and accession IDs between our treatment conditions.
+This script utilizes a series of custom-built functions for the following: 
+- running a Trinity matrix of kallisto transcript counts through DESeq2
+- turning DESeq2 output into newline-separated file of UniProt accessions
+- creating Venn diagrams of transcript IDs and accession IDs (not needed for future steps - can skip if not wanted)
 
 **03_uniprot_to_GO_method1.R**
 
@@ -36,3 +39,28 @@ This folder contains:
     2. all files needed for running GO-MWU, available [here](https://github.com/z0on/GO_MWU)
 
     3. The specific input files for GO-MWU that we created (suboptimal structurally, but required for GO-MWU to run)
+
+**11_obtaining_TPM_for_DEGs.Rmd**
+
+Takes a file of genes that are differentially-expressed (output from DESeq2) and cross-references it with the transcriptome used to create the kallisto index. It then extracts the TPM (transcripts per million) counts from the kallisto libraries created earlier in the pipeline. This produces a single table containing the following:
+
+- transcript and accession IDs for all inputted DEGs
+
+- all TPM counts from individual kallisto libraries for those DEGs
+
+**12_DEG_blast.ipynb**
+
+This script takes a newline-separated file of accession IDs for all DEGs and BLASTs it (using BLASTn)against all Alveolata nucleotide sequences, and then again for all Arthropoda nucleotide sequences. The goal is to determine whether a particular DEG is more likely to be _C. bairdi_ or _Hematodinium sp._
+
+
+**13_blastn_analysis.Rmd**
+
+Takes the results from our BLASTs in 12_DEG_blast.ipynb and examines the e-values to determine whether sequences are more likely to have originated from _C. bairdi_ or _Hematodinium sp._
+
+**21_ncbi_genome_blasts.ipynb**
+
+Takes the closest available genome to _C. bairdi_ (_C. opilio_), and the closest available genome to _Hematodinium sp_. (_Amoebophrya sp._) and BLASTs cbai_transcriptome_v2.0 (AKA cbai_hemat_transcriptomev2.0) in a variety of ways
+
+**hematodinium_analysis_functions.R**
+
+Contains a variety of functions created for the purpose of this project. Functions are called inside other R and Rmd scripts.

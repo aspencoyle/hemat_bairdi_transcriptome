@@ -15,7 +15,7 @@ Originally written 2021/02/25
 
 Roberts Lab, UW-SAFS
 
-Written for analysis of _Hematodinium_ differential gene expression
+Takes the results from our BLASTs in 12_DEG_blast.ipynb and examines the e-values to determine whether sequences are more likely to have originated from _C. bairdi_ or _Hematodinium sp._
 
 ```{r pkgs}
 library(tidyverse)
