@@ -1,0 +1,36 @@
+# Files to ignore. For all, we will only keep the README files
+
+# All file endings assc. with BLAST databases
+**/*.nhr
+**/*.nin
+**/*.nog
+**/*.nsd
+**/*.nsi
+**/*.nsq
+**/*.nal
+
+# indiv_libraries
+!indiv_libraries/**
+indiv_libraries/**
+!indiv_libraries/README.md
+
+# ncbi_genomes
+!ncbi_genomes/**
+ncbi_genomes/**
+!ncbi_genomes/README.md
+
+# pooled_libraries
+!pooled_libraries/**
+pooled_libraries/**
+!pooled_libraries/README.md
+
+# transcriptomes
+!transcriptomes/**
+transcriptomes/**
+!transcriptomes/README.md
+
+# uniprot_taxa_seqs
+!uniprot_taxa_seqs/**
+uniprot_taxa_seqs/**
+!uniprot_taxa_seqs/README.md
+

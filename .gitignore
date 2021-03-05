@@ -1,7 +1,8 @@
 # Files to ignore
 
-# Ignore our data file, as it's quite big
-data/**
+# For data directory .gitignore, I created a separate .gitignore directory within to manage subdirectories
+data/all_uniprot_info_inc_GOterms.tab
+data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt
 
 # Ignore the indices we create for Kallisto - too big
 output/*.idx

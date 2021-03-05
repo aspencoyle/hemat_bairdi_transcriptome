@@ -1,77 +1,55 @@
-# hemat_bairdii_transcriptome
- 
-First project upon starting grad school - examining differential expression of shared hematodinium/C. bairdii libraries at various temperatures and at different time points.
-
-Data has same libraries and same general notation as Grace Crandall's research
-
-Date started project: 2020/10/25 (approximation)
-Date started Github repo: 2020/12/11
+# hemat_bairdi_transcriptome
 
 Contact: Aidan Coyle, afcoyle@uw.edu
 Roberts Lab, UW-SAFS
 
-**Data Sources**
+Last edited README: 2021-03-04
 
-*Libraries*
+Examining differential expression of shared _Hematodinium_/_C. bairdi_ libraries over temperature and time.
 
+All libraries originate from Grace Crandall's research. The same libraries and general notation is used here. 
 
-[Trimmed individual libraries downloaded from here](https://gannet.fish.washington.edu/Atumefaciens/20200318_cbai_RNAseq_fastp_trimming/) at 22:00 PST on 2021-02-02
+# Tool Information and Software Versions
 
-[Pooled libraries downloaded from here](https://gannet.fish.washington.edu/Atumefaciens/20200414_cbai_RNAseq_fastp_trimming/) at 24:00 PST on 2021-02-02
+### kallisto: version 0.46.0
 
-Mapping between libraries and treatments is available [at this Google doc](https://docs.google.com/spreadsheets/d/1d17yg5F5gKKC66O8QkTIlPxljJeuX7ZsG46pkBr1lNQ/edit#gid=0)
+### Trinotate: version 3.2.1
 
-*Transcriptome*
+### Jupyter Lab: version 2.1.5
 
-[Transcriptomes downloaded from here](https://owl.fish.washington.edu/halfshell/genomic-databank/). at 01:00 PST on 2021-02-03
+### Jupyter Notebook: version 6.0.3
 
-Transcriptome checksums, along with additional information (including BLASTx annotation, GO terms annotation, etc) [available here](https://github.com/RobertsLab/resources/wiki/Genomic-Resources)
-
-*Swiss-Prot Database*
-
-[Swiss-Prot database manually downloaded from here](https://www.uniprot.org/uniprot/?) at 15:00 on 2021-02-09.
-Downloaded an uncompressed .tab file that includes all GO terms
-
-*Alveolata Database*
-[All _Alveolata_ nucleotide sequences downloaded from here](https://www.ncbi.nlm.nih.gov/nuccore/?term=txid33630[Organism:exp]) at 17:00 on 2021-02-16
-
-**Tool Information**
-
-R: 
-```
-platform       x86_64-w64-mingw32          
-arch           x86_64                      
-os             mingw32                     
-system         x86_64, mingw32             
-status                                     
-major          4                           
-minor          0.3                         
-year           2020                        
-month          10                          
-day            10                          
-svn rev        79318                       
-language       R                           
-version.string R version 4.0.3 (2020-10-10)
-nickname       Bunny-Wunnies Freak Out    
-```
-
-kallisto: version 0.46.0
-
-Trinotate: version 3.2.1
-
-Operating system:
+### Operating system:
 ```
 Windows 10, x64 (OS build: 18363.1256)
 Running WSL version 1
 ```
 
-R packages:
+
+### R packages and info:
 ```
-apeglm: 1.12.0
-BiocManager: 1.30.10
-DESeq2: 1.30.0
-tidyverse: 1.3.0
-topGO: 2.42.0
-VennDiagram: 1.6.20
-vsn: 3.58.0
+R version 4.0.4 (2021-02-15)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 18363)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252   
+[3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C                          
+[5] LC_TIME=English_United States.1252    
+
+attached base packages:
+ [1] grid      parallel  stats4    stats     graphics  grDevices utils     datasets  methods  
+[10] base     
+
+other attached packages:
+ [1] VennDiagram_1.6.20          futile.logger_1.4.3         ape_5.4-1                  
+ [4] vsn_3.58.0                  forcats_0.5.1               stringr_1.4.0              
+ [7] dplyr_1.0.4                 purrr_0.3.4                 readr_1.4.0                
+[10] tidyr_1.1.3                 tibble_3.1.0                ggplot2_3.3.3              
+[13] tidyverse_1.3.0             DESeq2_1.30.1               SummarizedExperiment_1.20.0
+[16] Biobase_2.50.0              MatrixGenerics_1.2.1        matrixStats_0.58.0         
+[19] GenomicRanges_1.42.0        GenomeInfoDb_1.26.2         IRanges_2.24.1             
+[22] S4Vectors_0.28.1            BiocGenerics_0.36.0         apeglm_1.12.0  
 ```
