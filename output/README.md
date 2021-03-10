@@ -33,9 +33,9 @@ Output files from running [GO-MWU](https://github.com/z0on/GO_MWU)
 
 GO-MWU requires two input files - one containing a CSV of accession IDs and p-values, and the other containing a tab-separated file of accession IDs and GO IDs with no repeats. This folder contains both files for each parwise comparison we ran through GO-MWU
 
-## kallisto_libraries_bairdihemat_transcriptomev2.0
+## kallisto_libraries
 
-Contains kallisto quantifications for each library against an index created from cbai_transcriptomev2.0 (AKA cbai_hemat_transcriptomev2.0)
+Contains kallisto quantifications for each library 
 
 ## kallisto_matrices
 
