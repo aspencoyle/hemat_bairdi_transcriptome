@@ -5,13 +5,16 @@ data/all_uniprot_info_inc_GOterms.tab
 data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt
 
 # Ignore the indices we create for Kallisto - too big
-output/*.idx
+output/*/*.idx
 
 # Ignore the matrices we create for DESeq2 - also too big
-output/kallisto_matrices/**
+output/kallisto_matrices/*/**
+
+# Ignore some of our BLASTs against the amoebo genome - too big
+output/BLASTs/amoebo_genome/*tblastxres.tab
 
 # Ignore the AllGenes text files from DESeq2 output - too big
-graphs/DESeq2_output/*/AllGene*.txt
+graphs/DESeq2_output/*/*/AllGene*.txt
 
 # Ignore our merged libraries - also too big
 output/libraries_merged/**

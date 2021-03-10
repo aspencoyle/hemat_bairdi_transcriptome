@@ -5,7 +5,7 @@ Updated 2021-02-10
 
 **01_download_libraries_run_kallisto.ipynb** 
 
-Downloads individual and pooled libraries, downloads two transcriptomes, creates kallisto index files from transcriptomes, runs kallisto on libraries, and then combines output into matrix. Kallisto is quite computationally intensive, and as a result, this was done on a remote machine. Therefore, commands are copied and pasted, not run directly in the notebook.
+Downloads individual and pooled libraries, downloads two transcriptomes of mixed _C. bairdi_ and _Hematodinium_, creates kallisto index files from transcriptomes, runs kallisto on libraries, and then combines output into matrix. Kallisto is quite computationally intensive, and as a result, this was done on a remote machine. Therefore, commands are copied and pasted, not run directly in the notebook.
 
 **02_kallisto_to_deseq_to_accessionIDs.R**
 
@@ -60,6 +60,10 @@ Takes the results from our BLASTs in 12_DEG_blast.ipynb and examines the e-value
 **21_ncbi_genome_blasts.ipynb**
 
 Takes the closest available genome to _C. bairdi_ (_C. opilio_), and the closest available genome to _Hematodinium sp_. (_Amoebophrya sp._) and BLASTs cbai_transcriptome_v2.0 (AKA cbai_hemat_transcriptomev2.0) in a variety of ways
+
+**Scripts 31-35**
+
+These scripts perform the same processes as 01-05. However, while 01-05 analyze cbai_transcriptome_v2.0 - which is not filtered by taxa - these scripts analyze hemat_transcriptome_v1.6, which takes all reads and filters to only include those from Alveolata (the taxa that contains _Hematodinium_). 
 
 **hematodinium_analysis_functions.R**
 
