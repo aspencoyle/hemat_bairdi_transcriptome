@@ -41,6 +41,7 @@ deseq_analysis <- function(kallisto_path,
   # Make sure everything looks okay
   print("HEAD")
   print(head(data))
+  
   print("STRUCTURE")
   print(str(data))
   
@@ -54,7 +55,7 @@ deseq_analysis <- function(kallisto_path,
   print("EXPERIMENTAL DESIGN")
   print(experiment_table)
   
-  # Create DESeq object that looks at effect of day
+  # Create DESeq object that looks at effect of variable
   deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
                                        colData = experiment_table,
                                        design = as.formula(paste0("~", variable)))
@@ -293,3 +294,5 @@ uniprot_to_GO <- function(accession_path, swissprot_path, output_path) {
               quote = FALSE)
   
 }
+
+
