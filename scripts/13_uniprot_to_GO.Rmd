@@ -1,5 +1,5 @@
 ---
-title: "03_uniprot_to_GO_method1"
+title: "13_uniprot_to_GO_method1"
 author: "Aidan Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: html_document
@@ -34,7 +34,7 @@ To run this script, you must have the following:
 + A tab-separated two-column table of accession IDs and their respective GO terms
 
 
-```{r}
+```{r libraries, message=FALSE}
 library(tidyverse)
 source("hematodinium_analysis_functions.R")
 ```

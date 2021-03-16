@@ -9,14 +9,14 @@
 
 # We will run GO-MWU twice - once for each comparison
 
-# After each analysis, move the output files from the 06_running_GO-MWU directory into an output folder.
+# After each analysis, move the output files from the 16_running_GO-MWU directory into an output folder.
 # I used /output/GO-MWU_output/[analysis name]
 
 library(ape)
 
 # Need to be in same directory as all other GO-MWU files - 
 # both data files and analysis files
-setwd("06_running_GO-MWU")
+setwd("16_running_GO-MWU")
 
 #### GO-MWU Run 1: Elevated Day 2 vs. Ambient Days 0+2, Individual Libraries Only --------------------------
 

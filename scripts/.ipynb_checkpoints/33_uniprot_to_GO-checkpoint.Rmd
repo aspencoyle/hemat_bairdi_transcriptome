@@ -33,7 +33,7 @@ To run this script, you must have the following:
 + A tab-separated two-column table of accession IDs and their respective GO terms
 
 
-```{r packageload, message=FALSE}
+```{r}
 library(tidyverse)
 source("hematodinium_analysis_functions.R")
 ```
