@@ -18,21 +18,7 @@ Written for analysis of _Hematodinium_ differential gene expression
 
 # Purpose:
 
-This is one of two methods used to obtain gene ontology (GO) terms from accession IDs. The other - available at 03_uniprot_to_GO_altmethod.ipynb - runs a shell script which pulls GO terms from a newline-separated file of accession IDs.
-
-Upside of this script (03_uniprot_to_GO_method1.Rmd): 
-
-+ GO terms are obtained in minutes rather than days (when ran on local machine)
-
-Upside of alternative method (03_uniprot_to_GO_altmethod.ipynb):
-
-+ Does not require a database to be manually downloaded
-
-+ GO terms are always the most up-to-date (whereas a downloaded database may be outdated if not re-downloaded)
-
-+ Does not require further processing (**if you use this script, you must remove duplicate lines via a script found partway through 03_uniprot_to_GO_altmethod.ipynb**)
-
-This script is generally preferred if you're examining more than a small number of accession IDs
+This is used to obtain gene ontology (GO) terms from accession IDs. 
 
 # Inputs: 
 
@@ -46,7 +32,6 @@ To run this script, you must have the following:
 
 + A tab-separated two-column table of accession IDs and their respective GO terms
 
-**IMPORTANT** Prior to inputting this to GO-MWU, you MUST finish processing all files. Code to finish processing is found partway through 03_uniprot_to_GO_altmethod.ipynb
 
 ```{r}
 library(tidyverse)

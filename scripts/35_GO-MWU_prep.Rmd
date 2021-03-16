@@ -46,12 +46,12 @@ source("hematodinium_analysis_functions.R")
 
 ```{r geneIDs_pvals} 
 # Elevated Day 0 vs. Elevated Day 2, indiv. libraries only
-geneIDs_pvals(input_file = "../graphs/DESeq2_output/hemat_transcriptomev1.6/elev0_vs_elev2_indiv/AllGenes_wcols.txt",
-              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
-              output_file = "../scripts/06_running_GO-MWU/hemat1.6elev0_vs_elev2_indiv_pvals.csv")
+geneIDs_pvals(input_file <-  "../graphs/DESeq2_output/hemat_transcriptomev1.6/elev0_vs_elev2_indiv/AllGenes_wcols.txt",
+              blast_file <-  "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
+              output_file  <-  "../scripts/06_running_GO-MWU/hemat1.6_elev0_vs_elev2_indiv_pvals.csv")
 
 # Ambient Day 2 vs. Elevated Day 2, indiv. libraries only
 geneIDs_pvals(input_file = "../graphs/DESeq2_output/hemat_transcriptomev1.6/amb2_vs_elev2_indiv/AllGenes_wcols.txt",
-              blast_file = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
-              output_file = "../scripts/06_running_GO-MWU/hemat1.6amb2_vs_elev2_indiv_pvals.csv")
+              blast_file = "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
+              output_file = "../scripts/06_running_GO-MWU/hemat1.6_amb2_vs_elev2_indiv_pvals.csv")
 ```

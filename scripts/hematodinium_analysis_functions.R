@@ -175,9 +175,19 @@ transcripts_to_geneIDs <- function(deseq_filepath,
   length(transcript_key$Transcript_ID)
   sum(is.na(transcript_key$Gene_ID))
   
-  # Separate Gene ID to specifically get Uniprot accession ID
-  transcript_key <- separate(data = transcript_key, col = Gene_ID, into = c("sp", "Accession_ID", "species"), 
-                             sep = "\\|")
+  # If pipes in accession ID column, separate to get accession ID
+  gene_ids <- dplyr::pull(transcript_key, Gene_ID)
+  if(any(grepl("|", gene_ids, fixed = TRUE))){
+    transcript_key <- separate(data = transcript_key, col = Gene_ID,
+                               into = c("sp", "Accession_ID", "species"), 
+                               sep = "\\|")
+  } else {
+    transcript_key <- transcript_key %>%
+      rename(Accession_ID = Gene_ID)
+        
+      }
+  
+
   
   # Create vector of non-NA accession IDs
   accession_IDs <- na.omit(transcript_key$Accession_ID)
@@ -227,13 +237,24 @@ geneIDs_pvals <- function(input_file, blast_file, output_file) {
   # Select only the Transcript ID, p-value, and Gene ID columns
   transcript_key <- transcript_data[,c("Transcript_ID", "pvalue", "Gene_ID")]
   
-  # Separate Gene ID to specifically get Uniprot accession ID
-  transcript_key <- separate(data = transcript_key, col = Gene_ID, into = c("sp", "Accession_ID", "species"), 
-                             sep = "\\|")
   
-  # Remove all columns except transcript ID, accession ID, and p-value
+  # If pipes in accession ID column, separate to get accession ID,
+  # remove all columns except transcript ID, accession ID, and p-value
   # and remove all rows with an NA accession ID
-  transcript_key <- transcript_key[!is.na(transcript_key$Accession_ID), c(4, 2)]
+  gene_ids <- dplyr::pull(transcript_key, Gene_ID)
+  if(any(grepl("|", gene_ids, fixed = TRUE))){
+    transcript_key <- separate(data = transcript_key, col = Gene_ID,
+                               into = c("sp", "Accession_ID", "species"), 
+                               sep = "\\|")
+    transcript_key <- transcript_key[!is.na(transcript_key$Accession_ID), c(4, 2)]
+  } else {
+    # If no pipes in accession ID column, remove all rows with an NA accession ID,
+    # remove the first column (transcript ID), and reorder the 2nd and 3rd (should be accession ID, then p-value)
+    transcript_key <- transcript_key %>%
+      rename(Accession_ID = Gene_ID)
+    transcript_key <- transcript_key[!is.na(transcript_key$Accession_ID), c(3, 2)]
+    
+  }
   
   rownames(transcript_key) <- NULL
   write.csv(transcript_key, output_file, row.names = FALSE,
