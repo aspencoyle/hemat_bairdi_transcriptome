@@ -9,9 +9,9 @@ Last edited README: 2021-03-04
 
 Contains a number of files that are the result of pairwise comparisons. The comparison is indicated in the filename. Files ending in GeneIDs.txt contain a single column of newline-separated accession IDs. Files ending in GOIDs.txt contain two columns - one of accession IDs, and the other of the GO terms that match those accession IDs.
 
-## BLASTn
+## BLASTs
 
-Contains the result of BLASTns
+Contains the result of BLASTs
 
 - **alveolata_publicseqs/**: BLASTed against a database consisting of all available Alveolata nucleotide sequences that could be found on the NCBI taxonomy browser
 

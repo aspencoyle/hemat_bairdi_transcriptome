@@ -78,7 +78,13 @@ colnames(amb2_elev2_arth)[3] <- "arth_eval"
 # Left join the two tables
 amb2_elev2 <- left_join(amb2_elev2_alv, amb2_elev2_arth, by = "qseqid")
 
+# Number of DEGs more likely to be C. bairdi
+
 sum(as.numeric(amb2_elev2$alv_eval > amb2_elev2$arth_eval), na.rm = TRUE)
+
+# Number of DEGs more likely to be Hematodinium
+
+sum(as.numeric(amb2_elev2$alv_eval < amb2_elev2$arth_eval), na.rm = TRUE)
 
 
 #####################################
@@ -111,7 +117,13 @@ colnames(elev0_elev2_arth)[3] <- "arth_eval"
 # Left join the two tables
 elev0_elev2 <- left_join(elev0_elev2_alv, elev0_elev2_arth, by = "qseqid")
 
+# Number of DEGs more likely to be C. bairdi
+
 sum(as.numeric(elev0_elev2$alv_eval > elev0_elev2$arth_eval), na.rm = TRUE)
+
+# Number of DEGs more likely to be Hematodinium
+
+sum(as.numeric(elev0_elev2$alv_eval < elev0_elev2$arth_eval), na.rm = TRUE)
 
 
 ```

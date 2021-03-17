@@ -35,7 +35,7 @@ blast_file: path that leads to transcript ID/accession ID table. Optimally, use 
 
 output_file: path to the output file - a 2-column CSV of accession IDs and unadjusted p-values with a header line. This should be written to the same directory that you will run GO-MWU in.
 
-```{r pkgsnfunctions}
+```{r pkgsnfunctions, message=FALSE}
 library(tidyverse)
 
 source("hematodinium_analysis_functions.R")

@@ -64,3 +64,7 @@ output: output from analyses
 paper: publication
 
 scripts: code to run analyses. Does include some output within the GO-MWU directory, as it is required for GO-MWU to run.
+
+## Subfolders:
+
+Many folders in output/ and graphs/ are split into subdirectories labeled cbaihemat_transcriptomev2.0 and hemat_transcriptomev1.6. These correspond to analyses performed using [cbai_transcriptomev2.0](https://robertslab.github.io/sams-notebook/2020/05/02/Transcriptome-Assembly-C.bairdi-All-RNAseq-Data-Without-Taxonomic-Filters-with-Trinity-on-Mox.html) and [hemat_transcriptomev1.6](https://robertslab.github.io/sams-notebook/2021/03/08/Transcriptome-Assembly-Hematodinium-Transcriptomes-v1.6-and-v1.7-with-Trinity-on-Mox.html)
