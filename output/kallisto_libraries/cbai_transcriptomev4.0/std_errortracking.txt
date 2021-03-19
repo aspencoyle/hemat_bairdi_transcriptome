@@ -1,0 +1,317 @@
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/272_R1_001.fastp-trim.202003184536.fq.gz
+                             ../../data/libraries/272_R2_001.fastp-trim.202003184536.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 26,947,532 reads, 7,418,042 reads pseudoaligned
+[quant] estimated average fragment length: 60.0094
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,349 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/294_R1_001.fastp-trim.202003180701.fq.gz
+                             ../../data/libraries/294_R2_001.fastp-trim.202003180701.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 28,208,357 reads, 10,982,928 reads pseudoaligned
+[quant] estimated average fragment length: 137.065
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 968 rounds
+
+
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/280_R1_001.fastp-trim.202003185124.fq.gz
+                             ../../data/libraries/280_R2_001.fastp-trim.202003185124.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 58,003,573 reads, 10,731,859 reads pseudoaligned
+[quant] estimated average fragment length: 56.8307
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,460 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/173_R1_001.fastp-trim.202003181159.fq.gz
+                             ../../data/libraries/173_R2_001.fastp-trim.202003181159.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 31,766,431 reads, 6,428,679 reads pseudoaligned
+[quant] estimated average fragment length: 116.57
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,129 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/72_R1_001.fastp-trim.202003181709.fq.gz
+                             ../../data/libraries/72_R2_001.fastp-trim.202003181709.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 26,062,951 reads, 8,874,861 reads pseudoaligned
+[quant] estimated average fragment length: 93.4479
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,037 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/127_R1_001.fastp-trim.202003185538.fq.gz
+                             ../../data/libraries/127_R2_001.fastp-trim.202003185538.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 26,948,882 reads, 9,468,543 reads pseudoaligned
+[quant] estimated average fragment length: 117.233
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,242 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/178_R1_001.fastp-trim.202003181815.fq.gz
+                             ../../data/libraries/178_R2_001.fastp-trim.202003181815.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 29,009,909 reads, 11,653,408 reads pseudoaligned
+[quant] estimated average fragment length: 120.413
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,218 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/359_R1_001.fastp-trim.202003182247.fq.gz
+                             ../../data/libraries/359_R2_001.fastp-trim.202003182247.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 27,021,012 reads, 12,044,969 reads pseudoaligned
+[quant] estimated average fragment length: 121.422
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 955 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/463_R1_001.fastp-trim.202003185732.fq.gz
+                             ../../data/libraries/463_R2_001.fastp-trim.202003185732.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 19,061,045 reads, 8,719,572 reads pseudoaligned
+[quant] estimated average fragment length: 70.5429
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,145 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/118_R1_001.fastp-trim.202003184931.fq.gz
+                             ../../data/libraries/118_R2_001.fastp-trim.202003184931.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 28,556,288 reads, 9,192,291 reads pseudoaligned
+[quant] estimated average fragment length: 99.052
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,134 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/349_R1_001.fastp-trim.202003181609.fq.gz
+                             ../../data/libraries/349_R2_001.fastp-trim.202003181609.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 32,184,056 reads, 5,824,452 reads pseudoaligned
+[quant] estimated average fragment length: 70.631
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,260 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/481_R1_001.fastp-trim.202003180047.fq.gz
+                             ../../data/libraries/481_R2_001.fastp-trim.202003180047.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 48,708,674 reads, 11,475,820 reads pseudoaligned
+[quant] estimated average fragment length: 78.4549
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,232 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/132_R1_001.fastp-trim.202003180140.fq.gz
+                             ../../data/libraries/132_R2_001.fastp-trim.202003180140.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 26,962,537 reads, 9,352,671 reads pseudoaligned
+[quant] estimated average fragment length: 111.819
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,110 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/334_R1_001.fastp-trim.202003181149.fq.gz
+                             ../../data/libraries/334_R2_001.fastp-trim.202003181149.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 25,348,734 reads, 8,531,005 reads pseudoaligned
+[quant] estimated average fragment length: 103.023
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 996 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/485_R1_001.fastp-trim.202003181245.fq.gz
+                             ../../data/libraries/485_R2_001.fastp-trim.202003181245.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 25,310,261 reads, 8,858,790 reads pseudoaligned
+[quant] estimated average fragment length: 118.887
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,303 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/151_R1_001.fastp-trim.202003180619.fq.gz
+                             ../../data/libraries/151_R2_001.fastp-trim.202003180619.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 33,120,063 reads, 14,618,449 reads pseudoaligned
+[quant] estimated average fragment length: 132.444
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,024 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/254_R1_001.fastp-trim.202003184228.fq.gz
+                             ../../data/libraries/254_R2_001.fastp-trim.202003184228.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 16,503,023 reads, 6,866,492 reads pseudoaligned
+[quant] estimated average fragment length: 135.546
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 980 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/445_R1_001.fastp-trim.202003185018.fq.gz
+                             ../../data/libraries/445_R2_001.fastp-trim.202003185018.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 29,847,696 reads, 9,697,460 reads pseudoaligned
+[quant] estimated average fragment length: 120.316
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 967 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/380821_S2_R1_001.fastp-trim.fq.gz
+                             ../../data/libraries/380821_S2_R2_001.fastp-trim.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 17,242,102 reads, 8,117,932 reads pseudoaligned
+[quant] estimated average fragment length: 150.057
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 951 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/380823_S4_R1_001.fastp-trim.fq.gz
+                             ../../data/libraries/380823_S4_R2_001.fastp-trim.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 17,538,147 reads, 7,601,214 reads pseudoaligned
+[quant] estimated average fragment length: 149.34
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,200 rounds
+
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 88,302
+[index] number of k-mers: 23,430,052
+[index] number of equivalence classes: 256,114
+[quant] running in paired-end mode
+[quant] will process pair 1: ../../data/libraries/380825_S6_R1_001.fastp-trim.fq.gz
+                             ../../data/libraries/380825_S6_R2_001.fastp-trim.fq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 20,375,663 reads, 9,050,745 reads pseudoaligned
+[quant] estimated average fragment length: 148.401
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,020 rounds
+

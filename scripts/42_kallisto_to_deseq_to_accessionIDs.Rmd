@@ -1,0 +1,274 @@
+---
+title: "32_kallisto_to_deseq_to_accessionIDs"
+author: "Aidan Coyle"
+date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Originally written 2021/03/10
+Roberts Lab, UW-SAFS
+Written for analysis of _Hematodinium_ differential gene expression
+
+**IMPORTANT: Many code blocks have been set to eval = FALSE due to long runtimes. To re-run analysis, change those blocks to TRUE**
+
+# Purpose:
+This script utilizes a series of custom-built functions for the following: 
+- running a Trinity matrix of kallisto transcript counts through DESeq2
+- turning DESeq2 output into newline-separated file of UniProt accessions
+- creating Venn diagrams of transcript IDs and accession IDs (not needed for future steps - can skip if not wanted)
+
+
+
+```{r libraries, message=FALSE}
+library(apeglm)
+library(DESeq2)
+library(tidyverse)
+library(vsn)
+
+# Functions are defined in hematodinium_analysis_functions.R
+source("hematodinium_analysis_functions.R")
+```
+
+# Stage 1: Analyzing Trinity matrix from Kallisto output with DESeq2
+
+Almost all analysis takes place in function deseq_analysis(). Documentation in function file. If attempting to redo a specific graph or table, the file DESeq_demonstration.R may be helpful
+
+These blocks take quite a long time to run, so **in the markdown file, I have set eval to FALSE**. I recommend only re-running blocks that you are certain you want to run - again, run times are quite lengthy.
+
+For all code blocks, **the order of rows in temperature and day values in exp_design should match the order of columns of the `kallisto.isoforms.counts.matrix` input file from Trinity for the pairwise comparison**. As an example, here's what the `exp_design` table should look like for hypothetical libraries A (day 0, lowered temp), B (day 2, ambient temp), and C (day 17, elevated temp) if the `kallisto.isoforms.counts.matrix` file columns are ordered A, B, C:
+
+```{r example_table}
+exp_design <- data.frame(temp = factor(c("Low", "Amb", "Elev")),
+                         day = factor(c(0, 2, 17)))
+
+exp_design
+```
+
+As a further note, the pairwise comparisons performed here treat temperature as water temperature at time of sample, **not** treatment group. This means that Elevated Day 0 and Lowered Day 0 libraries are treated as **ambient-temperature libraries**, as samples were taken prior to any temperature changes. For all other samples, there are no such differences.
+
+### Explanation of deseq_analysis():
+
+A function to analyze Kallisto output with DESeq2. Will likely take quite long to run - there's some computationally-heavy steps involved
+
+Takes 4 inputs
+
+1. kallisto_path: path to matrix created by Trinity from Kallisto outputs
+
+2. experiment_table: table with treatments in experiment. 
+
+  + Order should match columns of matrix from Trinity
+
+  + Example: Day and temperature data for libraries 118, 132, 178, 463, 481, 485 (in order)
+
+  + exp_design <- data.frame(day = factor(c(0, 0, 0, 17, 17, 17)), temp = factor(c("Amb", "Amb", "Amb", "Amb", "Amb", "Amb")))
+
+3. output_path: path to the output folder
+
+4. variable: variable being examined. Used in creation of deseq object.
+
+  + Should be 'day' or 'temp' (without quotes)
+
+
+### Elevated Day 0 vs. Elevated Day 2, Individual Libraries Only
+exp_design = day and temperature data for libraries 173, 072, 127, 272, 294, 280 (in order). 
+
+```{r elev0vselev2, eval = FALSE}
+
+# Rather than using the deseq_analysis() function, we will run that function directly.
+# Due to low numbers of normalized counts, the function returns an error when ran.
+# This will be avoided by removing the call to DESeq2::vst(), which performs the analysis 
+# necessary for our PCA plot. Therefore, our output will lack a PCA plot, but will be 
+# otherwise unchanged.
+
+
+exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb",
+                                         "Elev", "Elev", "Elev")),
+                         day = factor(c(0, 0, 0, 2, 2, 2)))
+
+kallisto_path <- "../output/kallisto_matrices/hemat_transcriptomev1.6/elev0_vs_elev2_indiv/kallisto.isoform.counts.matrix"
+experiment_table <- exp_design
+output_path <- "../graphs/DESeq2_output/hemat_transcriptomev1.6/elev0_vs_elev2_indiv"
+variable <- "temp"
+
+# Read in matrix created by Trinity from Kallisto outputs
+data <- read.table(kallisto_path, header = TRUE,
+                     sep = "\t")
+# Rename first column
+names(data)[1] <- "target_ID"
+  
+# Set row names equal to the first column
+rownames(data) <- data$target_ID
+  
+# Remove the now-irrelevant first column
+data <- data[,-1]
+  
+# Make sure everything looks okay
+print("HEAD")
+print(head(data))
+  
+print("STRUCTURE")
+print(str(data))
+  
+# Round counts to integers - needed for DESeqDataSetFromMatrix()
+data <- round(data, digits = 0)
+  
+# Rename rows to correspond to library numbers
+rownames(experiment_table) <- colnames(data)
+  
+# Check that experiment_table appears to match columns with matrix from Trinity
+print("EXPERIMENTAL DESIGN")
+print(experiment_table)
+  
+# Create DESeq object that looks at effect of variable
+deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
+                                     colData = experiment_table,
+                                     design = as.formula(paste0("~", variable)))
+ 
+deseq2.dds <- DESeq(deseq2.dds)
+  
+#Look at results
+deseq2.res <- results(deseq2.dds)
+print("SUMMARY:")
+print(summary(deseq2.res))
+  
+# Shrink LFC estimates - used in shrunken MA plot
+lfcnames <- resultsNames(deseq2.dds)
+print(lfcnames[2])
+resLFC <- lfcShrink(deseq2.dds, coef = lfcnames[2], 
+                    type = "apeglm")
+
+# Look specifically at results w/ adjusted p-value < 0.05
+deseq_res05 <- results(deseq2.dds, alpha = 0.05)
+print("Number of DEGs (padj <= 0.05)")
+print(sum(deseq_res05$padj < 0.05, na.rm = TRUE))
+  
+# Plot of full results, not shrunken
+plotMA(deseq2.res, ylim = c(-28, 28))
+dev.copy(png, file.path(output_path, "allres_MAplot.png"))
+dev.off()
+  
+# Plot of full results, shrunken
+plotMA(resLFC, ylim = c(-2, 2), main = "apeglm")
+dev.copy(png, file.path(output_path, "allres_shrunken_MAplot.png"))
+dev.off()
+  
+# Plot of res05 results, not shrunken
+plotMA(deseq_res05, ylim = c(-20, 20))
+dev.copy(png, file.path(output_path, "res05_MAplot.png"))
+dev.off()
+  
+# Create a plot of Log2 fold change vs. normalized counts
+deseq2_tmp <- deseq2.res
+plot(deseq2_tmp$baseMean, deseq2_tmp$log2FoldChange, pch = 20,
+     cex = 0.45, ylim = c(-28, 28), log = "x", col = "darkgray",
+     main = paste("Differences by", variable, "(padj <= 0.005)"),
+     xlab = "mean of normalized counts",
+     ylab = "Log2 Fold Change")
+# Get significant points, plot again so they're a diff color
+deseq2_tmp.sig <- deseq2.res[!is.na(deseq2.res$padj) &
+                               deseq2.res$padj <= 0.005, ]
+points(deseq2_tmp.sig$baseMean, deseq2_tmp.sig$log2FoldChange,
+       pch = 20, cex = 0.45, col = "red")
+abline(h=c(-1,1), col = "blue")
+dev.copy(png, file.path(output_path, "normalizedcts_v_log2foldchange.png"))
+dev.off()
+  
+# Plot dispersion estimates
+plotDispEsts(deseq2.dds)
+dev.copy(png, file.path(output_path, "dispersion_estimates.png"))
+dev.off()
+  
+# write all genes to table
+write.table(deseq2_tmp, file.path(output_path, "AllGenes.txt"), 
+            row.names = TRUE, col.names = FALSE, 
+            quote = FALSE, sep = "\t")
+write.table(deseq2_tmp, file.path(output_path, "AllGenes_wcols.txt"),
+            row.names = TRUE, col.names = TRUE,
+            quote = FALSE, sep = "\t")
+  
+# Write significant day-differing genes to table
+write.table(deseq2_tmp.sig, file.path(output_path, "DEGlist.txt"),
+            row.names = TRUE, col.names = FALSE, quote = FALSE,
+            sep = "\t")
+write.table(deseq2_tmp.sig, file.path(output_path, "DEGlist_wcols.txt"),
+            row.names = TRUE, col.names = TRUE, quote = FALSE,
+            sep = "\t")
+  
+```
+
+
+
+### Ambient Day 2 vs. Elevated Day 2, Individual Libraries Only
+exp_design = day and temperature data for libraries 359, 349, 334, 272, 294, 280 (in order)
+
+```{r amb2vselev2, eval = FALSE}
+exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
+                                         "elev", "elev", "elev")),
+                         day = factor(c(2, 2, 2,
+                                        2, 2, 2)))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev1.6/amb2_vs_elev2_indiv/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/amb2_vs_elev2_indiv",
+               variable = "temp")
+```
+
+# Stage 2: Turning Transcript IDs Into Accession IDs
+
+The previous step produced four tables for each pairwise comparison, as follows. Each table has the same columns: transcript ID, base mean, log2 fold change, lfcSE, stat, p-value, p-adjusted 
+
+1. Data for all differentially-expressed transcripts (DEGlist.txt)
+
+2. Same as 1 but with headers (DEGlist_wcols.txt)
+
+3. Data for all genes (AllGenes.txt)
+
+4. Same as 3, but with headers (AllGenes_wcols.txt)
+
+This  step turns those files (specifically 2 and 4) and turns them into a newline-separated file of UniProt accession IDs by cross-referencing with the BLASTx table for the transcriptome used as an index for kallisto.
+
+### Explanation of transcripts_to_geneIDs:
+
+Turns DESeq2 output to UniProt accessions
+
+Takes three inputs:
+
+1. deseq_filepath: leads to file containing gene list from DESeq2
+
+2. blast_filepath: path that leads to transcript ID/gene ID table
+
+3. output_path: path to new newline-separated file of UniProt accession IDs
+
+### UniProt accession IDs for differentially-expressed transcripts
+
+```{r allDEGs}
+
+# Elevated Day 0 vs. Elevated Day 2
+transcripts_to_geneIDs(deseq_filepath =  "../graphs/DESeq2_output/hemat_transcriptomev1.6/elev0_vs_elev2_indiv/DEGlist_wcols.txt", 
+                       blast_filepath =  "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
+                       output_path =   "../output/accession_n_GOids/hemat_transcriptomev1.6/DEG_IDs/elev0_vs_elev2_indiv_DEG_IDs.txt")
+# Ambient Day 2 vs. Elevated Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/amb2_vs_elev2_indiv/DEGlist_wcols.txt", 
+                       blast_filepath =  "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
+                       output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/DEG_IDs/amb2_vs_elev2_indiv_DEG_IDs.txt")
+```
+
+# UniProt accession IDs for all transcripts
+
+```{r allgenes}
+# Elevated Day 0 vs. Elevated Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/elev0_vs_elev2_indiv/AllGenes_wcols.txt", 
+                       blast_filepath =  "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
+                       output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/elev0_vs_elev2_indiv_All_GeneIDs.txt")
+
+# Ambient Day 2 vs. Elevated Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/amb2_vs_elev2_indiv/AllGenes_wcols.txt", 
+                       blast_filepath =  "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
+                       output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/amb2_vs_elev2_indiv_All_GeneIDs.txt")
+```
+
+

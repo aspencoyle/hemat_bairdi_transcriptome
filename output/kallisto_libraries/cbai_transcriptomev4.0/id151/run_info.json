@@ -1,0 +1,13 @@
+{
+	"n_targets": 88302,
+	"n_bootstraps": 0,
+	"n_processed": 33120063,
+	"n_pseudoaligned": 14618449,
+	"n_unique": 8544980,
+	"p_pseudoaligned": 44.1,
+	"p_unique": 25.8,
+	"kallisto_version": "0.44.0",
+	"index_version": 10,
+	"start_time": "Thu Mar 18 21:59:40 2021",
+	"call": "kallisto quant -i kallisto_cbai_index_v4.0.idx -o ../kallisto_libraries_cbai_transcriptomev4.0/id151 ../../data/libraries/151_R1_001.fastp-trim.202003180619.fq.gz ../../data/libraries/151_R2_001.fastp-trim.202003180619.fq.gz"
+}
