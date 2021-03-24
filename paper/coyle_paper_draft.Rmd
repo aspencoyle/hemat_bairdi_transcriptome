@@ -14,27 +14,30 @@ library("kableExtra")
 library("tidyverse")
 ```
 
-IMPORTANT: Much of my methods in this draft are based on Grace's wording for her paper's methods (since I'm using her samples, much of my method is hers). Check if this is OK or if it needs to be rewritten from scratch (or heavily rephrased). 
+
 
 
 ## Methods
 
 ### Collection
 
-400 male _C. bairdi_ were collected using crab pots from Stephen's Passage in southeastern Alaska in late October 2017. Collections were made by the Alaska Department of Fish and Game (ADF&G). Stephen's Passage was selected due a consistently high prevalence of _Hematodinium_, approximately 50% (ADF&G, unpub. data), and due to its proximity to Juneau, AK. Crab were transported to Ted Stevens Marine Research Institute (TSMRI, NOAA facility, Juneau, AK) within TK hours of capture. Upon arrival, they were placed in TK liter flow-through seawater tanks at 7.5°C - the benthic water temperature within Stephen's Passage at time of capture. 
+Between October TK and TK, 2017, TK male _C. bairdi_ were collected from Stephen's Passage in southeastern Alaska by the Alaska Department of Fish and Game (ADF&G). This site was selected due to its reliably high rate of _Hematodinium sp._ infection - approximately 50% (ADF&G, unpub. data). Crabs were caught using pots (TK: was this part of an ADFG survey?). Once collected, crabs were transported to the (TK: NOAA facility) within TK hours, and placed in flow-through seawater tanks (TK: assuming that's what was used) at 7.5°C - the benthic water temperature within Stephen's Passage at time of capture. 
 
-### Verification of Infection with _Hematodinium_
-200 µl of hemolymph was withdrawn from each individual and preserved in 800 µl 95% ethanol. 200 µl of the ethanol-preserved hemolymph was centrifuged, and the supernatant was discarded. The pelleted material was then air-dried. DNA was extracted using invertebrate lysis buffer and following Ivanova et al.(2006). Extraction proctocol was modified by performing two washes with Wash Buffer and adjusting eluted DNA (50 µl) to 10 mM Tris-CI, pH 8.0, and 0.1 mM EDTA. The extracted DNA was subjected to two rounds of PCR with two primer pairs designed for the small subunit (SSU) rRNA gene of _Hematodinium_ spp. - Univ-F-15 / Hemat-R-1654 (Gruebl et al. 2002), and Hemat 18Sf / Hemat 18Sr (Bower et al. 2004). Post-PCR, reaction aliquots were pooled and visualized on ethidium bromide-stained 2% agarose gels. Samples were scored as positive if both _Hematodinium_ spp. bands were visible on the gel, and scored as negative when neither fragment amplified. Samples where one band amplified were scored as indeterminate and (TK not selected for further analysis?).
+### Verification of Infection
 
-### Varying Temperature
-All crabs acclimated at 7.5&deg;C for nine days. 180 crabs were then [based off of conventional PCR results for Hemat infection] selected for temperature treatments. Crabs that did not appear to have recovered from capture stress were not selected. A 0.2 ml sample of hemolymph was taken from each selected crab and preserved in 1200 µl RNAlater.10 infected crabs were placed in each of six replicate tanks, along with 10 uninfected crabs. Over the course of two days (day 0 to day 2), the water temperature in three tanks was gradually elevated to 10&deg;C. In the remaining three tanks, water temperature was maintained at 7.5&deg;C. After two days (day 2), and at the conclusion of the temperature trial (day 17), another 0.2 ml of hemolymph was sampled and preserved in RNAlater for each surviving crab.
+To verify crabs were infected by _Hematodinium sp._, a TK ml aliquot of hemolymph was drawn from each crab and preserved in 800 µl 95% ethanol. 200 µl of that sample was centrifuged and pelleted. The pellet was then air-dried, and DNA was extracted with invertebrate lysis buffer. Extraction protocol followed a modified version of Ivanova et al.(2006), in which two washes with Wash Buffer were performed and eluted DNA (50 µl) was adjusted to 10 mM Tric-Cl, pH 8.0, and 0.1 mM EDTA. Once extracted, DNA was subjected to two rounds of cPCR with two primer pairs - Univ-F-15 / Hemat-R-1654 (Gruebl et al. 2002), and Hemat 18Sf / Hemat 18Sr (Bower et al. 2004). Both primer pairs are designed for the _Hematodinium spp._ small subunit (SSU) rRNA gene. After PCR, reaction aliquots were pooled and visualized on ethidium bromide-stained 2% agarose gels. If both _Hematodinium spp._ bands were visible on the gel, samples were scored as positive. If neither band was visible, samples were scored as negative. If one band amplified, samples were scored as indeterminate and (TK not selected for further analysis?)
 
-Day 17: Took 3 samples from all surviving crab, 6 samples for all surviving elevated-temperature crab
+### Temperature Variation
 
-TK: edit down methods to specify examining elev. vs amb.
+All crabs were acclimated to 7.5°C for nine days. 60 (TK) crabs were then selected based off cPCR results for temperature treatments and apparent recovery from capture stress. 0.2 ml of hemolymph was drawn from each selected crab and preserved in 1200 µl RNAlater. Crabs were divided randomly among six replicate tanks, with 10 crabs per tank. In three of the tanks, the water temperature was gradually raised to 10°C over a two-day period. In the three other tanks, water temperature was held at 7.5°C. At the end of the two-day acclimation period, another 0.2 ml hemolymph sample was taken from each crab and preserved in RNAlater. Following the conclusion of the experiment - 17 days after the acclimation period began - 3 samples of hemolymph were taken from each surviving crab in the ambient temperature treatment group, and 6 samples were taken from each surviving crab in the elevated temperature treatment group. The increased number of per-crab hemolymph samples in the elevated temperature treatment group was due to a mass mortality event between days 2 and 17 within that treatment group.
+
+TK: edit methods to specify examining elev vs amb
 
 ### RNA Extraction and Sequencing
-Hemolymph samples (n = TK) were centrifuged at 14000 g for 10 minutes. RNA was extracted with  Quick DNA/RNA Microprep Plus kit (Zymo Research) using the manufacturer's protocol. 2 µl samples were run on Qubit 3.0 using the Qubit RNA HS Kit (Invitrogen) to determine RNA quantification. Six infected crabs were selected based on RNA yield and infection severity as determined by qPCR - three from the elevated-temperature treatment group and three from the ambient-temperature treatment group.RNA was sent to the Northwest Genomics Center at Foege Hall at the University of Washington for library construction and sequencing. Libraries were created from all available samples of the selected crabs (Table 1). Due to a mass mortality event within those tanks, no libraries from day 17 are available for the elevated-temperature treatment group.
+
+TK hemolymph samples were centrifuged at 14000 g for 10 minutes. RNA was then extracted from the pellet (TK: did it pellet?) with Quick DNA/RNA Microprep Plus Kit (Zymo Research) using the manufacturer's protocol. To quantify RNA, 2 µl samples were then run on Qubit 3.0 with the Qubit RNA HS Kit (Invitrogen). Based on RNA yield and infection severity as determined by qPCR, six crabs were selected - three from the elevated-temperature treatment group and three from the ambient-temperature treatment group. All samples from these six crabs (Table 1) were sent to the Northwest Genomics Center at Foege Hall at the University of Washington for library construction and sequencing. Due to the mass mortality event in the elevated-temperature treatment groups, no libraries from Day 17 were available for these crabs.
+
+
 
 ```{r indiv_libraries, echo = FALSE}
 crabIDs <- c("A", "B", "C", "G", "H", "I")
@@ -50,6 +53,8 @@ colnames(lib_table) <- c("Crab ID", "Treatment group", "Day 0 sample ID", "Day 2
 knitr::kable(lib_table, caption = "Individual libraries of infected crab", align = "c")
 
 ```
+
+
 ### Transcriptome Assembly and Annotation
 TK. Grace's chapter describes Transcriptome 3.1. Looks similar except 3.1 has a filter - should check with Sam if Transcriptome 2.0 construction method matches. Also look at Sam's notebook posts.
 
