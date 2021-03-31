@@ -25,11 +25,13 @@ library(DEGreport)
 library(tidyverse)
 ```
 
-## DESeq Setup
+### DESeq Setup
 
-First, we'll turn the kallisto matrices from earlier into something ready for DESeq2 analysis. For this, we'll examine cbai_transcriptomev4.0, both elev day 0 vs. elev day 2 and amb day 2 vs elev day 2. Both these kallisto matrices were created in scripts 41 and 42
+First, we'll turn the kallisto matrices from earlier into something ready for DESeq2 analysis. For this, we'll examine cbai_transcriptomev4.0, both elev day 0 vs. elev day 2 and amb day 2 vs elev day 2. Both these kallisto matrices were created in scripts 31 and 41
 
-Our first analysis will examine **elevated day 0 vs. elevated day 2**
+Our first analysis will examine:
+
+## Bairdi Expression in Elevated Crab over Days 0 and 2
 
 
 
@@ -120,10 +122,305 @@ Now we'll use the DEGreport package to determine sets of genes with similar expr
 
 ```{r degreport}
 
-pdf(file = paste0(output_path, "/crabexpression.png"))
-degPatterns(res_rlog, metadata = exp_table, time="temp", col = "crab")
-plot(clusters)
+clusters <- degPatterns(res_rlog, metadata = exp_table, time="temp", col = "crab")
+
+plot(degPlotCluster(clusters$normalized, "temp", "crab"))
 
 ```
 
-clusters 
+Now we will continue with tracking our next set of crab
+
+### Bairdi Expression in Ambient Crab over Days 0, 2, and 17
+
+```{r deseq_variables2}
+# Path to kallisto matrix file
+kallisto_path <- "../output/kallisto_matrices/cbai_transcriptomev4.0/amb0_amb2_amb17_indiv/kallisto.isoform.counts.matrix"
+
+# Table containing treatment information. Order should match columns of kallisto matrix file
+exp_table <- data.frame(day = factor(c("0", "0", "0",
+                                          "2", "2", "2", "17", "17", "17")), 
+                               crab = factor(c("A", "B", "C", 
+                                               "A", "B", "C", "A", "B", "C")))
+# Path to output folder
+output_path <- "../graphs/DEGPatterns/cbai_transcriptomev4.0/amb0_amb2_amb17_indiv"
+
+# Variable of interest. Should match one of the factors in exp_table
+variable <- "day+crab"
+```
+
+Now that variables are set, we should be able to easily modify future inputs. We will continue on to turning our kallisto matrix into something DESeq2 will read
+
+``` {r deseq_formatting2}
+data <- read.table(kallisto_path, header = TRUE,
+                     sep = "\t")
+# Rename first column
+names(data)[1] <- "target_ID"
+  
+# Set row names equal to the first column
+rownames(data) <- data$target_ID
+  
+# Remove the now-irrelevant first column
+data <- data[,-1]
+
+# Make sure everything looks okay
+print(head(data))
+print(str(data))
+
+# Round counts to integers - needed for DESeqDataSetFromMatrix()
+data <- round(data, digits = 0)
+
+# Rename rows to correspond to library numbers
+rownames(exp_table) <- colnames(data)
+  
+# Check that experiment_table appears to match columns with matrix from Trinity
+print(exp_table)
+  
+# Create DESeq object that looks at effect of variable
+deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
+                                       colData = exp_table,
+                                       design = as.formula(paste0("~", variable)))
+
+```
+
+## Running DESeq
+
+Unlike in the test above, where we used the Wald test, we'll use the LRT test since we have three comparisons
+
+```{r running_DESeq2}
+# Perform test
+dds_lrt <- DESeq(deseq2.dds, test="LRT", reduced = ~crab)
+# Extract results
+res_lrt <- results(dds_lrt)
+
+# Subset results to return genes with padj < 0.05
+sig_res_lrt <- res_lrt %>%
+  data.frame() %>%
+  rownames_to_column(var="gene") %>%
+  as_tibble() %>%
+  filter(pvalue < 0.05)
+
+# See how many we have
+nrow(sig_res_lrt)
+
+# Transform counts for data visualization
+rld <- rlog(dds_lrt, blind = TRUE)
+
+# Extract rlog matrix from the object
+rld_mat <- assay(rld)
+
+# Obtain rlog values for those significant genes
+res_rlog <- rld_mat[sig_res_lrt$gene, ]
+```
+
+## DEGreport
+
+Now we'll use the DEGreport package to determine sets of genes with similar expression patterns
+
+
+```{r degreport2}
+
+clusters <- degPatterns(res_rlog, metadata = exp_table, time="day", col = "crab")
+
+plot(degPlotCluster(clusters$normalized, "day", "crab"))
+
+```
+
+
+Now, time for our third analysis - we're switching over from C. bairdi expression to Hematodinium expression
+
+## Hemat Expression in Elevated Crab over Days 0 and 2
+
+DISREGARD: Even after switching from padj to p-value, after filtering no genes passed the cutoff
+
+
+```{r deseq_variables3}
+# Path to kallisto matrix file
+kallisto_path <- "../output/kallisto_matrices/hemat_transcriptomev1.6/elev0_vs_elev2_indiv/kallisto.isoform.counts.matrix"
+
+# Table containing treatment information. Order should match columns of kallisto matrix file
+exp_table <- data.frame(temp = factor(c("amb", "amb", "amb",
+                                          "elev", "elev", "elev")), 
+                               crab = factor(c("G", "H", "I", 
+                                               "G", "H", "I")))
+# Path to output folder
+output_path <- "../graphs/DEGPatterns/hemat_transcriptomev1.6/elev0_vs_elev2_indiv"
+
+# Variable of interest. Should match one of the factors in exp_table
+variable <- "temp"
+```
+
+Now that variables are set, we should be able to easily modify future inputs. We will continue on to turning our kallisto matrix into something DESeq2 will read
+
+``` {r deseq_formatting3}
+data <- read.table(kallisto_path, header = TRUE,
+                     sep = "\t")
+# Rename first column
+names(data)[1] <- "target_ID"
+  
+# Set row names equal to the first column
+rownames(data) <- data$target_ID
+  
+# Remove the now-irrelevant first column
+data <- data[,-1]
+
+# Make sure everything looks okay
+print(head(data))
+print(str(data))
+
+# Round counts to integers - needed for DESeqDataSetFromMatrix()
+data <- round(data, digits = 0)
+
+# Rename rows to correspond to library numbers
+rownames(exp_table) <- colnames(data)
+  
+# Check that experiment_table appears to match columns with matrix from Trinity
+print(exp_table)
+  
+# Create DESeq object that looks at effect of variable
+deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
+                                       colData = exp_table,
+                                       design = as.formula(paste0("~", variable)))
+
+```
+
+## Running DESeq
+
+Unlike in the walkthrough, where the likelihood ratio test is used, we will use the default Wald test, as we just have a pairwise comparison
+
+```{r running_DESeq3}
+# Perform test
+dds_wald <- DESeq(deseq2.dds)
+# Extract results
+res_wald <- results(dds_wald)
+
+# Subset results to return genes with padj < 0.05
+sig_res_wald <- res_wald %>%
+  data.frame() %>%
+  rownames_to_column(var="gene") %>%
+  as_tibble() %>%
+  filter(pvalue < 0.05)
+
+# See how many we have
+nrow(sig_res_wald)
+
+# Transform counts for data visualization
+rld <- varianceStabilizingTransformation(dds_wald, blind = TRUE)
+
+# Extract rlog matrix from the object
+rld_mat <- assay(rld)
+
+# Obtain rlog values for those significant genes
+res_rlog <- rld_mat[sig_res_wald$gene, ]
+```
+
+## DEGreport
+
+Now we'll use the DEGreport package to determine sets of genes with similar expression patterns
+
+
+```{r degreport3}
+
+clusters <- degPatterns(res_rlog, metadata = exp_table, time="temp", col = "crab")
+
+plot(degPlotCluster(clusters$normalized, "temp", "crab"))
+
+```
+
+Now we will continue with our final analysis
+
+### Hemat Expression in Ambient Crab over Days 0, 2, and 17
+
+DISREGARD: Even after switching from padj to p-value, after filtering no genes passed the cutoff
+
+```{r deseq_variables2}
+# Path to kallisto matrix file
+kallisto_path <- "../output/kallisto_matrices/hemat_transcriptomev1.6/amb0_amb2_amb17_indiv/kallisto.isoform.counts.matrix"
+
+# Table containing treatment information. Order should match columns of kallisto matrix file
+exp_table <- data.frame(day = factor(c("0", "0", "0",
+                                          "2", "2", "2", "17", "17", "17")), 
+                               crab = factor(c("A", "B", "C", 
+                                               "A", "B", "C", "A", "B", "C")))
+# Path to output folder
+output_path <- "../graphs/DEGPatterns/cbai_transcriptomev4.0/amb0_amb2_amb17_indiv"
+
+# Variable of interest. Should match one of the factors in exp_table
+variable <- "day+crab"
+```
+
+Now that variables are set, we should be able to easily modify future inputs. We will continue on to turning our kallisto matrix into something DESeq2 will read
+
+``` {r deseq_formatting2}
+data <- read.table(kallisto_path, header = TRUE,
+                     sep = "\t")
+# Rename first column
+names(data)[1] <- "target_ID"
+  
+# Set row names equal to the first column
+rownames(data) <- data$target_ID
+  
+# Remove the now-irrelevant first column
+data <- data[,-1]
+
+# Make sure everything looks okay
+print(head(data))
+print(str(data))
+
+# Round counts to integers - needed for DESeqDataSetFromMatrix()
+data <- round(data, digits = 0)
+
+# Rename rows to correspond to library numbers
+rownames(exp_table) <- colnames(data)
+  
+# Check that experiment_table appears to match columns with matrix from Trinity
+print(exp_table)
+  
+# Create DESeq object that looks at effect of variable
+deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
+                                       colData = exp_table,
+                                       design = as.formula(paste0("~", variable)))
+
+```
+
+## Running DESeq
+
+Unlike in the test above, where we used the Wald test, we'll use the LRT test since we have three comparisons
+
+```{r running_DESeq2}
+# Perform test
+dds_lrt <- DESeq(deseq2.dds, test="LRT", reduced = ~crab)
+# Extract results
+res_lrt <- results(dds_lrt)
+
+# Subset results to return genes with padj < 0.05
+sig_res_lrt <- res_lrt %>%
+  data.frame() %>%
+  rownames_to_column(var="gene") %>%
+  as_tibble() %>%
+  filter(pvalue < 0.05)
+
+# See how many we have
+nrow(sig_res_lrt)
+
+# Transform counts for data visualization
+rld <- rlog(dds_lrt, blind = TRUE)
+
+# Extract rlog matrix from the object
+rld_mat <- assay(rld)
+
+# Obtain rlog values for those significant genes
+res_rlog <- rld_mat[sig_res_lrt$gene, ]
+```
+
+## DEGreport
+
+Now we'll use the DEGreport package to determine sets of genes with similar expression patterns
+
+
+```{r degreport2}
+
+clusters <- degPatterns(res_rlog, metadata = exp_table, time="day", col = "crab")
+
+plot(degPlotCluster(clusters$normalized, "day", "crab"))
+
+```
