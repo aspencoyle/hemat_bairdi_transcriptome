@@ -230,8 +230,7 @@ Now, time for our third analysis - we're switching over from C. bairdi expressio
 
 ## Hemat Expression in Elevated Crab over Days 0 and 2
 
-DISREGARD: Even after switching from padj to p-value, after filtering no genes passed the cutoff
-
+IMPORTANT: Rather than using only DEGs, we'll examine all genes with non-NA padj values, as we don't have enough sequences with a padj < 0.05 to graph
 
 ```{r deseq_variables3}
 # Path to kallisto matrix file
@@ -293,12 +292,12 @@ dds_wald <- DESeq(deseq2.dds)
 # Extract results
 res_wald <- results(dds_wald)
 
-# Subset results to return genes with padj < 0.05
+# Turn results to table, removing all NA values
 sig_res_wald <- res_wald %>%
   data.frame() %>%
   rownames_to_column(var="gene") %>%
   as_tibble() %>%
-  filter(pvalue < 0.05)
+  filter(padj < 1.01)
 
 # See how many we have
 nrow(sig_res_wald)
@@ -330,15 +329,15 @@ Now we will continue with our final analysis
 
 ### Hemat Expression in Ambient Crab over Days 0, 2, and 17
 
-DISREGARD: Even after switching from padj to p-value, after filtering no genes passed the cutoff
+IMPORTANT: Rather than using only DEGs, we'll examine all genes with non-NA padj values, as not enough sequences have a padj < 0.05
 
 ```{r deseq_variables2}
 # Path to kallisto matrix file
 kallisto_path <- "../output/kallisto_matrices/hemat_transcriptomev1.6/amb0_amb2_amb17_indiv/kallisto.isoform.counts.matrix"
 
 # Table containing treatment information. Order should match columns of kallisto matrix file
-exp_table <- data.frame(day = factor(c("0", "0", "0",
-                                          "2", "2", "2", "17", "17", "17")), 
+exp_table <- data.frame(day = factor(c("Day_0", "Day_0", "Day_0",
+                                          "Day_2", "Day_2", "Day_2", "Day_17", "Day_17", "Day_17")), 
                                crab = factor(c("A", "B", "C", 
                                                "A", "B", "C", "A", "B", "C")))
 # Path to output folder
@@ -397,7 +396,7 @@ sig_res_lrt <- res_lrt %>%
   data.frame() %>%
   rownames_to_column(var="gene") %>%
   as_tibble() %>%
-  filter(pvalue < 0.05)
+  filter(padj < 1.01)
 
 # See how many we have
 nrow(sig_res_lrt)
