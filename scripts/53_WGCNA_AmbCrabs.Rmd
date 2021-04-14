@@ -217,6 +217,8 @@ I chose to use an unsigned network, since the direction of correlation could be 
 
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
 
+## HIT A WALL HERE - CANNOT ALLOCATE ENOUGH MEMORY. RETRY AFTER FIGURING OUT MEMORY PROBLEM
+
 ```{r coexpression}
 softPower <- 9
 adjacency <- adjacency(CrabExpr0, power = softPower)
