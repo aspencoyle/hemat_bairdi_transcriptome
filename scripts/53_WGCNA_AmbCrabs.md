@@ -1,15 +1,13 @@
 ---
 title: "53_WGCNA_AmbCrabs"
 author: "Aidan Coyle"
-date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+date: "Last compiled on 2021-04-20"
 output: 
   html_document:
     keep_md: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.path = "../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30/")
-```
+
 
 
 ## Analysis of Ambient-Temperature Gene Expression using WGCNA
@@ -30,11 +28,8 @@ Again, script is based largely on [Yaamini's script](https://github.com/eimd-201
 
 We will first extract the TPM (transcripts per million) counts from the kallisto libraries created earlier in the pipeline. We will then change those to logTPM counts, and then begin the WGCNA analysis
 
-All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt,is not. This is a BLASTx annotation of cbai_transcriptome_v2.0.fasta (known by my notation as cbai_hemat_transcriptome_v2.0.fasta). Annotation description available [here](https://robertslab.github.io/sams-notebook/2020/05/02/Transcriptome-Assembly-C.bairdi-All-RNAseq-Data-Without-Taxonomic-Filters-with-Trinity-on-Mox.html), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20200508_cbai_diamond_blastx_transcriptome-v2.0/20200507.C_bairdi.Trinity.blastx.outfmt6), and [original transcriptome available here](https://owl.fish.washington.edu/halfshell/genomic-databank/cbai_transcriptome_v2.0.fasta), 
-md5sum: ace82a75cb947574ac807d868427253c
 
-
-```{r libraries, message = FALSE}
+```r
 library(tidyverse)
 library(WGCNA)
 library(DESeq2)
@@ -46,7 +41,8 @@ This portion of the script is based largely off 21_obtaining_TPM_for_DEGs.Rmd
 
 First, set all variables
 
-```{r TPMextract}
+
+```r
 # Path to kallisto libraries
 kallisto_path <- "../output/kallisto_libraries/cbaihemat_transcriptomev2.0/"
 
@@ -65,16 +61,15 @@ crabClinicalData <- data.frame("crab" = rep(c(1, 2, 3), times = 3),
                                    rep(2, times = 3),
                                    rep(17, times = 3)))
 
-# Start and ending we want for each file and graph saved. Should be same as fig.path in knitr header
-file_start <- "../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30/"
-
-# Location of blastx table
-blastx_table_site <- "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt"
+# Start and ending we want for each file and graph saved
+file_start <- "../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/"
+file_ending <- "OnlyCtsOver30"
 ```
 
 Then, we begin creating our TPM matrix for all transcripts
 
-```{r matrixcreation}
+
+```r
 # Create character vector with all filenames for our libraries
 kallisto_files <- paste0(kallisto_path, "id", libraries, "/abundance.tsv")
 
@@ -114,7 +109,8 @@ They also suggest a variance-stabilizing transformation or log-transforming the 
 
 We will change our data to fit both of these recommendations. After, we will transpose the data frame so samples are rows and transcripts are columns
 
-```{r rnaseqdataprep}
+
+```r
 # Create logical matrix for whole dataframe, comparing values to 10
 
 # Move transcript ID to rownames
@@ -123,14 +119,26 @@ TPMcounts <- TPMcounts %>%
 
 # Get initial dimensions of data frame
 dim(TPMcounts)
+```
 
+```
+## [1] 1412254       9
+```
+
+```r
 # Filter out all variables with no counts greater than 80. Should be 10, but testing if this works
 TPMcounts <- TPMcounts %>%
   filter_all(any_vars(. > 30))
 
 # See how many transcripts we have left
 dim(TPMcounts)
+```
 
+```
+## [1] 10719     9
+```
+
+```r
 # Round all counts to the nearest integer
 TPMcounts <- round(TPMcounts, digits = 0)
 
@@ -138,8 +146,41 @@ TPMcounts <- round(TPMcounts, digits = 0)
 crab.dds <- DESeqDataSetFromMatrix(countData = TPMcounts,
                                    colData = crabTraits,
                                    design = ~day)
-crab.dds <- DESeq(crab.dds)
+```
 
+```
+## converting counts to integer mode
+```
+
+```r
+crab.dds <- DESeq(crab.dds)
+```
+
+```
+## estimating size factors
+```
+
+```
+## estimating dispersions
+```
+
+```
+## gene-wise dispersion estimates
+```
+
+```
+## mean-dispersion relationship
+```
+
+```
+## final dispersion estimates
+```
+
+```
+## fitting model and testing
+```
+
+```r
 # Perform vst on DESeq object
 vsd <- getVarianceStabilizedData(crab.dds)
 
@@ -150,42 +191,93 @@ CrabExpr0 <- as.data.frame(t(vsd))
 dim(CrabExpr0)
 ```
 
+```
+## [1]     9 10719
+```
+
 We will now begin analysis with WGCNA. Our script is based largely on [Yaamini's WGCNA script](https://github.com/eimd-2019/project-EWD-transcriptomics/blob/master/analyses/WGCNA/WGCNA.md), which is based largely on [the WGCNA tutorial](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/)
 
 ### Check for Missing Values and Outliers
 
-```{r wgcna_missingvals}
+
+```r
 # Check for genes and samples with too many missing values
 
 gsg <- goodSamplesGenes(CrabExpr0, verbose = 3)
-gsg$allOK      # should return TRUE if all genes pass test
+```
 
+```
+##  Flagging genes and samples with too many missing values...
+##   ..step 1
+```
+
+```r
+gsg$allOK      # should return TRUE if all genes pass test
+```
+
+```
+## [1] TRUE
+```
+
+```r
 sampleTree <- hclust(dist(CrabExpr0), method = "average")
 ```
 
-```{r sample_tree}
+
+```r
 plot(sampleTree)
 ```
 
+![](../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30sample_tree-1.png)<!-- -->
+
 ### Create clinical trait data matrix
 
-```{r datatraitmatrix}
+
+```r
 # Print the crabTraits matrix we made earlier
 head(crabTraits)
+```
+
+```
+##   crab day
+## 1    A   0
+## 2    B   0
+## 3    C   0
+## 4    A   2
+## 5    B   2
+## 6    C   2
+```
+
+```r
 # Use same rownames as expression data to create analogous  matrix
 rownames(crabTraits) <- rownames(CrabExpr0)
 # Make sure it looks good
 head(crabTraits)
+```
 
+```
+##           crab day
+## id178_TPM    A   0
+## id118_TPM    B   0
+## id132_TPM    C   0
+## id359_TPM    A   2
+## id349_TPM    B   2
+## id334_TPM    C   2
+```
+
+```r
 # Create a dendrogram to look at sample and trait clustering
 sampleTree2 <- hclust(dist(CrabExpr0), method = "average")
 traitColors <- numbers2colors(crabClinicalData, signed = FALSE)
 ```
 
-```{r sample_dendrogram}
+
+```r
 plotDendroAndColors(sampleTree2, traitColors, 
                     groupLabels = names(crabTraits))
 ```
+
+![](../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30sample_dendrogram-1.png)<!-- -->
 
 ### Network Connection and Module Detection
 
@@ -193,16 +285,49 @@ plotDendroAndColors(sampleTree2, traitColors,
 
 #### Determine soft-thresholding power
 
-```{r softthresholding}
+
+```r
 # Create set of soft-thresholding powers
 powers <- c(c(1:10), seq(from = 12, to = 20, by = 2))
 # Use network topology analysis function to eval soft-thresholding power vals
 sft <- pickSoftThreshold(CrabExpr0, powerVector = powers, verbose = 5)
 ```
 
+```
+## pickSoftThreshold: will use block size 4173.
+##  pickSoftThreshold: calculating connectivity for given powers...
+##    ..working on genes 1 through 4173 of 10719
+```
+
+```
+## Warning: executing %dopar% sequentially: no parallel backend registered
+```
+
+```
+##    ..working on genes 4174 through 8346 of 10719
+##    ..working on genes 8347 through 10719 of 10719
+##    Power SFT.R.sq   slope truncated.R.sq mean.k. median.k. max.k.
+## 1      1  0.87600  1.8300        0.84400    5510      5540   7420
+## 2      2  0.64400  0.6450        0.54300    3620      3510   5740
+## 3      3  0.21300  0.2530       -0.00883    2660      2410   4720
+## 4      4  0.00657  0.0379       -0.24400    2090      1810   4030
+## 5      5  0.07930 -0.0976       -0.18400    1720      1600   3530
+## 6      6  0.27300 -0.1890        0.07030    1460      1480   3160
+## 7      7  0.41500 -0.2610        0.25700    1270      1290   2870
+## 8      8  0.41200 -0.3180        0.24400    1120      1100   2640
+## 9      9  0.45100 -0.3750        0.29600    1010       944   2450
+## 10    10  0.53800 -0.4250        0.41800     914       880   2280
+## 11    12  0.51300 -0.4710        0.37700     773       783   2010
+## 12    14  0.51600 -0.5360        0.38400     672       637   1810
+## 13    16  0.50400 -0.5960        0.36700     595       520   1640
+## 14    18  0.49700 -0.6260        0.35600     536       437   1490
+## 15    20  0.48800 -0.6330        0.34200     489       373   1370
+```
+
 #### Plot scale-free topology fit as function of soft-thresholding power
 
-```{r scale_free_topology_vs_soft_thresholding_power}
+
+```r
 plot(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
      xlab = "Soft Threshold (power)",
      ylab = "Scale Free Topology Model Fit, signed R^2",
@@ -214,9 +339,12 @@ text(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
                                col = "red")
 ```
 
+![](../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30scale_free_topology_vs_soft_thresholding_power-1.png)<!-- -->
+
 #### Plot mean connectivity as function of soft-thresholding power
 
-```{r mean_connectivity_vs_soft_thresholding_power}
+
+```r
 plot(sft$fitIndices[,1],sft$fitIndices[,5],
      xlab = "Soft Threshold (power)",
      ylab = "Mean Connectivity",
@@ -229,6 +357,8 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
      col = "red")
 ```
 
+![](../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30mean_connectivity_vs_soft_thresholding_power-1.png)<!-- -->
+
 Typically, we would choose the lowest power that reached an R2 value of 0.8 or higher. However, no soft-thresholding power was even close to reaching 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), this indicates the following:
 
 "If the scale-free topology fit index fails to reach values above 0.8 for reasonable powers (less than 15 for unsigned or signed hybrid networks, and less than 30 for signed networks) and the mean connectivity remains relatively high (in the hundreds or above) [note: which our data does], chances are that the data exhibit a strong driver that makes a subset of the samples globally different from the rest. The difference causes high correlation among large groups of genes which invalidates the assumption of the scale-free topology approximation."
@@ -238,13 +368,23 @@ I chose to use an unsigned network, since the direction of correlation could be 
 
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
 
-```{r coexpression}
+
+```r
 softPower <- 9
 adjacency <- adjacency(CrabExpr0, power = softPower)
 
 # Minimize noise and spurious associations by transforming adjacency into TOM
 TOM <- TOMsimilarity(adjacency)
+```
 
+```
+## ..connectivity..
+## ..matrix multiplication (system BLAS)..
+## ..normalization..
+## ..done.
+```
+
+```r
 #Calculate dissimilarity matrix
 dissTOM <- 1 - TOM
 
@@ -255,14 +395,18 @@ geneTree <- hclust(as.dist(dissTOM), method = "average")
 ```
 
 #### Plot initial dendrogram. Dissimilarity is based on topological overlap
-```{r gene_dendrogram}
+
+```r
 plot(geneTree, xlab = "", sub = "", 
      main = "Gene clustering on TOM-based dissimilarity",
      labels = FALSE,
      hang = 0.04)
 ```
 
-```{r min_module_size}
+![](../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30gene_dendrogram-1.png)<!-- -->
+
+
+```r
 # Set minimum module size, AKA num of genes that need to be in a module. Here, using WGCNA default
 minModuleSize <- 30
 # Cut branches of dendrogram to ID WGCNA modules
@@ -271,14 +415,33 @@ dynamicMods <- cutreeDynamic(dendro =  geneTree,
                              deepSplit = 2,
                              pamRespectsDendro = FALSE,
                              minClusterSize = minModuleSize)
+```
 
+```
+##  ..cutHeight not given, setting it to 0.979  ===>  99% of the (truncated) height range in dendro.
+##  ..done.
+```
+
+```r
 # Look at table of modules
 table(dynamicMods)
+```
+
+```
+## dynamicMods
+##    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16 
+## 2454 1889 1464 1197 1053  458  365  293  267  214  209  186  163  126  123  109 
+##   17   18 
+##  107   42
+```
+
+```r
 # Convert module numbers into colors
 dynamicColors <- labels2colors(dynamicMods)
 ```
 
-```{r gene_dendrogram_module_colors}
+
+```r
 # Plot dendrogram with module colors
 plotDendroAndColors(geneTree, dynamicColors, "Dynamic Tree Cut",
                     dendroLabels = FALSE,
@@ -288,11 +451,14 @@ plotDendroAndColors(geneTree, dynamicColors, "Dynamic Tree Cut",
                     main = "Gene dendrogram and module colors")
 ```
 
+![](../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30gene_dendrogram_module_colors-1.png)<!-- -->
+
 #### Merge modules with similar expression profiles
 
 Merging lets us combine modules with genes that are highly co-expressed. To do this, we can create and cluster eigengenes
 
-```{r modulemerge}
+
+```r
 # Calculate eigengenes
 MElist <- moduleEigengenes(CrabExpr0, colors = dynamicColors)
 # Save eigengenes as new object
@@ -303,30 +469,65 @@ MEDiss <- 1-cor(MEs)
 METree <- hclust(as.dist(MEDiss), method = "average")
 ```
 
-```{r clustered_eigengenes}
+
+```r
 # Plot dendrogram of clustered eigengenes
 plot(METree, main = "Clustering of module eigengenes",
      xlab = "",
      sub = "")
 # ID cut height based on sample number (3)
 dynamicMergeCut(9)
+```
 
+```
+## [1] 0.5278481
+```
+
+```r
 MEDissThres <- dynamicMergeCut(3)
+```
+
+```
+## Warning in function dynamicMergeCut: too few observations for the dynamic assignment of the merge threshold.
+##     Will set the threshold to .35
+```
+
+```r
 abline(h = MEDissThres, col = "red")
 ```
 
+![](../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30clustered_eigengenes-1.png)<!-- -->
 
-```{r merge_close_modules}
+
+
+```r
 merge <- mergeCloseModules(CrabExpr0, dynamicColors,
                            cutHeight = MEDissThres,
                            verbose = 3)
+```
 
+```
+##  mergeCloseModules: Merging modules whose distance is less than 0.35
+##    multiSetMEs: Calculating module MEs.
+##      Working on set 1 ...
+##      moduleEigengenes: Calculating 18 module eigengenes in given set.
+##    multiSetMEs: Calculating module MEs.
+##      Working on set 1 ...
+##      moduleEigengenes: Calculating 8 module eigengenes in given set.
+##    Calculating new MEs...
+##    multiSetMEs: Calculating module MEs.
+##      Working on set 1 ...
+##      moduleEigengenes: Calculating 8 module eigengenes in given set.
+```
+
+```r
 # Extract merged colors and eigengenes
 mergedColors <- merge$colors
 mergedMEs <- merge$newMEs
 ```
 
-```{r dendrogram_w_orig_and_merged_eigengenes}
+
+```r
 # Plot dendrogram with original and merged eigengenes
 plotDendroAndColors(geneTree, cbind(dynamicColors, mergedColors),
                     c("Dynamic Tree Cut", "Merged dynamic"),
@@ -336,7 +537,10 @@ plotDendroAndColors(geneTree, cbind(dynamicColors, mergedColors),
                     guideHang = 0.05)
 ```
 
-```{r save_merged_variables}
+![](../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30dendrogram_w_orig_and_merged_eigengenes-1.png)<!-- -->
+
+
+```r
 # Rename and save variables for subsequent analysis
 
 moduleColors <- mergedColors
@@ -347,7 +551,8 @@ MEs <- mergedMEs # Replace unmerged MEs
 
 ### Relate modules to external traits
 
-```{r module_trait_asscs}
+
+```r
 # Count the number of genes and samples
 nGenes <- ncol(CrabExpr0)
 nSamples <- nrow(CrabExpr0)
@@ -360,7 +565,21 @@ MEs <- orderMEs(MEs0)
 moduleTraitCor <- cor(MEs, crabClinicalData, use = "p")
 moduleTraitPvalue <- corPvalueStudent(moduleTraitCor, nSamples)
 moduleTraitPvalue
+```
 
+```
+##                     crab       day
+## MEmagenta    0.001994249 0.7876861
+## MEtan        0.911617610 0.2282640
+## MEblue       0.794952306 0.3448483
+## MElightcyan  0.040599761 0.3140314
+## MEcyan       0.646653210 0.8642174
+## MEyellow     0.757132492 0.6037052
+## MEbrown      0.253235959 0.2113560
+## MElightgreen 0.606465668 0.1904946
+```
+
+```r
 # Create text matrix for correlations and their p-values
 textMatrix <- paste(signif(moduleTraitCor, 2), "\n(",
                         signif(moduleTraitPvalue, 1), ")", sep = "")
@@ -369,7 +588,12 @@ textMatrix <- paste(signif(moduleTraitCor, 2), "\n(",
 dim(textMatrix) == dim(moduleTraitCor)
 ```
 
-```{r heatmap}
+```
+## logical(0)
+```
+
+
+```r
 # Create labeled heat map of correlation values from textMatrix. Red = positive correlation, blue = negative correlation
 par(mar = c(4, 8.5, 3, 3))
 labeledHeatmap(Matrix = moduleTraitCor,
@@ -385,11 +609,14 @@ labeledHeatmap(Matrix = moduleTraitCor,
                main = paste("Module-Treatment relationships"))
 ```
 
+![](../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30heatmap-1.png)<!-- -->
+
 ### Gene Significance and Module Membership
 
 Module membership info is needed for a possible downstream GO-MWU analysis. 
 
-``` {r gene_significance}
+
+```r
 # Define "day" using information from trait matrix
 day <- as.data.frame(crabClinicalData$day)
 # Modify names
@@ -405,14 +632,38 @@ geneTraitSignificance <- as.data.frame(cor(CrabExpr0, day, use = "p"))
 names(geneTraitSignificance) <- paste("GS.", names(day), sep = "")
 # Confirm formatting
 head(geneTraitSignificance)
+```
 
+```
+##                               GS.day
+## TRINITY_DN88421_c0_g1_i1  0.41194174
+## TRINITY_DN88415_c0_g1_i2  0.50522995
+## TRINITY_DN88474_c0_g1_i2 -0.28383361
+## TRINITY_DN88416_c0_g2_i1 -0.20194517
+## TRINITY_DN88416_c0_g2_i3 -0.20194517
+## TRINITY_DN88416_c0_g2_i2  0.03149722
+```
+
+```r
 # Obtain p-values for each gene significance stat
 GSPvalue <- as.data.frame(corPvalueStudent(as.matrix(geneTraitSignificance), nSamples))
 # Add column names
 names(GSPvalue) <- paste("p.GS", names(day), sep = "")
 # Confirm formatting
 head(GSPvalue)
+```
 
+```
+##                            p.GSday
+## TRINITY_DN88421_c0_g1_i1 0.2705973
+## TRINITY_DN88415_c0_g1_i2 0.1653257
+## TRINITY_DN88474_c0_g1_i2 0.4592039
+## TRINITY_DN88416_c0_g2_i1 0.6023267
+## TRINITY_DN88416_c0_g2_i3 0.6023267
+## TRINITY_DN88416_c0_g2_i2 0.9358874
+```
+
+```r
 # Determine module membership
 
 # Obtain gene module membership stats
@@ -421,7 +672,26 @@ geneModuleMembership <- as.data.frame(cor(CrabExpr0, MEs, use = "p"))
 names(geneModuleMembership) <- paste("MM", modNames, sep = "")
 # Confirm formatting
 head(geneModuleMembership)
+```
 
+```
+##                           MMmagenta      MMtan     MMblue MMlightcyan
+## TRINITY_DN88421_c0_g1_i1 -0.5204650 -0.3384469 -0.6107172  -0.3097530
+## TRINITY_DN88415_c0_g1_i2 -0.2486876 -0.4373686 -0.4277072  -0.3182513
+## TRINITY_DN88474_c0_g1_i2  0.3774789  0.4798011  0.9875122   0.6331593
+## TRINITY_DN88416_c0_g2_i1 -0.3235397 -0.2024963 -0.5581320  -0.2619714
+## TRINITY_DN88416_c0_g2_i3 -0.3235397 -0.2024963 -0.5581320  -0.2619714
+## TRINITY_DN88416_c0_g2_i2 -0.1722316 -0.3497127 -0.5808429  -0.4049623
+##                               MMcyan   MMyellow    MMbrown MMlightgreen
+## TRINITY_DN88421_c0_g1_i1  0.12337905  0.4499506  0.4694915    0.9651473
+## TRINITY_DN88415_c0_g1_i2 -0.46195190  0.4822038  0.5032324    0.7914412
+## TRINITY_DN88474_c0_g1_i2 -0.33850007 -0.5573664 -0.8523332   -0.6061232
+## TRINITY_DN88416_c0_g2_i1  0.01984216  0.9894469  0.4328087    0.5143004
+## TRINITY_DN88416_c0_g2_i3  0.01984216  0.9894469  0.4328087    0.5143004
+## TRINITY_DN88416_c0_g2_i2  0.14957545  0.8938700  0.4366963    0.3968507
+```
+
+```r
 # Obtain p-values for each module membership statistic
 MMPvalue <- as.data.frame(corPvalueStudent(as.matrix(geneModuleMembership), nSamples))
 # Add column names
@@ -430,39 +700,33 @@ names(MMPvalue) <- paste("p.MM", modNames, sep = "")
 head(MMPvalue)
 ```
 
+```
+##                          p.MMmagenta   p.MMtan     p.MMblue p.MMlightcyan
+## TRINITY_DN88421_c0_g1_i1   0.1508538 0.3729903 8.064760e-02    0.41727700
+## TRINITY_DN88415_c0_g1_i2   0.5187668 0.2390912 2.508179e-01    0.40392177
+## TRINITY_DN88474_c0_g1_i2   0.3165639 0.1911905 7.078760e-07    0.06718426
+## TRINITY_DN88416_c0_g2_i1   0.3957114 0.6013152 1.183534e-01    0.49590328
+## TRINITY_DN88416_c0_g2_i3   0.3957114 0.6013152 1.183534e-01    0.49590328
+## TRINITY_DN88416_c0_g2_i2   0.6576907 0.3562419 1.009892e-01    0.27960634
+##                           p.MMcyan   p.MMyellow   p.MMbrown p.MMlightgreen
+## TRINITY_DN88421_c0_g1_i1 0.7518209 2.242733e-01 0.202285304   2.515108e-05
+## TRINITY_DN88415_c0_g1_i2 0.2106206 1.886552e-01 0.167280120   1.104919e-02
+## TRINITY_DN88474_c0_g1_i2 0.3729104 1.189678e-01 0.003515383   8.359387e-02
+## TRINITY_DN88416_c0_g2_i1 0.9595911 3.934574e-07 0.244588262   1.566172e-01
+## TRINITY_DN88416_c0_g2_i3 0.9595911 3.934574e-07 0.244588262   1.566172e-01
+## TRINITY_DN88416_c0_g2_i2 0.7009114 1.154214e-03 0.239897510   2.902697e-01
+```
+
 ### Obtain gene lists - for each module, and a master list with membership and gene significance info
 
-```{r genelists}
+
+```r
 # Save gene names as probes
 probes <- names(CrabExpr0)
 # Write out the gene lists for each module of interest
 for (module in modNames) {
   modGenes <- (moduleColors == module) # Select module probes
   modLLIDs <- probes[modGenes] # Get gene IDs
-  fileName <- paste(file_start, "GeneList-", module, ".txt", sep = "") # Assign filename for each module
-  write.table(as.data.frame(modLLIDs), file = fileName, sep = "\t", row.names = FALSE, col.names = FALSE) # Write out files
+  fileName <- paste("GeneLi")
 }
-```
-
-#### Master list with membership and gene significance information
-
-```{r membership_and_gene_info}
-# Import gene annotation info
-crabGeneAnnot <- read.delim(blastx_table_site, header = FALSE, sep = "\t")
-# Remove unnecessary columns
-crabGeneAnnot <- crabGeneAnnot[, -c(3:10, 12)]
-# Name columns
-colnames(crabGeneAnnot) <- c("seqIDs", "Uniprot", "e-value")
-# Look at column formatting
-head(crabGeneAnnot)
-
-# If pipes in Uniprot ID column, separate to specifically get Uniprot ID, and then remove those new columns with species info
-gene_ids <- dplyr::pull(crabGeneAnnot, Uniprot)
-if(any(grepl("|", gene_ids, fixed = TRUE))) {
-  crabGeneAnnot <- separate(data = crabGeneAnnot, col = Uniprot, into = c("sp", "Uniprot", "Species"),
-                   sep = "\\|")
-  crabGeneAnnot <- crabGeneAnnot[,-c(2, 4)]
-}
-
-# Also get all GO terms
 ```
