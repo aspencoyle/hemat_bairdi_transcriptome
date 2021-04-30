@@ -124,7 +124,7 @@ TPMcounts <- TPMcounts %>%
 # Get initial dimensions of data frame
 dim(TPMcounts)
 
-# Filter out all variables with no counts greater than 80. Should be 10, but testing if this works
+# Filter out all variables with no counts greater than 30. Should be 10, but testing if this works
 TPMcounts <- TPMcounts %>%
   filter_all(any_vars(. > 30))
 
@@ -164,7 +164,10 @@ sampleTree <- hclust(dist(CrabExpr0), method = "average")
 ```
 
 ```{r sample_tree}
+path <- paste0(file_start, "ClusterDendrogram.png")
+png(path)
 plot(sampleTree)
+dev.off()
 ```
 
 ### Create clinical trait data matrix
@@ -183,8 +186,11 @@ traitColors <- numbers2colors(crabClinicalData, signed = FALSE)
 ```
 
 ```{r sample_dendrogram}
+path <- paste0(file_start, "ClusterDendrogram_W_Colors.png")
+png(path)
 plotDendroAndColors(sampleTree2, traitColors, 
                     groupLabels = names(crabTraits))
+dev.off()
 ```
 
 ### Network Connection and Module Detection
@@ -203,6 +209,8 @@ sft <- pickSoftThreshold(CrabExpr0, powerVector = powers, verbose = 5)
 #### Plot scale-free topology fit as function of soft-thresholding power
 
 ```{r scale_free_topology_vs_soft_thresholding_power}
+path <- paste0(file_start, "ScaleIndependence.png")
+png(path)
 plot(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
      xlab = "Soft Threshold (power)",
      ylab = "Scale Free Topology Model Fit, signed R^2",
@@ -212,11 +220,14 @@ text(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
                                labels = powers,
                                cex = 1,
                                col = "red")
+dev.off()
 ```
 
 #### Plot mean connectivity as function of soft-thresholding power
 
 ```{r mean_connectivity_vs_soft_thresholding_power}
+path <- paste0(file_start, "MeanConnectivity.png")
+png(path)
 plot(sft$fitIndices[,1],sft$fitIndices[,5],
      xlab = "Soft Threshold (power)",
      ylab = "Mean Connectivity",
@@ -227,6 +238,7 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
      labels = powers,
      cex = 1,
      col = "red")
+dev.off()
 ```
 
 Typically, we would choose the lowest power that reached an R2 value of 0.8 or higher. However, no soft-thresholding power was even close to reaching 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), this indicates the following:
@@ -256,10 +268,13 @@ geneTree <- hclust(as.dist(dissTOM), method = "average")
 
 #### Plot initial dendrogram. Dissimilarity is based on topological overlap
 ```{r gene_dendrogram}
+path <- paste0(file_start, "GeneDendrogram.png")
+png(path)
 plot(geneTree, xlab = "", sub = "", 
      main = "Gene clustering on TOM-based dissimilarity",
      labels = FALSE,
      hang = 0.04)
+dev.off()
 ```
 
 ```{r min_module_size}
@@ -279,6 +294,8 @@ dynamicColors <- labels2colors(dynamicMods)
 ```
 
 ```{r gene_dendrogram_module_colors}
+path <- paste0(file_start, "GeneDendrogramWColors")
+png(path)
 # Plot dendrogram with module colors
 plotDendroAndColors(geneTree, dynamicColors, "Dynamic Tree Cut",
                     dendroLabels = FALSE,
@@ -286,6 +303,7 @@ plotDendroAndColors(geneTree, dynamicColors, "Dynamic Tree Cut",
                     addGuide = TRUE,
                     guideHang = 0.05,
                     main = "Gene dendrogram and module colors")
+dev.off()
 ```
 
 #### Merge modules with similar expression profiles
@@ -304,6 +322,8 @@ METree <- hclust(as.dist(MEDiss), method = "average")
 ```
 
 ```{r clustered_eigengenes}
+path <- paste0(file_start, "ClusteredEigengenes.png")
+png(path)
 # Plot dendrogram of clustered eigengenes
 plot(METree, main = "Clustering of module eigengenes",
      xlab = "",
@@ -313,6 +333,7 @@ dynamicMergeCut(9)
 
 MEDissThres <- dynamicMergeCut(3)
 abline(h = MEDissThres, col = "red")
+dev.off()
 ```
 
 
@@ -327,6 +348,8 @@ mergedMEs <- merge$newMEs
 ```
 
 ```{r dendrogram_w_orig_and_merged_eigengenes}
+path <- paste0(file_start, "ClusterDendrogramOrigAndMergedEigengenes.png")
+png(path)
 # Plot dendrogram with original and merged eigengenes
 plotDendroAndColors(geneTree, cbind(dynamicColors, mergedColors),
                     c("Dynamic Tree Cut", "Merged dynamic"),
@@ -334,6 +357,7 @@ plotDendroAndColors(geneTree, cbind(dynamicColors, mergedColors),
                     hang = 0.03,
                     addGuide = TRUE,
                     guideHang = 0.05)
+dev.off()
 ```
 
 ```{r save_merged_variables}
@@ -371,6 +395,8 @@ dim(textMatrix) == dim(moduleTraitCor)
 
 ```{r heatmap}
 # Create labeled heat map of correlation values from textMatrix. Red = positive correlation, blue = negative correlation
+path <- paste0(file_start, "ModuleTreatmentHeatMap.png")
+png(path)
 par(mar = c(4, 8.5, 3, 3))
 labeledHeatmap(Matrix = moduleTraitCor,
                xLabels = names(crabTraits),
@@ -383,6 +409,7 @@ labeledHeatmap(Matrix = moduleTraitCor,
                cex.text = 0.5,
                zlim = c(-1, 1),
                main = paste("Module-Treatment relationships"))
+dev.off()
 ```
 
 ### Gene Significance and Module Membership
