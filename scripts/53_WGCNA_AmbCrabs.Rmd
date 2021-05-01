@@ -66,7 +66,7 @@ crabClinicalData <- data.frame("crab" = rep(c(1, 2, 3), times = 3),
                                    rep(17, times = 3)))
 
 # Start and ending we want for each file and graph saved. Should be same as fig.path in knitr header
-file_start <- "../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver30/"
+file_start <- "../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver10/"
 
 # Location of blastx table
 blastx_table_site <- "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt"
@@ -124,9 +124,12 @@ TPMcounts <- TPMcounts %>%
 # Get initial dimensions of data frame
 dim(TPMcounts)
 
-# Filter out all variables with no counts greater than 30. Should be 10, but testing if this works
+# Filter out all variables with no counts greater than 10
+# Get count of values >= 10 for each row
+row_sums_tpm <- rowSums(TPMcounts >= 10)
+# Filter rows without multiple rows with counts > 10
 TPMcounts <- TPMcounts %>%
-  filter_all(any_vars(. > 30))
+  filter(row_sums_tpm > 1)
 
 # See how many transcripts we have left
 dim(TPMcounts)
@@ -220,6 +223,7 @@ text(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
                                labels = powers,
                                cex = 1,
                                col = "red")
+abline(h=0.80, col = "black")
 dev.off()
 ```
 
@@ -241,7 +245,7 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
 dev.off()
 ```
 
-Typically, we would choose the lowest power that reached an R2 value of 0.8 or higher. However, no soft-thresholding power was even close to reaching 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), this indicates the following:
+Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. However, no eligible soft-thresholding power reached 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), this indicates the following:
 
 "If the scale-free topology fit index fails to reach values above 0.8 for reasonable powers (less than 15 for unsigned or signed hybrid networks, and less than 30 for signed networks) and the mean connectivity remains relatively high (in the hundreds or above) [note: which our data does], chances are that the data exhibit a strong driver that makes a subset of the samples globally different from the rest. The difference causes high correlation among large groups of genes which invalidates the assumption of the scale-free topology approximation."
 
@@ -294,7 +298,7 @@ dynamicColors <- labels2colors(dynamicMods)
 ```
 
 ```{r gene_dendrogram_module_colors}
-path <- paste0(file_start, "GeneDendrogramWColors")
+path <- paste0(file_start, "GeneDendrogramWColors.png")
 png(path)
 # Plot dendrogram with module colors
 plotDendroAndColors(geneTree, dynamicColors, "Dynamic Tree Cut",
