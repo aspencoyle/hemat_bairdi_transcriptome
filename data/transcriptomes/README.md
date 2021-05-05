@@ -4,7 +4,7 @@ Contact: Aidan Coyle, afcoyle@uw.edu
 
 Roberts Lab, UW-SAFS
 
-Last edited README: 2021-03-04
+Last edited README: 2021-05-05
 
 ## alveolata_transcriptome_v2.0.fasta
 
@@ -27,4 +27,19 @@ MD5: 01adbd54298495c147767b19ee5c0de9
 Index for cbai_hemat_transcritpome_v2.0.fasta. Available [here](https://owl.fish.washington.edu/halfshell/genomic-databank/cbai_transcriptome_v2.0.fasta.fai)
 
 MD5: 5a0841eb091d8555203942374f5aea61
+
+## cbai_transcriptome_v4.0.fasta
+
+Contains 2018/2019/2020-GW and 2020-UW libraries, produced by BLASTx against NCBI C. opilio genome. Transcriptome available [here](https://gannet.fish.washington.edu/Atumefaciens/20210317_cbai_trinity_RNAseq_transcriptome-v4.0/cbai_transcriptome_v4.0.fasta_trinity_out_dir/cbai_transcriptome_v4.0.fasta). Additional documentation available [on the Genomic Resources page](https://robertslab.github.io/resources/Genomic-Resources/)
+
+MD5: 6450d6f5650bfb5f910a5f42eef94913
+
+## hemat_transcriptome_v1.6.fasta
+
+Contains 2018/2019/2020-GW and 2020-UW libraries with Alveolata-only reads. Transcriptome available [here](https://gannet.fish.washington.edu/Atumefaciens/20210308_hemat_trinity_v1.6_v1.7/hemat_transcriptome_v1.6.fasta_trinity_out_dir/hemat_transcriptome_v1.6.fasta). Additional documentation available [on the Genomic Resources page](https://robertslab.github.io/resources/Genomic-Resources/) and [in Sam's notebook entry](https://robertslab.github.io/sams-notebook/2020/08/14/Transcriptome-Annotation-Hematodinium-Transcriptomes-v1.6-v1.7-v2.1-v3.1-with-DIAMOND-BLASTx-on-Mox.html)
+
+MD5: f9c8f96a49506e1810ff4004426160d8
+
+
+
 
