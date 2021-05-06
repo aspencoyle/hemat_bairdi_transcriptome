@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.path = "../output/WGCNA_output/AmbCrabs_c
 
 ## Analysis of Ambient-Temperature Gene Expression using WGCNA
 
-Now that we've completed a run through WGCNA (well, as much as possible with one crab) with a single crab (Crab A), we will scale up our run to include all individual libraries of ambient-temperature crabs over days 0, 2, and 17. 
+We will now run WGCNA on all individual libraries of ambient-temperature crabs over days 0, 2, and 17. 
 
 We will include transcripts from both C. bairdi and Hematodinium by using kallisto alignments to an unfiltered transcriptome (cbai_transcriptomev2.0, AKA cbaihemat_transcriptomev2.0)
 

@@ -1,0 +1,103 @@
+---
+title: "54 - Mapping Pink Module"
+author: "Aidan Coyle"
+date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+output: 
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Earlier, we ran WGCNA on all ambient-temperature individual libraries over days 0, 2, and 17 (all samples from crabs A, B, and C).
+
+All libraries were aligned to cbai_hemat_transcriptomev2.0, although we will re-run to align with other transcriptomes. This is more of a practice to get used to graphing specific WGCNA modules over time.
+
+Table of crabs and libraries included in analysis:
+
+| Crab ID | Treatment Group | Day 0 Sample ID | Day 2 Sample ID | Day 17 Sample ID |
+|---------|-----------------|-----------------|-----------------|------------------|
+| A       | ambient         | 178             | 359             | 463              |
+| B       | ambient         | 118             | 349             | 481              |
+| C       | ambient         | 132             | 334             | 485  
+
+
+```{r libraries, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+### Set up initial inputs to make script as easy to modify as possible
+```{r inputs}
+# Path to module - here, the pink module
+modulepath <- "../output/WGCNA_output/AmbCrabs_cbai_transcriptome_v2.0_trial/OnlyCtsOver10/GeneList-pink.txt"
+
+# Specify location of kallisto libraries included in module
+libpath <- "../output/kallisto_libraries/cbaihemat_transcriptomev2.0/"
+
+# Vector of all libraries included in module
+crablibs <- c(178, 359, 463, 118, 349, 481, 132, 334, 485)
+
+# Vector of variable of interest that corresponds to the libraries (should be in same order - if crablibs[3] is from Day 0, and your variable of interest is day, testedvar[3] should be 0)
+testedvar <- as.factor(c("Day_0", "Day_2", "Day_17", "Day_0", "Day_2", "Day_17", "Day_0", "Day_2", "Day_17"))
+
+```
+
+## Read in data, 
+
+```{r load_data}
+# Read in module data
+module <- read.delim(file = modulepath, header = FALSE)
+
+# Rename first column of module data
+names(module)[1] <- "Transcript_ID"
+
+# Create loop. In each loop, add transcripts per million (tpm) for each crab library
+for (i in 1:length(crablibs)) {
+  # Make filepath to the crab library
+  filepath <- paste0(libpath, "id", crablibs[i], "/abundance.tsv")
+  
+  # Read in library
+  crabdata <- read.delim(file = filepath, header = TRUE, sep = "\t")
+  
+  # Remove all columns except transcript ID and transcripts per million
+  crabdata <- crabdata[,c(1,5)]
+  
+  # Rename both columns
+  names(crabdata) <- c("Transcript_ID", paste0("id", crablibs[i]))
+  
+  # Left join TPM data to genes in module
+  module <- left_join(module, crabdata, by = "Transcript_ID")
+  
+}
+
+# Move transcript IDs into rownames
+rownames(module) <- module$Transcript_ID
+module <- module[,-1]
+```
+
+## Get data into graphable format
+
+At this point, we have a separate column for each library. Instead, we'll change this to a 
+
+```{r cleanup}
+
+# Rename module columns to correspond to levels of factor we're interested in 
+names(module) <- testedvar
+
+# Initialize data frame with a column of transcript IDs
+means <- data.frame(Transcript_IDs = rownames(module))
+
+# For each level of interest, take the mean of each TPM for each transcript ID and assign to a new column in means
+for (i in 1:nlevels(testedvar)) {
+  means[,(i+1)] <- rowMeans(module[, testedvar == testedvar[i]])
+}
+
+# Rename columns of means dataframe to correspond to each level of our factor of interest
+names(means) <- c("Transcript_ID", levels(testedvar))
+```
+
+## Alright, stopping point for now. Next step: graphing!
