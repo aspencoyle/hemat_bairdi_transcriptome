@@ -1,0 +1,162 @@
+---
+title: "62 - Mapping Pink Module"
+author: "Aidan Coyle"
+date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+output: 
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Earlier, we ran WGCNA on all ambient-temperature and elevated-temperature libraries over days 0, 2, and 17 (if applicable), tracking expression by day and by crab.
+
+WGCNA was ran on libraries aligned to three transcriptomes - cbai_transcriptomev2.0 (unfiltered, includes both C. bairdi and Hematodinium), cbai_transcriptomev4.0 (BLASTed against C. opilio genome, should include only C. bairdi sequences), and hemat_transcriptomev1.6 (BLASTed against Alveolata sequences, should include only Hematodinium sequences)
+
+
+Table of crabs and libraries included in analysis:
+
+| Crab ID | Treatment Group | Day 0 Sample ID | Day 2 Sample ID | Day 17 Sample ID |
+|---------|-----------------|-----------------|-----------------|------------------|
+| A       | ambient         | 178             | 359             | 463              |
+| B       | ambient         | 118             | 349             | 481              |
+| C       | ambient         | 132             | 334             | 485  
+
+And for elevated-temperature libraries:
+
+| Crab ID | Treatment Group  | Day 0 Sample ID | Day 2 Sample ID |
+|---------|------------------|-----------------|-----------------|
+| G       | elevated         | 173             | 272             |
+| H       | elevated         | 072             | 294             |
+| I       | elevated         | 127             | 280             |
+
+```{r libraries, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(reshape2)
+```
+
+### Set up initial inputs to make script as easy to modify as possible
+```{r inputs}
+# Path to directory containing modules
+modulepath <- "../output/WGCNA_output/hemat_transcriptome_v1.6/elev_crabs_no_filter/"
+
+# Specify location of kallisto libraries included in module
+libpath <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
+
+# Vector of all libraries included in module. If there are leading zeroes, put paste0("0", "[libnumber]") around those libraries
+crablibs <- (c(173, 272, paste0("0", "72"), 294, 127, 280))
+
+# Vector of variable of interest that corresponds to the libraries (should be in same order - if crablibs[3] is from Day 0, and your variable of interest is day, testedvar[3] should be 0)
+testedvar <- c(0, 2, 0, 2, 0, 2)
+
+crabids <- c("G", "G", "H", "H", "I", "I")
+
+# Variable - this will be present only in the graphs
+var <- "Day"
+```
+
+## Loop through module files in directory. For each, graph TPMs over time and log(TPM) over time
+
+```{r load_data}
+# Pull all files in folder containing modules
+modulefiles <- list.files(modulepath)
+
+# Select only files starting in GeneList- and ending in .txt
+modulefiles <- str_subset(modulefiles, "^GeneList-[a-z]")
+
+for (i in 1:length(modulefiles)) {
+  # Produce path to specific module file
+  moduleroute <- paste0(modulepath, modulefiles[i])
+  
+  # Each module filename will be something like GeneList-color.txt. Remove the GeneList- and .txt portions so we can write files more easily
+  outpath <- str_remove(modulefiles[i], "GeneList-")
+  outpath <- str_remove(outpath, ".txt")
+  
+  # Read in module data
+  module <- read.delim(file = moduleroute, header = FALSE)
+  
+  # Rename first column of module data
+  names(module)[1] <- "Transcript_ID"
+  
+  # Create inner loop. In each loop, add transcripts per million (tpm) for each crab library
+  for (i in 1:length(crablibs)) { 
+    # Make filepath to the crab library
+    filepath <- paste0(libpath, "id", crablibs[i],
+                       "/abundance.tsv")
+    
+    # Read in library
+    crabdata <- read.delim(file = filepath, header = TRUE, sep = "\t")
+    
+    # Remove all columns except transcript ID and transcripts per million
+    crabdata <- crabdata[,c(1,5)]
+    
+    # Rename both columns
+    names(crabdata) <- c("Transcript_ID", paste0("id", crablibs[i]))
+    
+    # Left join TPM data to genes in module
+    module <- left_join(module, crabdata, by = "Transcript_ID")
+    
+    # End of inner loop
+    
+    }
+   
+  # Move transcript IDs into rownames
+  rownames(module) <- module$Transcript_ID
+  module <- module[,-1]
+  
+  # Transpose dataframe
+  module <- as.data.frame(t(module))
+  
+  # Add column with our testedvar input
+  module$testedvar <- testedvar
+  
+  # Use melt to pivot the table longer
+  module <- melt(module, id = "testedvar")
+  
+  # Add column with crab IDs
+  module$crab <- rep(crabids)
+  
+  # Concatenate new column with transcript IDs and crab IDs so each crab-gene forms a single line over time
+  module$variable <- str_c(module$crab, "_", module$variable)
+  
+  # Use ggplot to graph non-log-transformed counts. NOTE: since we're inside a for loop, we need to explicitly print ggplot
+  path <- paste0(modulepath, outpath, "_module_TPM_graph.png")
+  png(path)
+  print(ggplot() +
+    geom_line(data = module, aes(x = testedvar,
+                                 y = value,
+                                 group = variable),
+              size = .001, color = "steelblue") +
+    xlab(var) +
+    ylab("Transcripts per million (TPM)"))
+  dev.off()
+  
+  # Use ggplot to graph again, this time transforming our TPM counts
+  path <- paste0(modulepath, outpath, "_module_log_TPM_graph.png")
+  png(path)
+  print(ggplot() +
+    geom_line(data = module, aes(x = testedvar,
+                                 y = log(value),
+                                 group = variable),
+              size = .001, color = "steelblue") +
+    xlab(var) +
+    ylab("Log-TPM"))
+  dev.off()
+  
+  # Use ggplot to graph a third time, just so it shows up in our knitted .Rmd file
+    print(ggplot() +
+    geom_line(data = module, aes(x = testedvar,
+                                 y = log(value),
+                                 group = variable),
+              size = .001, color = "steelblue") +
+    xlab(var) +
+    ylab("Log-TPM"))
+}
+
+
+```
+
