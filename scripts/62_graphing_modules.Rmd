@@ -40,12 +40,11 @@ library(reshape2)
 ```
 
 ### Set up initial inputs to make script as easy to modify as possible
-```{r inputs}
-# Path to directory containing modules
-modulepath <- "../output/WGCNA_output/hemat_transcriptome_v1.6/elev_crabs_no_filter/"
 
-# Specify location of kallisto libraries included in module
-libpath <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
+To prevent additional typing when switching from analyzing elevated to analyzing ambient, or vice-versa, here are the vectors for the following (can just copy-paste in the inputs block below). Be careful to also change inputs for modulepath!
+
+``` {r vectors, eval = FALSE}
+# Elevated Crabs
 
 # Vector of all libraries included in module. If there are leading zeroes, put paste0("0", "[libnumber]") around those libraries
 crablibs <- (c(173, 272, paste0("0", "72"), 294, 127, 280))
@@ -54,6 +53,35 @@ crablibs <- (c(173, 272, paste0("0", "72"), 294, 127, 280))
 testedvar <- c(0, 2, 0, 2, 0, 2)
 
 crabids <- c("G", "G", "H", "H", "I", "I")
+
+# Ambient Crabs
+
+# Vector of all libraries included in module. If there are leading zeroes, put paste0("0", "[libnumber]") around those libraries
+crablibs <- (c(178, 359, 463, 118, 349, 481, 132, 334, 485))
+
+# Vector of variable of interest that corresponds to the libraries (should be in same order - if crablibs[3] is from Day 0, and your variable of interest is day, testedvar[3] should be 0)
+testedvar <- c(0, 2, 17, 0, 2, 17, 0, 2, 17)
+
+crabids <- c("A", "A", "A", "B", "B", "B", "C", "C", "C")
+
+```
+
+
+When 
+```{r inputs}
+# Path to directory containing modules
+modulepath <- "../output/WGCNA_output/hemat_transcriptome_v1.6/amb_crabs_no_filter/"
+
+# Specify location of kallisto libraries included in module
+libpath <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
+
+# Vector of all libraries included in module. If there are leading zeroes, put paste0("0", "[libnumber]") around those libraries
+crablibs <- (c(178, 359, 463, 118, 349, 481, 132, 334, 485))
+
+# Vector of variable of interest that corresponds to the libraries (should be in same order - if crablibs[3] is from Day 0, and your variable of interest is day, testedvar[3] should be 0)
+testedvar <- c(0, 2, 17, 0, 2, 17, 0, 2, 17)
+
+crabids <- c("A", "A", "A", "B", "B", "B", "C", "C", "C")
 
 # Variable - this will be present only in the graphs
 var <- "Day"
@@ -65,7 +93,7 @@ var <- "Day"
 # Pull all files in folder containing modules
 modulefiles <- list.files(modulepath)
 
-# Select only files starting in GeneList- and ending in .txt
+# Select only files starting in GeneList
 modulefiles <- str_subset(modulefiles, "^GeneList-[a-z]")
 
 for (i in 1:length(modulefiles)) {
@@ -124,37 +152,54 @@ for (i in 1:length(modulefiles)) {
   module$variable <- str_c(module$crab, "_", module$variable)
   
   # Use ggplot to graph non-log-transformed counts. NOTE: since we're inside a for loop, we need to explicitly print ggplot
-  path <- paste0(modulepath, outpath, "_module_TPM_graph.png")
+  path <- paste0(modulepath, outpath, "_module_TPM_graph_crab_colors_short_yaxis.png")
   png(path)
   print(ggplot() +
     geom_line(data = module, aes(x = testedvar,
                                  y = value,
-                                 group = variable),
-              size = .001, color = "steelblue") +
+                                 group = variable,
+                                 color = crab),
+              size = .001) +
     xlab(var) +
-    ylab("Transcripts per million (TPM)"))
+    ylab("Transcripts per million (TPM)")) +
+    coord_cartesian(ylim = c(0,1500))
   dev.off()
   
-  # Use ggplot to graph again, this time transforming our TPM counts
-  path <- paste0(modulepath, outpath, "_module_log_TPM_graph.png")
+  # Use ggplot to graph again, this time log transforming our TPM counts
+  path <- paste0(modulepath, outpath, "_module_log_TPM_graph_crab_colors.png")
   png(path)
   print(ggplot() +
     geom_line(data = module, aes(x = testedvar,
                                  y = log(value),
-                                 group = variable),
-              size = .001, color = "steelblue") +
+                                 group = variable,
+                                 color = crab),
+              size = .001) +
     xlab(var) +
     ylab("Log-TPM"))
   dev.off()
   
-  # Use ggplot to graph a third time, just so it shows up in our knitted .Rmd file
-    print(ggplot() +
+  # Use ggplot to graph both again, just so it shows up in our knitted .Rmd file
+  print(ggplot() +
+    geom_line(data = module, aes(x = testedvar,
+                                 y = value,
+                                 group = variable,
+                                 color = crab),
+              size = .001) +
+    xlab(var) +
+    ylab("Transcripts per million (TPM)")) +
+    ylim(0, 1500)    
+  
+  
+  
+  print(ggplot() +
     geom_line(data = module, aes(x = testedvar,
                                  y = log(value),
-                                 group = variable),
-              size = .001, color = "steelblue") +
+                                 group = variable,
+                                 color = crab),
+              size = .001) +
     xlab(var) +
-    ylab("Log-TPM"))
+    ylab("Log-TPM") +
+    ylim(0, 1500))
 }
 
 
