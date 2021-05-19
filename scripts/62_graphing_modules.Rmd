@@ -67,21 +67,20 @@ crabids <- c("A", "A", "A", "B", "B", "B", "C", "C", "C")
 ```
 
 
-When 
 ```{r inputs}
 # Path to directory containing modules
-modulepath <- "../output/WGCNA_output/hemat_transcriptome_v1.6/amb_crabs_no_filter/"
+modulepath <- "../output/WGCNA_output/hemat_transcriptome_v1.6/elev_crabs_no_filter/"
 
 # Specify location of kallisto libraries included in module
 libpath <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
 
 # Vector of all libraries included in module. If there are leading zeroes, put paste0("0", "[libnumber]") around those libraries
-crablibs <- (c(178, 359, 463, 118, 349, 481, 132, 334, 485))
+crablibs <- (c(173, 272, paste0("0", "72"), 294, 127, 280))
 
 # Vector of variable of interest that corresponds to the libraries (should be in same order - if crablibs[3] is from Day 0, and your variable of interest is day, testedvar[3] should be 0)
-testedvar <- c(0, 2, 17, 0, 2, 17, 0, 2, 17)
+testedvar <- c(0, 2, 0, 2, 0, 2)
 
-crabids <- c("A", "A", "A", "B", "B", "B", "C", "C", "C")
+crabids <- c("G", "G", "H", "H", "I", "I")
 
 # Variable - this will be present only in the graphs
 var <- "Day"
@@ -161,8 +160,8 @@ for (i in 1:length(modulefiles)) {
                                  color = crab),
               size = .001) +
     xlab(var) +
-    ylab("Transcripts per million (TPM)")) +
-    coord_cartesian(ylim = c(0,1500))
+    ylab("Transcripts per million (TPM)") +
+    coord_cartesian(ylim = c(0,100)))
   dev.off()
   
   # Use ggplot to graph again, this time log transforming our TPM counts
@@ -193,13 +192,13 @@ for (i in 1:length(modulefiles)) {
   
   print(ggplot() +
     geom_line(data = module, aes(x = testedvar,
-                                 y = log(value),
+                                 y = value,
                                  group = variable,
                                  color = crab),
               size = .001) +
     xlab(var) +
-    ylab("Log-TPM") +
-    ylim(0, 1500))
+    ylab("Transcripts per million (TPM)") +
+    coord_cartesian(ylim = c(0,100)))
 }
 
 

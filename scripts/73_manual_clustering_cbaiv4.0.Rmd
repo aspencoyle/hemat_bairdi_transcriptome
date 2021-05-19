@@ -1,0 +1,979 @@
+---
+title: "73_manual_clustering_cbaiv4.0"
+author: "Aidan Coyle"
+date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This script is based off a script Laura Spencer wrote to take single-crab libraries and separate them into modules over time.
+
+Inputs are libraries pseudoaligned (with kallisto) with cbai_transcriptomev4.0, which is filtered to contain only sequences presumed to be C. bairdi
+
+Original script is available in [Lab Github Discussion 1206](https://github.com/RobertsLab/resources/discussions/1206)
+
+## Load libraries, install all required new libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+# Add all required libraries here
+list.of.packages <- c("pheatmap", "tidyverse")
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+```
+
+## Set our inputs
+
+```{r}
+# Give IDs for all libraries for ambient-temperature crab. All these are infected crab.
+crabA_libs <- c("178", "359", "463")
+crabB_libs <- c("118", "349", "481")
+crabC_libs <- c("132", "334", "485")
+# For the sake of completeness, also giving IDs for all libraries for decreased-temperature crab. D and F are uninfected, E is infected. E and F libraries were only created using cbai_transcriptomev4.0 (since they are libraries of uninfected crab, a transcriptome of only C. bairdi genes is the only one used for alignment). When getting TPMs for libraries aligned to other transcriptomes, comment them out.
+crabD_libs <- c("073", "221", "427")
+crabE_libs <- c("151", "254", "445")
+crabF_libs <- c("113", "222", "425")
+# Give IDs for all libraries for elevated-temperature crab. Note: again, we have no libraries on Day 17 for these crabs
+crabG_libs <- c("173", "272")
+crabH_libs <- c("072", "294")
+crabI_libs <- c("127", "280")
+
+# Vector of crab IDs (all that aren't commented out above)
+crabs <- c("A", "B", "C", "D", "E", "F", "G", "H", "I")
+
+# Create a list of all crabs that aren't commented out above
+
+crabIDs <- list(crabA_libs, crabB_libs, crabC_libs, crabD_libs, crabE_libs, crabF_libs, crabG_libs, crabH_libs, crabI_libs)
+
+# Set path to location of kallisto libraries
+libpath <- "../output/kallisto_libraries/cbai_transcriptomev4.0/"
+
+# Set path to TPM output folder
+TPM_outpath <- "../output/TPM_counts/cbai_transcriptomev4.0/"
+
+# Set path to general heatmap output folder
+heatmap_output <- "../output/manual_clustering/cbai_transcriptomev4.0/"
+
+```
+### Assemble TPM counts for each crab
+
+Loop through all crabs and all libraries within each crab, assembling the TPM counts from the abundance.tsv files to create files containing counts for each crab over time
+
+```{r}
+for (i in 1:length(crabIDs)) {
+  # Create character vector with all filenames for our libraries
+  crabfiles <- paste0(libpath, "id", crabIDs[[i]], "/abundance.tsv")
+  
+  # Read in first kallisto library to start data frame
+  TPMcts <- read.delim(file = crabfiles[1],
+                       header = TRUE,
+                       sep = "\t")
+  
+  # Eliminate all columns except transcript ID and TPM
+  TPMcts <- TPMcts %>%
+    select(target_id, tpm)
+  
+  # Rename columns for consistency and to ID TPM counts
+  colnames(TPMcts) <- c("Transcript_ID",
+                        paste0("id",
+                               crabIDs[[i]][1],
+                               "_TPM"))
+  
+  # Loop through remaining libraries and create file of TPMs over time
+  for (j in 2:length(crabIDs[[i]])) {
+    kallisto_output <- read.delim(file = crabfiles[j],
+                                  header = TRUE,
+                                  sep = "\t")
+    # Select only transcript ID and TPM columns
+    kallisto_output <- kallisto_output %>%
+      select(target_id, tpm)
+    
+    # Rename column names to give ID to count column
+    colnames(kallisto_output) <- c("Transcript_ID", 
+                                   paste0("id",
+                                          crabIDs[[i]][j],
+                                          "_TPM"))
+    # Add TPM value to table of DEGs with full join
+    TPMcts <- full_join(TPMcts, kallisto_output, 
+                        by = "Transcript_ID")
+  }
+  
+  # Write results to file
+  write.table(TPMcts, file = paste0(TPM_outpath,
+                                    "Crab_", 
+                                    crabs[i],
+                                    "_TPMcts.txt"),
+              sep = "\t",
+              row.names = FALSE)
+}
+```
+
+
+### Create heat maps for each crab
+
+IMPORTANT: When running this, you will need to determine the number of clusters to split, and then designate the clusters as low/med/high expression on each day (shorthand: LMH)
+
+### Crab A
+
+```{r CrabA}
+# Set path to output folder that will contain all heatmaps and text files for Crab A
+crab_out <- paste0(heatmap_output, "Crab_A/")
+
+# Read in data
+crabdat <- read.delim(file = paste0(TPM_outpath,
+                                    "Crab_", 
+                                    crabs[1],
+                                    "_TPMcts.txt"),
+                   row.names = 1)
+
+# Drop any genes with less than 5 counts across all 3 samples
+keep <- rowSums(crabdat) >= 5
+f.crabdat <- crabdat[keep, ]
+
+print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+
+print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
+  
+# Construct heat map
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+
+# Plot again to save in our file
+png(paste0(crab_out, "heatmap.png"))
+
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+dev.off()
+
+
+# SPECIFY NUMBER OF CLUSTERS
+clusters <- 5
+
+
+# Extract gene clusters
+out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+                show_rownames = FALSE,
+                na.rm = TRUE,
+                cluster_cols = FALSE,
+                scale = "row",
+                main = "gene counts by day",
+                fontsize = 9)
+hc <- out$tree_row
+lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
+
+# Loop through gene clusters, printing heatmap for each
+for (i in 1:clusters) {
+  clust <- f.crabdat[which(lbl==i) %>% names(), ]
+  # Write results to table
+  write.table(clust, file = paste0(crab_out,
+                                   "cluster_",
+                                   i, ".txt"),
+              sep = "\t",
+              row.names = TRUE)
+  # Create heat map for each cluster
+  png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+  
+  print(pheatmap(clust, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = paste0("gene counts by day, cluster ", i),
+           fontsize = 9))
+  dev.off()
+}
+
+# Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
+clustorder <- c("MHL", "HML", "LLH", "LHM", "HLL")
+
+# See if any duplicates are present in our clusters
+any(duplicated(clustorder))
+
+# Rename all heatmaps to include the cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
+            paste0(crab_out, "cluster_", clustorder, "_heatmap.png"))
+
+# Rename all cluster filenames to include cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*\\.txt")),
+            paste0(crab_out, "cluster_",
+                   clustorder, ".txt"))
+```
+
+## Crab B
+
+```{r CrabB}
+# Set path to output folder that will contain all heatmaps and text files for Crab B
+crab_out <- paste0(heatmap_output, "Crab_B/")
+
+# Read in data
+crabdat <- read.delim(file = paste0(TPM_outpath,
+                                    "Crab_", 
+                                    crabs[2],
+                                    "_TPMcts.txt"),
+                   row.names = 1)
+
+# Drop any genes with less than 5 counts across all 3 samples
+keep <- rowSums(crabdat) >= 5
+f.crabdat <- crabdat[keep, ]
+
+print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+
+print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
+  
+# Construct heat map
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+
+# Plot again to save in our file
+png(paste0(crab_out, "heatmap.png"))
+
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+dev.off()
+
+# SPECIFY NUMBER OF CLUSTERS
+clusters <- 5
+
+# Extract gene clusters
+out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+                show_rownames = FALSE,
+                na.rm = TRUE,
+                cluster_cols = FALSE,
+                scale = "row",
+                main = "gene counts by day",
+                fontsize = 9)
+hc <- out$tree_row
+lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
+
+# Loop through gene clusters, printing heatmap for each
+for (i in 1:clusters) {
+  clust <- f.crabdat[which(lbl==i) %>% names(), ]
+  # Write results to table
+  write.table(clust, file = paste0(crab_out,
+                                   "cluster_",
+                                   i, ".txt"),
+              sep = "\t",
+              row.names = TRUE)
+  # Create heat map for each cluster
+  png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+  
+  print(pheatmap(clust, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = paste0("gene counts by day, cluster ", i),
+           fontsize = 9))
+  dev.off()
+}
+
+# Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
+clustorder <- c("LHM", "MLH", "HLM", "LHL", "HML")
+
+# See if any duplicates are present in our clusters
+any(duplicated(clustorder))
+
+# Rename all heatmaps to include the cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
+            paste0(crab_out, "cluster_", clustorder, "_heatmap.png"))
+
+# Rename all cluster filenames to include cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*\\.txt")),
+            paste0(crab_out, "cluster_",
+                   clustorder, ".txt"))
+```
+
+
+## Crab C
+
+```{r CrabC}
+# Set path to output folder that will contain all heatmaps and text files for Crab C
+crab_out <- paste0(heatmap_output, "Crab_C/")
+
+# Read in data
+crabdat <- read.delim(file = paste0(TPM_outpath,
+                                    "Crab_", 
+                                    crabs[3],
+                                    "_TPMcts.txt"),
+                   row.names = 1)
+
+# Drop any genes with less than 5 counts across all 3 samples
+keep <- rowSums(crabdat) >= 5
+f.crabdat <- crabdat[keep, ]
+
+print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+
+print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
+  
+# Construct heat map
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+
+# Plot again to save in our file
+png(paste0(crab_out, "heatmap.png"))
+
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+dev.off()
+
+# SPECIFY NUMBER OF CLUSTERS
+clusters <- 4
+
+# Extract gene clusters
+out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+                show_rownames = FALSE,
+                na.rm = TRUE,
+                cluster_cols = FALSE,
+                scale = "row",
+                main = "gene counts by day",
+                fontsize = 9)
+hc <- out$tree_row
+lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
+
+# Loop through gene clusters, printing heatmap for each
+for (i in 1:clusters) {
+  clust <- f.crabdat[which(lbl==i) %>% names(), ]
+  # Write results to table
+  write.table(clust, file = paste0(crab_out,
+                                   "cluster_",
+                                   i, ".txt"),
+              sep = "\t",
+              row.names = TRUE)
+  # Create heat map for each cluster
+  png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+  
+  print(pheatmap(clust, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = paste0("gene counts by day, cluster ", i),
+           fontsize = 9))
+  dev.off()
+}
+
+# Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
+clustorder <- c("HLL", "MHL", "MLH", "HLH", "LHM")
+
+# See if any duplicates are present in our clusters
+any(duplicated(clustorder))
+
+# Rename all heatmaps to include the cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
+            paste0(crab_out, "cluster_", clustorder, "_heatmap.png"))
+
+# Rename all cluster filenames to include cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*\\.txt")),
+            paste0(crab_out, "cluster_",
+                   clustorder, ".txt"))
+```
+
+
+
+## Crab D
+
+```{r CrabD}
+# Set path to output folder that will contain all heatmaps and text files for Crab D
+crab_out <- paste0(heatmap_output, "Crab_D/")
+
+# Read in data
+crabdat <- read.delim(file = paste0(TPM_outpath,
+                                    "Crab_", 
+                                    crabs[4],
+                                    "_TPMcts.txt"),
+                   row.names = 1)
+
+# Drop any genes with less than 5 counts across all 3 samples
+keep <- rowSums(crabdat) >= 5
+f.crabdat <- crabdat[keep, ]
+
+print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+
+print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
+  
+# Construct heat map
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+
+# Plot again to save in our file
+png(paste0(crab_out, "heatmap.png"))
+
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+dev.off()
+
+# SPECIFY NUMBER OF CLUSTERS
+clusters <- 3
+
+# Extract gene clusters
+out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+                show_rownames = FALSE,
+                na.rm = TRUE,
+                cluster_cols = FALSE,
+                scale = "row",
+                main = "gene counts by day",
+                fontsize = 9)
+hc <- out$tree_row
+lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
+
+# Loop through gene clusters, printing heatmap for each
+for (i in 1:clusters) {
+  clust <- f.crabdat[which(lbl==i) %>% names(), ]
+  # Write results to table
+  write.table(clust, file = paste0(crab_out,
+                                   "cluster_",
+                                   i, ".txt"),
+              sep = "\t",
+              row.names = TRUE)
+  # Create heat map for each cluster
+  png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+  
+  print(pheatmap(clust, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = paste0("gene counts by day, cluster ", i),
+           fontsize = 9))
+  dev.off()
+}
+
+# Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
+clustorder <- c("LLH", "LHL", "HLM")
+
+# See if any duplicates are present in our clusters
+any(duplicated(clustorder))
+
+# Rename all heatmaps to include the cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
+            paste0(crab_out, "cluster_", clustorder, "_heatmap.png"))
+
+# Rename all cluster filenames to include cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*\\.txt")),
+            paste0(crab_out, "cluster_",
+                   clustorder, ".txt"))
+```
+
+## Crab E
+
+```{r CrabE}
+# Set path to output folder that will contain all heatmaps and text files for Crab C
+crab_out <- paste0(heatmap_output, "Crab_E/")
+
+# Read in data
+crabdat <- read.delim(file = paste0(TPM_outpath,
+                                    "Crab_", 
+                                    crabs[5],
+                                    "_TPMcts.txt"),
+                   row.names = 1)
+
+# Drop any genes with less than 5 counts across all 3 samples
+keep <- rowSums(crabdat) >= 5
+f.crabdat <- crabdat[keep, ]
+
+print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+
+print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
+  
+# Construct heat map
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+
+# Plot again to save in our file
+png(paste0(crab_out, "heatmap.png"))
+
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+dev.off()
+
+# SPECIFY NUMBER OF CLUSTERS
+clusters <- 5
+
+# Extract gene clusters
+out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+                show_rownames = FALSE,
+                na.rm = TRUE,
+                cluster_cols = FALSE,
+                scale = "row",
+                main = "gene counts by day",
+                fontsize = 9)
+hc <- out$tree_row
+lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
+
+# Loop through gene clusters, printing heatmap for each
+for (i in 1:clusters) {
+  clust <- f.crabdat[which(lbl==i) %>% names(), ]
+  # Write results to table
+  write.table(clust, file = paste0(crab_out,
+                                   "cluster_",
+                                   i, ".txt"),
+              sep = "\t",
+              row.names = TRUE)
+  # Create heat map for each cluster
+  png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+  
+  print(pheatmap(clust, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = paste0("gene counts by day, cluster ", i),
+           fontsize = 9))
+  dev.off()
+}
+
+# Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
+clustorder <- c("MHL", "MLH", "HML", "LMH", "HLM")
+
+# See if any duplicates are present in our clusters
+any(duplicated(clustorder))
+
+# Rename all heatmaps to include the cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
+            paste0(crab_out, "cluster_", clustorder, "_heatmap.png"))
+
+# Rename all cluster filenames to include cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*\\.txt")),
+            paste0(crab_out, "cluster_",
+                   clustorder, ".txt"))
+```
+
+## Crab F
+
+```{r CrabF}
+# Set path to output folder that will contain all heatmaps and text files for Crab F
+crab_out <- paste0(heatmap_output, "Crab_F/")
+
+# Read in data
+crabdat <- read.delim(file = paste0(TPM_outpath,
+                                    "Crab_", 
+                                    crabs[6],
+                                    "_TPMcts.txt"),
+                   row.names = 1)
+
+# Drop any genes with less than 5 counts across all 3 samples
+keep <- rowSums(crabdat) >= 5
+f.crabdat <- crabdat[keep, ]
+
+print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+
+print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
+  
+# Construct heat map
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+
+# Plot again to save in our file
+png(paste0(crab_out, "heatmap.png"))
+
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+dev.off()
+
+# SPECIFY NUMBER OF CLUSTERS
+clusters <- 5
+
+# Extract gene clusters
+out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+                show_rownames = FALSE,
+                na.rm = TRUE,
+                cluster_cols = FALSE,
+                scale = "row",
+                main = "gene counts by day",
+                fontsize = 9)
+hc <- out$tree_row
+lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
+
+# Loop through gene clusters, printing heatmap for each
+for (i in 1:clusters) {
+  clust <- f.crabdat[which(lbl==i) %>% names(), ]
+  # Write results to table
+  write.table(clust, file = paste0(crab_out,
+                                   "cluster_",
+                                   i, ".txt"),
+              sep = "\t",
+              row.names = TRUE)
+  # Create heat map for each cluster
+  png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+  
+  print(pheatmap(clust, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = paste0("gene counts by day, cluster ", i),
+           fontsize = 9))
+  dev.off()
+}
+
+# Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
+clustorder <- c("LHH", "HML", "MHM", "HLL", "LMH")
+
+# See if any duplicates are present in our clusters
+any(duplicated(clustorder))
+
+# Rename all heatmaps to include the cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
+            paste0(crab_out, "cluster_", clustorder, "_heatmap.png"))
+
+# Rename all cluster filenames to include cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*\\.txt")),
+            paste0(crab_out, "cluster_",
+                   clustorder, ".txt"))
+```
+
+## Crab G
+
+```{r CrabG}
+# Set path to output folder that will contain all heatmaps and text files for Crab C
+crab_out <- paste0(heatmap_output, "Crab_G/")
+
+# Read in data
+crabdat <- read.delim(file = paste0(TPM_outpath,
+                                    "Crab_", 
+                                    crabs[7],
+                                    "_TPMcts.txt"),
+                   row.names = 1)
+
+# Drop any genes with less than 5 counts across all 3 samples
+keep <- rowSums(crabdat) >= 5
+f.crabdat <- crabdat[keep, ]
+
+print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+
+print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
+  
+# Construct heat map
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+
+# Plot again to save in our file
+png(paste0(crab_out, "heatmap.png"))
+
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+dev.off()
+
+# SPECIFY NUMBER OF CLUSTERS
+clusters <- 2
+
+# Extract gene clusters
+out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+                show_rownames = FALSE,
+                na.rm = TRUE,
+                cluster_cols = FALSE,
+                scale = "row",
+                main = "gene counts by day",
+                fontsize = 9)
+hc <- out$tree_row
+lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
+
+# Loop through gene clusters, printing heatmap for each
+for (i in 1:clusters) {
+  clust <- f.crabdat[which(lbl==i) %>% names(), ]
+  # Write results to table
+  write.table(clust, file = paste0(crab_out,
+                                   "cluster_",
+                                   i, ".txt"),
+              sep = "\t",
+              row.names = TRUE)
+  # Create heat map for each cluster
+  png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+  
+  print(pheatmap(clust, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = paste0("gene counts by day, cluster ", i),
+           fontsize = 9))
+  dev.off()
+}
+
+# Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
+clustorder <- c("LH", "HL")
+
+# See if any duplicates are present in our clusters
+any(duplicated(clustorder))
+
+# Rename all heatmaps to include the cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
+            paste0(crab_out, "cluster_", clustorder, "_heatmap.png"))
+
+# Rename all cluster filenames to include cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*\\.txt")),
+            paste0(crab_out, "cluster_",
+                   clustorder, ".txt"))
+```
+
+``
+
+## Crab H
+
+```{r CrabH}
+# Set path to output folder that will contain all heatmaps and text files for Crab C
+crab_out <- paste0(heatmap_output, "Crab_H/")
+
+# Read in data
+crabdat <- read.delim(file = paste0(TPM_outpath,
+                                    "Crab_", 
+                                    crabs[8],
+                                    "_TPMcts.txt"),
+                   row.names = 1)
+
+# Drop any genes with less than 5 counts across all 3 samples
+keep <- rowSums(crabdat) >= 5
+f.crabdat <- crabdat[keep, ]
+
+print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+
+print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
+  
+# Construct heat map
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+
+# Plot again to save in our file
+png(paste0(crab_out, "heatmap.png"))
+
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+dev.off()
+
+# SPECIFY NUMBER OF CLUSTERS
+clusters <- 2
+
+# Extract gene clusters
+out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+                show_rownames = FALSE,
+                na.rm = TRUE,
+                cluster_cols = FALSE,
+                scale = "row",
+                main = "gene counts by day",
+                fontsize = 9)
+hc <- out$tree_row
+lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
+
+# Loop through gene clusters, printing heatmap for each
+for (i in 1:clusters) {
+  clust <- f.crabdat[which(lbl==i) %>% names(), ]
+  # Write results to table
+  write.table(clust, file = paste0(crab_out,
+                                   "cluster_",
+                                   i, ".txt"),
+              sep = "\t",
+              row.names = TRUE)
+  # Create heat map for each cluster
+  png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+  
+  print(pheatmap(clust, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = paste0("gene counts by day, cluster ", i),
+           fontsize = 9))
+  dev.off()
+}
+
+# Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
+clustorder <- c("HL", "LH")
+
+# See if any duplicates are present in our clusters
+any(duplicated(clustorder))
+
+# Rename all heatmaps to include the cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
+            paste0(crab_out, "cluster_", clustorder, "_heatmap.png"))
+
+# Rename all cluster filenames to include cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*\\.txt")),
+            paste0(crab_out, "cluster_",
+                   clustorder, ".txt"))
+```
+
+## Crab I
+
+```{r CrabI}
+# Set path to output folder that will contain all heatmaps and text files for Crab C
+crab_out <- paste0(heatmap_output, "Crab_I/")
+
+# Read in data
+crabdat <- read.delim(file = paste0(TPM_outpath,
+                                    "Crab_", 
+                                    crabs[9],
+                                    "_TPMcts.txt"),
+                   row.names = 1)
+
+# Drop any genes with less than 5 counts across all 3 samples
+keep <- rowSums(crabdat) >= 5
+f.crabdat <- crabdat[keep, ]
+
+print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+
+print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
+  
+# Construct heat map
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+
+# Plot again to save in our file
+png(paste0(crab_out, "heatmap.png"))
+
+pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9)
+dev.off()
+
+# SPECIFY NUMBER OF CLUSTERS
+clusters <- 2
+
+# Extract gene clusters
+out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+                show_rownames = FALSE,
+                na.rm = TRUE,
+                cluster_cols = FALSE,
+                scale = "row",
+                main = "gene counts by day",
+                fontsize = 9)
+hc <- out$tree_row
+lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
+
+# Loop through gene clusters, printing heatmap for each
+for (i in 1:clusters) {
+  clust <- f.crabdat[which(lbl==i) %>% names(), ]
+  # Write results to table
+  write.table(clust, file = paste0(crab_out,
+                                   "cluster_",
+                                   i, ".txt"),
+              sep = "\t",
+              row.names = TRUE)
+  # Create heat map for each cluster
+  png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+  
+  print(pheatmap(clust, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = paste0("gene counts by day, cluster ", i),
+           fontsize = 9))
+  dev.off()
+}
+
+# Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
+clustorder <- c("LH", "HL")
+
+# See if any duplicates are present in our clusters
+any(duplicated(clustorder))
+
+# Rename all heatmaps to include the cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
+            paste0(crab_out, "cluster_", clustorder, "_heatmap.png"))
+
+# Rename all cluster filenames to include cluster order
+file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*\\.txt")),
+            paste0(crab_out, "cluster_",
+                   clustorder, ".txt"))
+```
