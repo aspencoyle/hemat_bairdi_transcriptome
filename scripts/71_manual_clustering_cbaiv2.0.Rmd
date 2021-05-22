@@ -1,5 +1,5 @@
 ---
-title: "72_manual_clustering_hematv1.6"
+title: "72_manual_clustering_cbaiv2.0"
 author: "Aidan Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: html_document
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This script is based off a script Laura Spencer wrote to take single-crab libraries and separate them into modules over time.
 
-Inputs are libraries pseudoaligned (with kallisto) with hemat_transcriptomev1.6, which is filtered to contain only sequences presumed to be Alveolata
+Inputs are libraries pseudoaligned (with kallisto) with cbai_transcriptomev2.0 (AKA cbaihemat_transcriptomev2.0), which is not filtered by taxa.
 
 Original script is available in [Lab Github Discussion 1206](https://github.com/RobertsLab/resources/discussions/1206)
 
@@ -58,13 +58,13 @@ crabs <- c("A", "B", "C", "E", "G", "H", "I")
 crabIDs <- list(crabA_libs, crabB_libs, crabC_libs, crabE_libs, crabG_libs, crabH_libs, crabI_libs)
 
 # Set path to location of kallisto libraries
-libpath <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
+libpath <- "../output/kallisto_libraries/cbaihemat_transcriptomev2.0/"
 
 # Set path to TPM output folder
-TPM_outpath <- "../output/TPM_counts/hemat_transcriptomev1.6/"
+TPM_outpath <- "../output/TPM_counts/cbaihemat_transcriptomev2.0/"
 
 # Set path to general heatmap output folder
-heatmap_output <- "../output/manual_clustering/hemat_transcriptomev1.6/"
+heatmap_output <- "../output/manual_clustering/cbai_transcriptomev2.0/"
 
 ```
 ### Assemble TPM counts for each crab
@@ -169,7 +169,7 @@ dev.off()
 
 
 # SPECIFY NUMBER OF CLUSTERS
-clusters <- 5
+clusters <- 3
 
 
 # Extract gene clusters
@@ -359,7 +359,7 @@ pheatmap(f.crabdat, cluster_rows = TRUE,
 dev.off()
 
 # SPECIFY NUMBER OF CLUSTERS
-clusters <- 7
+clusters <- 8
 
 # Extract gene clusters
 out <- pheatmap(f.crabdat, cluster_rows = TRUE,
