@@ -11,7 +11,7 @@ Contains a number of files that are the result of pairwise comparisons. The comp
 
 ## BLASTs
 
-Contains the result of BLASTs
+Contains the result of many BLASTs
 
 - **alveolata_publicseqs/**: BLASTed against a database consisting of all available Alveolata nucleotide sequences that could be found on the NCBI taxonomy browser
 
