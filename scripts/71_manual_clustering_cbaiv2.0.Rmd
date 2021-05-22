@@ -206,7 +206,7 @@ for (i in 1:clusters) {
 }
 
 # Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
-clustorder <- c("LLH", "MHL", "HML", "LMH", "HLM")
+clustorder <- c("LLH", "MHL", "HML")
 
 # See if any duplicates are present in our clusters
 any(duplicated(clustorder))
@@ -300,7 +300,7 @@ for (i in 1:clusters) {
 }
 
 # Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
-clustorder <- c("HML", "HLL", "LHL", "HHL", "LLH")
+clustorder <- c("LMH", "LHM", "HLH", "LHL", "HLL")
 
 # See if any duplicates are present in our clusters
 any(duplicated(clustorder))
@@ -395,7 +395,7 @@ for (i in 1:clusters) {
 }
 
 # Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
-clustorder <- c("LMH", "MLH", "LLH", "LHM", "MHL", "HLM", "")
+clustorder <- c("LLH", "MLH", "HLM", "LHM", "MML", "HML", "LMH", "MHL")
 
 # See if any duplicates are present in our clusters
 any(duplicated(clustorder))
@@ -491,7 +491,7 @@ for (i in 1:clusters) {
 }
 
 # Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
-clustorder <- c("LLH", "HLM", "LHM", "HLL", "MLH", "HHL")
+clustorder <- c("LMM", "MLH", "HLM", "HML", "MHL", "MHM")
 
 # See if any duplicates are present in our clusters
 any(duplicated(clustorder))
@@ -773,7 +773,7 @@ for (i in 1:clusters) {
 }
 
 # Look at cluster heatmaps, designate each day within clusters as low, medium, or high. Order corresponds to order of clusters (ex: if Cluster 2 is high/low/medium, the second object in the vector should be "HLM")
-clustorder <- c("HL", "LH")
+clustorder <- c("LH", "HL")
 
 # See if any duplicates are present in our clusters
 any(duplicated(clustorder))
