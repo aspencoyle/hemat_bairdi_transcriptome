@@ -121,7 +121,198 @@ for (i in 1:length(crabIDs)) {
 ```
 
 
-### Create heat maps for each crab
+# Create heat maps for each crab (setting specific cut height)
+
+Each crab will be clustered into 5 clusters over time. These will be given one of five assignments based on their expression patterns
+
+- HTL = high to low (pattern starts high, ends low)
+
+- LTH = low to high (pattern starts low, ends high)
+
+- HLH = high low high
+
+- LHL = low high low
+
+- EVN = even
+
+```{r}
+
+# Set height of clusters for samples with 3 time points
+clusterht <- 1.8 
+
+# Set height of clusters for samples with 2 time points
+twoday_clusterht <- 1.8
+
+for (i in 1:length(crabs)) {
+  # Set path to output folder that will contain all heatmaps and text files
+  crab_out <- paste0(heatmap_output, "Crab_", crabs[i], "/")
+  
+  # Read in data
+  crabdat <- read.delim(file = paste0(TPM_outpath,
+                                      "Crab_",
+                                      crabs[i],
+                                      "_TPMcts.txt"),
+                        row.names = 1)
+  # Drop any genes with less than 5 counts across all 3 samples
+  keep <- rowSums(crabdat) >= 5
+  f.crabdat <- crabdat[keep, ]
+  
+  print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+
+  print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
+  
+  # When we just have two time points, we'll make a special heat map. 
+  # It uses log2 counts, and doesn't scale by row
+  if (ncol(crabdat) < 3) {
+    # Construct heat map
+    print(pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "none",
+           main = "gene counts by day",
+           fontsize = 9))
+    
+    # Plot again to save in our file
+    png(paste0(crab_out, "heatmap.png"))
+    
+    print(pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "none",
+           main = "gene counts by day",
+           fontsize = 9))
+    
+    dev.off()
+    
+    out <- pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "none",
+           main = "gene counts by day",
+           fontsize = 9)
+    
+    hc <- out$tree_row
+    lbl <- cutree(hc, h = twoday_clusterht)  # split dendrogram based on height specified above
+    
+      # Loop through gene clusters, printing heatmap for each
+    for (i in 1:length(unique(lbl))) {
+      clust <- f.crabdat[which(lbl==i) %>% names(), ]
+      # Write results to table
+      write.table(clust, file = paste0(crab_out,
+                                       "cluster_",
+                                       i, ".txt"),
+                  sep = "\t",
+                  row.names = TRUE)
+      
+      # Create heat map for each cluster. Again, like the graph above, we'll make it log2 scaled and not scale by row
+      png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+      
+      print(pheatmap(log2(clust+1), cluster_rows = TRUE,
+                         show_rownames = FALSE,
+                     na.rm = TRUE,
+                     cluster_cols = FALSE,
+                     scale = "none",
+                     main = paste0("gene counts by day, cluster ", i),
+                     fontsize = 9))
+      dev.off()
+  }
+    
+  } else {
+    # Construct heat map
+    print(pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9))
+
+    # Plot again to save in our file
+    png(paste0(crab_out, "heatmap.png"))
+
+    print(pheatmap(f.crabdat, cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "row",
+           main = "gene counts by day",
+           fontsize = 9))
+    dev.off()
+    
+    out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+                show_rownames = FALSE,
+                na.rm = TRUE,
+                cluster_cols = FALSE,
+                scale = "row",
+                main = "gene counts by day",
+                fontsize = 9)
+    
+    hc <- out$tree_row
+    lbl <- cutree(hc, h = clusterht)  # split dendrogram based on height specified above
+    
+      # Loop through gene clusters, printing heatmap for each
+    for (i in 1:length(unique(lbl))) {
+      clust <- f.crabdat[which(lbl==i) %>% names(), ]
+      # Write results to table
+      write.table(clust, file = paste0(crab_out,
+                                   "cluster_",
+                                   i, ".txt"),
+                  sep = "\t",
+                  row.names = TRUE)
+      # Create heat map for each cluster
+      png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+      print(pheatmap(clust, cluster_rows = TRUE,
+                     show_rownames = FALSE,
+                     na.rm = TRUE,
+                     cluster_cols = FALSE,
+                     scale = "row",
+                     main = paste0("gene counts by day, cluster ", i),
+                     fontsize = 9))
+      dev.off()
+  }
+    
+  }
+  
+}
+```
+
+### Assign labels manually to each crab
+
+```{r}
+# Create list of labels for each individual crab
+clusts <- list(c("LLH", "MHL", "HML", "LMH", "HLM"),     # Crab A          
+               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"),  # Crab B
+               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"),  # Crab C
+               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"),  # Crab E
+               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"),  # Crab G
+               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"),  # Crab H
+               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"))  # Crab I
+
+# Ensure number of labels matches number of crab
+length(clusts) == length(crabs)
+
+for (i in 1:length(clusts)) {
+  crab_out <- paste0(heatmap_output, "Crab_", crabs[i])
+  clustorder <- clusts[[i]]
+  # Rename all heatmaps to include the cluster order
+  file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
+              paste0(crab_out, "cluster_", clustorder, "_heatmap.png"))
+  # Rename all cluster filenames to include the cluster order
+  file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*\\.txt")),
+              paste0(crab_out, "cluster_",
+                     clustorder, ".txt"))
+
+  }
+```
+
+
+
+# Create heat maps for each crab (manual cluster numbers)
+
+This was the main method as of 5/25/2021, but is now obsolete. It involves setting cluster numbers for each crab individually, rather than looping through and then naming only at the end
 
 IMPORTANT: When running this, you will need to determine the number of clusters to split, and then designate the clusters as low/med/high expression on each day (shorthand: LMH)
 
@@ -528,22 +719,22 @@ print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
 print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
   
 # Construct heat map
-pheatmap(f.crabdat, cluster_rows = TRUE,
+pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
-           scale = "row",
+           scale = "none",
            main = "gene counts by day",
            fontsize = 9)
 
 # Plot again to save in our file
 png(paste0(crab_out, "heatmap.png"))
 
-pheatmap(f.crabdat, cluster_rows = TRUE,
+pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
-           scale = "row",
+           scale = "none",
            main = "gene counts by day",
            fontsize = 9)
 dev.off()
@@ -552,13 +743,13 @@ dev.off()
 clusters <- 2
 
 # Extract gene clusters
-out <- pheatmap(f.crabdat, cluster_rows = TRUE,
-                show_rownames = FALSE,
-                na.rm = TRUE,
-                cluster_cols = FALSE,
-                scale = "row",
-                main = "gene counts by day",
-                fontsize = 9)
+out <- pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "none",
+           main = "gene counts by day",
+           fontsize = 9)
 hc <- out$tree_row
 lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
 
@@ -574,11 +765,11 @@ for (i in 1:clusters) {
   # Create heat map for each cluster
   png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
   
-  print(pheatmap(clust, cluster_rows = TRUE,
+  print(pheatmap(log2(clust + 1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
-           scale = "row",
+           scale = "none",
            main = paste0("gene counts by day, cluster ", i),
            fontsize = 9))
   dev.off()
@@ -622,22 +813,22 @@ print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
 print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
   
 # Construct heat map
-pheatmap(f.crabdat, cluster_rows = TRUE,
+pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
-           scale = "row",
+           scale = "none",
            main = "gene counts by day",
            fontsize = 9)
 
 # Plot again to save in our file
 png(paste0(crab_out, "heatmap.png"))
 
-pheatmap(f.crabdat, cluster_rows = TRUE,
+pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
-           scale = "row",
+           scale = "none",
            main = "gene counts by day",
            fontsize = 9)
 dev.off()
@@ -646,13 +837,13 @@ dev.off()
 clusters <- 2
 
 # Extract gene clusters
-out <- pheatmap(f.crabdat, cluster_rows = TRUE,
-                show_rownames = FALSE,
-                na.rm = TRUE,
-                cluster_cols = FALSE,
-                scale = "row",
-                main = "gene counts by day",
-                fontsize = 9)
+out <- pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "none",
+           main = "gene counts by day",
+           fontsize = 9)
 hc <- out$tree_row
 lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
 
@@ -668,11 +859,11 @@ for (i in 1:clusters) {
   # Create heat map for each cluster
   png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
   
-  print(pheatmap(clust, cluster_rows = TRUE,
+  print(pheatmap(log2(clust + 1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
-           scale = "row",
+           scale = "none",
            main = paste0("gene counts by day, cluster ", i),
            fontsize = 9))
   dev.off()
@@ -716,22 +907,22 @@ print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
 print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
   
 # Construct heat map
-pheatmap(f.crabdat, cluster_rows = TRUE,
+pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
-           scale = "row",
+           scale = "none",
            main = "gene counts by day",
            fontsize = 9)
 
 # Plot again to save in our file
 png(paste0(crab_out, "heatmap.png"))
 
-pheatmap(f.crabdat, cluster_rows = TRUE,
+pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
-           scale = "row",
+           scale = "none",
            main = "gene counts by day",
            fontsize = 9)
 dev.off()
@@ -740,13 +931,13 @@ dev.off()
 clusters <- 2
 
 # Extract gene clusters
-out <- pheatmap(f.crabdat, cluster_rows = TRUE,
-                show_rownames = FALSE,
-                na.rm = TRUE,
-                cluster_cols = FALSE,
-                scale = "row",
-                main = "gene counts by day",
-                fontsize = 9)
+out <- pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
+           show_rownames = FALSE,
+           na.rm = TRUE,
+           cluster_cols = FALSE,
+           scale = "none",
+           main = "gene counts by day",
+           fontsize = 9)
 hc <- out$tree_row
 lbl <- cutree(hc, clusters) # split dendrogram into the number of groups specified above
 
@@ -762,11 +953,11 @@ for (i in 1:clusters) {
   # Create heat map for each cluster
   png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
   
-  print(pheatmap(clust, cluster_rows = TRUE,
+  print(pheatmap(log2(clust + 1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
-           scale = "row",
+           scale = "none",
            main = paste0("gene counts by day, cluster ", i),
            fontsize = 9))
   dev.off()
