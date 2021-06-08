@@ -123,17 +123,25 @@ for (i in 1:length(crabIDs)) {
 
 # Create heat maps for each crab (setting specific cut height)
 
-Each crab will be clustered into 5 clusters over time. These will be given one of five assignments based on their expression patterns
+Each crab will be clustered  over time. These will be given one of four assignments based on their expression patterns. Multiple clusters may be given the same assignment.
 
-- HTL = high to low (pattern starts high, ends low)
+- HTL = expression goes from high to low
 
-- LTH = low to high (pattern starts low, ends high)
+- LTH = expression goes from low to high
 
-- HLH = high low high
+- HLH = expression starts high, then goes low, then goes high again
 
-- LHL = low high low
+- LHL = inverse of HLH
 
-- EVN = even
+Crabs with only two time points (crabs G, H, and I) will be clustered as well. For these, four assignments will be given. Again, multiple clusters may be given the same assignment.
+
+- LL = expression stays low
+
+- HH = expression stays high
+
+- LH = expression goes from low to high
+
+- HL = expression goes from high to low
 
 ```{r}
 
@@ -141,7 +149,7 @@ Each crab will be clustered into 5 clusters over time. These will be given one o
 clusterht <- 1.8 
 
 # Set height of clusters for samples with 2 time points
-twoday_clusterht <- 1.8
+twoday_clusterht <- 10
 
 for (i in 1:length(crabs)) {
   # Set path to output folder that will contain all heatmaps and text files
@@ -294,8 +302,15 @@ clusts <- list(c("LLH", "MHL", "HML", "LMH", "HLM"),     # Crab A
 # Ensure number of labels matches number of crab
 length(clusts) == length(crabs)
 
+# Ensure we have no duplicates in crab labels
 for (i in 1:length(clusts)) {
-  crab_out <- paste0(heatmap_output, "Crab_", crabs[i])
+  print(length(unique(clusts[[i]])) == length(clusts[[i]]))
+}
+
+
+for (i in 1:length(clusts)) {
+  print(crabs[i])
+  crab_out <- paste0(heatmap_output, "Crab_", crabs[i], "/")
   clustorder <- clusts[[i]]
   # Rename all heatmaps to include the cluster order
   file.rename(paste0(crab_out, list.files(crab_out, pattern = "^cluster_.*heatmap\\.png$")),
