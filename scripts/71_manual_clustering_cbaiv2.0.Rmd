@@ -291,13 +291,13 @@ for (i in 1:length(crabs)) {
 
 ```{r}
 # Create list of labels for each individual crab
-clusts <- list(c("LLH", "MHL", "HML", "LMH", "HLM"),     # Crab A          
-               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"),  # Crab B
-               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"),  # Crab C
-               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"),  # Crab E
-               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"),  # Crab G
-               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"),  # Crab H
-               c("TEST", "TEST2", "TEST3", "TEST4", "TEST5"))  # Crab I
+clusts <- list(c("LTH", "LHL", "HTL", "HTL2", "LTH2", "HLH"),     # Crab A          
+               c("LTH", "LHL", "LTH2", "HLH", "LHL2", "HTL", "HTL2"),  # Crab B
+               c("LTH", "HLH", "HTL", "LHL", "HTL2", "HTL3", "LHL2"),  # Crab C
+               c("LTH", "LTH2", "HLH", "HTL", "HTL2", "LHL", "HLH2"),  # Crab E
+               c("LH", "HL", "HL2", "HL3", "HH", "HH2"),  # Crab G
+               c("HH", "HL", "LH", "HL2", "LL", "HH2"),  # Crab H
+               c("LH", "HL", "LH2", "HL2", "LH3"))  # Crab I
 
 # Ensure number of labels matches number of crab
 length(clusts) == length(crabs)
