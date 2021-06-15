@@ -45,9 +45,26 @@ md5sum: 698513d787f92a65debb9f70dbb2e32f
 
 
 ```{r libraries, message = FALSE, warning=FALSE}
-library(tidyverse)
-library(WGCNA)
-library(DESeq2)
+# Add all required libraries that are installed with install.packages() here
+list.of.packages <- "tidyverse"
+# Add all libraries that are installed using BiocManager here
+bioconductor.packages <- c("DESeq2", "WGCNA")
+
+# Install BiocManager if needed
+if(!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+new.bioc.packages <- bioconductor.packages[!(bioconductor.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+if(length(new.bioc.packages)) BiocManager::install(new.bioc.packages)
+
+# Load all required libraries
+all.packages <- c(list.of.packages, bioconductor.packages)
+lapply(all.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
 ```
 
 ### Step 1: Extract TPM Counts from Kallisto Libraries

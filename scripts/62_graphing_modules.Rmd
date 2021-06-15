@@ -34,9 +34,20 @@ And for elevated-temperature libraries:
 | H       | elevated         | 072             | 294             |
 | I       | elevated         | 127             | 280             |
 
-```{r libraries, message=FALSE, warning=FALSE}
-library(tidyverse)
-library(reshape2)
+
+```{r libraries, message = FALSE, warning=FALSE}
+# Add all required libraries here
+list.of.packages <- c("tidyverse", "reshape2")
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
 ```
 
 ### Set up initial inputs to make script as easy to modify as possible

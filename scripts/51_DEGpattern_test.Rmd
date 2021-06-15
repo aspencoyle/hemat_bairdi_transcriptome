@@ -19,10 +19,27 @@ Roberts Lab, UW-SAFS
 
 Script is based on [this introduction](https://hbctraining.github.io/DGE_workshop/lessons/08_DGE_LRT.html)
 
-```{r libraries, warning=FALSE}
-library(DESeq2)
-library(DEGreport)
-library(tidyverse)
+```{r libraries, message = FALSE, warning=FALSE}
+# Add all required libraries that are installed with install.packages() here
+list.of.packages <- "tidyverse"
+# Add all libraries that are installed using BiocManager here
+bioconductor.packages <- c("DESeq2", "DEGreport")
+
+# Install BiocManager if needed
+if(!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+new.bioc.packages <- bioconductor.packages[!(bioconductor.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+if(length(new.bioc.packages)) BiocManager::install(new.bioc.packages)
+
+# Load all required libraries
+all.packages <- c(list.of.packages, bioconductor.packages)
+lapply(all.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
 ```
 
 ### DESeq Setup

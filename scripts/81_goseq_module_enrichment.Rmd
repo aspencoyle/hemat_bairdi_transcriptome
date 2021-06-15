@@ -1,0 +1,49 @@
+---
+title: "81_goseq_module_enrichment"
+author: "Aidan Coyle"
+date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This analyzes the GO term enrichment of each module, as determined by either WGCNA or our manual clustering methods.
+
+It is based on [this script](https://github.com/echille/Mcapitata_OA_Developmental_Gene_Expression_Timeseries/blob/main/5-Planula-GO-Enrichment-Analysis/Planula_GO_Term_Enrichment_Analysis.Rmd) by Erin Chille, which was used in the publication of [this paper](https://www.biorxiv.org/content/10.1101/2021.04.14.439692v1.full.pdf)
+
+
+## Load libraries, install all required new libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+# Add all required libraries here
+# goseq is also required - prior to this, install using BiocManager::install("goseq")
+list.of.packages <- c("goseq", "tidyverse", "GSEABase", "data.table", "ggplot2", "cowplot", "patchwork")
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+```
+
+#### Read in sample ID data
+
+```{r}
+# Treatment information
+trtmtInfo <- read.csv("../data/sample_ids.csv", )
+str(trtmtInfo)
+head(trtmtInfo)
+
+# gene count matrix
+
+```
+
+

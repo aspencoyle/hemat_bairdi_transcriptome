@@ -17,9 +17,19 @@ Roberts Lab, UW-SAFS
 
 Takes the results from our BLASTs in 22_DEG_blast.ipynb and examines the e-values to determine whether sequences are more likely to have originated from _C. bairdi_ or _Hematodinium sp._
 
-```{r pkgs, message=FALSE}
-library(tidyverse)
+```{r libraries, message = FALSE, warning=FALSE}
+# Add all required libraries here
+list.of.packages <- "tidyverse"
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
 
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
 ```
 
 

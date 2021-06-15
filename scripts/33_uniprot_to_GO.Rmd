@@ -33,8 +33,21 @@ To run this script, you must have the following:
 + A tab-separated two-column table of accession IDs and their respective GO terms
 
 
-```{r packageload, message=FALSE}
-library(tidyverse)
+```{r libraries, message = FALSE, warning=FALSE}
+# Add all required libraries here
+list.of.packages <- "tidyverse"
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+
+# Functions are defined in hematodinium_analysis_functions.R
 source("hematodinium_analysis_functions.R")
 ```
 

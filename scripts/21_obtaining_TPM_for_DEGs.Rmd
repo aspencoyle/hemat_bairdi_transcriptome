@@ -24,8 +24,19 @@ This produces a table containing the following:
 - All TPM counts from individual kallisto libraries for those DEGs
 
 First, loading the required libraries
-```{r load_libraries, message=FALSE}
-library(tidyverse)
+```{r libraries, message = FALSE, warning=FALSE}
+# Add all required libraries here
+list.of.packages <- "tidyverse"
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
 ```
 
 Then, we edit our variables. If running this script on other samples, you only need to edit the following section.
