@@ -1,5 +1,5 @@
 ---
-title: "53_cbaiv2.0_WGCNA_ElevCrabs"
+title: "5_11_WGCNA_cbai2.0_AmbVsElevCrabs"
 author: "Aidan Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: 
@@ -11,19 +11,21 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## Analysis of Elevated-Temperature Gene Expression using WGCNA
+## Analysis of Ambient and Elevated-Temperature Gene Expression using WGCNA
 
-We will now run WGCNA on all individual libraries of elevated-temperature crabs over days 0, 2, and 17. 
+We will now run WGCNA on all individual libraries of ambient and elevated-temperature crabs over days 0, 2, and 17. 
 
-We will include transcripts from both C. bairdi and Hematodinium by using kallisto alignments to an unfiltered transcriptome (cbai_transcriptomev2.0, AKA cbaihemat_transcriptomev2.0)
+This will be ran on libraries aligned to cbai_transcriptomev2.0, which is unfiltered by taxonomy
 
 Table of crabs and libraries included in analysis:
-
-| Crab ID | Treatment Group  | Day 0 Sample ID | Day 2 Sample ID |
-|---------|------------------|-----------------|-----------------|
-| G       | elevated         | 173             | 272             |
-| H       | elevated         | 072             | 294             |
-| I       | elevated         | 127             | 280             |
+| Crab ID | Treatment Group | Day 0 Sample ID | Day 2 Sample ID | Day 17 Sample ID |
+|---------|-----------------|-----------------|-----------------|------------------|
+| A       | ambient         | 178             | 359             | 463              |
+| B       | ambient         | 118             | 349             | 481              |
+| C       | ambient         | 132             | 334             | 485              |
+| G       | elevated        | 173             | 272             | NA               |
+| H       | elevated        | 072             | 294             | NA               |
+| I       | elevated        | 127             | 280             | NA               |
 
 Again, script is based largely on [Yaamini's script](https://github.com/eimd-2019/project-EWD-transcriptomics/blob/master/analyses/WGCNA/WGCNA.md), which is based largely on [the official WGCNA tutorial](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/)
 
@@ -69,29 +71,34 @@ Later in the script, you will need to specify a soft thresholding power to choos
 kallisto_path <- "../output/kallisto_libraries/cbaihemat_transcriptomev2.0/"
 
 # Libraries we want to read in to our TPM matrix
-libraries <- c("173", "072", "127", "272", "294", "280")
+libraries <- c("178", "118", "132", "173", "072", "127", "359", "349", "334", "272", "294", "280", "463", "481", "485")
 
 # For each row, crab and day should correspond to the order of libraries (ex: 4th row of crabTraits should match libraries[4])
-crabTraits <- data.frame("crab" = rep(c("G", "H", "I"), times = 2),
-                         "day" = factor(c(rep(0, times = 3),
-                                   rep(2, times = 3))))
+crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "G", "H", "I"), times = 2), "A", "B", "C"),
+                         "day" = factor(c(rep(0, times = 6),
+                                   rep(2, times = 6),
+                                   rep(17, times = 3))),
+                         "temp" = c(rep(c("Ambient", "Ambient", "Ambient", "Elevated", "Elevated", "Elevated"), times = 2),
+                                    rep("Ambient", times = 3)))
 
-# Create clinical data trait matrix. Same rules as above, but both crab and day are numeric. Crab A will be noted as 1, B as 2, and C as 3
-crabClinicalData <- data.frame("crab" = rep(c(1, 2, 3), times = 2),
-                         "day" = c(rep(0, times = 3),
-                                   rep(2, times = 3)))
+# Create clinical data trait matrix. Same rules as above, but all columns are numeric are numeric. Crab A will be noted as 1, B as 2, and C as 3
+crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1, 2, 3),
+                         "day" = c(rep(0, times = 6),
+                                   rep(2, times = 6),
+                                   rep(17, times = 3)),
+                         "temp" = c(rep(c(1, 1, 1, 2, 2, 2), times = 2), rep(2, times = 3)))
 
 # Variable being examined - should match column in two data frames above
-variable <- "day"
+variable <- "temp"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/cbai_transcriptome_v2.0/elev_crabs_no_filter/"
+file_start <- "../output/WGCNA_output/cbai_transcriptome_v2.0/amb_vs_elev_no_filter/"
 
 # Location of blastx table
-blastx_table_site <- "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt"
+blastx_table_site <- "../data/cbai_blastx_table_transcriptome_v2.0.txt"
 
 # Number of samples we're examining
-numsamples <- 6
+numsamples <- 15
 ```
 
 Then, we begin creating our TPM matrix for all transcripts
@@ -130,7 +137,7 @@ for (i in 2:length(kallisto_files)){
 }
 ```
 
-WGCNA has several recommendations when it comes to RNAseq data, available in the FAQ [here](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html). First, they suggest removing all transcripts with counts below 10 in over 90% of samples. Since we have 6 samples total, we will only remove all transcripts with counts below 10 in all samples.
+WGCNA has several recommendations when it comes to RNAseq data, available in the FAQ [here](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html). First, they suggest removing all transcripts with counts below 10 in over 90% of samples. Since we have 15 samples total, we will only remove all transcripts with counts below 10 in 14 or 15 samples.
 
 They also suggest a variance-stabilizing transformation or log-transforming the counts using log2(x+1). Unlike in our trial run of Crab A, we will be able to create a DESeq object and perform a variance-stabilizing transformation.
 
@@ -146,9 +153,12 @@ TPMcounts <- TPMcounts %>%
 # Get initial dimensions of data frame
 dim(TPMcounts)
 
-# Filter out all variables with no counts greater than 10
-TPMcounts <- TPMcounts %>%
-  filter_all(any_vars(. > 10))
+# Get number of counts above 10 for each gene
+TPMcounts$counts <- rowSums(TPMcounts >= 10)
+# Remove all genes without multiple counts above 10
+TPMcounts <- TPMcounts[TPMcounts$counts > 1, ]
+# Remove the counts column we just created
+TPMcounts <- subset(TPMcounts, select = - counts)
 
 # See how many transcripts we have left
 dim(TPMcounts)
@@ -293,17 +303,13 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
      col = "red")
 ```
 
-Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. However, no eligible soft-thresholding power reached 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), this indicates the following:
-
-"If the scale-free topology fit index fails to reach values above 0.8 for reasonable powers (less than 15 for unsigned or signed hybrid networks, and less than 30 for signed networks) and the mean connectivity remains relatively high (in the hundreds or above) [note: which our data does], chances are that the data exhibit a strong driver that makes a subset of the samples globally different from the rest. The difference causes high correlation among large groups of genes which invalidates the assumption of the scale-free topology approximation."
-
-I chose to use an unsigned network, since the direction of correlation could be quite interesting (i.e. associating up-regulated C. bairdi with down-regulated Hemat.). Therefore, the WGCNA FAQ recommends choosing a soft-thresholding power of 9, since we have fewer than 20 samples total.
+Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. Here, that means we will choose a soft-thresholding power of 12!
 
 
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
 
 ```{r coexpression}
-softPower <- 9
+softPower <- 12
 adjacency <- adjacency(CrabExpr0, power = softPower)
 
 # Minimize noise and spurious associations by transforming adjacency into TOM
@@ -515,26 +521,26 @@ labeledHeatmap(Matrix = moduleTraitCor,
 Module membership info is needed for a possible downstream GO-MWU analysis. 
 
 ``` {r gene_significance}
-# Define "day" using information from trait matrix
-day <- as.data.frame(crabClinicalData$day)
+# Define "temp" using information from trait matrix
+temp <- as.data.frame(crabClinicalData$temp)
 # Modify names
-names(day) <- "day"
+names(temp) <- "temp"
 # Save module names without "ME" at beginning of each entry
 modNames <- substr(names(MEs), 3, nchar(names(MEs)))
 
 # Determine gene significance
 
 # Obtain gene significance statistics
-geneTraitSignificance <- as.data.frame(cor(CrabExpr0, day, use = "p"))
+geneTraitSignificance <- as.data.frame(cor(CrabExpr0, temp, use = "p"))
 # Add column names
-names(geneTraitSignificance) <- paste("GS.", names(day), sep = "")
+names(geneTraitSignificance) <- paste("GS.", names(temp), sep = "")
 # Confirm formatting
 head(geneTraitSignificance)
 
 # Obtain p-values for each gene significance stat
 GSPvalue <- as.data.frame(corPvalueStudent(as.matrix(geneTraitSignificance), nSamples))
 # Add column names
-names(GSPvalue) <- paste("p.GS", names(day), sep = "")
+names(GSPvalue) <- paste("p.GS", names(temp), sep = "")
 # Confirm formatting
 head(GSPvalue)
 

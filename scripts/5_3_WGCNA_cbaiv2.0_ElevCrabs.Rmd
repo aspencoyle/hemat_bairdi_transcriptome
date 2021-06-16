@@ -1,5 +1,5 @@
 ---
-title: "57_WGCNA_hematv1.6_ElevCrabs"
+title: "53_cbaiv2.0_WGCNA_ElevCrabs"
 author: "Aidan Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: 
@@ -11,30 +11,27 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## Analysis of Ambient and Elevated-Temperature Gene Expression using WGCNA
+## Analysis of Elevated-Temperature Gene Expression using WGCNA
 
-We will now run WGCNA on all individual libraries of ambient and elevated-temperature crabs over days 0, 2, and 17. 
+We will now run WGCNA on all individual libraries of elevated-temperature crabs over days 0, 2, and 17. 
 
-We will include transcripts from only Hematodinium by using kallisto alignments to a transcriptome filtered to only include Alveolata sequences
+We will include transcripts from both C. bairdi and Hematodinium by using kallisto alignments to an unfiltered transcriptome (cbai_transcriptomev2.0, AKA cbaihemat_transcriptomev2.0)
 
 Table of crabs and libraries included in analysis:
-| Crab ID | Treatment Group | Day 0 Sample ID | Day 2 Sample ID | Day 17 Sample ID |
-|---------|-----------------|-----------------|-----------------|------------------|
-| A       | ambient         | 178             | 359             | 463              |
-| B       | ambient         | 118             | 349             | 481              |
-| C       | ambient         | 132             | 334             | 485              |
-| G       | elevated        | 173             | 272             | NA               |
-| H       | elevated        | 072             | 294             | NA               |
-| I       | elevated        | 127             | 280             | NA               |
+
+| Crab ID | Treatment Group  | Day 0 Sample ID | Day 2 Sample ID |
+|---------|------------------|-----------------|-----------------|
+| G       | elevated         | 173             | 272             |
+| H       | elevated         | 072             | 294             |
+| I       | elevated         | 127             | 280             |
 
 Again, script is based largely on [Yaamini's script](https://github.com/eimd-2019/project-EWD-transcriptomics/blob/master/analyses/WGCNA/WGCNA.md), which is based largely on [the official WGCNA tutorial](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/)
 
 We will first extract the TPM (transcripts per million) counts from the kallisto libraries created earlier in the pipeline. We will then change those to logTPM counts, and then begin the WGCNA analysis
 
-All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, hemat_blastx_table_transcriptome_v1.6.txt,is not. This is a BLASTx annotation of hemat_transcriptome_v1.6.fasta.
+All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt,is not. This is a BLASTx annotation of cbai_transcriptome_v2.0.fasta (known by my notation as cbai_hemat_transcriptome_v2.0.fasta). Annotation description available [here](https://robertslab.github.io/sams-notebook/2020/05/02/Transcriptome-Assembly-C.bairdi-All-RNAseq-Data-Without-Taxonomic-Filters-with-Trinity-on-Mox.html), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20200508_cbai_diamond_blastx_transcriptome-v2.0/20200507.C_bairdi.Trinity.blastx.outfmt6), and [original transcriptome available here](https://owl.fish.washington.edu/halfshell/genomic-databank/cbai_transcriptome_v2.0.fasta), 
+md5sum: ace82a75cb947574ac807d868427253c
 
-Annotation description available [here](https://robertslab.github.io/sams-notebook/2020/08/14/Transcriptome-Annotation-Hematodinium-Transcriptomes-v1.6-v1.7-v2.1-v3.1-with-DIAMOND-BLASTx-on-Mox.html), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20200814_hemat_diamond_blastx_v1.6_v1.7_v2.1_v3.1/hemat_transcriptome_v1.6.fasta.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210308_hemat_trinity_v1.6_v1.7/hemat_transcriptome_v1.6.fasta_trinity_out_dir/hemat_transcriptome_v1.6.fasta), 
-md5sum: 698513d787f92a65debb9f70dbb2e32f
 
 ```{r libraries, message = FALSE, warning=FALSE}
 # Add all required libraries that are installed with install.packages() here
@@ -69,7 +66,7 @@ Later in the script, you will need to specify a soft thresholding power to choos
 
 ```{r TPMextract}
 # Path to kallisto libraries
-kallisto_path <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
+kallisto_path <- "../output/kallisto_libraries/cbaihemat_transcriptomev2.0/"
 
 # Libraries we want to read in to our TPM matrix
 libraries <- c("173", "072", "127", "272", "294", "280")
@@ -79,7 +76,7 @@ crabTraits <- data.frame("crab" = rep(c("G", "H", "I"), times = 2),
                          "day" = factor(c(rep(0, times = 3),
                                    rep(2, times = 3))))
 
-# Create clinical data trait matrix. Same rules as above, but both crab and day are numeric. Crab A will be noted as 1, B as 2, and C as 3
+# Create clinical data trait matrix. Same rules as above, but both crab and day are numeric. Crab G will be noted as 1, H as 2, and I as 3
 crabClinicalData <- data.frame("crab" = rep(c(1, 2, 3), times = 2),
                          "day" = c(rep(0, times = 3),
                                    rep(2, times = 3)))
@@ -88,10 +85,10 @@ crabClinicalData <- data.frame("crab" = rep(c(1, 2, 3), times = 2),
 variable <- "day"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/hemat_transcriptome_v1.6/elev_crabs_no_filter/"
+file_start <- "../output/WGCNA_output/cbai_transcriptome_v2.0/elev_crabs_no_filter/"
 
 # Location of blastx table
-blastx_table_site <- "../data/hemat_blastx_table_transcriptome_v1.6.txt"
+blastx_table_site <- "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt"
 
 # Number of samples we're examining
 numsamples <- 6
