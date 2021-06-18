@@ -1,5 +1,5 @@
 ---
-title: "5_12_WGCNA_cbai4.0_AllCrabs"
+title: "5_14_WGCNA_hemat1.6_AllCrabs"
 author: "Aidan Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: 
@@ -11,11 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## Analysis of  Gene Expression using WGCNA
+## Analysis of Ambient and Elevated-Temperature Gene Expression using WGCNA
 
 We will now run WGCNA on all individual libraries 
 
-This will be ran on libraries aligned to cbai_transcriptomev4.0, which includes only genes that are presumably _Chionoecetes_. 
+This will be ran on libraries aligned to hemat_transcriptomev1.6, which only includes genes that are presumably _Hematodinium_.
 
 Note the additional column compared to previous runs - since we are including crabs D and F, which are uninfected, infection status is now an included variable
 
@@ -25,9 +25,7 @@ Table of crabs and libraries included in analysis:
 | A       | ambient         | 178             | 359             | 463              | infected        |  
 | B       | ambient         | 118             | 349             | 481              | infected        | 
 | C       | ambient         | 132             | 334             | 485              | infected        | 
-| D       | decreased       | 073             | 221             | 427              | uninfected      | 
 | E       | decreased       | 151             | 254             | 445              | infected        | 
-| F       | decreased       | 113             | 222             | 425              | uninfected      | 
 | G       | elevated        | 173             | 272             | NA               | infected        | 
 | H       | elevated        | 072             | 294             | NA               | infected        | 
 | I       | elevated        | 127             | 280             | NA               | infected        | 
@@ -36,10 +34,10 @@ Again, script is based largely on [Yaamini's script](https://github.com/eimd-201
 
 We will first extract the TPM (transcripts per million) counts from the kallisto libraries created earlier in the pipeline. We will then change those to logTPM counts, and then begin the WGCNA analysis
 
-All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, cbai_hemat_diamond_blastx_table_transcriptome_v4.0.txt,is not. This is a BLASTx annotation of cbai_transcriptome_v4.0.fasta.
+All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, hemat_blastx_table_transcriptome_v1.6.txt,is not. This is a BLASTx annotation of hemat_transcriptome_v1.6.fasta.
 
-Annotation description available [here](https://robertslab.github.io/resources/Genomic-Resources/), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20210318_cbai_diamond_blastx_transcriptome-v4.0/cbai_transcriptome_v4.0.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210317_cbai_trinity_RNAseq_transcriptome-v4.0/cbai_transcriptome_v4.0.fasta_trinity_out_dir/cbai_transcriptome_v4.0.fasta), 
-md5sum: 8fd2ab9c27e59653fcb4f32574be1f61
+Annotation description available [here](https://robertslab.github.io/sams-notebook/2020/08/14/Transcriptome-Annotation-Hematodinium-Transcriptomes-v1.6-v1.7-v2.1-v3.1-with-DIAMOND-BLASTx-on-Mox.html), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20200814_hemat_diamond_blastx_v1.6_v1.7_v2.1_v3.1/hemat_transcriptome_v1.6.fasta.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210308_hemat_trinity_v1.6_v1.7/hemat_transcriptome_v1.6.fasta_trinity_out_dir/hemat_transcriptome_v1.6.fasta), 
+md5sum: 698513d787f92a65debb9f70dbb2e32f
 
 
 ```{r libraries, message = FALSE, warning=FALSE}
@@ -75,100 +73,80 @@ Later in the script, you will need to specify a soft thresholding power to choos
 
 ```{r TPMextract}
 # Path to kallisto libraries
-kallisto_path <- "../output/kallisto_libraries/cbai_transcriptomev4.0/"
+kallisto_path <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
 
 # Libraries we want to read in to our TPM matrix
-libraries <- c("178", "118", "132", "073", "151", "113", "173", "072", "127", "359", "349", "334", "221", "254", "222", "272", "294", "280", "463", "481", "485", "427", "445", "425")
+libraries <- c("178", "118", "132", "151", "173", "072", "127", "359", "349", "334", "254", "272", "294", "280", "463", "481", "485", "445")
 
 # For each row, crab and day should correspond to the order of libraries (ex: 4th row of crabTraits should match libraries[4])
 
 # If treating elevated day 0 as elevated
-crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "D", "E", "F", "G", "H", "I"), times = 2), 
-                                    "A", "B", "C", "D", "E", "F"),
-                         "day" = factor(c(rep(0, times = 9),
-                                   rep(2, times = 9),
-                                   rep(17, times = 6))),
+crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "E", "G", "H", "I"), times = 2), 
+                                    "A", "B", "C", "E"),
+                         "day" = factor(c(rep(0, times = 7),
+                                   rep(2, times = 7),
+                                   rep(17, times = 4))),
                          "temp" = c(rep(c(rep("Ambient", times = 3),
-                                          rep("Lowered", times = 3), 
+                                          "Lowered", 
                                           rep("Elevated", times = 3)), times = 2),
                                     rep("Ambient", times = 3),
-                                    rep("Lowered", times = 3)),
-                         "infection" = c(rep(c(rep("Infected", times = 3),
-                                               "Uninfected", "Infected", "Uninfected",
-                                               rep("Infected", times = 3)), times = 2),
-                                         rep("Infected", times = 3),
-                                         "Uninfected", "Infected", "Uninfected"))
+                                    "Lowered"))
 
 # Use the above one if categorizing Day 0 Elevated-temperature crab as "Elevated". If categorizing them as "Ambient" (since they were at ambient temperature when Day 0 samples were taken), use the one below. Comment out the one not used!
 
 # If treating elevated day 0 as ambient
-crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "D", "E", "F", "G", "H", "I"), times = 2), 
-                                    "A", "B", "C", "D", "E", "F"),
-                         "day" = factor(c(rep(0, times = 9),
-                                   rep(2, times = 9),
-                                   rep(17, times = 6))),
+crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "E", "G", "H", "I"), times = 2), 
+                                    "A", "B", "C", "E"),
+                         "day" = factor(c(rep(0, times = 7),
+                                   rep(2, times = 7),
+                                   rep(17, times = 4))),
                          "temp" = c(rep("Ambient", times = 3),
-                                    rep("Lowered", times = 3), 
+                                    "Lowered", 
                                     rep("Ambient", times = 6),
-                                    rep("Lowered", times = 3),
+                                    "Lowered",
                                     rep("Elevated", times = 3),
                                     rep("Ambient", times = 3),
-                                    rep("Lowered", times = 3)),
-                         "infection" = c(rep(c(rep("Infected", times = 3),
-                                               "Uninfected", "Infected", "Uninfected",
-                                               rep("Infected", times = 3)), times = 2),
-                                         rep("Infected", times = 3),
-                                         "Uninfected", "Infected", "Uninfected"))
+                                    "Lowered"))
 
 # Create clinical data trait matrix. Same rules as above, but all columns are numeric are numeric. Crab A will be noted as 1, B as 2, and C as 3. Again, comment out the one not used!
 
 # If treating elevated day 0 as elevated
-crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6, 7, 8, 9), times = 2), 
-                                    1, 2, 3, 4, 5, 6),
-                         "day" = c(rep(0, times = 9),
-                                   rep(2, times = 9),
-                                   rep(17, times = 6)),
+crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6, 7), times = 2), 
+                                    1, 2, 3, 4),
+                         "day" = c(rep(0, times = 7),
+                                   rep(2, times = 7),
+                                   rep(17, times = 4)),
                          "temp" = c(rep(c(rep(2, times = 3),
-                                          rep(1, times = 3), 
+                                          1, 
                                           rep(3, times = 3)), times = 2),
                                     rep(2, times = 3),
-                                    rep(1, times = 3)),
-                         "infection" = c(rep(c(rep(2, times = 3),
-                                               1, 2, 1,
-                                               rep(2, times = 3)), times = 2),
-                                         rep(2, times = 3),
-                                         1, 2, 1))
+                                    1))
 
 # If treating elevated day 0 as ambient
-crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6, 7, 8, 9), times = 2), 
-                                    1, 2, 3, 4, 5, 6),
-                         "day" = c(rep(0, times = 9),
-                                   rep(2, times = 9),
-                                   rep(17, times = 6)),
+crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6, 7), times = 2), 
+                                    1, 2, 3, 4),
+                         "day" = c(rep(0, times = 7),
+                                   rep(2, times = 7),
+                                   rep(17, times = 4)),
                          "temp" = c(rep(2, times = 3),
-                                    rep(1, times = 3), 
+                                    1, 
                                     rep(2, times = 6),
-                                    rep(1, times = 3),
+                                    1,
                                     rep(3, times = 3),
                                     rep(2, times = 3),
-                                    rep(1, times = 3)),
-                         "infection" = c(rep(c(rep(2, times = 3),
-                                               1, 2, 1,
-                                               rep(2, times = 3)), times = 2),
-                                         rep(2, times = 3),
-                                         1, 2, 1))
+                                    1))
 
 # Variable being examined - should match column in two data frames above
-variable <- "infection"
+variable <- "temp"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/cbai_transcriptome_v4.0/all_crabs_no_filter/infection_as_var/day0_elev_as_elev/"
+file_start <- "../output/WGCNA_output/hemat_transcriptome_v1.6/all_crabs_no_filter/day0_elev_as_amb/"
 
 # Location of blastx table
-blastx_table_site <- "../data/cbai_blastx_table_transcriptome_v4.0.txt"
+blastx_table_site <- "../data/hemat_blastx_table_transcriptome_v1.6.txt"
 
 # Number of samples we're examining
-numsamples <- 24
+numsamples <- 18
 ```
 
 Then, we begin creating our TPM matrix for all transcripts
@@ -373,13 +351,17 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
      col = "red")
 ```
 
-Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. Here, that means we will choose a soft-thresholding power of 6!
+Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. However, no eligible soft-thresholding power reached 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), this indicates the following:
+
+"If the scale-free topology fit index fails to reach values above 0.8 for reasonable powers (less than 15 for unsigned or signed hybrid networks, and less than 30 for signed networks) and the mean connectivity remains relatively high (in the hundreds or above) [note: which our data does], chances are that the data exhibit a strong driver that makes a subset of the samples globally different from the rest. The difference causes high correlation among large groups of genes which invalidates the assumption of the scale-free topology approximation."
+
+I chose to use an unsigned network, since the direction of correlation could be quite interesting (i.e. associating up-regulated C. bairdi with down-regulated Hemat.). Therefore, the WGCNA FAQ recommends choosing a soft-thresholding power of 9, since we have fewer than 20 samples total.
 
 
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
 
 ```{r coexpression}
-softPower <- 6
+softPower <- 9
 adjacency <- adjacency(CrabExpr0, power = softPower)
 
 # Minimize noise and spurious associations by transforming adjacency into TOM
