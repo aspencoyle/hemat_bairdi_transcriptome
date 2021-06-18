@@ -75,6 +75,7 @@ kallisto_path <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
 libraries <- c("178", "118", "132", "173", "072", "127", "359", "349", "334", "272", "294", "280", "463", "481", "485")
 
 # For each row, crab and day should correspond to the order of libraries (ex: 4th row of crabTraits should match libraries[4])
+# If treating elevated day 0 as elevated
 crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "G", "H", "I"), times = 2), "A", "B", "C"),
                          "day" = factor(c(rep(0, times = 6),
                                    rep(2, times = 6),
@@ -82,18 +83,41 @@ crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "G", "H", "I"), times =
                          "temp" = c(rep(c("Ambient", "Ambient", "Ambient", "Elevated", "Elevated", "Elevated"), times = 2),
                                     rep("Ambient", times = 3)))
 
-# Create clinical data trait matrix. Same rules as above, but all columns are numeric are numeric. Crab A will be noted as 1, B as 2, and C as 3
+# Use the above one if categorizing Day 0 Elevated-temperature crab as "Elevated". If categorizing them as "Ambient" (since they were at ambient temperature when Day 0 samples were taken), use the one below. Comment out the one not used!
+
+# If treating elevated day 0 as ambient
+crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "G", "H", "I"), times = 2), "A", "B", "C"),
+                         "day" = factor(c(rep(0, times = 6),
+                                   rep(2, times = 6),
+                                   rep(17, times = 3))),
+                         "temp" = c(rep("Ambient", times = 9),
+                                    rep("Elevated", times = 3),
+                                    rep("Ambient", times = 3)))
+
+
+# Create clinical data trait matrix. Same rules as above, but all columns are numeric are numeric. Crab A will be noted as 1, B as 2, and C as 3. Again, comment out the one not used!
+
+# If treating elevated day 0 as elevated
 crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1, 2, 3),
                          "day" = c(rep(0, times = 6),
                                    rep(2, times = 6),
                                    rep(17, times = 3)),
-                         "temp" = c(rep(c(1, 1, 1, 2, 2, 2), times = 2), rep(2, times = 3)))
+                         "temp" = c(rep(c(1, 1, 1, 2, 2, 2), times = 2), rep(1, times = 3)))
+
+# If treating elevated day 0 as ambient
+crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1, 2, 3),
+                         "day" = c(rep(0, times = 6),
+                                   rep(2, times = 6),
+                                   rep(17, times = 3)),
+                         "temp" = c(rep(1, times = 9),
+                                    rep(2, times = 3),
+                                    rep(1, times = 3)))
 
 # Variable being examined - should match column in two data frames above
 variable <- "temp"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/hemat_transcriptome_v1.6/amb_vs_elev_no_filter/"
+file_start <- "../output/WGCNA_output/hemat_transcriptome_v1.6/amb_vs_elev_no_filter/day0_elev_as_amb/"
 
 # Location of blastx table
 blastx_table_site <- "../data/hemat_blastx_table_transcriptome_v1.6.txt"

@@ -23,3 +23,6 @@ output/libraries_merged/**
 # Ignore scripts file created when running .Rstudio on Mox
 scripts/core.5096
 .Rproj.user
+
+# Ignore .Rhistory file
+scripts/.Rhistory
