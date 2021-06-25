@@ -99,17 +99,15 @@ crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "D", "E", "F", "G", "H"
                                          rep("Infected", times = 3),
                                          "Uninfected", "Infected", "Uninfected"))
 
-# Use the above one if categorizing Day 0 Elevated-temperature crab as "Elevated". If categorizing them as "Ambient" (since they were at ambient temperature when Day 0 samples were taken), use the one below. Comment out the one not used!
+# Use the above one if categorizing Day 0 Elevated-temperature crab as "Elevated" and Day 0 Lowered-temperature crab as "Lowered". If categorizing them as "Ambient" (since they were at ambient temperature when Day 0 samples were taken), use the one below. Comment out the one not used!
 
-# If treating elevated day 0 as ambient
+# If treating elevated day 0 and lowered day 0 as ambient
 crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "D", "E", "F", "G", "H", "I"), times = 2), 
                                     "A", "B", "C", "D", "E", "F"),
                          "day" = factor(c(rep(0, times = 9),
                                    rep(2, times = 9),
                                    rep(17, times = 6))),
-                         "temp" = c(rep("Ambient", times = 3),
-                                    rep("Lowered", times = 3), 
-                                    rep("Ambient", times = 6),
+                         "temp" = c(rep("Ambient", times = 12),
                                     rep("Lowered", times = 3),
                                     rep("Elevated", times = 3),
                                     rep("Ambient", times = 3),
@@ -145,9 +143,7 @@ crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6, 7, 8, 9), time
                          "day" = c(rep(0, times = 9),
                                    rep(2, times = 9),
                                    rep(17, times = 6)),
-                         "temp" = c(rep(2, times = 3),
-                                    rep(1, times = 3), 
-                                    rep(2, times = 6),
+                         "temp" = c(rep(2, times = 12),
                                     rep(1, times = 3),
                                     rep(3, times = 3),
                                     rep(2, times = 3),
@@ -162,7 +158,7 @@ crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6, 7, 8, 9), time
 variable <- "infection"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/cbai_transcriptome_v4.0/all_crabs_no_filter/infection_as_var/day0_elev_as_elev/"
+file_start <- "../output/WGCNA_output/cbai_transcriptome_v4.0/all_crabs_no_filter/infection_as_var/day0_elev_as_amb/"
 
 # Location of blastx table
 blastx_table_site <- "../data/cbai_blastx_table_transcriptome_v4.0.txt"
