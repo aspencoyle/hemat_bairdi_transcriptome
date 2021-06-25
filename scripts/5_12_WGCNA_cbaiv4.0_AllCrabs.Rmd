@@ -155,10 +155,10 @@ crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6, 7, 8, 9), time
                                          1, 2, 1))
 
 # Variable being examined - should match column in two data frames above
-variable <- "infection"
+variable <- "temp"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/cbai_transcriptome_v4.0/all_crabs_no_filter/infection_as_var/day0_elev_as_amb/"
+file_start <- "../output/WGCNA_output/cbai_transcriptome_v4.0/all_crabs_no_filter/temp_as_var/day0_elev_as_amb/"
 
 # Location of blastx table
 blastx_table_site <- "../data/cbai_blastx_table_transcriptome_v4.0.txt"

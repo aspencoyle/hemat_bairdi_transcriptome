@@ -66,6 +66,9 @@ First, set all variables.
 
 Later in the script, you will need to specify a soft thresholding power to choose. But otherwise, minimal changes are necessary
 
+Note that for this, minimum module size was reduced to 10 from the WGCNA default of 30, due to the much smaller number of Hematodinium genes
+
+
 ```{r TPMextract}
 # Path to kallisto libraries
 kallisto_path <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
@@ -87,13 +90,16 @@ crabClinicalData <- data.frame("crab" = rep(c(1, 2, 3), times = 2),
 variable <- "day"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/hemat_transcriptome_v1.6/elev_crabs_no_filter/"
+file_start <- "../output/WGCNA_output/hemat_transcriptome_v1.6/elev_crabs_no_filter/min_module_10/"
 
 # Location of blastx table
 blastx_table_site <- "../data/hemat_blastx_table_transcriptome_v1.6.txt"
 
 # Number of samples we're examining
 numsamples <- 6
+
+# Minimum module size (number of genes per module)
+minimum_module <- 10
 ```
 
 Then, we begin creating our TPM matrix for all transcripts
@@ -338,8 +344,8 @@ plot(geneTree, xlab = "", sub = "",
 ```
 
 ```{r min_module_size}
-# Set minimum module size, AKA num of genes that need to be in a module. Here, using WGCNA default
-minModuleSize <- 30
+# Set minimum module size, AKA num of genes that need to be in a module. WGCNA default is 30.
+minModuleSize <- minimum_module
 # Cut branches of dendrogram to ID WGCNA modules
 dynamicMods <- cutreeDynamic(dendro =  geneTree,
                              distM = dissTOM,

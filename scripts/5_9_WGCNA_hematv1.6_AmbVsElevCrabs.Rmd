@@ -36,6 +36,9 @@ All kallisto libraries should be available within the GitHub repo. However, one 
 Annotation description available [here](https://robertslab.github.io/sams-notebook/2020/08/14/Transcriptome-Annotation-Hematodinium-Transcriptomes-v1.6-v1.7-v2.1-v3.1-with-DIAMOND-BLASTx-on-Mox.html), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20200814_hemat_diamond_blastx_v1.6_v1.7_v2.1_v3.1/hemat_transcriptome_v1.6.fasta.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210308_hemat_trinity_v1.6_v1.7/hemat_transcriptome_v1.6.fasta_trinity_out_dir/hemat_transcriptome_v1.6.fasta), 
 md5sum: 698513d787f92a65debb9f70dbb2e32f
 
+Note that for this, minimum module size was reduced to 10, due to the much smaller number of Hematodinium genes
+
+
 ```{r libraries, message = FALSE, warning=FALSE}
 # Add all required libraries that are installed with install.packages() here
 list.of.packages <- "tidyverse"
@@ -117,13 +120,16 @@ crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1
 variable <- "temp"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/hemat_transcriptome_v1.6/amb_vs_elev_no_filter/day0_elev_as_amb/"
+file_start <- "../output/WGCNA_output/hemat_transcriptome_v1.6/amb_vs_elev_no_filter/day0_elev_as_amb/min_module_10/"
 
 # Location of blastx table
 blastx_table_site <- "../data/hemat_blastx_table_transcriptome_v1.6.txt"
 
 # Number of samples we're examining
 numsamples <- 15
+
+# Minimum module size (number of genes per module)
+minimum_module <- 10
 ```
 
 Then, we begin creating our TPM matrix for all transcripts
@@ -371,8 +377,8 @@ plot(geneTree, xlab = "", sub = "",
 ```
 
 ```{r min_module_size}
-# Set minimum module size, AKA num of genes that need to be in a module. Here, using WGCNA default
-minModuleSize <- 30
+# Set minimum module size, AKA num of genes that need to be in a module. WGCNA default is 30
+minModuleSize <- minimum_module
 # Cut branches of dendrogram to ID WGCNA modules
 dynamicMods <- cutreeDynamic(dendro =  geneTree,
                              distM = dissTOM,
