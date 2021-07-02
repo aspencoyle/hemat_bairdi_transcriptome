@@ -123,7 +123,7 @@ for (i in 1:length(crabIDs)) {
 
 # Create heat maps for each crab (setting specific cut height)
 
-Each crab will be clustered  over time. These will be given one of four assignments based on their expression patterns. Multiple clusters may be given the same assignment.
+Each crab will be clustered  over time. These will be given one of five assignments based on their expression patterns. Multiple clusters may be given the same assignment.
 
 - HTL = expression goes from high to low
 
@@ -133,7 +133,9 @@ Each crab will be clustered  over time. These will be given one of four assignme
 
 - LHL = inverse of HLH
 
-Crabs with only two time points (crabs G, H, and I) will be clustered as well. For these, four assignments will be given. Again, multiple clusters may be given the same assignment.
+- MIX = mixed - no clear pattern of expression within the module
+
+Crabs with only two time points (crabs G, H, and I) will be clustered as well. For these, five assignments will be given. Again, multiple clusters may be given the same assignment.
 
 - LL = expression stays low
 
@@ -142,6 +144,8 @@ Crabs with only two time points (crabs G, H, and I) will be clustered as well. F
 - LH = expression goes from low to high
 
 - HL = expression goes from high to low
+
+- MIX = mixed - no clear pattern of expression within the module
 
 ```{r}
 
@@ -295,9 +299,9 @@ clusts <- list(c("LTH", "LHL", "HTL", "LTH2", "HTL2"),     # Crab A
                c("HTL", "HTL2", "LHL", "HTL3", "LTH"),  # Crab B
                c("LTH", "HLH", "LTH2", "LHL", "HTL", "HTL2", "HTL3"),  # Crab C
                c("LTH", "HTL", "LHL", "HTL2", "HTL3"),  # Crab E
-               c("LH", "HH", "HL", "HL2"),  # Crab G
-               c("HH", "HH2", "HL", "LH"),  # Crab H
-               c("LL", "LH", "LH2", "LL2"))  # Crab I
+               c("MIX", "MIX2", "HL", "MIX3"),  # Crab G
+               c("MIX", "MIX2", "MIX3", "MIX4"),  # Crab H
+               c("LL", "LH", "MIX", "MIX2"))  # Crab I
 
 # Ensure number of labels matches number of crab
 length(clusts) == length(crabs)

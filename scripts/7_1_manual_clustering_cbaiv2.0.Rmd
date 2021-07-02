@@ -123,7 +123,7 @@ for (i in 1:length(crabIDs)) {
 
 # Create heat maps for each crab (setting specific cut height)
 
-Each crab will be clustered  over time. These will be given one of four assignments based on their expression patterns. Multiple clusters may be given the same assignment.
+Each crab will be clustered  over time. These will be given one of five assignments based on their expression patterns. Multiple clusters may be given the same assignment.
 
 - HTL = expression goes from high to low
 
@@ -133,7 +133,9 @@ Each crab will be clustered  over time. These will be given one of four assignme
 
 - LHL = inverse of HLH
 
-Crabs with only two time points (crabs G, H, and I) will be clustered as well. For these, four assignments will be given. Again, multiple clusters may be given the same assignment.
+- MIX = mixed - no clear pattern of expression within the module
+
+Crabs with only two time points (crabs G, H, and I) will be clustered as well. For these, five assignments will be given. Again, multiple clusters may be given the same assignment.
 
 - LL = expression stays low
 
@@ -142,6 +144,8 @@ Crabs with only two time points (crabs G, H, and I) will be clustered as well. F
 - LH = expression goes from low to high
 
 - HL = expression goes from high to low
+
+- MIX = mixed - no clear pattern of expression within the module
 
 ```{r}
 
@@ -295,9 +299,9 @@ clusts <- list(c("LTH", "LHL", "HTL", "HTL2", "LTH2", "HLH"),     # Crab A
                c("LTH", "LHL", "LTH2", "HLH", "LHL2", "HTL", "HTL2"),  # Crab B
                c("LTH", "HLH", "HTL", "LHL", "HTL2", "HTL3", "LHL2"),  # Crab C
                c("LTH", "LTH2", "HLH", "HTL", "HTL2", "LHL", "HLH2"),  # Crab E
-               c("LH", "HL", "HL2", "HL3", "HH", "HH2"),  # Crab G
-               c("HH", "HL", "LH", "HL2", "LL", "HH2"),  # Crab H
-               c("LH", "HL", "LH2", "HL2", "LH3"))  # Crab I
+               c("LH", "HL", "HL2", "LH2", "MIX", "MIX2"),  # Crab G
+               c("HH", "HL", "LH", "HL2", "MIX", "MIX2"),  # Crab H
+               c("LH", "HL", "LH2", "HL2", "MIX"))  # Crab I
 
 # Ensure number of labels matches number of crab
 length(clusts) == length(crabs)
