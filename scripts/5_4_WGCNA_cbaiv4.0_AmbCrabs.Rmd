@@ -29,7 +29,7 @@ Again, script is based largely on [Yaamini's script](https://github.com/eimd-201
 
 We will first extract the TPM (transcripts per million) counts from the kallisto libraries created earlier in the pipeline. We will then change those to logTPM counts, and then begin the WGCNA analysis
 
-All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, cbai_blastx_table_transcriptome_v4.0.txt,is not. This is a BLASTx annotation of cbai_transcriptome_v4.0.fasta.
+All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, cbai_blastx_table_transcriptomev4.0.txt,is not. This is a BLASTx annotation of cbai_transcriptomev4.0.fasta.
 
 Annotation description available [here](https://robertslab.github.io/resources/Genomic-Resources/), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20210318_cbai_diamond_blastx_transcriptome-v4.0/cbai_transcriptome_v4.0.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210317_cbai_trinity_RNAseq_transcriptome-v4.0/cbai_transcriptome_v4.0.fasta_trinity_out_dir/cbai_transcriptome_v4.0.fasta), 
 md5sum: 8fd2ab9c27e59653fcb4f32574be1f61
@@ -89,10 +89,10 @@ crabClinicalData <- data.frame("crab" = rep(c(1, 2, 3), times = 3),
 variable <- "day"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/cbai_transcriptome_v4.0/amb_crabs_no_filter/"
+file_start <- "../output/WGCNA_output/cbai_transcriptomev4.0/amb_crabs_no_filter/"
 
 # Location of blastx table
-blastx_table_site <- "../data/cbai_blastx_table_transcriptome_v4.0.txt"
+blastx_table_site <- "../data/cbai_blastx_table_transcriptomev4.0.txt"
 
 # Number of samples we're examining
 numsamples <- 9

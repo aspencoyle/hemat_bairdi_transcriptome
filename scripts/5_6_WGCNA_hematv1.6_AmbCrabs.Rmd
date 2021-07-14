@@ -29,7 +29,7 @@ Again, script is based largely on [Yaamini's script](https://github.com/eimd-201
 
 We will first extract the TPM (transcripts per million) counts from the kallisto libraries created earlier in the pipeline. We will then change those to logTPM counts, and then begin the WGCNA analysis
 
-All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, hemat_blastx_table_transcriptome_v1.6.txt,is not. This is a BLASTx annotation of hemat_transcriptome_v1.6.fasta.
+All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, hemat_blastx_table_transcriptomev1.6.txt,is not. This is a BLASTx annotation of hemat_transcriptomev1.6.fasta.
 
 Annotation description available [here](https://robertslab.github.io/sams-notebook/2020/08/14/Transcriptome-Annotation-Hematodinium-Transcriptomes-v1.6-v1.7-v2.1-v3.1-with-DIAMOND-BLASTx-on-Mox.html), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20200814_hemat_diamond_blastx_v1.6_v1.7_v2.1_v3.1/hemat_transcriptome_v1.6.fasta.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210308_hemat_trinity_v1.6_v1.7/hemat_transcriptome_v1.6.fasta_trinity_out_dir/hemat_transcriptome_v1.6.fasta), 
 md5sum: 698513d787f92a65debb9f70dbb2e32f
@@ -91,10 +91,10 @@ crabClinicalData <- data.frame("crab" = rep(c(1, 2, 3), times = 3),
 variable <- "day"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/hemat_transcriptome_v1.6/amb_crabs_no_filter/min_module_10/"
+file_start <- "../output/WGCNA_output/hemat_transcriptomev1.6/amb_crabs_no_filter/min_module_10/"
 
 # Location of blastx table
-blastx_table_site <- "../data/hemat_blastx_table_transcriptome_v1.6.txt"
+blastx_table_site <- "../data/hemat_blastx_table_transcriptomev1.6.txt"
 
 # Number of samples we're examining
 numsamples <- 9

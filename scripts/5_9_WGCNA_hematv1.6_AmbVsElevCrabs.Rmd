@@ -120,10 +120,10 @@ crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1
 variable <- "temp"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/hemat_transcriptome_v1.6/amb_vs_elev_no_filter/day0_elev_as_amb/min_module_10/"
+file_start <- "../output/WGCNA_output/hemat_transcriptomev1.6/amb_vs_elev_no_filter/day0_elev_as_amb/min_module_10/"
 
 # Location of blastx table
-blastx_table_site <- "../data/hemat_blastx_table_transcriptome_v1.6.txt"
+blastx_table_site <- "../data/hemat_blastx_table_transcriptomev1.6.txt"
 
 # Number of samples we're examining
 numsamples <- 15

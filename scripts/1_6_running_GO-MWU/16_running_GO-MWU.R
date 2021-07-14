@@ -21,8 +21,8 @@ setwd("16_running_GO-MWU")
 #### GO-MWU Run 1: Elevated Day 2 vs. Ambient Days 0+2, Individual Libraries Only --------------------------
 
 # Edit these to match your data file names: 
-input="cbaihemat2.0_elev2_vs_amb02_indiv_only_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
-goAnnotations="cbaihemat2.0_elev2_vs_amb02_indiv_only_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
+input="cbai2.0_elev2_vs_amb02_indiv_only_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
+goAnnotations="cbai2.0_elev2_vs_amb02_indiv_only_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
 goDatabase="go.obo" # download from http://www.geneontology.org/GO.downloads.ontology.shtml
 goDivision="BP" # either MF, or BP, or CC
 source("gomwu.functions.R")

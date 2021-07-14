@@ -17,7 +17,7 @@ We will now run WGCNA on all individual libraries of ambient-temperature crabs o
 
 We will include transcripts from both C. bairdi and Hematodinium. However, rather than using an unfiltered transcriptome, we will use libraries aligned to a) a transcriptome produced by a BLASTx against the _C. opilio_ genome, and b) a transcriptome filtered to only include Alveolata sequences. These libraries were then appended to each other.
 
-The two transcriptomes used to create the libraries are cbai_transcriptome_v4.0 and hemat_transcriptome_v1.6
+The two transcriptomes used to create the libraries are cbai_transcriptomev4.0 and hemat_transcriptomev1.6
 
 Table of libraries included in analysis:
 
@@ -31,14 +31,14 @@ Again, script is based largely on [Yaamini's script](https://github.com/eimd-201
 
 We will first extract the TPM (transcripts per million) counts from the kallisto libraries created earlier in the pipeline. We will then change those to logTPM counts, and then begin the WGCNA analysis
 
-All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, cbai4.0_hemat1.6_transcriptomes_blastx_table.txt. This is two BLASTx annotations - of hemat_transcriptome_v1.6.fasta and cbai_transcriptome_v4.0.fasta - appended to each other. 
+All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, cbai4.0_hemat1.6_transcriptomes_blastx_table.txt. This is two BLASTx annotations - of hemat_transcriptomev1.6.fasta and cbai_transcriptomev4.0.fasta - appended to each other. 
 
-**Description of cbai_transcriptome_v4.0.fasta and BLASTx annotation**
+**Description of cbai_transcriptomev4.0.fasta and BLASTx annotation**
 
 Annotation description available [here](https://robertslab.github.io/resources/Genomic-Resources/), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20210318_cbai_diamond_blastx_transcriptome-v4.0/cbai_transcriptome_v4.0.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210317_cbai_trinity_RNAseq_transcriptome-v4.0/cbai_transcriptome_v4.0.fasta_trinity_out_dir/cbai_transcriptome_v4.0.fasta), 
 md5sum: 8fd2ab9c27e59653fcb4f32574be1f61
 
-**Description of hemat_transcriptome_v1.6.fasta and BLASTx annotation**
+**Description of hemat_transcriptomev1.6.fasta and BLASTx annotation**
 
 Annotation description available [here](https://robertslab.github.io/sams-notebook/2020/08/14/Transcriptome-Annotation-Hematodinium-Transcriptomes-v1.6-v1.7-v2.1-v3.1-with-DIAMOND-BLASTx-on-Mox.html), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20200814_hemat_diamond_blastx_v1.6_v1.7_v2.1_v3.1/hemat_transcriptome_v1.6.fasta.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210308_hemat_trinity_v1.6_v1.7/hemat_transcriptome_v1.6.fasta_trinity_out_dir/hemat_transcriptome_v1.6.fasta), 
 md5sum: 698513d787f92a65debb9f70dbb2e32f

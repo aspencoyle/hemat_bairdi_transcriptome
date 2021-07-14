@@ -80,7 +80,7 @@ crabids <- c("A", "A", "A", "B", "B", "B", "C", "C", "C")
 
 ```{r inputs}
 # Path to directory containing modules
-modulepath <- "../output/WGCNA_output/hemat_transcriptome_v1.6/elev_crabs_no_filter/"
+modulepath <- "../output/WGCNA_output/hemat_transcriptomev1.6/elev_crabs_no_filter/"
 
 # Specify location of kallisto libraries included in module
 libpath <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"

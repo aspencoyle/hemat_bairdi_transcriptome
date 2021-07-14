@@ -37,14 +37,14 @@ lapply(list.of.packages, FUN = function(X) {
 
 outfmt6 <- c("qseqid", "sseqid", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
 
-amb2_elev2_alveolata <- read.table(file = "../output/BLASTs/alveolata_publicseqs/cbaihemat_v2.0_amb2_vs_elev2_DEGs.tab",
+amb2_elev2_alveolata <- read.table(file = "../output/BLASTs/alveolata_publicseqs/cbai_v2.0_amb2_vs_elev2_DEGs.tab",
                                    col.names = outfmt6)
-elev0_elev2_alveolata <- read.table(file = "../output/BLASTs/alveolata_publicseqs/cbaihemat_v2.0_elev0_vs_elev2_DEGs.tab",
+elev0_elev2_alveolata <- read.table(file = "../output/BLASTs/alveolata_publicseqs/cbai_v2.0_elev0_vs_elev2_DEGs.tab",
                                     col.names = outfmt6)
 
-amb2_elev2_arthropoda <- read.table(file = "../output/BLASTs/arthropoda_publicseqs/cbaihemat_v2.0_amb2_vs_elev2_DEGs.tab",
+amb2_elev2_arthropoda <- read.table(file = "../output/BLASTs/arthropoda_publicseqs/cbai_v2.0_amb2_vs_elev2_DEGs.tab",
                                     col.names = outfmt6)
-elev0_elev2_arthropoda <- read.table(file = "../output/BLASTs/arthropoda_publicseqs/cbaihemat_v2.0_elev0_vs_elev2_DEGs.tab",
+elev0_elev2_arthropoda <- read.table(file = "../output/BLASTs/arthropoda_publicseqs/cbai_v2.0_elev0_vs_elev2_DEGs.tab",
                                      col.names = outfmt6)
 
 # Filter by e-value (bar = 10)
