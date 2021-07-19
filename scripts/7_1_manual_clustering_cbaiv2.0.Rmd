@@ -41,21 +41,20 @@ lapply(list.of.packages, FUN = function(X) {
 crabA_libs <- c("178", "359", "463")
 crabB_libs <- c("118", "349", "481")
 crabC_libs <- c("132", "334", "485")
-# For the sake of completeness, also giving IDs for all libraries for decreased-temperature crab. D and F are uninfected, E is infected. E and F libraries were only created using cbai_transcriptomev4.0 (since they are libraries of uninfected crab, a transcriptome of only C. bairdi genes is the only one used for alignment). When getting TPMs for libraries aligned to other transcriptomes, comment them out.
-# crabD_libs <- c("073", "221", "427")
+# Also giving IDs for all libraries for decreased-temperature crab. D and F are uninfected, E is infected. 
+crabD_libs <- c("073", "221", "427")
 crabE_libs <- c("151", "254", "445")
-# crabF_libs <- c("113", "222", "425")
+crabF_libs <- c("113", "222", "425")
 # Give IDs for all libraries for elevated-temperature crab. Note: again, we have no libraries on Day 17 for these crabs
 crabG_libs <- c("173", "272")
 crabH_libs <- c("072", "294")
 crabI_libs <- c("127", "280")
 
-# Vector of crab IDs (all that aren't commented out above)
-crabs <- c("A", "B", "C", "E", "G", "H", "I")
+# Vector of crab IDs
+crabs <- c("A", "B", "C", "D", "E", "F", "G", "H", "I")
 
-# Create a list of all crabs that aren't commented out above
-
-crabIDs <- list(crabA_libs, crabB_libs, crabC_libs, crabE_libs, crabG_libs, crabH_libs, crabI_libs)
+# List of all crabs
+crabIDs <- list(crabA_libs, crabB_libs, crabC_libs, crabD_libs, crabE_libs, crabF_libs, crabG_libs, crabH_libs, crabI_libs)
 
 # Set path to location of kallisto libraries
 libpath <- "../output/kallisto_libraries/cbai_transcriptomev2.0/"
