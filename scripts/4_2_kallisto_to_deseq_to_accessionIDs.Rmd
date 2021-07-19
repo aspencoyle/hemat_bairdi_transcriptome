@@ -125,6 +125,212 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4
                variable = "temp")
 ```
 
+### All Individual Libraries
+exp_design = day and temperature data for libraries 178, 359, 463, 118, 349, 481, 132, 334, 485, 073, 221, 427, 151, 254, 445, 113, 222, 425, 173, 272, 072, 294, 127, 280. 
+
+That corresponds to Crab A Day 0, Crab A Day 2, Crab A Day 17, Crab B Day 0, Crab B Day 2... for crabs A-I in alphabetical order
+
+#### Temperature as variable
+
+Using temperature at time of sampling, not treatment  group
+
+```{r all_libs_temp, eval = FALSE}
+exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "elev", "amb",
+                                         "elev", "amb", "elev")),
+                         day = factor(c(0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17, 
+                                        0, 2, 17, 
+                                        0, 2, 0, 
+                                        2, 0, 2)),
+                         crab = factor(c(rep("A", times = 3),
+                                         rep("B", times = 3),
+                                         rep("C", times = 3),
+                                         rep("D", times = 3),
+                                         rep("E", times = 3),
+                                         rep("F", times = 3),
+                                         rep("G", times = 2),
+                                         rep("H", times = 2),
+                                         rep("I", times = 2))))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4.0/all_indiv_libraries/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/cbai_transcriptomev4.0/all_indiv_libraries/temp_as_var/",
+               variable = "temp")
+```
+
+
+#### Crab as variable
+
+
+```{r all_libs_crab, eval = FALSE}
+exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "elev", "amb",
+                                         "elev", "amb", "elev")),
+                         day = factor(c(0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17, 
+                                        0, 2, 17, 
+                                        0, 2, 0, 
+                                        2, 0, 2)),
+                         crab = factor(c(rep("A", times = 3),
+                                         rep("B", times = 3),
+                                         rep("C", times = 3),
+                                         rep("D", times = 3),
+                                         rep("E", times = 3),
+                                         rep("F", times = 3),
+                                         rep("G", times = 2),
+                                         rep("H", times = 2),
+                                         rep("I", times = 2))))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4.0/all_indiv_libraries/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/cbai_transcriptomev4.0/all_indiv_libraries/crab_as_var/",
+               variable = "crab")
+```
+
+#### Day as variable
+
+
+```{r all_libs_day, eval = FALSE}
+exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "elev", "amb",
+                                         "elev", "amb", "elev")),
+                         day = factor(c(0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17, 
+                                        0, 2, 17, 
+                                        0, 2, 0, 
+                                        2, 0, 2)),
+                         crab = factor(c(rep("A", times = 3),
+                                         rep("B", times = 3),
+                                         rep("C", times = 3),
+                                         rep("D", times = 3),
+                                         rep("E", times = 3),
+                                         rep("F", times = 3),
+                                         rep("G", times = 2),
+                                         rep("H", times = 2),
+                                         rep("I", times = 2))))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4.0/all_indiv_libraries/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/cbai_transcriptomev4.0/all_indiv_libraries/day_as_var/",
+               variable = "day")
+```
+
+#### Infection as variable
+
+
+```{r all_libs_inf, eval = FALSE}
+exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "elev", "amb",
+                                         "elev", "amb", "elev")),
+                         crab = factor(c(rep("A", times = 3),
+                                         rep("B", times = 3),
+                                         rep("C", times = 3),
+                                         rep("D", times = 3),
+                                         rep("E", times = 3),
+                                         rep("F", times = 3),
+                                         rep("G", times = 2),
+                                         rep("H", times = 2),
+                                         rep("I", times = 2))),
+                         infection = factor(c(rep("Inf", times = 9),
+                                              rep("Uninf", times = 3),
+                                              rep("Inf", times = 3),
+                                              rep("Uninf", times = 3),
+                                              rep("Inf", times = 6))))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4.0/all_indiv_libraries/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/cbai_transcriptomev4.0/all_indiv_libraries/infection_as_var/",
+               variable = "infection")
+```
+
+#### Hematodinium infection level as variable
+
+Hematodinium infection level was quantified using qPCR at a single time point for each crab. Levels can be found at [this link](https://github.com/crmateo/crab-capstone/blob/main/data/hematqpcr_crabRNA.csv).
+
+The middle number in Sample ID corresponds to the Sample IDs used in this script (i.e. 6203_113_9  = Sample 113). As another note, the last digit corresponds to the experiment day. However, rather than counting from the first day of temperature manipulation, this counts from the first day the crabs were present in the tank. Essentially, it includes the 9-day acclimation period. Therefore, _9 = Day 0, _12 = Day 2, and _26 = Day 17
+
+qPCR quantification (units presumed to be ng/ul)
+
+Crab A = 1119
+
+Crab B = 105477
+
+Crab C = 333000
+
+Crab D = 380502
+
+Crab E = 1550
+
+Crab F = 3069
+
+Crab G = 4515
+
+Crab H = 119500
+
+Crab I = 211000
+
+
+
+
+
+```{r all_libs_inf_status, eval = FALSE}
+exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "elev", "amb",
+                                         "elev", "amb", "elev")),
+                         day = factor(c(0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17, 
+                                        0, 2, 17, 
+                                        0, 2, 0, 
+                                        2, 0, 2)),
+                         hemat_level = factor(c(rep("L", times = 3),
+                                               rep("H", times = 9),
+                                               rep("L", times = 8),
+                                               rep("H", times = 4))))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4.0/all_indiv_libraries/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/cbai_transcriptomev4.0/all_indiv_libraries/hemat_level_as_var/",
+               variable = "hemat_level")
+```
+
 # Stage 2: Turning Transcript IDs Into Accession IDs
 
 The previous step produced four tables for each pairwise comparison, as follows. Each table has the same columns: transcript ID, base mean, log2 fold change, lfcSE, stat, p-value, p-adjusted 
