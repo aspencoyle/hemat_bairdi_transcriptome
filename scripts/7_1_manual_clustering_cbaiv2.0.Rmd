@@ -146,6 +146,8 @@ Crabs with only two time points (crabs G, H, and I) will be clustered as well. F
 
 - MIX = mixed - no clear pattern of expression within the module
 
+NOTE: For this one, we are dropping genes without 10+ counts across all samples - for cbai_v4.0 and hemat_v1.6, we dropped all without 5+ counts across all samples. This is because Crab D has 77,300 genes with >5 counts, which is higher than the hclust() bar of 65,536
+
 ```{r}
 
 # Set height of clusters for samples with 3 time points
@@ -164,8 +166,9 @@ for (i in 1:length(crabs)) {
                                       crabs[i],
                                       "_TPMcts.txt"),
                         row.names = 1)
-  # Drop any genes with less than 5 counts across all 3 samples
-  keep <- rowSums(crabdat) >= 5
+
+  # Drop genes without 10 counts across all 3 samples
+  keep <- rowSums(crabdat) >= 10
   f.crabdat <- crabdat[keep, ]
   
   print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
