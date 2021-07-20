@@ -297,13 +297,15 @@ for (i in 1:length(crabs)) {
 
 ```{r}
 # Create list of labels for each individual crab
-clusts <- list(c("LTH", "LHL", "HTL", "HTL2", "LTH2", "HLH"),     # Crab A          
-               c("LTH", "LHL", "LTH2", "HLH", "LHL2", "HTL", "HTL2"),  # Crab B
-               c("LTH", "HLH", "HTL", "LHL", "HTL2", "HTL3", "LHL2"),  # Crab C
-               c("LTH", "LTH2", "HLH", "HTL", "HTL2", "LHL", "HLH2"),  # Crab E
-               c("LH", "HL", "HL2", "LH2", "MIX", "MIX2"),  # Crab G
-               c("HH", "HL", "LH", "HL2", "MIX", "MIX2"),  # Crab H
-               c("LH", "HL", "LH2", "HL2", "MIX"))  # Crab I
+clusts <- list(c("LTH", "LTH2", "LHL", "HTL", "HTL2", "HLH", "MIX"),  # Crab A
+               c("LTH", "HLH", "LHL", "HTL", "LHL2", "HTL2", "HTL3"),  # Crab B
+               c("LTH", "HLH", "LHL", "HTL", "HTL2", "LHL2", "LTH2"),  # Crab C
+               c("HTL", "LHL", "HTL2", "HLH", "LHL2", "LTH", "LTH2"),  # Crab D
+               c("HTL", "LHL", "LTH", "LTH2", "HLH", "HTL2", "LHL2"),  # Crab E
+               c("LTH", "HTL", "LTH2", "HTL2", "LHL", "HLH"),  # Crab F
+               c("LH", "HL", "HL2", "LH2", "MIX", "LL"),  # Crab G
+               c("MIX", "HL", "MIX", "LH", "MIX", "MIX"),  # Crab H
+               c("LH", "HL", "MIX", "MIX"))  # Crab I
 
 # Ensure number of labels matches number of crab
 length(clusts) == length(crabs)

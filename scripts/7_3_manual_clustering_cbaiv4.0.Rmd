@@ -68,9 +68,20 @@ heatmap_output <- "../output/manual_clustering/cbai_transcriptomev4.0/"
 ```
 ### Assemble TPM counts for each crab
 
-Loop through all crabs and all libraries within each crab, assembling the TPM counts from the abundance.tsv files to create files containing counts for each crab over time
+Loop through all crabs and all libraries within each crab, assembling the TPM counts from the abundance.tsv files to create files containing counts for each crab over time. We'll also create a file containing all TPM counts that will be used for later filtering
 
-```{r}
+```{r} 
+# First, we'll create the file with all TPM counts. It'll be filled in the for loop, but we'll initialize it here
+# Read in the file. We're using id178 because it's the first in Crab A, and so corresponds to crabIDs[[1]]
+all_TPMcts <- read.delim(file = paste0(libpath, "id", crabIDs[[1]][1], "/abundance.tsv"))
+
+# Eliminate all columns except transcript ID
+all_TPMcts <- all_TPMcts %>%
+  select(target_id)
+
+#Rename column
+colnames(all_TPMcts) <- "Transcript_ID"
+
 for (i in 1:length(crabIDs)) {
   # Create character vector with all filenames for our libraries
   crabfiles <- paste0(libpath, "id", crabIDs[[i]], "/abundance.tsv")
@@ -116,7 +127,16 @@ for (i in 1:length(crabIDs)) {
                                     "_TPMcts.txt"),
               sep = "\t",
               row.names = FALSE)
+  
+  # Add TPMcts to the file of all transcript IDs
+  all_TPMcts <- full_join(all_TPMcts, TPMcts, by = "Transcript_ID")
 }
+
+  
+# Write table of all TPM counts for all crabs to file
+write.table(all_TPMcts, file = paste0(TPM_outpath,
+                                      "AllCrabs_TPMcts.txt"))
+
 ```
 
 
@@ -145,6 +165,23 @@ Crabs with only two time points (crabs G, H, and I) will be clustered as well. F
 - HL = expression goes from high to low
 
 - MIX = mixed - no clear pattern of expression within the module
+
+First, we'll filter our genes, so that we're only looking at highly-expressed genes, which we'll define as genes without a TPM of 30+ in at least one crab. Note that this requires us to examine ALL crab.
+
+```{r}
+# Take the TPM counts made earlier, eliminate all genes without 30+ counts in at least one sample
+
+# Move transcript ID to rownames
+all_TPMcts <- all_TPMcts %>%
+  column_to_rownames(var = "Transcript_ID")
+# Get count of values >= 30 for each row
+row_sums_all_TPMcts <- rowSums(all_TPMcts >= 30)
+# Filter counts without at least one count of 30+
+high_TPMcts <- all_TPMcts %>%
+  filter(row_sums_all_TPMcts >= 1)
+```
+
+Now we'll begin assigning clusters
 
 ```{r}
 
