@@ -25,7 +25,7 @@ This script utilizes a series of custom-built functions for the following:
 
 ```{r libraries, message = FALSE, warning=FALSE}
 # Add all required libraries that are installed with install.packages() here
-list.of.packages <- "tidyverse"
+list.of.packages <- c("tidyverse", "plotly")
 # Add all libraries that are installed using BiocManager here
 bioconductor.packages <- c("apeglm", "DESeq2", "vsn")
 
@@ -329,6 +329,158 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev4.0/all_indiv_libraries/hemat_level_as_var/",
                variable = "hemat_level")
+```
+
+### All Samples
+
+The purpose of this section is to create a PCA of all libraries. Each point would be one library. This lets us visualize what variables are influencing variance.
+
+Because of this, we'll actually run DESeq more directly rather than calling the deseq_analysis() function - no need for a lot of the typical DESeq2 outputs. That'll also let us use ggplotly() to create a more interactive (and thus easier to visualize) PCA.
+
+After that, we'll also calculate the plasticity by getting the data from our PCA and calculating the mean distance between each point (using PC1/PC2) and the centroid of that crab.
+
+```{r}
+# Create experimental table. Again, order should correspond to order of columns in our data file
+
+exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "low", "low",
+                                         "amb", "elev", "amb",
+                                         "elev", "amb", "elev")),
+                         day = factor(c(0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17,
+                                        0, 2, 17, 
+                                        0, 2, 17, 
+                                        0, 2, 0, 
+                                        2, 0, 2)),
+                         hemat_level = factor(c(rep("L", times = 3),
+                                                rep("H", times = 9),
+                                                rep("L", times = 8),
+                                                rep("H", times = 4))),
+                         crab = factor(c(rep("A", times = 3),
+                                         rep("B", times = 3),
+                                         rep("C", times = 3),
+                                         rep("D", times = 3),
+                                         rep("E", times = 3),
+                                         rep("F", times = 3),
+                                         rep("G", times = 2),
+                                         rep("H", times = 2),
+                                         rep("I", times = 2))),
+                         infection = factor(c(rep("Inf", times = 9),
+                                              rep("Uninf", times = 3),
+                                              rep("Inf", times = 3),
+                                              rep("Uninf", times = 3),
+                                              rep("Inf", times = 6))))
+
+
+# Read in data
+data <- read.table("../output/kallisto_matrices/cbai_transcriptomev4.0/all_indiv_libraries/kallisto.isoform.counts.matrix", header = TRUE, sep = "\t")
+
+# Rename first column
+names(data)[1] <- "target_ID"
+
+# Set row names equal to the first column
+rownames(data) <- data$target_ID
+
+# Remove the now-irrelevant first column
+data <- data[,-1]
+
+# Make sure everything looks okay
+print("HEAD")
+head(data)
+
+print("STRUCTURE")
+print(str(data))
+
+# Round counts to integers - needed for DESeqDataSetFromMatrix()
+data <- round(data, digits = 0)
+
+# Rename rows to correspond to library numbers
+rownames(exp_design) <- colnames(data)
+
+# Check that experiment_table appears to match columns with matrix from Trinity
+print("EXPERIMENTAL DESIGN")
+print(exp_design)
+  
+# Create DESeq object that looks at effect of variable
+deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
+                                     colData = exp_design,
+                                     design = as.formula("~temp"))
+
+deseq2.dds <- DESeq(deseq2.dds)
+
+#Look at results
+deseq2.res <- results(deseq2.dds)
+print("SUMMARY:")
+print(summary(deseq2.res))
+
+# Transform values for PCA plot
+vsd <- vst(deseq2.dds, blind = FALSE)
+
+colData(vsd)
+
+# Plot plotly for PCA
+ggplotly(
+  plotPCA(vsd, intgroup= "crab") +
+    ggtitle("PCA of all crabs for cbai_transcriptomev4.0") +
+    geom_point(size = 3, aes(text = colnames(vsd))) +
+    theme_minimal(), tooltip = "text")
+
+
+# Run PCA to create object. This uses the same code found in plotPCA()
+rv <- rowVars(assay(vsd))
+select <- order(rv, decreasing = TRUE)[seq_len(min(500, 
+                                                   length(rv)))]
+pca <- prcomp(t(assay(vsd)[select, ]))
+
+# Find the points of each PCA
+points <- pca[["x"]]
+
+# Change rownames from sample ID to crab ID
+rownames(points) <- exp_design$crab
+
+# Eliminate all columns except PC1 and PC2
+points <- points[,1:2]
+
+# Get list of all rownames used (should be all unique crab IDs)
+crabs <- unique(rownames(points))
+
+# Initialize a blank dataframe
+means <- data.frame(crabs, rep(NA, times = length(crabs)), rep(NA, times = length(crabs)), rep(NA, times = length(crabs)))
+
+# Rename the columns of the blank dataframe
+colnames(means) <- c("crabID", "PC1_mean", "PC2_mean", "mean_dist_from_centroid")
+
+for (i in 1:length(crabs)) {
+  # Get values that match that particular crab
+  crab_pts <- points[rownames(points) == crabs[i], ]
+  
+  # Get mean of each column. This is the coordinates of the centroid
+  means[i, 2] <- mean(crab_pts[, 1])
+  means[i, 3] <- mean(crab_pts[, 2])
+  
+  # Initialize blank vector that's the same length as the number of values that match the crab in question
+  dist_vec <- rep(NA, length = nrow(crab_pts))
+  
+  for (j in 1:nrow(crab_pts)) {
+    # Calculate the Euclidean distance from each point to the centroid, use to fill the blank vector
+    dist_vec[j] <- sqrt((crab_pts[j,1] - means[i, 2])^2 + (crab_pts[j,2] - means[i, 3])^2)
+    
+  }
+  # Take the mean of the Euclidean distances and put that in Column 4 of the means table
+  means[i,4] <- mean(dist_vec)
+}
+
+# Remove the middle 2 columns, since we really just want mean distance in the final table
+means <- select(means, -c(PC1_mean, PC2_mean))
+
+
+write.table(means, file = "../graphs/DESeq2_output/cbai_transcriptomev4.0/all_indiv_libraries/PCA_plasticity.txt", row.names = FALSE)
 ```
 
 # Stage 2: Turning Transcript IDs Into Accession IDs
