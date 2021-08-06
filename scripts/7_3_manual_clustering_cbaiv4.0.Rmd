@@ -66,24 +66,19 @@ TPM_outpath <- "../output/TPM_counts/cbai_transcriptomev4.0/"
 heatmap_output <- "../output/manual_clustering/cbai_transcriptomev4.0/"
 
 ```
+
 ### Assemble TPM counts for each crab
 
 Loop through all crabs and all libraries within each crab, assembling the TPM counts from the abundance.tsv files to create files containing counts for each crab over time. We'll also create a file containing all TPM counts that will be used for later filtering
 
-```{r} 
-# First, we'll create the file with all TPM counts. It'll be filled in the for loop, but we'll initialize it here
-# Read in the file. We're using id178 because it's the first in Crab A, and so corresponds to crabIDs[[1]]
-all_TPMcts <- read.delim(file = paste0(libpath, "id", crabIDs[[1]][1], "/abundance.tsv"))
+```{r}
+# In this, we're trying to create two types of files. First, a single file that contains all TPMs for all libraries. And second, a file for each crab that contains all TPMs for that particular crab. We'll do this by creating the larger file first, and then subsetting from that
 
-# Eliminate all columns except transcript ID
-all_TPMcts <- all_TPMcts %>%
-  select(target_id)
 
-#Rename column
-colnames(all_TPMcts) <- "Transcript_ID"
+# Create an empty list
+all_TPMcts <- list()
 
 for (i in 1:length(crabIDs)) {
-  # Create character vector with all filenames for our libraries
   crabfiles <- paste0(libpath, "id", crabIDs[[i]], "/abundance.tsv")
   
   # Read in first kallisto library to start data frame
@@ -97,9 +92,7 @@ for (i in 1:length(crabIDs)) {
   
   # Rename columns for consistency and to ID TPM counts
   colnames(TPMcts) <- c("Transcript_ID",
-                        paste0("id",
-                               crabIDs[[i]][1],
-                               "_TPM"))
+                        crabIDs[[i]][1])
   
   # Loop through remaining libraries and create file of TPMs over time
   for (j in 2:length(crabIDs[[i]])) {
@@ -111,10 +104,8 @@ for (i in 1:length(crabIDs)) {
       select(target_id, tpm)
     
     # Rename column names to give ID to count column
-    colnames(kallisto_output) <- c("Transcript_ID", 
-                                   paste0("id",
-                                          crabIDs[[i]][j],
-                                          "_TPM"))
+    colnames(kallisto_output) <- c("Transcript_ID",
+                                    crabIDs[[i]][j])
     # Add TPM value to table of DEGs with full join
     TPMcts <- full_join(TPMcts, kallisto_output, 
                         by = "Transcript_ID")
@@ -128,16 +119,25 @@ for (i in 1:length(crabIDs)) {
               sep = "\t",
               row.names = FALSE)
   
-  # Add TPMcts to the file of all transcript IDs
-  all_TPMcts <- full_join(all_TPMcts, TPMcts, by = "Transcript_ID")
+  all_TPMcts[[i]] <- TPMcts
+  
 }
 
-  
-# Write table of all TPM counts for all crabs to file
-write.table(all_TPMcts, file = paste0(TPM_outpath,
-                                      "AllCrabs_TPMcts.txt"))
+# Now that we've got a list with all TPM counts, put them in a matrix
+all_TPMdf <- do.call("cbind", all_TPMcts)
+
+# Remove duplicated columns (the Transcript_ID columns)
+duplicated.cols <- duplicated(t(all_TPMdf))
+all_TPMdf <- all_TPMdf[, !duplicated.cols]
+
+# Write results to file
+write.table(all_TPMdf, file = paste0(TPM_outpath, "all_indiv_library_TPMcts.txt"),
+            sep = "\t",
+            row.names = FALSE)
 
 ```
+
+
 
 
 # Create heat maps for each crab (setting specific cut height)
@@ -166,23 +166,6 @@ Crabs with only two time points (crabs G, H, and I) will be clustered as well. F
 
 - MIX = mixed - no clear pattern of expression within the module
 
-First, we'll filter our genes, so that we're only looking at highly-expressed genes, which we'll define as genes without a TPM of 30+ in at least one crab. Note that this requires us to examine ALL crab.
-
-```{r}
-# Take the TPM counts made earlier, eliminate all genes without 30+ counts in at least one sample
-
-# Move transcript ID to rownames
-all_TPMcts <- all_TPMcts %>%
-  column_to_rownames(var = "Transcript_ID")
-# Get count of values >= 30 for each row
-row_sums_all_TPMcts <- rowSums(all_TPMcts >= 30)
-# Filter counts without at least one count of 30+
-high_TPMcts <- all_TPMcts %>%
-  filter(row_sums_all_TPMcts >= 1)
-```
-
-Now we'll begin assigning clusters
-
 ```{r}
 
 # Set height of clusters for samples with 3 time points
@@ -191,30 +174,34 @@ clusterht <- 1.8
 # Set height of clusters for samples with 2 time points
 twoday_clusterht <- 10
 
+# Read in the initial data file
+TPMcts <- read.delim(file = paste0(TPM_outpath,
+                                   "all_indiv_library_TPMcts.txt"
+                                   ),
+                     row.names = 1,
+                     check.names = FALSE)
+
+# Remove all genes without at least 1 samples with counts of 30+
+TPMcts <- TPMcts %>%
+  filter_all(any_vars(. > 30))
+
+i <- 1
+
 for (i in 1:length(crabs)) {
   # Set path to output folder that will contain all heatmaps and text files
   crab_out <- paste0(heatmap_output, "Crab_", crabs[i], "/")
   
-  # Read in data
-  crabdat <- read.delim(file = paste0(TPM_outpath,
-                                      "Crab_",
-                                      crabs[i],
-                                      "_TPMcts.txt"),
-                        row.names = 1)
-  # Drop any genes with less than 5 counts across all 3 samples
-  keep <- rowSums(crabdat) >= 5
-  f.crabdat <- crabdat[keep, ]
+  # Select the columns that match our particular crab
+  crabdat <- TPMcts[, crabIDs[[i]]]
   
-  print(paste("# of genes remaining after pre-filtering:", nrow(f.crabdat)))
+  # Remove all rows without any values
+  crabdat <- crabdat[rowSums(crabdat[]) > 0, ]
 
-  print(paste("# of genes dropped:", nrow(crabdat) - nrow(f.crabdat), sep = " "))
-  
   # When we just have two time points, we'll make a special heat map. 
   # It uses log2 counts, and doesn't scale by row
   if (ncol(crabdat) < 3) {
-    print(crabs[i])
     # Construct heat map
-    print(pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
+    print(pheatmap(log2(crabdat+1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
@@ -225,7 +212,7 @@ for (i in 1:length(crabs)) {
     # Plot again to save in our file
     png(paste0(crab_out, "heatmap.png"))
     
-    print(pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
+    print(pheatmap(log2(crabdat+1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
@@ -235,7 +222,7 @@ for (i in 1:length(crabs)) {
     
     dev.off()
     
-    out <- pheatmap(log2(f.crabdat+1), cluster_rows = TRUE,
+    out <- pheatmap(log2(crabdat+1), cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
@@ -248,7 +235,7 @@ for (i in 1:length(crabs)) {
     
       # Loop through gene clusters, printing heatmap for each
     for (i in 1:length(unique(lbl))) {
-      clust <- f.crabdat[which(lbl==i) %>% names(), ]
+      clust <- crabdat[which(lbl==i) %>% names(), ]
       # Write results to table
       write.table(clust, file = paste0(crab_out,
                                        "cluster_",
@@ -271,7 +258,7 @@ for (i in 1:length(crabs)) {
     
   } else {
     # Construct heat map
-    print(pheatmap(f.crabdat, cluster_rows = TRUE,
+    print(pheatmap(crabdat, cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
@@ -282,17 +269,16 @@ for (i in 1:length(crabs)) {
     # Plot again to save in our file
     png(paste0(crab_out, "heatmap.png"))
 
-    print(pheatmap(f.crabdat, cluster_rows = TRUE,
+    print(pheatmap(crabdat, cluster_rows = TRUE,
            show_rownames = FALSE,
            na.rm = TRUE,
            cluster_cols = FALSE,
            scale = "row",
            main = "gene counts by day",
            fontsize = 9))
-    
     dev.off()
     
-    out <- pheatmap(f.crabdat, cluster_rows = TRUE,
+    out <- pheatmap(crabdat, cluster_rows = TRUE,
                 show_rownames = FALSE,
                 na.rm = TRUE,
                 cluster_cols = FALSE,
@@ -305,7 +291,7 @@ for (i in 1:length(crabs)) {
     
       # Loop through gene clusters, printing heatmap for each
     for (i in 1:length(unique(lbl))) {
-      clust <- f.crabdat[which(lbl==i) %>% names(), ]
+      clust <- crabdat[which(lbl==i) %>% names(), ]
       # Write results to table
       write.table(clust, file = paste0(crab_out,
                                    "cluster_",
@@ -328,6 +314,7 @@ for (i in 1:length(crabs)) {
   
 }
 ```
+
 
 ### Assign labels manually to each crab
 

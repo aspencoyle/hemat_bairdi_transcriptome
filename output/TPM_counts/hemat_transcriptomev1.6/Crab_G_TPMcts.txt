@@ -1,4 +1,4 @@
-"Transcript_ID"	"id173_TPM"	"id272_TPM"
+"Transcript_ID"	"173"	"272"
 "TRINITY_DN4725_c0_g1_i1"	0	1.12175
 "TRINITY_DN4795_c0_g1_i1"	0	0
 "TRINITY_DN4747_c0_g1_i1"	0	0
