@@ -318,15 +318,15 @@ for (i in 1:length(crabs)) {
 
 ```{r}
 # Create list of labels for each individual crab
-clusts <- list(c("LTH", "LHL", "HTL", "LTH2", "HTL2"),     # Crab A          
-               c("HTL", "HTL2", "LHL", "HTL3", "LTH"),  # Crab B
-               c("LTH", "HLH", "LTH2", "LHL", "HTL", "HTL2", "HTL3"),  # Crab C
-               c("LTH", "HLH", "LHL", "HTL", "LHL2"),  # Crab D
-               c("LTH", "HTL", "LHL", "HTL2", "HTL3"),  # Crab E
-               c("LHL", "LTH", "HTL", "HTL2", "LTH2"),  # Crab F
+clusts <- list(c("HTL", "LTH", "LHL", "LTH2", "HTL2"),     # Crab A          
+               c("HTL", "LTH", "LHL", "HTL2", "HLH"),  # Crab B
+               c("LHL", "LTH", "HTL", "LTH2", "HLH", "HTL2"),  # Crab C
+               c("LTH", "HLH", "HTL", "LHL", "LHL2"),  # Crab D
+               c("LHL", "LTH", "HTL", "LHL2", "LTH2", "HTL2"),  # Crab E
+               c("HTL", "LTH", "LHL", "HTL2", "HLH", "LTH2"),  # Crab F
                c("MIX", "MIX2", "HL", "MIX3"),  # Crab G
                c("MIX", "MIX2", "MIX3", "MIX4"),  # Crab H
-               c("LL", "LH", "MIX", "MIX2"))  # Crab I
+               c("MIX", "MIX2", "LH", "MIX4"))  # Crab I
 
 # Ensure number of labels matches number of crab
 length(clusts) == length(crabs)
@@ -351,7 +351,16 @@ for (i in 1:length(clusts)) {
   }
 ```
 
-
+#### Obsolete: Used when bar was 5 total counts of the gene per crab, not 1+ library with 30+ counts for any crab
+clusts <- list(c("LTH", "LHL", "HTL", "LTH2", "HTL2"),     # Crab A          
+               c("HTL", "HTL2", "LHL", "HTL3", "LTH"),  # Crab B
+               c("LTH", "HLH", "LTH2", "LHL", "HTL", "HTL2", "HTL3"),  # Crab C
+               c("LTH", "HLH", "LHL", "HTL", "LHL2"),  # Crab D
+               c("LTH", "HTL", "LHL", "HTL2", "HTL3"),  # Crab E
+               c("LHL", "LTH", "HTL", "HTL2", "LTH2"),  # Crab F
+               c("MIX", "MIX2", "HL", "MIX3"),  # Crab G
+               c("MIX", "MIX2", "MIX3", "MIX4"),  # Crab H
+               c("LL", "LH", "MIX", "MIX2"))  # Crab I
 
 # Create heat maps for each crab (manual cluster numbers)
 

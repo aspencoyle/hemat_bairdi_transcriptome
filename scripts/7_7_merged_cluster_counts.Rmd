@@ -46,7 +46,7 @@ lapply(list.of.packages, FUN = function(X) {
 ```{r}
 # Get the path of all relevant files
 file_list <- Sys.glob("../output/manual_clustering/*/merged_modules_raw_counts.txt")
-
+i <- 1
 # In each iteration of the for loop, we'll choose a different transcriptome's raw counts to examine, create two neat summary tables - one with percentages, one with counts - and write as CSVs
 for (i in 1:length(file_list)) {
   counts <- read.table(file_list[i])
@@ -89,7 +89,7 @@ for (i in 1:length(file_list)) {
   # Write our counts table
   write.csv(counts, file = paste0(path, "merged_modules_counts_table.csv"))
   # Write our percentages table
-  write.csv(counts, file = paste0(path, "merged_modules_percentages_table.csv"))
+  write.csv(percentages, file = paste0(path, "merged_modules_percentages_table.csv"))
 }
 ```
 

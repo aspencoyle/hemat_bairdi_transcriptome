@@ -321,15 +321,15 @@ for (i in 1:length(crabs)) {
 
 ```{r}
 # Create list of labels for each individual crab
-clusts <- list(c("LTH", "LTH2", "LHL", "HTL", "HTL2", "HLH", "MIX"),  # Crab A
-               c("LTH", "HLH", "LHL", "HTL", "LHL2", "HTL2", "HTL3"),  # Crab B
-               c("LTH", "HLH", "LHL", "HTL", "HTL2", "LHL2", "LTH2"),  # Crab C
-               c("HTL", "LHL", "HTL2", "HLH", "LHL2", "LTH", "LTH2"),  # Crab D
-               c("HTL", "LHL", "LTH", "LTH2", "HLH", "HTL2", "LHL2"),  # Crab E
-               c("LTH", "HTL", "LTH2", "HTL2", "LHL", "HLH"),  # Crab F
-               c("LH", "HL", "HL2", "LH2", "MIX", "LL"),  # Crab G
-               c("MIX", "HL", "MIX", "LH", "MIX", "MIX"),  # Crab H
-               c("LH", "HL", "MIX", "MIX"))  # Crab I
+clusts <- list(c("LTH", "LHL", "HTL", "HTL2", "LHL2", "LTH2", "HLH"),  # Crab A
+               c("LTH", "HLH", "LHL", "LHL2", "HTL", "HTL2"),  # Crab B
+               c("HTL", "LTH", "HLH", "LHL", "HTL2", "LTH2"),  # Crab C
+               c("HLH", "LHL", "HTL", "LTH", "HTL2", "HTL3", "LTH2"),  # Crab D
+               c("LTH", "LHL", "LTH2", "HTL", "HLH", "HTL2", "LTH3"),  # Crab E
+               c("LTH", "HTL", "LTH2", "HTL2", "LHL", "HLH", "HTL3"),  # Crab F
+               c("MIX", "LH", "HL", "LH2", "MIX2", "MIX3"),  # Crab G
+               c("MIX", "LH", "MIX2", "HL", "MIX3"),  # Crab H
+               c("LH", "HL", "MIX", "LH2", "HL2", "MIX2"))  # Crab I
 
 # Ensure number of labels matches number of crab
 length(clusts) == length(crabs)
@@ -355,6 +355,19 @@ for (i in 1:length(clusts)) {
   }
 ```
 
+
+#### Obsolete: Used when bar was 5 total counts of the gene per crab, not 1+ library with 30+ counts for any crab
+
+# Create list of labels for each individual crab
+clusts <- list(c("LTH", "LTH2", "LHL", "HTL", "HTL2", "HLH", "MIX"),  # Crab A
+               c("LTH", "HLH", "LHL", "HTL", "LHL2", "HTL2", "HTL3"),  # Crab B
+               c("LTH", "HLH", "LHL", "HTL", "HTL2", "LHL2", "LTH2"),  # Crab C
+               c("HTL", "LHL", "HTL2", "HLH", "LHL2", "LTH", "LTH2"),  # Crab D
+               c("HTL", "LHL", "LTH", "LTH2", "HLH", "HTL2", "LHL2"),  # Crab E
+               c("LTH", "HTL", "LTH2", "HTL2", "LHL", "HLH"),  # Crab F
+               c("LH", "HL", "HL2", "LH2", "MIX", "LL"),  # Crab G
+               c("MIX", "HL", "MIX", "LH", "MIX", "MIX"),  # Crab H
+               c("LH", "HL", "MIX", "MIX"))  # Crab I
 
 
 # Create heat maps for each crab (manual cluster numbers)
