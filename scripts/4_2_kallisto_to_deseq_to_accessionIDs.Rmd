@@ -535,6 +535,11 @@ transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcript
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev4.0/amb2_vs_elev2_indiv/AllGenes_wcols.txt", 
                        blast_filepath =  "../output/BLASTs/uniprot_swissprot/cbai4.0_blastxres.tab",
                        output_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/allgenes_IDs/amb2_vs_elev2_indiv_All_GeneIDs.txt")
+
+# All Genes
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev4.0/all_indiv_libraries/crab_as_var/AllGenes_wcols.txt", 
+                       blast_filepath =  "../output/BLASTs/uniprot_swissprot/cbai4.0_blastxres.tab",
+                       output_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/allgenes_IDs/all_indiv_libraries_All_GeneIDs.txt")
 ```
 
 

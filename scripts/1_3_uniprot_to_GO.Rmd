@@ -103,4 +103,8 @@ uniprot_to_GO(accession_path = "../output/accession_n_GOids/cbai_transcriptomev2
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
               output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/allgenes_IDs/amb2_vs_elev2_indiv_All_GOIDs.txt")
 
+# All libraries
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/allgenes_IDs/all_indiv_libraries_All_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
+              output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/allgenes_IDs/all_indiv_libraries_All_GOIDs.txt")
 ```

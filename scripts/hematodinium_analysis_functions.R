@@ -183,7 +183,7 @@ transcripts_to_geneIDs <- function(deseq_filepath,
                                sep = "\\|")
   } else {
     transcript_key <- transcript_key %>%
-      rename(Accession_ID = Gene_ID)
+      dplyr::rename(Accession_ID = Gene_ID)
         
       }
   
