@@ -230,3 +230,5 @@ for (i in 1:length(transcriptomes)) {
 
 ```
 
+This concludes our file creation session. Next, we'll move on to creating manual clusters
+
