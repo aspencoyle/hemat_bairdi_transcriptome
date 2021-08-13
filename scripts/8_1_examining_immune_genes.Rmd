@@ -160,18 +160,73 @@ Now that we've got a two-column table of the transcript IDs and accession IDs of
 
 Sure it's less efficient to read the file we just created back in, but it also keeps our for loop from becoming quite large - instead, we're separating into two for loops.
 
+This file we created here will be used for the manual clustering used in earlier scripts
+
 ```{r}
-# Read in the file we created in the for loop
-immune_tab <- read.table(file = paste0("../output/immune_genes/", transcriptomes[1], "/transcript_accession_IDs/all_indiv_libraries.txt"),
-                         header = TRUE)
+for (i in 1:length(transcriptomes)) {
+  # Read in the file we created in the for loop
+  immune_tab <- read.table(file = paste0("../output/immune_genes/", transcriptomes[i], "/transcript_accession_IDs/all_indiv_libraries.txt"),
+                           header = TRUE)
+  
+  # Read in the TPM file containing info for all libraries. Note that check.names = FALSE - this is because 
+  # the file has the 3-digit library IDs as column names.
+  TPM_tab <- read.table(file = paste0("../output/TPM_counts/", transcriptomes[i], "/all_indiv_library_TPMcts.txt"),
+                        header = TRUE,
+                        check.names = FALSE)
+  
+  # Left join file of all immune tab files and our TPM file, so we're only left with TPMs for immune genes
+  immune_TPM <- left_join(immune_tab, TPM_tab, by = "Transcript_ID")
+  
+  # Remove Accession ID column
+  immune_TPM <- select(immune_TPM, -Accession_ID)
+  
+  # Write table to file
+  write.table(immune_TPM, file = paste0("../output/TPM_counts/", transcriptomes[i], "/immune_genes_all_libs_TPMcts.txt"),
+              row.names = FALSE)
+  
+}
+```
 
-# Read in the TPM file containing info for all libraries. Note that check.names = FALSE - this is because 
-# the file has the 3-digit library IDs as column names.
-TPM_tab <- read.table(file = paste0("../output/TPM_counts/", transcriptomes[1], "/all_indiv_library_TPMcts.txt"),
-                      header = TRUE,
-                      check.names = FALSE)
+Above, we created a file of the TPM counts. However, we also want a file of the raw counts of immune genes for each library, so that we can use that as input for DESeq2
 
-# Left join file of all immune tab files and our TPM file, so we're only left with TPMs for immune genes
-immune_TPM <- left_join(immune_tab, TPM_tab, by = "Transcript_ID")
+```{r}
+for (i in 1:length(transcriptomes)) {
+  # Read in the file of Transcript IDs and Accession IDs of immune-related genes we created earlier
+  immune_tab <- read.table(file = paste0("../output/immune_genes/", transcriptomes[i], "/transcript_accession_IDs/all_indiv_libraries.txt"),
+                           header = TRUE)
+  
+  # Create the a general path to our kallisto files. Wildcard for 3-digit indiv. libraries = ???. For pooled, use ??????. For both, use *
+  kallisto_filepath <- paste0("../output/kallisto_libraries/", transcriptomes[i], "/id???/abundance.tsv")
+  
+  # Get a list of all matching files
+  kallisto_files <- Sys.glob(kallisto_filepath)
+  
+  for (j in 1:length(kallisto_files)) {
+    # Extract the ID number from the kallisto file
+    idnum <- str_extract(kallisto_files[j], "id[0-9]+")
+    # Read in the kallisto file
+    kallisto_output <- read.delim(file = kallisto_files[j], 
+                                  header = TRUE,
+                                  sep = "\t")
+    # Select only transcript ID and estimated counts columns
+    kallisto_output <- kallisto_output %>%
+      select(target_id, est_counts)
+    
+    # Rename kallisto column names
+    colnames(kallisto_output)[1:2] <- c("Transcript_ID", 
+                                        paste0(idnum, "_EstCts"))
+    # Add TPM value to table of DEGs
+    immune_tab <- left_join(immune_tab, kallisto_output, by = "Transcript_ID")
+  }
+  
+  # Remove Accession ID column
+  immune_tab <- select(immune_tab, -Accession_ID)
+  
+  # Write table to file
+  write.table(immune_tab, file = paste0("../output/kallisto_matrices/", transcriptomes[i], "/immune_genes_indiv_libraries/manual_cts_matrix.txt"),
+              row.names = FALSE)
+  
+}
+
 ```
 
