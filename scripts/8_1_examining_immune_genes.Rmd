@@ -88,6 +88,8 @@ immune_terms <- c("GO:0006955",    # Immune Response
 In each iteration of the for loop, we'll read in our BLAST and GO files, clean them up, merge, and then write the output to a file
 
 ```{r}
+i <- 1
+
 for (i in 1:length(blast_filepaths)) {
   #### BLAST file
   
@@ -147,9 +149,13 @@ for (i in 1:length(blast_filepaths)) {
   immune_tab <- immune_tab %>%
     relocate(Transcript_ID)
   
+  # Remove duplicate transcript IDs
+  immune_tab <- unique(immune_tab)
+  
   # Write table to file
   write.table(immune_tab, file = paste0("../output/immune_genes/", transcriptomes[i], "/transcript_accession_IDs/all_indiv_libraries.txt"),
-              row.names = FALSE)
+              row.names = FALSE,
+              sep = "\t")
   
   
 }
@@ -182,7 +188,8 @@ for (i in 1:length(transcriptomes)) {
   
   # Write table to file
   write.table(immune_TPM, file = paste0("../output/TPM_counts/", transcriptomes[i], "/immune_genes_all_libs_TPMcts.txt"),
-              row.names = FALSE)
+              row.names = FALSE,
+              sep = "\t")
   
 }
 ```
@@ -224,7 +231,8 @@ for (i in 1:length(transcriptomes)) {
   
   # Write table to file
   write.table(immune_tab, file = paste0("../output/kallisto_matrices/", transcriptomes[i], "/immune_genes_indiv_libraries/manual_cts_matrix.txt"),
-              row.names = FALSE)
+              row.names = FALSE,
+              sep = "\t")
   
 }
 
