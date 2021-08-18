@@ -63,9 +63,9 @@ exp_design <- data.frame(crab = factor(c("H", "D", "F",
                                          "C", "B", "A",
                                          "F", "D", "E",
                                          "A", "B", "C")),
-                         temp = factor(c("elev", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "low", "elev", "amb",
+                         temp = factor(c("amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "amb", "amb",
                                          "low", "low", "low",
                                          "elev", "elev", "elev",
                                          "amb", "amb", "amb",
@@ -97,7 +97,7 @@ exp_design <- data.frame(crab = factor(c("H", "D", "F",
                                               "inf", "inf", "inf")))
 
 # Select a variable to show in your PCA. Should be one of the above in exp_design
-var_name <- "infection"
+var_name <- "temp"
 
 
 # Read in data
@@ -174,9 +174,9 @@ exp_design <- data.frame(crab = factor(c("H", "D", "F",
                                          "C", "B", "A",
                                          "F", "D", "E",
                                          "A", "B", "C")),
-                         temp = factor(c("elev", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "low", "elev", "amb",
+                         temp = factor(c("amb", "amb", "amb",
+                                         "amb", "amb", "amb",
+                                         "amb", "amb", "amb",
                                          "low", "low", "low",
                                          "elev", "elev", "elev",
                                          "amb", "amb", "amb",
@@ -208,7 +208,7 @@ exp_design <- data.frame(crab = factor(c("H", "D", "F",
                                               "inf", "inf", "inf")))
 
 # Select a variable to show in your PCA. Should be one of the above in exp_design
-var_name <- "infection"
+var_name <- "temp"
 
 
 # Read in data

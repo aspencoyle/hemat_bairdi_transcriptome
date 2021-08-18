@@ -73,23 +73,23 @@ transcriptomes <- c("cbai_transcriptomev2.0", "cbai_transcriptomev4.0", "hemat_t
 
 # Create vector of all GO terms associated with immune response
 # GO terms from amigo.geneontology.org
-immune_terms <- c("GO:0006955",    # Immune Response
-                  "GO:0006959",    # Humoral Immune Response
-                  "GO:1905036",    # Positive regulation of antifungal innate immune response
-                  "GO:1905035",    # Negative regulation of antifungal innate immune response
-                  "GO:1905675",    # Negative regulation of adaptive immune memory response
-                  "GO:1905674",    # Regulation of adaptive immune memory response
-                  "GO:1905679",    # Positive regulation of adaptive immune effector response
-                  "GO:1905678",    # Negative regulation of adaptive immune effector response
-                  "GO:1905677",    # Regulation of adaptive immune effector response
-                  "GO:1905676")    # Positive regulation of adaptive immune memory response
+# immune_terms <- c("GO:0006955",    # Immune Response
+#                  "GO:0006959",    # Humoral Immune Response
+#                  "GO:1905036",    # Positive regulation of antifungal innate immune response
+#                  "GO:1905035",    # Negative regulation of antifungal innate immune response
+#                  "GO:1905675",    # Negative regulation of adaptive immune memory response
+#                  "GO:1905674",    # Regulation of adaptive immune memory response
+#                 "GO:1905679",    # Positive regulation of adaptive immune effector response
+#                  "GO:1905678",    # Negative regulation of adaptive immune effector response
+#                  "GO:1905677",    # Regulation of adaptive immune effector response
+#                  "GO:1905676")    # Positive regulation of adaptive immune memory response
+
+
 ```
 
 In each iteration of the for loop, we'll read in our BLAST and GO files, clean them up, merge, and then write the output to a file
 
 ```{r}
-i <- 1
-
 for (i in 1:length(blast_filepaths)) {
   #### BLAST file
   
