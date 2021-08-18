@@ -95,66 +95,122 @@ exp_design <- data.frame(crab = factor(c("H", "D", "F",
                                               "inf", "inf", "inf",
                                               "uninf", "uninf", "inf",
                                               "inf", "inf", "inf")))
+# Get the names of each column in the exp_design table
+variables <- colnames(exp_design)
 
-# Select a variable to show in your PCA. Should be one of the above in exp_design
-var_name <- "temp"
 
-
-# Read in data
-data <- read.table("../output/kallisto_matrices/cbai_transcriptomev2.0/immune_genes_indiv_libraries/manual_cts_matrix.txt", header = TRUE, sep = "\t")
-
-# Rename first column
-names(data)[1] <- "target_ID"
-
-# Set row names equal to the first column
-rownames(data) <- data$target_ID
-
-# Remove the now-irrelevant first column
-data <- data[,-1]
-
-# Make sure everything looks okay
-print("HEAD")
-head(data)
-
-print("STRUCTURE")
-print(str(data))
-
-# Round counts to integers - needed for DESeqDataSetFromMatrix()
-data <- round(data, digits = 0)
-
-# Rename rows to correspond to library numbers
-rownames(exp_design) <- colnames(data)
-
-# Check that experiment_table appears to match columns with matrix from Trinity
-print("EXPERIMENTAL DESIGN")
-print(exp_design)
+for (i in 1:length(variables)) {
+  # Select a variable from exp_design to show in your PCA
+  var_name <- variables[i]
+  # Read in data
+  data <- read.table("../output/kallisto_matrices/cbai_transcriptomev2.0/immune_genes_indiv_libraries/manual_cts_matrix.txt", header = TRUE, sep = "\t")
   
-# Create DESeq object that looks at effect of variable
-deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
-                                     colData = exp_design,
-                                     design = as.formula("~temp"))
-
-deseq2.dds <- DESeq(deseq2.dds)
-
-#Look at results
-deseq2.res <- results(deseq2.dds)
-print("SUMMARY:")
-print(summary(deseq2.res))
-
-# Transform values for PCA plot
-vsd <- varianceStabilizingTransformation(deseq2.dds, blind = FALSE)
-
-colData(vsd)
-
-# Plot plotly for PCA
-png(paste0("../graphs/DESeq2_output/cbai_transcriptomev2.0/immune_genes_all_libs/",
-           var_name, "_as_var.png"))
-
-plotPCA(vsd, intgroup= var_name) +
+  # Rename first column
+  names(data)[1] <- "target_ID"
+  
+  # Set row names equal to the first column
+  rownames(data) <- data$target_ID
+  
+  # Remove the now-irrelevant first column
+  data <- data[,-1]
+  
+  # Make sure everything looks okay
+  print("HEAD")
+  head(data)
+  
+  print("STRUCTURE")
+  print(str(data))
+  
+  # Round counts to integers - needed for DESeqDataSetFromMatrix()
+  data <- round(data, digits = 0)
+  
+  # Rename rows to correspond to library numbers
+  rownames(exp_design) <- colnames(data)
+  
+  # Check that experiment_table appears to match columns with matrix from Trinity
+  print("EXPERIMENTAL DESIGN")
+  print(exp_design)
+  
+  # Create DESeq object that looks at effect of variable
+  deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
+                                       colData = exp_design,
+                                       design = as.formula("~temp"))
+  
+  deseq2.dds <- DESeq(deseq2.dds)
+  
+  #Look at results
+  deseq2.res <- results(deseq2.dds)
+  print("SUMMARY:")
+  print(summary(deseq2.res))
+  
+  # Transform values for PCA plot
+  vsd <- varianceStabilizingTransformation(deseq2.dds, blind = FALSE)
+  
+  colData(vsd)
+  
+  # Plot plotly for PCA
+  png(paste0("../graphs/DESeq2_output/cbai_transcriptomev2.0/immune_genes_all_libs/",
+             var_name, "_as_var.png"))
+  
+  print(plotPCA(vsd, intgroup= var_name) +
     ggtitle("PCA of all crabs for cbai_transcriptomev2.0") +
     geom_point(size = 3, aes(text = colnames(vsd))) +
-    theme_minimal()
-dev.off()
+    theme_minimal())
+  dev.off()
+}
+
+# Now that we're outside the for loop, we can calculate the centroid of the PCA for each crab to get an idea of the plasticity. To do this, we'll take the mean distance between each library and the centroid.
+
+# Run PCA to create object. This uses the same code found in plotPCA()
+rv <- rowVars(assay(vsd))
+select <- order(rv, decreasing = TRUE)[seq_len(min(500, 
+                                                   length(rv)))]
+pca <- prcomp(t(assay(vsd)[select, ]))
+
+# Find the points of each PCA
+points <- pca[["x"]]
+
+# Change rownames from sample ID to crab ID
+rownames(points) <- exp_design$crab
+
+# Eliminate all columns except PC1 and PC2
+points <- points[,1:2]
+
+# Get list of all rownames used (should be all unique crab IDs)
+crabs <- unique(rownames(points))
+
+# Initialize a blank dataframe
+means <- data.frame(crabs, rep(NA, times = length(crabs)), rep(NA, times = length(crabs)), rep(NA, times = length(crabs)))
+
+# Rename the columns of the blank dataframe
+colnames(means) <- c("crabID", "PC1_mean", "PC2_mean", "mean_dist_from_centroid")
+
+for (i in 1:length(crabs)) {
+  # Get values that match that particular crab
+  crab_pts <- points[rownames(points) == crabs[i], ]
+  
+  # Get mean of each column. This is the coordinates of the centroid
+  means[i, 2] <- mean(crab_pts[, 1])
+  means[i, 3] <- mean(crab_pts[, 2])
+  
+  # Initialize blank vector that's the same length as the number of values that match the crab in question
+  dist_vec <- rep(NA, length = nrow(crab_pts))
+  
+  for (j in 1:nrow(crab_pts)) {
+    # Calculate the Euclidean distance from each point to the centroid, use to fill the blank vector
+    dist_vec[j] <- sqrt((crab_pts[j,1] - means[i, 2])^2 + (crab_pts[j,2] - means[i, 3])^2)
+    
+  }
+  # Take the mean of the Euclidean distances and put that in Column 4 of the means table
+  means[i,4] <- mean(dist_vec)
+}
+
+# Remove the middle 2 columns, since we really just want mean distance in the final table
+means <- select(means, -c(PC1_mean, PC2_mean))
+
+
+write.table(means, file = "../graphs/DESeq2_output/cbai_transcriptomev2.0/immune_genes_all_libs/PCA_plasticity.txt", row.names = FALSE)
+
 ```
 
 # cbai_transcriptomev4.0
@@ -207,71 +263,130 @@ exp_design <- data.frame(crab = factor(c("H", "D", "F",
                                               "uninf", "uninf", "inf",
                                               "inf", "inf", "inf")))
 
-# Select a variable to show in your PCA. Should be one of the above in exp_design
-var_name <- "temp"
+# Get the names of each column in the exp_design table
+variables <- colnames(exp_design)
 
 
-# Read in data
-data <- read.table("../output/kallisto_matrices/cbai_transcriptomev4.0/immune_genes_indiv_libraries/manual_cts_matrix.txt", header = TRUE, sep = "\t")
-
-# Rename first column
-names(data)[1] <- "target_ID"
-
-# Set row names equal to the first column
-rownames(data) <- data$target_ID
-
-# Remove the now-irrelevant first column
-data <- data[,-1]
-
-# Make sure everything looks okay
-print("HEAD")
-head(data)
-
-print("STRUCTURE")
-print(str(data))
-
-# Round counts to integers - needed for DESeqDataSetFromMatrix()
-data <- round(data, digits = 0)
-
-# Rename rows to correspond to library numbers
-rownames(exp_design) <- colnames(data)
-
-# Check that experiment_table appears to match columns with matrix from Trinity
-print("EXPERIMENTAL DESIGN")
-print(exp_design)
+for (i in 1:length(variables)) {
+  # Select a variable from exp_design to show in your PCA
+  var_name <- variables[i]
   
-# Create DESeq object that looks at effect of variable
-deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
-                                     colData = exp_design,
-                                     design = as.formula("~temp"))
+  # Read in data
+  data <- read.table("../output/kallisto_matrices/cbai_transcriptomev4.0/immune_genes_indiv_libraries/manual_cts_matrix.txt", header = TRUE, sep = "\t")
+  
+  # Rename first column
+  names(data)[1] <- "target_ID"
+  
+  # Set row names equal to the first column
+  rownames(data) <- data$target_ID
+  
+  # Remove the now-irrelevant first column
+  data <- data[,-1]
+  
+  # Make sure everything looks okay
+  print("HEAD")
+  head(data)
+  
+  print("STRUCTURE")
+  print(str(data))
+  
+  # Round counts to integers - needed for DESeqDataSetFromMatrix()
+  data <- round(data, digits = 0)
+  
+  # Rename rows to correspond to library numbers
+  rownames(exp_design) <- colnames(data)
+  
+  # Check that experiment_table appears to match columns with matrix from Trinity
+  print("EXPERIMENTAL DESIGN")
+  print(exp_design)
+  
+  # Create DESeq object that looks at effect of variable
+  deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
+                                       colData = exp_design,
+                                       design = as.formula("~temp"))
+  
+  deseq2.dds <- DESeq(deseq2.dds)
+  
+  #Look at results
+  deseq2.res <- results(deseq2.dds)
+  print("SUMMARY:")
+  print(summary(deseq2.res))
+  
+  # Transform values for PCA plot
+  vsd <- varianceStabilizingTransformation(deseq2.dds, blind = FALSE)
+  
+  colData(vsd)
+  
+  # Plot plotly for PCA
+  png(paste0("../graphs/DESeq2_output/cbai_transcriptomev4.0/immune_genes_all_libs/",
+             var_name, "_as_var.png"))
+  
+  print(plotPCA(vsd, intgroup= var_name) +
+          ggtitle("PCA of all crabs for cbai_transcriptomev4.0") +
+          geom_point(size = 3, aes(text = colnames(vsd))) +
+          theme_minimal())
+  dev.off()
+}
 
-deseq2.dds <- DESeq(deseq2.dds)
+# Now that we're outside the for loop, we can calculate the centroid of the PCA for each crab to get an idea of the plasticity. To do this, we'll take the mean distance between each library and the centroid.
 
-#Look at results
-deseq2.res <- results(deseq2.dds)
-print("SUMMARY:")
-print(summary(deseq2.res))
+# Run PCA to create object. This uses the same code found in plotPCA()
+rv <- rowVars(assay(vsd))
+select <- order(rv, decreasing = TRUE)[seq_len(min(500, 
+                                                   length(rv)))]
+pca <- prcomp(t(assay(vsd)[select, ]))
 
-# Transform values for PCA plot
-vsd <- varianceStabilizingTransformation(deseq2.dds, blind = FALSE)
+# Find the points of each PCA
+points <- pca[["x"]]
 
-colData(vsd)
+# Change rownames from sample ID to crab ID
+rownames(points) <- exp_design$crab
 
-# Plot plotly for PCA
-png(paste0("../graphs/DESeq2_output/cbai_transcriptomev4.0/immune_genes_all_libs/",
-           var_name, "_as_var.png"))
+# Eliminate all columns except PC1 and PC2
+points <- points[,1:2]
 
-plotPCA(vsd, intgroup= var_name) +
-    ggtitle("PCA of all crabs for cbai_transcriptomev4.0") +
-    geom_point(size = 3, aes(text = colnames(vsd))) +
-    theme_minimal()
-dev.off()
+# Get list of all rownames used (should be all unique crab IDs)
+crabs <- unique(rownames(points))
+
+# Initialize a blank dataframe
+means <- data.frame(crabs, rep(NA, times = length(crabs)), rep(NA, times = length(crabs)), rep(NA, times = length(crabs)))
+
+# Rename the columns of the blank dataframe
+colnames(means) <- c("crabID", "PC1_mean", "PC2_mean", "mean_dist_from_centroid")
+
+for (i in 1:length(crabs)) {
+  # Get values that match that particular crab
+  crab_pts <- points[rownames(points) == crabs[i], ]
+  
+  # Get mean of each column. This is the coordinates of the centroid
+  means[i, 2] <- mean(crab_pts[, 1])
+  means[i, 3] <- mean(crab_pts[, 2])
+  
+  # Initialize blank vector that's the same length as the number of values that match the crab in question
+  dist_vec <- rep(NA, length = nrow(crab_pts))
+  
+  for (j in 1:nrow(crab_pts)) {
+    # Calculate the Euclidean distance from each point to the centroid, use to fill the blank vector
+    dist_vec[j] <- sqrt((crab_pts[j,1] - means[i, 2])^2 + (crab_pts[j,2] - means[i, 3])^2)
+    
+  }
+  # Take the mean of the Euclidean distances and put that in Column 4 of the means table
+  means[i,4] <- mean(dist_vec)
+}
+
+# Remove the middle 2 columns, since we really just want mean distance in the final table
+means <- select(means, -c(PC1_mean, PC2_mean))
+
+
+write.table(means, file = "../graphs/DESeq2_output/cbai_transcriptomev4.0/immune_genes_all_libs/PCA_plasticity.txt", row.names = FALSE)
+
+
 ```
 
 
 
 
-We can re-run the above chunk multiple times but with var_name changed to highlight different variables. The chunk below will find the plasticity of each crab by taking the mean distance from each point to the centroid of the PCA, and thus only needs to be run once.
+The chunk below will find the plasticity of each crab by taking the mean distance from each point to the centroid of the PCA, and thus only needs to be run once.
 
 ```{r}
 # Run PCA to create object. This uses the same code found in plotPCA()
