@@ -71,6 +71,12 @@ blast_filepaths <- c("../data/cbai_diamond_blastx_table_transcriptomev2.0.txt", 
 # Make sure these are in the same order as the above BLAST filepaths.
 transcriptomes <- c("cbai_transcriptomev2.0", "cbai_transcriptomev4.0", "hemat_transcriptomev1.6")
 
+
+# Previously, we used all GO terms that popped up when you search "immune" on amigo.geneontology.org
+# To keep things simpler and more straightforward, we'll now just use the GO term for immune response, GO:0006955
+
+immune_terms <- "GO:0006955"
+
 # Create vector of all GO terms associated with immune response
 # GO terms from amigo.geneontology.org
 # immune_terms <- c("GO:0006955",    # Immune Response
@@ -238,5 +244,5 @@ for (i in 1:length(transcriptomes)) {
 
 ```
 
-This concludes our file creation session. Next, we'll move on to creating manual clusters
+This concludes our file creation session. Next, we'll move on to creating PCAs
 
