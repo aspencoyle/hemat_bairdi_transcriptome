@@ -63,7 +63,7 @@ libpath <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
 TPM_outpath <- "../output/TPM_counts/hemat_transcriptomev1.6/"
 
 # Set path to general heatmap output folder
-heatmap_output <- "../output/manual_clustering/hemat_transcriptomev1.6/"
+heatmap_output <- "../output/manual_clustering/hemat_transcriptomev1.6/all_genes/"
 
 ```
 ### Assemble TPM counts for each crab
@@ -184,8 +184,6 @@ TPMcts <- read.delim(file = paste0(TPM_outpath,
 TPMcts <- TPMcts %>%
   filter_all(any_vars(. > 30))
 
-i <- 1
-
 for (i in 1:length(crabs)) {
   # Set path to output folder that will contain all heatmaps and text files
   crab_out <- paste0(heatmap_output, "Crab_", crabs[i], "/")
@@ -233,24 +231,24 @@ for (i in 1:length(crabs)) {
     lbl <- cutree(hc, h = twoday_clusterht)  # split dendrogram based on height specified above
     
       # Loop through gene clusters, printing heatmap for each
-    for (i in 1:length(unique(lbl))) {
-      clust <- crabdat[which(lbl==i) %>% names(), ]
+    for (j in 1:length(unique(lbl))) {
+      clust <- crabdat[which(lbl==j) %>% names(), ]
       # Write results to table
       write.table(clust, file = paste0(crab_out,
                                        "cluster_",
-                                       i, ".txt"),
+                                       j, ".txt"),
                   sep = "\t",
                   row.names = TRUE)
       
       # Create heat map for each cluster. Again, like the graph above, we'll make it log2 scaled and not scale by row
-      png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+      png(paste0(crab_out, "cluster_", j, "_heatmap.png"))
       
       print(pheatmap(log2(clust+1), cluster_rows = TRUE,
                          show_rownames = FALSE,
                      na.rm = TRUE,
                      cluster_cols = FALSE,
                      scale = "none",
-                     main = paste0("gene counts by day, cluster ", i),
+                     main = paste0("gene counts by day, cluster ", j),
                      fontsize = 9))
       dev.off()
   }
@@ -289,22 +287,22 @@ for (i in 1:length(crabs)) {
     lbl <- cutree(hc, h = clusterht)  # split dendrogram based on height specified above
     
       # Loop through gene clusters, printing heatmap for each
-    for (i in 1:length(unique(lbl))) {
-      clust <- crabdat[which(lbl==i) %>% names(), ]
+    for (j in 1:length(unique(lbl))) {
+      clust <- crabdat[which(lbl==j) %>% names(), ]
       # Write results to table
       write.table(clust, file = paste0(crab_out,
                                    "cluster_",
-                                   i, ".txt"),
+                                   j, ".txt"),
                   sep = "\t",
                   row.names = TRUE)
       # Create heat map for each cluster
-      png(paste0(crab_out, "cluster_", i, "_heatmap.png"))
+      png(paste0(crab_out, "cluster_", j, "_heatmap.png"))
       print(pheatmap(clust, cluster_rows = TRUE,
                      show_rownames = FALSE,
                      na.rm = TRUE,
                      cluster_cols = FALSE,
                      scale = "row",
-                     main = paste0("gene counts by day, cluster ", i),
+                     main = paste0("gene counts by day, cluster ", j),
                      fontsize = 9))
       dev.off()
   }

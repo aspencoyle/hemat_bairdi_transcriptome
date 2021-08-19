@@ -1,0 +1,97 @@
+---
+title: "8_7_merged_immune_cluster_counts.Rmd"
+author: "Aidan Coyle"
+date: "7/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+In scripts 8_3 and 8_4, we manually clustered expression of all transcripts with GO terms linked to immune response from 2 of our 3 transcriptomes. Reminder: they are as follows:
+
+cbai_transcriptomev2.0: unfiltered
+
+cbai_transcriptomev4.0: filtered to include only likely _Chionoecetes_ sequences
+
+hemat_transcriptomev1.6: filtered to include only likely _Alveolata_ sequences
+
+We didn't create clusters for hemat_transcriptomev1.6, as it only had 5 transcripts with GO terms linked to immune response.
+
+However, once we named our modules, we had some with duplicate names. Modules describing the same expression patterns (as determined by names and assigned in 8_3 and 8_4) were merged in scripts 5_5 and 8_6. At the end of each of those scripts, we wrote the line count - which is equal to the number of genes in each module - of the merged modules for each crab to a file. 
+
+In this script, we will take those word counts and turn them into tables for optimal presentation and reproducibility
+
+
+```{r libraries, message=FALSE, warning=FALSE}
+# Add all required libraries here
+list.of.packages <- c("tidyverse", "janitor")
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+
+
+```
+
+### Reading in data
+
+```{r}
+# Get the path of all relevant files
+file_list <- Sys.glob("../output/manual_clustering/*/immune_genes/merged_modules_raw_counts.txt")
+
+# In each iteration of the for loop, we'll choose a different transcriptome's raw counts to examine, create two neat summary tables - one with percentages, one with counts - and write as CSVs
+for (i in 1:length(file_list)) {
+  counts <- read.table(file_list[i])
+
+  # Remove the last line - we can figure out the total on our own
+  counts <- head(counts, -1)
+
+  # Split the path column by slashes
+  counts <- separate(counts, 2, into = c("A", "B", "C", "D", "E", "F", "G", "H"), sep = "/")
+
+  # Remove columns without multiple values. Should leave us with columns for counts, crab, and module type
+  counts <- counts[vapply(counts, function(x) length(unique(x)) > 1, logical(1L))]
+  
+  # Rename existing columns
+  colnames(counts) <- c("Genes", "Crab", "Module")
+  
+  # Remove the _merged.txt part of each Module column
+  counts$Module <- str_replace(counts$Module, "_merged.txt", "")
+  
+  # Pivot wider so that each module type is its own column
+  counts <- counts %>%
+    pivot_wider(names_from = Module, values_from = Genes)
+  
+  # Create another table with percentage of module membership for each crab (each crab should sum to 100%)
+  percentages <- adorn_percentages(counts, denominator = "row", na.rm = TRUE)
+  
+  # Move crab column to rowname for both tables
+  counts <- column_to_rownames(counts, var = "Crab")
+  percentages <- column_to_rownames(percentages, var = "Crab")
+  
+  # Round percentages to the nearest few digits
+  percentages <- round(percentages, digits = 3)
+  
+  # Get the path for that transcriptome
+  path <- file_list[i]
+  
+  # Remove the ending part of the path
+  path <- str_replace(path, "merged_modules_raw_counts.txt", "")
+  
+  # Write our counts table
+  write.csv(counts, file = paste0(path, "merged_modules_counts_table.csv"))
+  # Write our percentages table
+  write.csv(percentages, file = paste0(path, "merged_modules_percentages_table.csv"))
+}
+```
+

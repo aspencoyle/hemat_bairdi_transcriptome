@@ -19,7 +19,7 @@ cbai_transcriptomev4.0: filtered to include only likely _Chionoecetes_ sequences
 
 hemat_transcriptomev1.6: filtered to include only likely _Alveolata_ sequences
 
-However, once we named our modules, we had duplicate names. Modules describing the same expression patterns (as determined by names and assigned in 7_1 thru 7_3) were merged in scripts 7_4 through 7_6. At the end of each of those scripts, we wrote the word count - which is equal to the number of genes in each module - of the merged modules for each crab to a file. 
+However, once we named our modules, we had duplicate names. Modules describing the same expression patterns (as determined by names and assigned in 7_1 thru 7_3) were merged in scripts 7_4 through 7_6. At the end of each of those scripts, we wrote the line count - which is equal to the number of genes in each module - of the merged modules for each crab to a file. 
 
 In this script, we will take those word counts and turn them into tables for optimal presentation and reproducibility
 
@@ -45,8 +45,8 @@ lapply(list.of.packages, FUN = function(X) {
 
 ```{r}
 # Get the path of all relevant files
-file_list <- Sys.glob("../output/manual_clustering/*/merged_modules_raw_counts.txt")
-i <- 1
+file_list <- Sys.glob("../output/manual_clustering/*/all_genes/merged_modules_raw_counts.txt")
+
 # In each iteration of the for loop, we'll choose a different transcriptome's raw counts to examine, create two neat summary tables - one with percentages, one with counts - and write as CSVs
 for (i in 1:length(file_list)) {
   counts <- read.table(file_list[i])
@@ -55,7 +55,7 @@ for (i in 1:length(file_list)) {
   counts <- head(counts, -1)
 
   # Split the path column by slashes
-  counts <- separate(counts, 2, into = c("A", "B", "C", "D", "E", "F", "G"), sep = "/")
+  counts <- separate(counts, 2, into = c("A", "B", "C", "D", "E", "F", "G", "H"), sep = "/")
 
   # Remove columns without multiple values. Should leave us with columns for counts, crab, and module type
   counts <- counts[vapply(counts, function(x) length(unique(x)) > 1, logical(1L))]
