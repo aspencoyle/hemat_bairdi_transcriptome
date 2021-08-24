@@ -259,9 +259,9 @@ clusts <- list(c("LHL", "HTL"),  # Crab A
                c("LHL", "HTL", "LTH"),  # Crab D
                c("HTL", "LHL", "LTH"),  # Crab E
                c("HLH", "HTL"),  # Crab F
-               c("MIX", "HL", "HL2"),  # Crab G
-               c("MIX", "MIX2", "HL", "MIX3", "MIX4"),  # Crab H
-               c("HL", "MIX", "HL2", "MIX2"))  # Crab I
+               c("MIX", "HL", "MIX2"),  # Crab G
+               c("MIX", "LH", "HL", "LH2", "LH3"),  # Crab H
+               c("HL", "HL2", "HL3", "LH"))  # Crab I
 
 # Ensure number of labels matches number of crab
 length(clusts) == length(crabs)
