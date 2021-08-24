@@ -1,0 +1,9 @@
+﻿Tote,Box_ID,Year,Survey,Location,Species,Tube_Ct,Preservative,Comments
+1,mixed_box_1,2010,NA,Sea of Okhotsk,P. camtaschaticus,2,96% EtOH,
+1,mixed_box_1,2010,NA,Sea of Okhotsk,P. platypus,2,96% EtOH,
+1,mixed_box_1,2003,NA,NA,Nephrops sp.,4,EtOH,
+1,mixed_box_1,2003,NA,NA,C. tanneri,6,Unknown,From Bower lab. Samples are divided between multiple tubes
+1,mixed_box_1,2003,NA,NA,C. angulatus,2,Unknown,From Bower lab. Samples are divided between multiple tubes
+1,mixed_box_1,2003,NA,NA,C. tanneri,2,Unknown,Contain hemolymph from uninfected crabs
+1,mixed_box_1,2005,NA,Newfoundland,C. opilio,6,Unknown,"Possibly hemolymph in ethanol (labeled B in E, other tubes in other boxes are labeled Blood in Ethanol)"
+1,mixed_box_1,NA,NA,NA,C. bairdi,6,Unknown,"Possibly hemolymph in ethanol (labeled B in E, other tubes in other boxes are labeled Blood in Ethanol)"
