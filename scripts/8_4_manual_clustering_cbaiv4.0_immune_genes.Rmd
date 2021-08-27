@@ -109,7 +109,7 @@ TPMcts <- read.delim(file = paste0(TPM_outpath,
                      row.names = 1,
                      check.names = FALSE)
 
-# Remove all genes without at least 1 samples with counts of 30+
+# Remove all genes without at least 1 samples with counts of 5+
 TPMcts <- TPMcts %>%
   filter_all(any_vars(. > 5))
 
