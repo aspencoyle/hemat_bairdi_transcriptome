@@ -9,6 +9,9 @@
 **/*.nsq
 **/*.nal
 
+# All Access databases
+**/*.accdb
+
 # indiv_libraries
 !indiv_libraries/**
 indiv_libraries/**

@@ -1,0 +1,33 @@
+,,1,2,3,4,5,6,7,8,9,10,11,12
+A,Content,Unkn-1,Unkn-1,Unkn-2,Unkn-2,Unkn-3,Unkn-3,Unkn-4,Unkn-4,Unkn-5,Unkn-5,Std-7,Std-7
+A,Sample,38-A03,38-A03,31-H07,31-H07,32-A08,32-A08,32-B12,32-B12,32-C09,32-C09,,
+A,Peak 1,,,,,,,,,,,,
+A,Peak 2,,,,,,,,,,,,
+B,Content,Unkn-6,Unkn-6,Unkn-7,Unkn-7,Unkn-8,Unkn-8,Unkn-9,Unkn-9,Unkn-10,Unkn-10,Std-8,Std-8
+B,Sample,31-G02,31-G02,31-H08,31-H08,32-B01,32-B01,32-C01,32-C01,32-E07,32-E07,,
+B,Peak 1,,,,,,,,,,,,
+B,Peak 2,,,,,,,,,,,,
+C,Content,Unkn-11,Unkn-11,Unkn-12,Unkn-12,Unkn-13,Unkn-13,Unkn-14,Unkn-14,Unkn-15,Unkn-15,Std-9,Std-9
+C,Sample,31-G06,31-G06,31-H10,31-H10,32-B03,32-B03,32-C02,32-C02,32-D02,32-D02,,
+C,Peak 1,,,,,,,,,,,,
+C,Peak 2,,,,,,,,,,,,
+D,Content,Unkn-16,Unkn-16,Unkn-17,Unkn-17,Unkn-18,Unkn-18,Unkn-19,Unkn-19,Unkn-20,Unkn-20,Std-10,Std-10
+D,Sample,31-G07,31-G07,32-A01,32-A01,32-B04,32-B04,32-C03,32-C03,32-D06,32-D06,,
+D,Peak 1,,,,,,,,,,,,
+D,Peak 2,,,,,,,,,,,,
+E,Content,Unkn-21,Unkn-21,Unkn-22,Unkn-22,Unkn-23,Unkn-23,Unkn-24,Unkn-24,Unkn-25,Unkn-25,Std-11,Std-11
+E,Sample,31-G08,31-G08,38-G02,38-G02,32-B06,32-B06,32-C04,32-C04,32-D09,32-D09,,
+E,Peak 1,,,,,,,,,,,,
+E,Peak 2,,,,,,,,,,,,
+F,Content,Unkn-26,Unkn-26,Unkn-27,Unkn-27,Unkn-28,Unkn-28,Unkn-29,Unkn-29,Unkn-30,Unkn-30,Std-12,Std-12
+F,Sample,31-G12,31-G12,32-A04,32-A04,32-B07,32-B07,32-C05,32-C05,32-E08,32-E08,,
+F,Peak 1,,,,,,,,,,,,
+F,Peak 2,,,,,,,,,,,,
+G,Content,Unkn-31,Unkn-31,Unkn-32,Unkn-32,Unkn-33,Unkn-33,Unkn-34,Unkn-34,Unkn-35,Unkn-35,Std-13,Std-13
+G,Sample,31-G12,31-G12,32-E06,32-E06,32-B08,32-B08,32-C06,32-C06,32-E03,32-E03,,
+G,Peak 1,,,,,,,,,,,,
+G,Peak 2,,,,,,,,,,,,
+H,Content,Unkn-36,Unkn-36,Unkn-37,Unkn-37,Unkn-38,Unkn-38,Unkn-39,Unkn-39,Unkn-40,Unkn-40,NTC,NTC
+H,Sample,31-H05,31-H05,32-A07,32-A07,32-B09,32-B09,32-C12,32-C12,31-H02,31-H02,,
+H,Peak 1,,,,,,,,,,,,
+H,Peak 2,,,,,,,,,,,,
