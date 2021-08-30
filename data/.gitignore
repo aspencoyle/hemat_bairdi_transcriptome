@@ -11,6 +11,7 @@
 
 # All Access databases
 **/*.accdb
+**/*.laccdb
 
 # indiv_libraries
 !indiv_libraries/**

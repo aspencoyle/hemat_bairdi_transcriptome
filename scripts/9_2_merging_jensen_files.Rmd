@@ -1,0 +1,144 @@
+---
+title: "9_2_merging_jensen_files"
+author: "Aidan Coyle"
+date: "8/26/2021"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Earlier, we downloaded a series of files obtained from Pam Jensen, formerly of the Alaska Department of Fish and Game. These files describe a large number of samples that were taken of crab from the early 2000s until 2019. The samples, which are predominantly in deep 96-well plates, were also sent to the Roberts Lab from Pam. We documented all plates we obtained, and in this script will cross-reference the file of obtained plates with Pam's files, to create a full inventory of all samples.
+
+
+```{r libraries, message=FALSE, warning=FALSE}
+# Add all required libraries here
+list.of.packages <- c("tidyverse", "RODBC")
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+```
+
+Now we'll start by importing our Access database
+
+```{r}
+
+# Set up driver info and database path
+driver_info <- "Driver={Microsoft Access Driver (*.mdb, *.accdb)};"
+
+db_path <- "../data/jensen_archived_samples/jensen_data/Hemato_samples/databases_thru_2013/FRP_Database_ReadOnly.accdb"
+
+access_path <- paste0(driver_info, "DBQ=", db_path)
+
+# Establish connection
+channel <- odbcDriverConnect(access_path)
+
+# Import collection data table
+collection.dat <- sqlQuery(channel,
+                       "SELECT * FROM [tbl_ALL_New_Collection_Results] ORDER BY [SPNO];")
+
+plate.dat <- sqlQuery(channel,
+                      "SELECT * FROM [tbl_Plates] ORDER BY [SPNO];")
+
+
+samp.dat <- sqlQuery(channel,
+                     "SELECT * FROM [tbl_Samples] ORDER BY [SPNO];")
+
+comments.dat <- sqlQuery(channel,
+                         "SELECT * FROM [tbl_COMMENTS_Collection_Sample] ORDER BY [SPNO];")
+```
+
+Alright, we've got our tables imported.
+
+Looks like SPNO is used to identify the individual crab, while SPNO_Alpha is used to identify the individual sample. We care about each sample over the individual crab, and thus will use SPNO_Alpha as the key. However, not all tables have a fully-developed SPNO_Alpha column. In the plate.dat and comments.dat tables, only crabs with multiple samples have an SPNO_Alpha, and the collection.data lacks the column altogether (as each row is one crab, not one sample)
+
+First, we'll fill the SPNO_Alpha columns where appropriate.
+
+Then, we'll check for duplicated or NA SPNO_Alpha or SPNO columns (depending on table)
+
+First, we want to check to see that the SPNO values can, in fact, be used as unique crab identifiers. We also want to see whether (and how many) values are present in the plates.dat and comments.dat tables that are missing from the collection.dat table (since that'll be our base table). Finally, we'll check whether all our collection.dat values are present in the samp.dat table
+
+```{r}
+# Replace NA values in SPNO_Alpha column with the SPNO for comments.dat and plate.dat
+comments.dat$SPNO_Alpha <- ifelse(is.na(comments.dat$SPNO_Alpha), comments.dat$SPNO, comments.dat$SPNO_Alpha)
+
+plate.dat$SPNO_Alpha <- ifelse(is.na(plate.dat$SPNO_Alpha),
+                               plate.dat$SPNO, plate.dat$SPNO_Alpha)
+
+# Check for NA values in our tables
+sum(is.na(collection.dat$SPNO))
+sum(is.na(comments.dat$SPNO_Alpha))
+sum(is.na(plate.dat$SPNO_Alpha))
+sum(is.na(samp.dat$SPNO_Alpha))
+
+# Check for duplicated values in our tables
+any(duplicated(collection.dat$SPNO))
+any(duplicated(comments.dat$SPNO_Alpha))
+any(duplicated(plate.dat$SPNO_Alpha))
+any(duplicated(samp.dat$SPNO_Alpha))
+
+# Okay, looks we have no NAs or duplicates in our key columns - they're all unique and all have entries!
+
+# We can perform left joins on these tables, with samp.dat as the base table. But first, let's verify values aren't missing from that samp.dat table
+
+all(plate.dat$SPNO_Alpha %in% samp.dat$SPNO_Alpha)
+all(comments.dat$SPNO_Alpha %in% samp.dat$SPNO_Alpha)
+all(collection.dat$SPNO %in% samp.dat$SPNO)
+
+# All good on plate.dat, but there are comments.dat and collection.dat values that aren't in samp.dat. Let's examine these
+
+collection.dat[!collection.dat$SPNO %in% samp.dat$SPNO, ]
+
+# For collection.dat, it's just two rows, one with an unknown species and the other apparently with an unknown year. That's fine to drop.
+
+test <- comments.dat[!comments.dat$SPNO_Alpha %in% samp.dat$SPNO_Alpha, ]
+tail(test$SPNO)
+
+
+
+
+# Verify that no SPNO values are missing from the collection.dat table
+all(plate.dat$SPNO %in% collection.dat$SPNO)
+all(comments.dat$SPNO %in% collection.dat$SPNO)
+
+# Both look good! Because of this, we will perform left joins for these tables
+
+# Now, we'll check whether all SPNO values in the collection.dat table are in the samp.dat table
+
+all(collection.dat$SPNO %in% samp.dat$SPNO)
+
+# False? Hmm, okay let's see where they don't overlap
+collection.dat[!collection.dat$SPNO %in% samp.dat$SPNO, ]
+
+# Oh, only two rows. That's no big deal!
+```
+
+#### Joining Tables
+
+Our base table will be the collection.dat table. We'll perform left joins with collections.dat as the x table and the other three as the y tables.
+
+```{r}
+# We'll start with plate.dat, since we really care about the plates
+# First check for duplicated variables. We should get a value of 1 here, since both have an SPNO column.
+sum(colnames(collection.dat) %in% colnames(plate.dat))
+
+test <- left_join(x = collection.dat, y = plate.dat, by = "SPNO")
+
+test[duplicated(test),]
+```
+
+
+
+
+
