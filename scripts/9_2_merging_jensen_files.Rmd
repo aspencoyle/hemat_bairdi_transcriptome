@@ -17,7 +17,7 @@ Earlier, we downloaded a series of files obtained from Pam Jensen, formerly of t
 
 ```{r libraries, message=FALSE, warning=FALSE}
 # Add all required libraries here
-list.of.packages <- c("tidyverse", "RODBC")
+list.of.packages <- c("tidyverse", "RODBC", "readxl", "lubridate")
 # Get names of all required packages that aren't installed
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
 # Install all new packages
@@ -31,6 +31,8 @@ lapply(list.of.packages, FUN = function(X) {
 ```
 
 Now we'll start by importing our Access database
+
+## Reading In Data (Access, -2013)
 
 ```{r}
 
@@ -100,43 +102,311 @@ all(collection.dat$SPNO %in% samp.dat$SPNO)
 
 collection.dat[!collection.dat$SPNO %in% samp.dat$SPNO, ]
 
-# For collection.dat, it's just two rows, one with an unknown species and the other apparently with an unknown year. That's fine to drop.
+# For collection.dat, it's just two rows, one with an unknown species and the other apparently with an unknown year. We'll just drop that in our left join.
 
-test <- comments.dat[!comments.dat$SPNO_Alpha %in% samp.dat$SPNO_Alpha, ]
-tail(test$SPNO)
+# Now let's look at our comments.dat table
 
+comments.dat[!comments.dat$SPNO_Alpha %in% samp.dat$SPNO_Alpha, ]
 
-
-
-# Verify that no SPNO values are missing from the collection.dat table
-all(plate.dat$SPNO %in% collection.dat$SPNO)
-all(comments.dat$SPNO %in% collection.dat$SPNO)
-
-# Both look good! Because of this, we will perform left joins for these tables
-
-# Now, we'll check whether all SPNO values in the collection.dat table are in the samp.dat table
-
-all(collection.dat$SPNO %in% samp.dat$SPNO)
-
-# False? Hmm, okay let's see where they don't overlap
-collection.dat[!collection.dat$SPNO %in% samp.dat$SPNO, ]
-
-# Oh, only two rows. That's no big deal!
+# Okay, 7300 crabs have comments but no sample data. That's nearly half of the total crabs with comments, period!
+# They probably won't be useful, since they don't have plate or collection data either (as all or nearly all crabs with plate or collection data are confirmed to have sample data), but better safe than sorry - we'll make that one a full join.
 ```
 
-#### Joining Tables
+### Join tables together (Access)
 
-Our base table will be the collection.dat table. We'll perform left joins with collections.dat as the x table and the other three as the y tables.
+Summary:
+- Join samp.dat and collection.dat using SPNO. This will populate crabs with multiple SPNO_Alpha (i.e. crabs with multiple samples) with the same collection data.
+- Join that table with plate.dat using SPNO_Alpha. This will add plate information to each sample.
+- Join that table with comments.dat using SPNO_Alpha. This will add comments to each sample.
+
 
 ```{r}
-# We'll start with plate.dat, since we really care about the plates
-# First check for duplicated variables. We should get a value of 1 here, since both have an SPNO column.
-sum(colnames(collection.dat) %in% colnames(plate.dat))
+# 1. Join samp.dat and collection.dat using SPNO
+full.dat <- left_join(x = samp.dat, y = collection.dat, by = "SPNO")
 
-test <- left_join(x = collection.dat, y = plate.dat, by = "SPNO")
+# Check that we didn't add any rows
+nrow(full.dat) == nrow(samp.dat)
 
-test[duplicated(test),]
+# 2. Join full.dat and plate.dat
+full.dat <- left_join(x = full.dat, y = plate.dat, by = "SPNO_Alpha")
+
+# Check that we didn't add any rows
+nrow(full.dat) == nrow(samp.dat)
+
+# 3. Join that table with comments.dat
+full.dat <- full_join(x = full.dat, y = comments.dat, by = "SPNO_Alpha")
+
+# Checking that we're only adding the number of rows equal to unmatched comments as determined in the earlier chunk
+nrow(samp.dat) + nrow(comments.dat[!comments.dat$SPNO_Alpha %in% samp.dat$SPNO_Alpha, ]) == nrow(full.dat)
 ```
+
+### Removing Redundant Columns (Access)
+
+Alright, we now have an extremely large data table - 92,000 rows and 63 columns! We want to reduce that quite substantially. We'll start off by reducing the number of columns present by eliminating fully-duplicated ones
+
+```{r}
+colnames(full.dat)
+
+# Looks like we have three SPNO columns, plus an SPNO_Alpha and Alpha column. We can eliminate a few of these at least.
+length(na.omit(full.dat$SPNO.x))
+length(na.omit(full.dat$SPNO.y))
+length(na.omit(full.dat$SPNO))
+
+# When we merged samp.dat with plate.dat by SPNO_Alpha, the two columns turned to SPNO.x and SPNO.y, respectively. Then, the subsequent merge of comments.dat added the SPNO column. Therefore, we want to remove the SPNO.y and SPNO columns, as the SPNO.x (samp.dat) column contains all SPNO IDs in those two plus additional ones. We'll then rename SPNO.x to SPNO
+
+full.dat <- select(full.dat, -c(SPNO.y, SPNO))
+full.dat <- rename(full.dat, SPNO = SPNO.x)
+
+# Look at colnames again
+colnames(full.dat)
+
+# Check the number of NA values per column
+sapply(full.dat, function(y) sum(length(which(!is.na(y)))))
+
+# Species_Name.x and Species_Name.y were created when we merged the samp.dat and comments.dat tables. We can remove Species_Name.y as it only contains info for crabs in comments.dat. We will then rename Species_Name.x to Species_Name
+full.dat <- select(full.dat, -Species_Name.y)
+full.dat <- rename(full.dat, Species_Name = Species_Name.x)
+
+# Alright, we have a few additional duplicated columns - Collection Comments and Sample Comments each have one column from samp.dat and one from comments.dat. However, these don't necessarily contain entirely duplicated information, so we'll leave them for now. However, to avoid confusion, we'll rename
+
+full.dat <- rename(full.dat, c(Sample_Comments = Sample_Comments.x, Collection_Comments = Collection_Comments.x, Addl_Collection_Comments = Collection_Comments.y, Addl_Sample_Comments = Sample_Comments.y))
+
+# We will now write this to a table 
+write.csv(full.dat, file = "../output/jensen_data/cleaned_data/accessdb_all_cols.csv", row.names = FALSE)
+```
+
+## Reading in Excel data (2014-2019)
+
+Fantastic, we merged all our Access data! However, we still have a great deal of data that we still need to read in. The Access data only goes up through 2013. Everything 2014 and later is instead stored in separate Excel sheets. Those need to be read in individually. We'll do that now
+
+We have data from the 2014-2019 NOAA EBS trawl surveys, along with data from the 2015 St. Matthew Island Blue King Crab survey.
+
+The data collected on the 2015 SMI BKC survey will be formatted extremely differently, as it was a nonstandard collection, and the survey is a pot survey, while the EBS surveys are trawl surveys. Therefore, we won't even bother trying to read it in yet - we'll do that later. Instead, we'll first merge all EBS trawl survey data, and then try to merge that with the Access data
+
+```{r}
+# Get path to all files named above
+excel.files <- Sys.glob(c("../data/jensen_archived_samples/jensen_data/Hemato_samples/data_2014-2019/*/201?_BCS_Index_Station_Collection_Data_MASTE*.xlsx"))
+
+#### 2014 and 2015 EBS trawl data
+
+# Read in 2014 data
+recent.dat <- read_excel(excel.files[1], sheet = 2)
+
+# Read in 2015 data
+recent.dat2 <- read_excel(excel.files[2], sheet = 2)
+
+# Check if column names are identical.
+all(colnames(recent.dat) == colnames(recent.dat2))
+# They aren't, so let's check which ones are different
+colnames(recent.dat)[colnames(recent.dat) != colnames(recent.dat2)]
+colnames(recent.dat2)[colnames(recent.dat) != colnames(recent.dat2)]
+
+# Looks like the only differences are in capitalization and spacing - Chela = chela, and STATIONID = STATION ID.
+# We'll rename the recent.dat column names, as the temporally recent one is more likely to be used for subsequent files
+recent.dat <- rename(recent.dat, c("STATION ID" = STATIONID, chela = Chela))
+
+# Verify all columns match 
+all(colnames(recent.dat) == colnames(recent.dat2))
+
+# We can now append the recent.dat2 file (the 2015 data) onto recent.dat (the 2014 data)
+recent.dat <- bind_rows(recent.dat, recent.dat2)
+
+#### 2016 EBS trawl data
+
+# Read in file
+recent.dat2 <- read_excel(excel.files[3], sheet = 2)
+
+# Check if column names are identical
+all(colnames(recent.dat) == colnames(recent.dat2))
+# They aren't, so let's check which ones are different
+colnames(recent.dat)[colnames(recent.dat) != colnames(recent.dat2)]
+colnames(recent.dat2)[colnames(recent.dat) != colnames(recent.dat2)]
+
+# Again, these are all differences in capitalization and spacing. PCR Result = PCR result, Host Tissue = Host_Tissue, and STATIONID = STATION ID
+# We'll rename the recent.dat column names to the 2016 columns, as the temporally recent one is more likely to be used for subsequent files.
+# Although as we just saw with STATIONID, that isn't necessarily true
+recent.dat <- rename(recent.dat, c("PCR Result" = "PCR result", "Host Tissue" = Host_Tissue, STATIONID = "STATION ID"))
+
+# Verify all columns match 
+all(colnames(recent.dat) == colnames(recent.dat2))
+
+# When we try to append the data file, we get a warning - the START TIME column in the 2016 data was read as a character, not a date
+# Convert that column to date
+recent.dat2$`START TIME` <-  mdy_hm(recent.dat2$`START TIME`)
+
+# We can now append the recent.dat2 file (the 2016 data) onto recent.dat (the 2014-2015 data)
+recent.dat <- bind_rows(recent.dat, recent.dat2)
+
+#### 2017 EBS trawl data
+
+# Read in file
+recent.dat2 <- read_excel(excel.files[4], sheet = 2)
+
+# Check if column names are identical
+all(colnames(recent.dat) == colnames(recent.dat2))
+
+# They aren't, so let's check which ones are different
+colnames(recent.dat)[colnames(recent.dat) != colnames(recent.dat2)]
+colnames(recent.dat2)[colnames(recent.dat) != colnames(recent.dat2)]
+
+# Again, these are all differences in capitalization and spacing. PCR Result = PCR result
+# We'll rename the recent.dat column names to the 2017 columns, as the temporally recent one is more likely to be used for subsequent files.
+recent.dat <- rename(recent.dat, "PCR result" = "PCR Result")
+
+# Verify all columns match 
+all(colnames(recent.dat) == colnames(recent.dat2))
+
+# We can now append the recent.dat2 file (the 2017 data) onto recent.dat (the 2014-2016 data)
+recent.dat <- bind_rows(recent.dat, recent.dat2)
+
+#### 2018 EBS trawl data
+
+# Read in file
+recent.dat2 <- read_excel(excel.files[5], sheet = 2)
+
+# Looks like we have an extra 5 columns. Verify
+ncol(recent.dat2) - ncol(recent.dat)
+
+# Let's do a quick look to see if we can spot the differences
+colnames(recent.dat)
+colnames(recent.dat2)
+
+# We sure can! The 2018 file has 5 extra columns related to maturity, as measured through the carapace width/chela height ratio. They are as follows:
+# - ln(CW)
+# - meas'd ln(Ch)
+# - calc ln(Ch)
+# - mat
+# - Mat1
+
+# We will remove all these columns and then check to see if column names match
+
+recent.dat2 <- select(recent.dat2, -c("ln(CW)", "meas'd ln(Ch)", "calc ln(Ch)", mat, Mat1))
+
+# Check if column names are now identical
+all(colnames(recent.dat) == colnames(recent.dat2))
+
+# They are, so we can now append the recent.dat2 file (the 2018 data) onto the recent.dat file (the 2014-2017 data)
+recent.dat <- bind_rows(recent.dat, recent.dat2)
+
+#### 2019 EBS trawl data
+
+# Read in file
+recent.dat2 <- read_excel(excel.files[6], sheet = 3)
+
+# Looks like we have an extra 9 columns. Verify
+ncol(recent.dat2) - ncol(recent.dat)
+
+# Let's do a quick look to see if we can spot the differences
+colnames(recent.dat)
+colnames(recent.dat2)
+
+# Again, we can. Six of the nine are related to determining maturity as before, while a look at the original Excel file shows that the final three are summary tables that can be deleted. The columns are as follows:
+# MATURITY COLUMNS:
+# - ln CW
+# - measured ln (ChHt)
+# - OLD solved ChHt
+# - new cut line LN(Ch)
+# - new cut line mat
+# - new cut line 1
+# SUMMARY TABLES:
+# - ...43
+# - ...44
+# - ...45
+# Remove all 9 of these columns
+recent.dat2 <- select(recent.dat2, -c("ln CW", "measured ln (ChHt)", "OLD solved ChHt", 
+                                      "new cut line LN(Ch)", "new cut line mat", "new cut line 1",
+                                      "...43", "...44", "...45"))
+
+# Check if column names are now identical
+all(colnames(recent.dat) == colnames(recent.dat2))
+
+# They aren't, let's see where they differ
+colnames(recent.dat)[colnames(recent.dat) != colnames(recent.dat2)]
+colnames(recent.dat2)[colnames(recent.dat) != colnames(recent.dat2)]
+
+# Again, these are superficial changes in capitalization. VESSEL = Vessel, HAUL = haul
+# This time, we'll change the column names for the 2019 data (recent.dat2)
+recent.dat2 <- rename(recent.dat2, c(VESSEL = Vessel, HAUL = Haul))
+
+# Check again if column names are identical
+all(colnames(recent.dat) == colnames(recent.dat2))
+
+# Nice! We'll now append the recent.dat2 file (the 2019 data) onto the recent.dat file (the 2014-2018 data)
+recent.dat <- bind_rows(recent.dat, recent.dat2)
+
+# We will now write this to a table 
+write.csv(recent.dat, file = "../output/jensen_data/cleaned_data/excel_ebs_data_all_cols.csv", row.names = FALSE)
+```
+
+### Merging Access and Excel Data (EBS Trawl)
+
+We'll now try to merge the data from the Access databases and the EBS Trawl Excel sheets (2014-2019).
+
+Since the formatting is extremely different, we will NOT try to merge the 2015 SMI BKC survey data. We'll work on that a bit later - at this stage, we haven't even read it in.
+
+```{r}
+table(full.plate.dat$LME)
+table(recent.dat$`Reference NO`)
+```
+
+
+
+
+
+
+### Cleaning
+
+In the chunk above, we ONLY removed data that had been completely duplicated, giving us a full and complete data table. In the next chunk, we'll be a bit more aggressive, removing rows and columns that don't provide useful information on the specific plate samples that we have. 
+
+
+```{r}
+colnames(full.dat)
+
+# First, we'll remove all rows without a plate ID
+full.plate.dat <- full.dat[!is.na(full.dat$Plate), ]
+
+# Now we'll get the number of non-NA values per column
+sapply(full.plate.dat, function(y) sum(length(which(!is.na(y)))))
+
+# Alright, we can safely remove the following columns, as they have no non-NA values
+# Taxon_Removed
+# Parasite_Species
+# Parasite_Most_Recent_ID_By
+# DISTID
+# Most_Recent_ID_By
+
+full.plate.dat <- select(full.plate.dat, -c(Taxon_Removed, Parasite_Species, Parasite_Most_Recent_ID_By, DISTID, Most_Recent_ID_By))
+
+# We also have some comments that likely contain minimal information
+table(full.plate.dat$Category1)
+table(full.plate.dat$Category2)
+table(full.plate.dat$Category3)
+table(full.plate.dat$Category4)
+table(full.plate.dat$Category5_decapods)
+sum(is.na(full.plate.dat$Species_Name))
+
+# All rows have a given species name. Therefore, the specific taxonomic identity is irrelevant - we don't have such a large number of species that it'd be useful. Plus, every row is identical for Categories 1-3. Therefore, drop Category1-5 columns
+full.plate.dat <- select(full.plate.dat, -c(Category1, Category2, Category3, Category4, Category5_decapods))
+
+table(full.plate.dat$Host_OR_Parasite)
+sum(is.na(full.plate.dat$Host_OR_Parasite))
+# In the Host_OR_Parasite column, all rows contain some variant of "Host Tissue". Therefore, we can remove the column
+full.plate.dat <- select(full.plate.dat, -Host_OR_Parasite)
+
+table(full.plate.dat$Sample_Type)
+# All rows are DNA samples, remove
+full.plate.dat <- select(full.plate.dat, -Sample_Type)
+
+# Remove samples that are designated as Used Up/Thrown Out/unavailable
+table(full.plate.dat$Sample_Status)
+full.plate.dat <- full.plate.dat[full.plate.dat$Sample_Status != "Used Up/Thrown Out/unavailable", ]
+
+# We can now remove the Sample Status column, as all samples are either "available" or "To Roberts lab", both of which mean they could be in our possession
+full.plate.dat <- select(full.plate.dat, -Sample_Status)
+
+
+```
+
 
 
 
