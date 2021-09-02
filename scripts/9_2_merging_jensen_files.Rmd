@@ -334,6 +334,16 @@ all(colnames(recent.dat) == colnames(recent.dat2))
 # Nice! We'll now append the recent.dat2 file (the 2019 data) onto the recent.dat file (the 2014-2018 data)
 recent.dat <- bind_rows(recent.dat, recent.dat2)
 
+#### Small Data Corrections
+
+# We will now change all column names with spaces
+colnames(recent.dat) <- gsub(" ", "_", colnames(recent.dat))
+
+# See if any rows don't have a unique SPNO
+recent.dat[duplicated(recent.dat), ]
+# Yep, we have four. All have NAs for practically all rows
+recent.dat <- recent.dat[unique(recent.dat$SPNO), ]
+
 # We will now write this to a table 
 write.csv(recent.dat, file = "../output/jensen_data/cleaned_data/excel_ebs_data_all_cols.csv", row.names = FALSE)
 ```
@@ -344,9 +354,260 @@ We'll now try to merge the data from the Access databases and the EBS Trawl Exce
 
 Since the formatting is extremely different, we will NOT try to merge the 2015 SMI BKC survey data. We'll work on that a bit later - at this stage, we haven't even read it in.
 
+There are a lot of differences in column names and which variables were tracked. I will try to map as many as possible to each other
+
+| Access_Data_variable       | EBS_Excel_Data_variable     |
+|----------------------------|-----------------------------|
+| SPNO                       | SPNO                        |
+| Alpha                      |                             |
+| Host_OR_Parasite           |                             |
+| Host_Tissue                | Host_Tissue                 |
+| Taxon_Removed              |                             |
+| Parasite_Species           |                             |
+| Parasite_Most_Recent_ID_By |                             |
+| Sample_Type                |                             |
+| Preservative               | Preservative                |
+| Protocol                   |                             |
+| Sample_Status              | Sample_Status               |
+| Sample_Comments            |                             |
+| SPNO_Alpha                 |                             |
+| Species_Name               | Species_Name                |
+| Sex                        | Sex                         |
+| Size                       | Size                        |
+| Chela                      | chela                       |
+| Shell_Condition            | Shell_Cond                  |
+| Clutch                     | Clutch                      |
+| Random                     | Random                      |
+| Collection_Comments        | Collection_Comments         |
+| BODYID                     |                             |
+| VISUAL                     | ANOM_ID                     |
+| DISTID                     |                             |
+| Year                       | Year                        |
+| Date                       | START_TIME [1 of 2 matches] |
+| HISTO_result               |                             |
+| SMEAR_result               |                             |
+| T_Rating                   |                             |
+| BCS_PCR_results            | PCR_result                  |
+| Specific_Location          | Specific_Location           |
+| General_Location           | General_Location            |
+| Collected_By               | Collected_By                |
+| Most_Recent_ID_By          |                             |
+| ReferenceNO                | Reference_NO                |
+| C_V_H                      | C_V_H                       |
+| Cruise                     | CRUISE                      |
+| Vessel                     | VESSEL                      |
+| Haul                       | HAUL                        |
+| StationID                  | STATIONID                   |
+| Stratum                    | STRATUM                     |
+| LME                        |                             |
+| Bering_Sea_Regions         |                             |
+| Haul_Date                  | START_TIME [1 of 2 matches] |
+| Latitude                   | START_LATITUDE              |
+| Longitude                  | START_LONGITUDE             |
+| Depth                      | BOTTOM_DEPTH                |
+| Bottom_Type                |                             |
+| Bottom_Temp                | Bottom_Temp                 |
+| Surface_Temp               | SURFACE_TEMP                |
+| Haul_Comments              |                             |
+| Category1                  |                             |
+| Category2                  |                             |
+| Category3                  |                             |
+| Category4                  |                             |
+| Category5_decapods         |                             |
+| Plate                      | DNA_Plate_No                |
+| Plate_Comments             |                             |
+| Addl_Collection_Comments   |                             |
+| Addl_Sample_Comments       |                             |
+|                            | Egg_Color                   |
+|                            | Egg_Cond                    |
+|                            | DNA_Well_No                 |
+|                            | GEAR_DEPTH                  |
+
+
+
 ```{r}
-table(full.plate.dat$LME)
-table(recent.dat$`Reference NO`)
+# Duplicate date column in recent.dat to create a Haul_Date column
+recent.dat$Haul_Date <- recent.dat$START_TIME
+
+
+# Rename columns in EBS Excel data to match column names in Access data
+recent.dat <- rename(recent.dat, c(Chela = chela,
+                             Shell_Condition = Shell_Cond,
+                             VISUAL = ANOM_ID,
+                             Date = START_TIME,
+                             BCS_PCR_results = PCR_result,
+                             ReferenceNO = Reference_NO,
+                             Cruise = CRUISE,
+                             Vessel = VESSEL,
+                             Haul = HAUL,
+                             StationID = STATIONID,
+                             Stratum = STRATUM,
+                             Latitude = START_LATITUDE,
+                             Longitude = START_LONGITUDE,
+                             Depth = BOTTOM_DEPTH,
+                             Surface_Temp = SURFACE_TEMP,
+                             Plate = DNA_Plate_No))
+
+# If we try to bind here, we get an error, as full.dat$VISUAL is a character column, while recent.dat$VISUAL is a double.
+# This is also the case for Plate
+# Change recent.dat$VISUAL to a character
+recent.dat$VISUAL <- as.character(recent.dat$VISUAL)
+recent.dat$Plate <- as.character(recent.dat$Plate)
+
+# Bind rows from Excel data to Access data
+full.dat <- bind_rows(full.dat, recent.dat)
+
+# Excellent, we have 99,419 rows and 64 columns.
+# Rows are equal to the 92,332 in the Access data plus the 7087 in the Excel EBS data
+# Columns are equal to the 60 in the Access data plus the 4 unique to the Excel EBS data
+```
+
+### Read in St. Matthew Island 2015 data
+
+So far, we've merged data from two formats - the Access database for data prior to 2013, and the Excel database for EBS data from 2014-2019. 
+
+We only have one data format left - the 2015 St. Matthew Island Blue King Crab survey. We'll read that in, and then merge columns
+
+```{r}
+# Set path to file folder
+excel_path <- "../data/jensen_archived_samples/jensen_data/Hemato_samples/data_2014-2019/2015_StMatt/"
+
+#### Results Data
+
+SMI.results.dat <- read_excel(paste0(excel_path, "2015_St_Matt_results.xlsx"), sheet = 1, skip = 3)
+
+# Remove columns that are artifacts of weird data entry format from results data
+SMI.results.dat <- select(SMI.results.dat, -c("...4", "Prevalence:",
+                                              "...6", "...10",
+                                              "...13", "Plate 2015-44"))
+
+# Shape data table to widen columns
+SMI.results.dat <- data.frame("SPNO" = c(SMI.results.dat$...1, SMI.results.dat$SPNO, SMI.results.dat$`Tag #`),
+                              "Well" = c(SMI.results.dat$Well...2, SMI.results.dat$Well...8, rep(NA, times = length(SMI.results.dat$`Tag #`))),
+                              "PCR_result" = c(SMI.results.dat$`PCR result...3`, SMI.results.dat$`PCR result...9`, SMI.results.dat$`PCR result...12`))
+
+# Remove all rows consisting of only NAs
+SMI.results.dat <- SMI.results.dat[rowSums(is.na(SMI.results.dat)) != ncol(SMI.results.dat), ]
+
+# Within our SPNO column, we have some SPNO listed as 2###-4###, and others as 2### / 4####. We want all to take the first format, so let's change that " / " to a "-"
+SMI.results.dat$SPNO <- gsub(" / ", "-", SMI.results.dat$SPNO)
+
+# Separate 2### and 4### portions of SPNO column
+SMI.results.dat <- separate(SMI.results.dat, col = SPNO, into = c("ident_num", "ID"), sep = "-")
+
+# That 4### portion is the tray number + the well number. So Tray 42, Well 3 would be 4003
+SMI.results.dat <- separate(SMI.results.dat, col = ID, into = c("Tray", "Well_Num"), sep = 2)
+
+#### Main data
+
+# We have two data tables. It seems that some random samples were taken (labeled with the prefix 2015 in the original SPNO column of SMI.results.dat), and other crabs were selected because they appeared to be BCS positive. These were tagged, and labeled with the tag number as their prefix in that SPNO column. Therefore, we need to read in and merge both data tables.
+
+# The crabs that were selected due to an apparent BCS positive appearance were likely transported live back to Kodiak for sampling and testing, while others were sampled on the spot.
+
+# Read in seemingly-random sample data
+SMI.dat <- read_excel(paste0(excel_path, "ADFG_2015_St_Matt_SnowCrab_BCS_Data_for_NMFS-Pam_Jensen.xlsx"), 
+                             sheet = 2, skip = 1)
+# Read in selected sample data
+SMI.selected.dat <- read_excel(paste0(excel_path, "ADFG_2015_St_Matt_SnowCrab_BCS_Data_for_NMFS-Pam_Jensen.xlsx"), 
+                             sheet = 1, skip = 1)
+
+# Check to see which column names are in SMI.selected.dat, but not SMI.dat
+colnames(SMI.dat)[!colnames(SMI.dat) %in% colnames(SMI.selected.dat)]
+# And check to see the reverse - which are in SMI.dat, but not SMI.selected.dat
+colnames(SMI.selected.dat)[!colnames(SMI.selected.dat) %in% colnames(SMI.dat)]
+
+# Two of these, carapace width and chela height, are the result of minor differences in column names. Here's a quick explanation of the ones that aren't.
+# UNIQUE TO SMI.dat
+# Shell_Condition: Same as usual, the age of the shell. Possibly not taken in visibly-infected crabs, as the "bleaching" effects of Hematodinium make it difficult to judge
+# Signs_of_BCS: Presumably positive for all visibly-infected crabs
+# 
+# UNIQUE TO SMI.selected.dat
+# SPN (sequential pot number). Each survey begins at SPN = 1, and runs sequentially. Generally, there are 4 pots per station.
+# BCS_Tag_Num: As speculated above, these crabs were likely kept live and transported, and therefore each needed a tag
+# Removed_Dead: Some crabs likely died en route or during the survey, and thus their death date was marked
+# Comments: Simply not present for the ones sampled on survey randomly, likely because unusual crab were intentionally not sampled.
+
+# Rename carapace width and chela height to match the conventions in SMI.dat
+SMI.selected.dat <- rename(SMI.selected.dat, c(Carapace_Width = Carapace_Width_mm, 
+                                   Chela_Height = Chela_Height_mm))
+
+# We'll also change the Station column to a character for SMI.selected.dat
+SMI.selected.dat$Station <- as.character(SMI.selected.dat$Station)
+
+
+# We will now append the two data tables. Columns not present in the other table will be filled with NAs
+SMI.dat <- bind_rows(SMI.dat, SMI.selected.dat, .id = "ADFG_ID")
+
+# Remove the newly-created ADFG_ID ID
+SMI.dat <- select(SMI.dat, -"ADFG_ID")
+
+#### Binding Survey Data and PCR Data
+
+# We will now bind the SMI.dat table we just created, which contains all collection data, with the SMI.results.dat table, which contains the PCR results
+
+# Convert SMI.dat$Tray to character
+SMI.dat$Tray <- as.character(SMI.dat$Tray)
+
+SMI.dat <- left_join(SMI.dat, SMI.results.dat, by = c("Tray", "Well"))
+
+# We will now change all column names with spaces
+colnames(SMI.dat) <- gsub(" ", "_", colnames(SMI.dat))
+
+# We also want to remove redundant columns. We have three for each of depth, temp, and salinity - a min, a max, and an average. We'll remove the min and max columns for each.
+SMI.dat <- select(SMI.dat, -c(Min_depth_m, Max_depth_m,
+                              "Min_temp_C°", "Max_temp_C°",
+                              Min_salinity_PSU, Max_salinity_PSU))
+
+# Our temperature column also has a nonstandard name (contains the degree symbol), so we'll remove that symbol
+SMI.dat <- rename(SMI.dat, Avg_temp_C = "Avg_temp_C°")
+
+# Some crabs have a Well value, but no Well_Num. If we look at other samples, it is evident that wells were numbered beginning at A1 and continuing vertically (e.g. A1 = 1, B1 = 2... H1 = 8, A2 = 9). Therefore, we can convert the Well values to give us a Well_Num
+# We'll do this inside a for loop
+
+for (i in 1:nrow(SMI.dat)) {
+  well_val <- SMI.dat$Well[i]
+  numb <- gsub("[^[:digit:]]", "", well_val)
+  lett <- gsub("[[:digit:]]", "", well_val)
+  num <- (as.numeric(numb) - 1) * 8 + match(lett, LETTERS[1:26])
+  SMI.dat$Well_Num[i] <- num
+}
+
+
+# We now want to pad this well_num value so it always equals two digits
+SMI.dat$Well_Num <- str_pad(SMI.dat$Well_Num, 2, pad = 0)
+
+# Create SPNO column. The format for this is generally YYYYPPWW, with PP = plate number, and WW = well number (and YYYY = year). However, this could create overlaps with the regular 2015 EBS survey, so we'll precede this with "SMI_". Some crabs have NAs for plate and well numbers. These will instead be given an SPNO equal to their ADFG_ID preceded by SMI_.
+
+# Create a blank column for SPNO that we'll fill
+SMI.dat$SPNO <- rep("blank", times = nrow(SMI.dat))
+
+# Check if any crabs have an NA for plate, but not well numbers, and vice-versa
+SMI.dat[is.na(SMI.dat$Tray) & !is.na(SMI.dat$Well_Num), ]
+SMI.dat[!is.na(SMI.dat$Tray) & is.na(SMI.dat$Well_Num), ]
+
+# Excellent. We'll assign crabs with NAs for both plate and well numbers an SPNO equal to their ADFG_ID, as described above.
+# We'll work on adding the preceding SMI_ later
+SMI.dat[is.na(SMI.dat$Tray) & is.na(SMI.dat$Well_Num), ]$SPNO <- SMI.dat[is.na(SMI.dat$Tray) & is.na(SMI.dat$Well_Num), ]$ADFG_ID
+
+# Now assign all other crabs a standard SPNO, as described above
+SMI.dat[!is.na(SMI.dat$Tray) & !is.na(SMI.dat$Well_Num), ]$SPNO <- paste0(2015, 
+                                                                          SMI.dat[!is.na(SMI.dat$Tray) & !is.na(SMI.dat$Well_Num), ]$Tray,
+                                                                          SMI.dat[!is.na(SMI.dat$Tray) & !is.na(SMI.dat$Well_Num), ]$Well_Num)
+  
+# Beautiful! We now want to preface all SPNO values with "SMI_"
+SMI.dat$SPNO <- paste0("SMI_", SMI.dat$SPNO)
+
+# Check SPNO values for duplicates
+SMI.dat[duplicated(SMI.dat$SPNO), ]
+```
+
+Alright, we want to now merge our St. Matthew Island data with the combined Access/Excel data. We'll rename the columns to map as many as possible to each other. The SMI.dat columns will be renamed to match the Access/Excel data columns. Here's a table of the columns:
+
+```{r}
+# We'll also create extra columns for Year,
+SMI.dat$Year <- "2015"
+
+
 ```
 
 
