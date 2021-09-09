@@ -160,7 +160,7 @@ full.dat <- rename(full.dat, SPNO = SPNO.x)
 # Look at colnames again
 colnames(full.dat)
 
-# Check the number of NA values per column
+# Check the number of non-NA values per column
 sapply(full.dat, function(y) sum(length(which(!is.na(y)))))
 
 # Species_Name.x and Species_Name.y were created when we merged the samp.dat and comments.dat tables. We can remove Species_Name.y as it only contains info for crabs in comments.dat. We will then rename Species_Name.x to Species_Name
@@ -340,12 +340,10 @@ recent.dat <- bind_rows(recent.dat, recent.dat2)
 colnames(recent.dat) <- gsub(" ", "_", colnames(recent.dat))
 
 # See if any rows don't have a unique SPNO
-recent.dat[duplicated(recent.dat), ]
-# Yep, we have four. All have NAs for practically all rows
-recent.dat <- recent.dat[unique(recent.dat$SPNO), ]
+recent.dat[duplicated(recent.dat$SPNO), ]
+# Yep, we have four. All have NAs for practically all rows. Remove them
+recent.dat <- recent.dat[!duplicated(recent.dat$SPNO), ]
 
-# We will now write this to a table 
-write.csv(recent.dat, file = "../output/jensen_data/cleaned_data/excel_ebs_data_all_cols.csv", row.names = FALSE)
 ```
 
 ### Merging Access and Excel Data (EBS Trawl)
@@ -448,11 +446,17 @@ recent.dat <- rename(recent.dat, c(Chela = chela,
                              Surface_Temp = SURFACE_TEMP,
                              Plate = DNA_Plate_No))
 
+# Remove the GEAR_DEPTH column, as it's unnecessary - we already have depth captured in BOTTOM_DEPTH
+recent.dat <- select (recent.dat, -GEAR_DEPTH)
+
 # If we try to bind here, we get an error, as full.dat$VISUAL is a character column, while recent.dat$VISUAL is a double.
 # This is also the case for Plate
 # Change recent.dat$VISUAL to a character
 recent.dat$VISUAL <- as.character(recent.dat$VISUAL)
 recent.dat$Plate <- as.character(recent.dat$Plate)
+
+# We will now write our recent.dat file to a table 
+write.csv(recent.dat, file = "../output/jensen_data/cleaned_data/excel_ebs_data_all_cols.csv", row.names = FALSE)
 
 # Bind rows from Excel data to Access data
 full.dat <- bind_rows(full.dat, recent.dat)
@@ -494,6 +498,9 @@ SMI.results.dat$SPNO <- gsub(" / ", "-", SMI.results.dat$SPNO)
 
 # Separate 2### and 4### portions of SPNO column
 SMI.results.dat <- separate(SMI.results.dat, col = SPNO, into = c("ident_num", "ID"), sep = "-")
+
+# Remove the ident_num portion - it's 2015 for all crabs
+SMI.results.dat <- select(SMI.results.dat, -ident_num)
 
 # That 4### portion is the tray number + the well number. So Tray 42, Well 3 would be 4003
 SMI.results.dat <- separate(SMI.results.dat, col = ID, into = c("Tray", "Well_Num"), sep = 2)
@@ -541,6 +548,15 @@ SMI.dat <- bind_rows(SMI.dat, SMI.selected.dat, .id = "ADFG_ID")
 # Remove the newly-created ADFG_ID ID
 SMI.dat <- select(SMI.dat, -"ADFG_ID")
 
+# All crabs with a value in BCS_Tag_Num or Removed_Dead were tagged because they were visually positive. Therefore, assign a "Yes" to them in the Signs_of_BCS column
+SMI.dat[!is.na(SMI.dat$BCS_Tag_Num) | !is.na(SMI.dat$Removed_Dead), ]$Signs_of_BCS <- "Yes"
+
+# Many crabs from the SMI.selected.dat table have an NA for Station. However, in the SPN, they have "Special SC pots". Other crabs from SC pots in this data table instead have "SC Pots" as the value for the Station column. We'll therefore add that info to the Station column
+SMI.dat[SMI.dat$SPN == "Special SC pots" & !is.na(SMI.dat$SPN), ]$Station <- "SC pots"
+# Also do the reverse - add "Special SC pots" as the SPN for crabs with a Station of "SC pots"
+SMI.dat[SMI.dat$Station == "SC pots", ]$SPN <- "Special SC pots"
+
+
 #### Binding Survey Data and PCR Data
 
 # We will now bind the SMI.dat table we just created, which contains all collection data, with the SMI.results.dat table, which contains the PCR results
@@ -557,6 +573,8 @@ colnames(SMI.dat) <- gsub(" ", "_", colnames(SMI.dat))
 SMI.dat <- select(SMI.dat, -c(Min_depth_m, Max_depth_m,
                               "Min_temp_C°", "Max_temp_C°",
                               Min_salinity_PSU, Max_salinity_PSU))
+# We also have separate columns for logger lat/long and capture lat/long. The logger lat/long may be a tad bit more specific, but has a higher likelihood of being dramatically wrong than the capture lat/long, which is taken from the ship's instruments. Since on this survey pots are separated by a few hundred feet at most, we'll just use the capture lat/long
+SMI.dat <- select(SMI.dat, -c(Logger_Lat, Logger_Long))
 
 # Our temperature column also has a nonstandard name (contains the degree symbol), so we'll remove that symbol
 SMI.dat <- rename(SMI.dat, Avg_temp_C = "Avg_temp_C°")
@@ -597,36 +615,198 @@ SMI.dat[!is.na(SMI.dat$Tray) & !is.na(SMI.dat$Well_Num), ]$SPNO <- paste0(2015,
 # Beautiful! We now want to preface all SPNO values with "SMI_"
 SMI.dat$SPNO <- paste0("SMI_", SMI.dat$SPNO)
 
-# Check SPNO values for duplicates
+# Check SPNO values for NAs and duplicates
+SMI.dat[is.na(SMI.dat$SPNO), ]
 SMI.dat[duplicated(SMI.dat$SPNO), ]
+
+# We still have 6 duplicates. Looking at each, they're ones that were present in both the SMI.selected.dat and SMI.dat tables, meaning they were visually BCS+ crabs that were noted in the survey and then tagged and sent to Kodiak. All data in the SMI.dat rows is present in the SMI.selected.dat rows, except ADFG_ID (conflicts often present), Shell_Condition (not present in the SMI.selected.dat rows). Therefore, we'll note the SC of each crab, remove rows with SC values, and then add the SC to our SMI.selected.dat rows.
+
+# Get vector of all duplicated SPNO values
+dups <- SMI.dat[duplicated(SMI.dat$SPNO), ]$SPNO
+
+# Get IDs of all new-shell crab
+newbies <- SMI.dat[SMI.dat$SPNO %in% dups & SMI.dat$Shell_Condition == "New", ]$SPNO
+
+# Get IDs of all old-shell crab
+oldbies <- SMI.dat[SMI.dat$SPNO %in% dups & SMI.dat$Shell_Condition == "Old", ]$SPNO
+
+# Eliminate duplicate rows that have a value for shell condition. 
+SMI.dat <- SMI.dat[!(SMI.dat$SPNO %in% dups & !is.na(SMI.dat$Shell_Condition)), ]
+
+# Add SC = New to all SPNOs IDed as new-shell duplicates above
+SMI.dat[SMI.dat$SPNO %in% newbies, ]$Shell_Condition <- "New"
+# Do the same thing for SPNOs IDed as old-shell duplicates
+SMI.dat[SMI.dat$SPNO %in% oldbies, ]$Shell_Condition <- "Old"
 ```
 
-Alright, we want to now merge our St. Matthew Island data with the combined Access/Excel data. We'll rename the columns to map as many as possible to each other. The SMI.dat columns will be renamed to match the Access/Excel data columns. Here's a table of the columns:
+Alright, we want to now merge our St. Matthew Island data with the combined Access/Excel data. We'll rename the columns to map as many as possible to each other. The SMI.dat columns will be renamed to match the Access/Excel data columns. Here's a table of the columns.
+
+Columns marked as [will create] will be created for the SMI data table, and will apply to all crabs. For instance, all samples are from the 2015 survey, and preserved in 100% EtOH, so a column for Year will be created, with all equaling 2015, and another column for Preservative will be created, with all values as 100% EtOH
+
+| EBS_Excel_and_Access_Data_variable | SMI_variable           |
+|------------------------------------|------------------------|
+| SPNO                               | SPNO                   |
+| Alpha                              |                        |
+| Host_OR_Parasite                   | [will create]          |
+| Host_Tissue                        | [will create]          |
+| Taxon_Removed                      |                        |
+| Parasite_Species                   |                        |
+| Parasite_Most_Recent_ID_By         |                        |
+| Sample_Type                        |                        |
+| Preservative                       | [will create]          |
+| Protocol                           |                        |
+| Sample_Status                      | [will create]          |
+| Sample_Comments                    |                        |
+| SPNO_Alpha                         |                        |
+| Species_Name                       | [will create]          |
+| Sex                                | Sex                    |
+| Size                               | Carapace_Width         |
+| Chela                              | Chela_Height           |
+| Shell_Condition                    | Shell_Condition        |
+| Clutch                             |                        |
+| Random                             |                        |
+| Collection_Comments                | Comments               |
+| BODYID                             |                        |
+| VISUAL                             | Signs_of_BCS           |
+| DISTID                             |                        |
+| Year                               | [will create]          |
+| Date                               | Capture_Date           |
+| HISTO_result                       |                        |
+| SMEAR_result                       |                        |
+| T_Rating                           |                        |
+| BCS_PCR_results                    | PCR_result             |
+| Specific_Location                  | [will create]          |
+| General_Location                   | [will create]          |
+| Collected_By                       |                        |
+| Most_Recent_ID_By                  |                        |
+| ReferenceNO                        | BCS_Tag_Num            |
+| C_V_H                              |                        |
+| Cruise                             |                        |
+| Vessel                             |                        |
+| Haul                               |                        |
+| StationID                          | Station                |
+| Stratum                            |                        |
+| LME                                | [will create]          |
+| Bering_Sea_Regions                 |                        |
+| Haul_Date                          |                        |
+| Latitude                           | Capture_Lat            |
+| Longitude                          | Capture_Long           |
+| Depth                              | Avg_depth_m            |
+| Bottom_Type                        |                        |
+| Bottom_Temp                        | Avg_temp_C             |
+| Surface_Temp                       |                        |
+| Haul_Comments                      |                        |
+| Category1                          |                        |
+| Category2                          |                        |
+| Category3                          |                        |
+| Category4                          |                        |
+| Category5_decapods                 |                        |
+| Plate                              | Tray                   |
+| Plate_Comments                     |                        |
+| Addl_Collection_Comments           |                        |
+| Addl_Sample_Comments               |                        |
+| Egg_Color                          |                        |
+| Egg_Cond                           |                        |
+| DNA_Well_No                        | Well                   |
+|                                    | Avg_salinity_PSU       |
+|                                    | SPN                    |
+|                                    | Removed_Dead           |
+|                                    | Well_Num [will rename] |
+
 
 ```{r}
-# We'll also create extra columns for Year,
-SMI.dat$Year <- "2015"
+# Remove columns that are now unnecessary
+# ident_num: = 2015 or NA for all samples. We created this earlier while separating well IDs out
+
+# We'll also create extra columns for Year, Host_OR_Parasite, Host_Tissue, Preservative, Sample_Status, Species_Name
+# All these new columns will apply to all samples taken
+# Some info comes from protocol in ../data/jensen_archived_samples/jensen_data/Hemato_samples/data_2014-2019/2015_StMatt/2015_ADFG_St._Matthew_BCS_Protocol_Dmitri
+SMI.dat$Year <- 2015
+SMI.dat$Host_OR_Parasite <- "Host tissue"          # From protocol
+SMI.dat$Host_Tissue <- "Blood"                     # That's what hemolymph is called in the main table
+SMI.dat$Preservative <- "EtOH 100%"                # From protocol
+SMI.dat$Sample_Status <- "Available"               # We know we've got 4 plates according to our plate inventory, assumed all samples are available
+SMI.dat$Species_Name <- "Chionoecetes opilio"      # From protocol, all snow crabs sampled
+SMI.dat$Specific_Location = "SM"                   # Code for St. Matthew samples
+SMI.dat$General_Location = "BS"                    # Code for Bering Sea (all crabs with Specific_Location = SM have a General_Location = BS)
+SMI.dat$LME = 1                                    # Also code for Bering Sea
 
 
+# Rename columns to fit conventions of full.dat table
+SMI.dat <- rename(SMI.dat, c(Date = Capture_Date,
+                          StationID = Station,
+                          Latitude = Capture_Lat,
+                          Longitude = Capture_Long,
+                          Size = Carapace_Width,
+                          Chela = Chela_Height,
+                          Plate = Tray,
+                          DNA_Well_No = Well,
+                          VISUAL = Signs_of_BCS,
+                          Depth = Avg_depth_m,
+                          Bottom_Temp = Avg_temp_C,
+                          ReferenceNO = BCS_Tag_Num,
+                          Collection_Comments = Comments,
+                          BCS_PCR_results = PCR_result))
+
+# We will now write our SMI.dat file to a table 
+write.csv(SMI.dat, file = "../output/jensen_data/cleaned_data/2015_SMI_data_all_cols.csv", row.names = FALSE)
+
+# If we tried to bind now, we'd run into issues with SPNO as a double in full.dat and a character in SMI.dat
+# Convert the SPNO column to a character in full.dat to avoid
+full.dat$SPNO <- as.character(full.dat$SPNO)
+
+# We run into a similar issue with Sex. In full.dat, they are listed as 1 = Male, 2 = Female, and 3 = Unknown, while in SMI.dat they are M and F
+# Convert M to 1 and F to 2 in SMI.dat
+SMI.dat[SMI.dat$Sex == "M", ]$Sex <- "1"
+SMI.dat[SMI.dat$Sex == "F", ]$Sex <- "2"
+SMI.dat$Sex <- as.numeric(SMI.dat$Sex)
+
+# We have the same problem for shell condition. According to the full.dat Access database, 1 = soft, 2 = new, 3 = old, 4 = very old, 5 = graveyard 
+# A look at the EBS data sheets shows that the same codes were used in the Excel files. Therefore, we'll rename to fit
+SMI.dat[SMI.dat$Shell_Condition == "New" & !is.na(SMI.dat$Shell_Condition), ]$Shell_Condition <- "2"
+SMI.dat[SMI.dat$Shell_Condition == "New  (close to Old)" & !is.na(SMI.dat$Shell_Condition), ]$Shell_Condition <- "2"
+SMI.dat[SMI.dat$Shell_Condition == "Old" & !is.na(SMI.dat$Shell_Condition), ]$Shell_Condition <- "3"
+SMI.dat[SMI.dat$Shell_Condition == "Very Old" & !is.na(SMI.dat$Shell_Condition), ]$Shell_Condition <- "4"
+# Check to be sure we've fixed all names for shell condition codes
+table(SMI.dat$Shell_Condition)
+# Change to numeric
+SMI.dat$Shell_Condition <- as.numeric(SMI.dat$Shell_Condition)
+
+# Same issue with Reference Number. This one's easier - we'll just change SMI.dat$BCS_Tag_Num (which we just renamed to ReferenceNO) to a character
+SMI.dat$ReferenceNO <- as.character(SMI.dat$ReferenceNO)
+
+# Bind rows from SMI dat to combined Access and Excel data
+full.dat <- bind_rows(full.dat, SMI.dat)
+
+# We'll also write this to a csv file
+write.csv(full.dat, file = "../output/jensen_data/cleaned_data/all_data_all_cols.csv", row.names = FALSE)
 ```
-
-
-
-
-
-
 ### Cleaning
 
 In the chunk above, we ONLY removed data that had been completely duplicated, giving us a full and complete data table. In the next chunk, we'll be a bit more aggressive, removing rows and columns that don't provide useful information on the specific plate samples that we have. 
 
 
 ```{r}
-colnames(full.dat)
+# First, we want to remove all samples that we definitively do not have samples for (or couldn't locate the samples)
+# Therefore, we'll remove all samples from before 2003 (our earliest sample) and ones without a plate ID
+# We'll also remove samples that are listed as not available
 
-# First, we'll remove all rows without a plate ID
+# Remove all rows without a plate ID
 full.plate.dat <- full.dat[!is.na(full.dat$Plate), ]
 
-# Now we'll get the number of non-NA values per column
+# Remove all rows with a year prior to 2003
+table(full.plate.dat$Year)
+# Our previous filter already took care of that! However, some crab are labeled 2109
+# A quick visual check confirmed they all have a collection date in 2019. Let's fix:
+full.plate.dat$Year <- recode(full.plate.dat$Year, "2109" = 2019)
+
+# We'll also remove all samples listed as discarded
+table(full.plate.dat$Sample_Status, useNA = "ifany")
+# Remove all listed as "Used Up/Thrown Away" or "Used Up/Thrown Out/unavailable"
+full.plate.dat <- full.plate.dat %>%
+  filter(Sample_Status == "Available" | Sample_Status == "To Roberts lab" | is.na(Sample_Status))
+
+# Get the number of non-NA values per column
 sapply(full.plate.dat, function(y) sum(length(which(!is.na(y)))))
 
 # Alright, we can safely remove the following columns, as they have no non-NA values
@@ -638,36 +818,344 @@ sapply(full.plate.dat, function(y) sum(length(which(!is.na(y)))))
 
 full.plate.dat <- select(full.plate.dat, -c(Taxon_Removed, Parasite_Species, Parasite_Most_Recent_ID_By, DISTID, Most_Recent_ID_By))
 
-# We also have some comments that likely contain minimal information
+# We'll now go through each column individually and remove those that are redundant or all contain the same value
+
+# SPNO: Keep, should have many different values
+
+# Alpha: Keep, should have many different values
+
+# Host_OR_Parasite: Check
+table(full.plate.dat$Host_OR_Parasite, useNA = "ifany")
+# Remove the Host_OR_Parasite column
+full.plate.dat <- full.plate.dat %>%
+  select(-Host_OR_Parasite)
+
+# Host_Tissue: Check
+table(full.plate.dat$Host_Tissue, useNA = "ifany")
+# Only 3 aren't blood. Add this data to the comments, then remove column
+# Sample comments are either blank or "tiny leg in well". Can overwrite.
+full.plate.dat[full.plate.dat$Host_Tissue == "Leg", ]$Sample_Comments <- "leg tissue sample taken"
+full.plate.dat[full.plate.dat$Host_Tissue == "Muscle", ]$Sample_Comments <- "muscle tissue sample taken"
+full.plate.dat <- full.plate.dat %>%
+  select(-Host_Tissue)
+
+# Sample_Type: Check
+table(full.plate.dat$Sample_Type, useNA = "ifany")
+# Remove - all are DNA or NA
+full.plate.dat <- full.plate.dat %>%
+  select(-Sample_Type)
+
+# Preservative: Check
+table(full.plate.dat$Preservative, useNA = "ifany")
+# We'll keep this column
+
+# Protocol: Check
+table(full.plate.dat$Protocol, useNA = "ifany")
+# We'll keep this column
+
+# Sample_Status: Check
+table(full.plate.dat$Sample_Status, useNA = "ifany")
+# We already filtered by this one to only include samples we'd presumably have, let's remove
+full.plate.dat <- full.plate.dat %>%
+  select(-Sample_Status)
+
+# Sample_Comments: These'll be very varied, no need to check
+
+# SPNO_Alpha: Should also be quite varied, no need to check
+
+# Species_Name: Check if we have any NAs, because we can remove those
+table(full.plate.dat$Species_Name, useNA = "ifany")
+# Nope, we'll leave this column
+
+# Sex: Check just for consistent code use. Should have practically all 1s and 2s (M and F, respectively)
+table(full.plate.dat$Sex, useNA = "ifany")
+# We have 550-ish Code 3s (equal to Sex Unknown), and one NA.
+# Change the 3s to NAs (ADFG loves to use numeric codes for NAs)
+full.plate.dat <- full.plate.dat %>%
+  mutate(Sex = na_if(Sex, "3"))
+
+
+# Size: Rename this to Carapace_Size. Ordinarily Carapace_Width would be used,
+# but we have both Chionoecetes (width is measured) and king crabs (length is measured)
+full.plate.dat <- rename(full.plate.dat, Carapace_Size = Size)
+# Check min and max values to ensure no codes (such as -9 for unknown) are present
+min(full.plate.dat$Carapace_Size, na.rm = TRUE)
+max(full.plate.dat$Carapace_Size, na.rm = TRUE)
+# All good
+
+# Chela: Rename this to Chela_Height
+full.plate.dat <- rename(full.plate.dat, Chela_Height = Chela)
+# Again, check min and max values to ensure no codes are present
+min(full.plate.dat$Chela_Height, na.rm = TRUE)
+max(full.plate.dat$Chela_Height, na.rm = TRUE)
+# We have some values of 0, which is impossible. Change these to NA
+full.plate.dat <- full.plate.dat %>%
+  mutate(Chela_Height = na_if(Chela_Height, "0"))
+# Otherwise, leave untouched
+
+# Shell condition: Check just for consistent code use. Should be all 0-5, with nearly all 2-4
+table(full.plate.dat$Shell_Condition, useNA = "ifany")
+# Change the 9 to a NA. Likely entered as a -9, which means NA
+full.plate.dat <- full.plate.dat %>%
+  mutate(Shell_Condition = na_if(Shell_Condition, "9"))
+# All good
+
+# Clutch: Check code use
+table(full.plate.dat$Clutch, useNA = "ifany")
+# Some odd codes here. Codes 0-6 are standard for clutch fullness. However, don't recognize codes 412-416.
+# These codes are all used on ADFG-collected crab from Alitak Bay from 2007-2010
+# We'll deal with those later. For now, move on
+
+# Random: Check
+table(full.plate.dat$Random, useNA = "ifany")
+# We'll leave these for now - a bit confusing, but no need to dive in. 
+# NR may stand for Natura Richardson, who works for ADFG in Kodiak
+
+# Collection_Comments: We'll leave, expect large variety of possible comments
+
+# BODYID: Check
+table(full.plate.dat$BODYID, useNA = "ifany")
+# After consulting the Access key, ULC = unspecified location. We'll change these to NAs
+full.plate.dat <- full.plate.dat %>%
+  mutate(BODYID = na_if(BODYID, "ULC"))
+
+# VISUAL: Check
+table(full.plate.dat$VISUAL, useNA = "ifany")
+# Those "Yes" and "No" values are from the 2015 SMI survey. "Yes" = visual BCS
+# The usual code for visual BCS is 387
+full.plate.dat$VISUAL <- recode(full.plate.dat$VISUAL, "Yes" = "387")
+full.plate.dat <- full.plate.dat %>%
+  mutate(VISUAL = na_if(VISUAL, "No"))
+
+# Year: Will certainly leave, just want to check distribution of samples by year
+table(full.plate.dat$Year, useNA = "ifany")
+
+# Date: Has lots of values, leave for now
+
+# HISTO_result: Check
+table(full.plate.dat$HISTO_result, useNA = "ifany")
+# All values are 7777 (no result) or 9999 (no histo for sample). Remove column
+full.plate.dat <- select(full.plate.dat, -HISTO_result)
+
+# SMEAR_result: Check
+table(full.plate.dat$SMEAR_result, useNA = "ifany")
+# According to Access key, 0 = negative, 1 = positive, 3 = unknown, 
+# 4 = can't read slide, 8 = slide missing, 7777 = no result, 9999 = no smear for sample
+# Change 3, 4, 8, 7777, and 9999 to NA
+full.plate.dat <- full.plate.dat %>%
+  mutate(SMEAR_result = na_if(SMEAR_result, "3"))
+full.plate.dat <- full.plate.dat %>%
+  mutate(SMEAR_result = na_if(SMEAR_result, "4"))
+full.plate.dat <- full.plate.dat %>%
+  mutate(SMEAR_result = na_if(SMEAR_result, "8"))
+full.plate.dat <- full.plate.dat %>%
+  mutate(SMEAR_result = na_if(SMEAR_result, "7777"))
+full.plate.dat <- full.plate.dat %>%
+  mutate(SMEAR_result = na_if(SMEAR_result, "9999"))
+
+# T_Rating: Check
+table(full.plate.dat$T_Rating, useNA = "ifany")
+# Don't understand what these codes mean, we'll leave for now
+
+# BCS_PCR_results: check
+table(full.plate.dat$BCS_PCR_results, useNA = "ifany")
+# We'll keep 0, 1, and 3 (negative, positive, inconclusive), but change 7777 (no result) to NA
+full.plate.dat <- full.plate.dat %>%
+  mutate(BCS_PCR_results = na_if(BCS_PCR_results, "7777"))
+
+# Specific_Location and General Location: check simultaneously
+table(full.plate.dat$Specific_Location, full.plate.dat$General_Location, useNA = "ifany")
+# NBS has no corresponding Access code
+# Likely Northern Bering Sea, esp since General Location = BS, but should check lat/long
+
+# Collected_By: check
+table(full.plate.dat$Collected_By, useNA = "ifany")
+# We'll remove this column, since this provides minimal info
+# In fact, it may be more confusing than helpful, as ADFG people can be on NOAA surveys and vice-versa
+full.plate.dat <- select(full.plate.dat, -Collected_By)
+
+# ReferenceNO: expect a large number of possible values
+
+# C_V_H: Expect a number of possible values.
+
+# Cruise: Check only for error codes such as 9999
+table(full.plate.dat$Cruise, useNA = "ifany")
+# Cruise = 0 is from Greenland collections, Cruise = NA is from the 2015 SMI survey collections. 
+# Change Cruise = 0 to NA
+full.plate.dat <- full.plate.dat %>%
+  mutate(Cruise = na_if(Cruise, "0"))
+
+# Vessel: Check only for error codes such as 9999
+table(full.plate.dat$Vessel, useNA = "ifany")
+# Change 999 values (Shore and/or Dock) to NA
+full.plate.dat <- full.plate.dat %>%
+  mutate(Vessel = na_if(Vessel, "999"))
+
+# Haul: Check only for error codes
+table(full.plate.dat$Haul, useNA = "ifany")
+# Change Haul 0 codes to NAs
+full.plate.dat <- full.plate.dat %>%
+  mutate(Haul = na_if(Haul, "0"))
+
+# StationID: Check only for error codes
+table(full.plate.dat$StationID, useNA = "ifany")
+# Looks fine
+
+# Stratum: Check only for error codes
+table(full.plate.dat$Stratum, useNA = "ifany")
+# Change 999 to NA
+full.plate.dat <- full.plate.dat %>%
+  mutate(Stratum = na_if(Stratum, "999"))
+
+# LME: Check
+table(full.plate.dat$LME, useNA = "ifany")
+# According to the Access key, this is just a more general version of the General_Location column
+# Check General_Location fits LME
+table(full.plate.dat$LME, full.plate.dat$General_Location, useNA = "ifany")
+# We have only 1 General_Location category with multiple LME values
+# BS (Bering Sea) is present in both Bering Sea/Slope and NE Arctic/Chukchi Sea
+# Add table of specific location
+table(full.plate.dat$LME, full.plate.dat$Specific_Location, useNA = "ifany")
+# Looks like we have 708 crabs with LME = NE Arctic/Chukchi Sea and all have Specific_Location = NA
+# Change those crabs to Specific_Location = CS (Chukchi Sea/Arctic Ocean
+full.plate.dat[full.plate.dat$LME == 54 & !is.na (full.plate.dat$LME), ]$Specific_Location <- "CS"
+# Since all data is now captured in General_Location and Specific_Location tables, can remove
+full.plate.dat <- select(full.plate.dat, -LME)
+
+# Bering_Sea_Regions: Check
+table(full.plate.dat$Bering_Sea_Regions, useNA = "ifany")
+
+# Haul_Date
+sum(is.na(full.plate.dat$Date))
+sum(is.na(full.plate.dat$Haul_Date))
+nrow(full.plate.dat[is.na(full.plate.dat$Haul_Date) & is.na(full.plate.dat$Date), ])
+# We have 1077 NAs in Haul_Date, and only 40 in Date. All 40 of those also have NAs for Haul_Date
+# Therefore, remove the Haul_Date column
+full.plate.dat <- select(full.plate.dat, -Haul_Date)
+
+# Latitude: Expect a large number of possible values
+# Check max and min
+max(full.plate.dat$Latitude, na.rm = TRUE)
+min(full.plate.dat$Latitude, na.rm = TRUE)
+
+# Longitude: Expect a large number of possible values
+# Check max and min
+max(full.plate.dat$Longitude, na.rm = TRUE)
+min(full.plate.dat$Longitude, na.rm = TRUE)
+
+
+# Depth: Expect a large number of possible values
+# Check max and min
+max(full.plate.dat$Depth, na.rm = TRUE)
+min(full.plate.dat$Depth, na.rm = TRUE)
+
+# Bottom_Type: Check
+table(full.plate.dat$Bottom_Type, useNA = "ifany")
+# We have minimal data. This is a candidate for removal, but we'll leave for now
+
+# Bottom_Temp: Expect a large number of possible values
+# Check max and min
+max(full.plate.dat$Bottom_Temp, na.rm = TRUE)
+min(full.plate.dat$Bottom_Temp, na.rm = TRUE)
+
+# Surface_Temp: Expect a large number of possible values
+# Check max and min
+max(full.plate.dat$Surface_Temp, na.rm = TRUE)
+min(full.plate.dat$Surface_Temp, na.rm = TRUE)
+
+# Haul_Comments: Expect a large number of possible values
+
+# Category1 - Category5_decapods:
 table(full.plate.dat$Category1)
 table(full.plate.dat$Category2)
 table(full.plate.dat$Category3)
 table(full.plate.dat$Category4)
-table(full.plate.dat$Category5_decapods)
-sum(is.na(full.plate.dat$Species_Name))
+table(full.plate.dat$Category5_decapods, full.plate.dat$Species_Name)
+# We'll directly remove Categories 1-4, as 1-3 are all identical, and separating anomura from brachyura doesn't require a column
+full.plate.dat <- select(full.plate.dat, -c(Category1, Category2, Category3, Category4))
+# However, we'll rename Category5_decapods, as well as the values within it, as it mostly captures Family-level phylogeny, and is thus useful
+# In two cases, we'll use Superfamily-level names. They are as follows:
+#    - Majoidae: Includes the Majidae family (Chionoecetes spp.) and the Oregoniidae family (Hyas spp.)
+#    - Lithodoidae: Includes the Lithodidae family (Lithodes and Paralithodes spp.) and the Hapalogastridae family (Placetron wosnessenskii)
+# There are only 2 crabs labeled "other brachyurans" - E. isenbeckii, and T. cheiroganus. These are both members of the Cheiragonidae family,
+# so we'll relabel "other brachyurans" as "Cheiragonidae"
+full.plate.dat <- rename(full.plate.dat, Family = Category5_decapods)
+full.plate.dat$Family <- recode(full.plate.dat$Family, cancrids = "Cancridae",
+               hermits = "Paguridae",
+               lithodids = "Lithodoidea",
+               majids = "Majoidea",
+               "other brachyurans" = "Cheiragonidae",
+               pandalids = "Pandalidae")
+# To ensure this column is fully complete, check if we have any NA values 
+table(full.plate.dat$Family, full.plate.dat$Species_Name, useNA = "ifany")
+# We do - 3-4000 in C. bairdi and C. opilio, and 1 for T. cheiragonus
+full.plate.dat[full.plate.dat$Species_Name == "Chionoecetes opilio" & is.na(full.plate.dat$Family), ]$Family <- "Majoidea"
+full.plate.dat[full.plate.dat$Species_Name == "Chionoecetes bairdi" & is.na(full.plate.dat$Family), ]$Family <- "Majoidea"
+full.plate.dat[full.plate.dat$Species_Name == "Telmessus cheiragonus" & is.na(full.plate.dat$Family), ]$Family <- "Cheiragonidae"
+# Check we did everything right
+table(full.plate.dat$Family, full.plate.dat$Species_Name, useNA = "ifany")
+# Looks great - we've successfully eliminated 4 of the Category variables and fixed the 5th!
 
-# All rows have a given species name. Therefore, the specific taxonomic identity is irrelevant - we don't have such a large number of species that it'd be useful. Plus, every row is identical for Categories 1-3. Therefore, drop Category1-5 columns
-full.plate.dat <- select(full.plate.dat, -c(Category1, Category2, Category3, Category4, Category5_decapods))
+# Plate: Check only for error codes
+table(full.plate.dat$Plate, useNA = "ifany")
 
-table(full.plate.dat$Host_OR_Parasite)
-sum(is.na(full.plate.dat$Host_OR_Parasite))
-# In the Host_OR_Parasite column, all rows contain some variant of "Host Tissue". Therefore, we can remove the column
-full.plate.dat <- select(full.plate.dat, -Host_OR_Parasite)
+# Plate_Comments: Expect a large number of possible values
 
-table(full.plate.dat$Sample_Type)
-# All rows are DNA samples, remove
-full.plate.dat <- select(full.plate.dat, -Sample_Type)
+# Addl_Collection_Comments: Expect a large number of possible values
 
-# Remove samples that are designated as Used Up/Thrown Out/unavailable
-table(full.plate.dat$Sample_Status)
-full.plate.dat <- full.plate.dat[full.plate.dat$Sample_Status != "Used Up/Thrown Out/unavailable", ]
+# Addl_Sample_Comments: Expect a large number of possible values
 
-# We can now remove the Sample Status column, as all samples are either "available" or "To Roberts lab", both of which mean they could be in our possession
-full.plate.dat <- select(full.plate.dat, -Sample_Status)
+# Egg_Color: Check
+table(full.plate.dat$Egg_Color, useNA = "ifany")
 
+# Egg_Cond; Check
+table(full.plate.dat$Egg_Cond, useNA = "ifany")
+
+# DNA_Well_No: Check
+table(full.plate.dat$DNA_Well_No)
+# Rename this, it's a bit confusing
+full.plate.dat <- full.plate.dat %>%
+  rename(Plate_Location = DNA_Well_No)
+
+# ADFG_ID: Expect a large number of possible values
+
+# Avg_salinity_PSU: Expect a large number of possible values
+# Check max and min
+max(full.plate.dat$Avg_salinity_PSU, na.rm = TRUE)
+min(full.plate.dat$Avg_salinity_PSU, na.rm = TRUE)
+
+# SPN: Check only for error codes
+table(full.plate.dat$SPN)
+
+# Removed_Dead: We don't really care about it and it only applies to a few crab, remove
+full.plate.dat <- select(full.plate.dat, -Removed_Dead)
+
+# Well_Num: Expect a large number of possible values
+table(full.plate.dat$Well_Num, useNA = "ifany")
+
+# Write plate data to file
+write.csv(full.dat, file = "../output/jensen_data/cleaned_data/relevant_sample_data.csv", row.names = FALSE)
 
 ```
+# Conclusion
 
+We have now done the following:
+
+- Merged Access data tables into a master data table
+
+- Merged Excel data tables from different EBS surveys together
+
+- Merged Access, EBS Excel, and St. Matthew Island survey data all together
+
+- Removed columns that are definitively irrelevant
+
+- Removed rows that we certainly do not have as samples in the Roberts lab
+
+- Fixed codes so that missing data is listed as NA
+
+- Made other small fixes to the codes used in each column
+
+Next step: A more thorough data cleaning that seeks to find data entry errors
 
 
 
