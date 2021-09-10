@@ -1,0 +1,64 @@
+---
+title: "10_2_summary_corr_matrix.Rmd"
+author: "Aidan Coyle"
+date: "9/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This is a quick script meant to create a correlation matrix for the summary table we made in the script earlier
+
+Code comes from Laura Spencer
+
+Load packages, install if necessary
+
+```{r}
+# Add all required libraries here
+list.of.packages <- c("tidyverse", "corrplot", "PerformanceAnalytics")
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+```
+
+Next, we'll read in the data and create our correlation matrix
+
+```{r}
+# Read in data
+summ.dat <- read.csv("../data/indiv_crab_summary.csv")
+
+# Rename first column to "Crab" to make it clearer
+summ.dat <- rename(summ.dat, Crab = "ï..Crab")
+
+# Convert as many data columns as possible to numeric
+summ.dat$Crab <- as.numeric(as.factor(summ.dat$Crab))
+summ.dat$Treatment <- as.numeric(ordered(summ.dat$Treatment, levels = c("Low", "Amb", "Elev")))
+summ.dat$cPCR_positive <- as.numeric(as.factor(summ.dat$cPCR_positive))
+summ.dat$imm_mature <- as.numeric(as.factor(summ.dat$imm_mature))
+
+# Remove columns that aren't informative
+# Also dropping qPCR_SQ_mean_timepoint2, as we have NAs present
+summ.dat <- select(summ.dat, -c(Crab, Uniq_ID, death, qPCR_SQ_mean_timepoint2, Timepoints))
+
+# Check class of each column
+str(summ.dat)
+# All are ints or numeric, can continue
+
+cor(summ.dat) %>%
+  corrplot(tl.cex = .45)
+
+chart.Correlation(summ.dat, histogram = F, pch = 5)
+
+```
+
