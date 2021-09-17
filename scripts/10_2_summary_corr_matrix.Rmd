@@ -55,8 +55,13 @@ summ.dat <- select(summ.dat, -c(Crab, Uniq_ID, death, qPCR_SQ_mean_timepoint2, T
 str(summ.dat)
 # All are ints or numeric, can continue
 
+# Create correlation plot
 cor(summ.dat) %>%
   corrplot(tl.cex = .45)
+# Make it again, so we can save it as a .jpg
+
+
+
 
 chart.Correlation(summ.dat, histogram = F, pch = 5)
 
