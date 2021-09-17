@@ -116,9 +116,8 @@ for (i in 1:length(blast_filepaths)) {
     blast_tab <- separate(data = blast_tab, col = Gene_ID,
                           into = c("sp", "Accession_ID", "species"), 
                           sep = "\\|")
-    # Remove unnecessary columns
-    blast_tab <- blast_tab %>%
-      select(Transcript_ID, Accession_ID)
+    # Remove irrelevant "sp" column
+    blast_tab <- select(blast_tab, -sp)
     # Otherwise, rename Gene ID to Accession ID so we know we got past this point
   } else {
     blast_tab <- blast_tab %>%
@@ -149,7 +148,7 @@ for (i in 1:length(blast_filepaths)) {
   
   # Remove GO terms column
   immune_tab <- immune_tab %>%
-    select(Accession_ID, Transcript_ID)
+    select(-GO_terms)
   
   # Reorder columns so Transcript ID is on left. This matches most other tables with Transcript ID
   immune_tab <- immune_tab %>%
@@ -158,10 +157,24 @@ for (i in 1:length(blast_filepaths)) {
   # Remove duplicate transcript IDs
   immune_tab <- unique(immune_tab)
   
+  # One intermediate step - we want to create a file of the unique genes with names. 
+  # This will only apply to cbai_v2.0, as it's the only one that had species and gene name built into the table
+  if("species" %in% colnames(immune_tab)) {
+    gene_names <- select(immune_tab, -Transcript_ID)
+    gene_names <- unique(gene_names)
+    # Drop the species and gene name column
+    immune_tab <- select(immune_tab, -"species")
+    # Write to file
+    write.table(gene_names, file = paste0("../output/immune_genes/", transcriptomes[i], "/immune_gene_names.txt"),
+                row.names = FALSE,
+                sep = "\t")
+  }
+  
   # Write table to file
   write.table(immune_tab, file = paste0("../output/immune_genes/", transcriptomes[i], "/transcript_accession_IDs/all_indiv_libraries.txt"),
               row.names = FALSE,
               sep = "\t")
+
   
   
 }

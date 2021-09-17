@@ -47,9 +47,17 @@ summ.dat$Treatment <- as.numeric(ordered(summ.dat$Treatment, levels = c("Low", "
 summ.dat$cPCR_positive <- as.numeric(as.factor(summ.dat$cPCR_positive))
 summ.dat$imm_mature <- as.numeric(as.factor(summ.dat$imm_mature))
 
+# Since we have NAs present for qPCR-SQ_mean_timepoint2, we'd need to drop that column
+# To minimize the data loss, we'll create a new column of mean qPCR value
+# For Crabs A-F, that means averaging the two columns. For Crabs G-I, that just means taking timepoint1
+# To keep it in a spot we're familiar with, we'll just overwrite qPCR_SQ_mean_timepoint1
+summ.dat$qPCR_SQ_mean_timepoint1 <- rowMeans(summ.dat[, c("qPCR_SQ_mean_timepoint1", "qPCR_SQ_mean_timepoint2")], na.rm = TRUE)
+# We'll also rename the column and remove the timepoint 2 column
+summ.dat <- rename(summ.dat, "qPCR_SQ_mean" = "qPCR_SQ_mean_timepoint1")
+summ.dat <- select(summ.dat, -qPCR_SQ_mean_timepoint2)
+
 # Remove columns that aren't informative
-# Also dropping qPCR_SQ_mean_timepoint2, as we have NAs present
-summ.dat <- select(summ.dat, -c(Crab, Uniq_ID, death, qPCR_SQ_mean_timepoint2, Timepoints))
+summ.dat <- select(summ.dat, -c(Crab, Uniq_ID, death, Timepoints))
 
 # Check class of each column
 str(summ.dat)
@@ -58,12 +66,23 @@ str(summ.dat)
 # Create correlation plot
 cor(summ.dat) %>%
   corrplot(tl.cex = .45)
-# Make it again, so we can save it as a .jpg
+# Make it again, so we can save it as a .png
+path <- "../output/correlation/all_variables_corr_dot_plot.png"
+png(path)
+cor(summ.dat) %>%
+  corrplot(tl.cex = .45)
+dev.off()
 
-
-
-
+# Create chart of correlation
 chart.Correlation(summ.dat, histogram = F, pch = 5)
+# Make it again so we can save it as a .png
+path <- "../output/correlation/all_variables_corr_chart.png"
+png(path)
+chart.Correlation(summ.dat, histogram = F, pch = 8)
+dev.off()
+
+
+table.Correlation(summ.dat)
 
 ```
 

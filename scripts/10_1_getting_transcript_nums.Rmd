@@ -81,8 +81,7 @@ for (i in 1:length(crab.files)) {
   crab_dat <- crab_dat[rowSums(crab_dat) > 0, ]
   
   crab_tab[i,2] <- nrow(crab_dat)
-  
-  colSums(crab_dat)
+
 }
 ```
 
