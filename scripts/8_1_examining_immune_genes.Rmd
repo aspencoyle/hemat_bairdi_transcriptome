@@ -160,10 +160,20 @@ for (i in 1:length(blast_filepaths)) {
   # One intermediate step - we want to create a file of the unique genes with names. 
   # This will only apply to cbai_v2.0, as it's the only one that had species and gene name built into the table
   if("species" %in% colnames(immune_tab)) {
+    # Read in table of detailed gene descriptions
+    go_descriptions <- read.delim(file = "../data/all_uniprot_info_inc_GOterms.tab", sep = "\t")
+    go_descriptions <- rename(go_descriptions, "Accession_ID" = "Entry")
+    
+    # Drop the Transcript ID column from our immune genes table
     gene_names <- select(immune_tab, -Transcript_ID)
     gene_names <- unique(gene_names)
-    # Drop the species and gene name column
-    immune_tab <- select(immune_tab, -"species")
+    
+    # Merge gene descriptions and immune genes by Accession ID
+    gene_descriptions <- left_join(gene_names, go_descriptions, by = "Accession_ID")
+    # Remove Entry.Name column, as it perfectly matches Species
+    gene_descriptions <- select(gene_descriptions, -)
+
+    
     # Write to file
     write.table(gene_names, file = paste0("../output/immune_genes/", transcriptomes[i], "/immune_gene_names.txt"),
                 row.names = FALSE,

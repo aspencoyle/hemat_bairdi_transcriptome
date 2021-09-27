@@ -1,293 +1,293 @@
-"Accession_ID"	"species"
-"P50284"	"TNR3_MOUSE"
-"P01602"	"KV105_HUMAN"
-"P30379"	"1B01_GORGO"
-"P07996"	"TSP1_HUMAN"
-"P01896"	"HA1Z_MOUSE"
-"P22413"	"ENPP1_HUMAN"
-"O95977"	"S1PR4_HUMAN"
-"P16209"	"1A01_PANTR"
-"P16210"	"1A02_PANTR"
-"Q12770"	"SCAP_HUMAN"
-"P48960"	"CD97_HUMAN"
-"P04439"	"HLAA_HUMAN"
-"P32456"	"GBP2_HUMAN"
-"P43403"	"ZAP70_HUMAN"
-"P02686"	"MBP_HUMAN"
-"P25119"	"TNR1B_MOUSE"
-"P51679"	"CCR4_HUMAN"
-"P53634"	"CATC_HUMAN"
-"Q13231"	"CHIT1_HUMAN"
-"Q16649"	"NFIL3_HUMAN"
-"P42768"	"WASP_HUMAN"
-"P24001"	"IL32_HUMAN"
-"Q5T0T0"	"MARH8_HUMAN"
-"Q9R1E6"	"ENPP2_MOUSE"
-"Q8IWV1"	"LAX1_HUMAN"
-"Q01628"	"IFM3_HUMAN"
-"Q94527"	"NFKB1_DROME"
-"P13751"	"1B02_PANTR"
-"P30686"	"1C01_PANTR"
-"P01911"	"DRB_HUMAN"
-"Q9NPH3"	"IL1AP_HUMAN"
-"O70370"	"CATS_MOUSE"
-"P14483"	"HB2A_MOUSE"
-"P13750"	"1B01_PANTR"
-"Q91XB0"	"TREX1_MOUSE"
-"Q08D88"	"NFIL3_BOVIN"
-"P36402"	"TCF7_HUMAN"
-"Q91XA9"	"CHIA_MOUSE"
-"Q99558"	"M3K14_HUMAN"
-"P01824"	"HV439_HUMAN"
-"P01764"	"HV323_HUMAN"
-"P17861"	"XBP1_HUMAN"
-"O14931"	"NCTR3_HUMAN"
-"P50238"	"CRIP1_HUMAN"
-"P84023"	"SMAD3_CHICK"
-"Q95460"	"HMR1_HUMAN"
-"P01717"	"LV325_HUMAN"
-"Q14164"	"IKKE_HUMAN"
-"Q6V1X1"	"DPP8_HUMAN"
-"P08267"	"FRIH_CHICK"
-"P14921"	"ETS1_HUMAN"
-"P10321"	"HLAC_HUMAN"
-"Q13478"	"IL18R_HUMAN"
-"P53567"	"CEBPG_HUMAN"
-"P01920"	"DQB1_HUMAN"
-"O95256"	"I18RA_HUMAN"
-"Q6ZN66"	"GBP6_HUMAN"
-"Q8BMT4"	"LRC33_MOUSE"
-"P56439"	"CCR5_GORGO"
-"Q8IYM9"	"TRI22_HUMAN"
-"P07711"	"CATL1_HUMAN"
-"P01889"	"HLAB_HUMAN"
-"Q9R0Q8"	"CLC4E_MOUSE"
-"Q6UWB1"	"I27RA_HUMAN"
-"P06331"	"HV434_HUMAN"
-"O08843"	"LST1_MOUSE"
-"P22670"	"RFX1_HUMAN"
-"P01893"	"HLAH_HUMAN"
-"P30387"	"1C04_GORGO"
-"O75888"	"TNF13_HUMAN"
-"Q96BF3"	"TMIG2_HUMAN"
-"P01876"	"IGHA1_HUMAN"
-"P06312"	"KV401_HUMAN"
-"P01901"	"HA1B_MOUSE"
-"P01900"	"HA12_MOUSE"
-"P33681"	"CD80_HUMAN"
-"Q99081"	"HTF4_HUMAN"
-"P01631"	"KV2A7_MOUSE"
-"P16871"	"IL7RA_HUMAN"
-"P01817"	"HV205_HUMAN"
-"P23611"	"IRF8_MOUSE"
-"P16150"	"LEUK_HUMAN"
-"A0A0A6YYK7"	"TVA19_HUMAN"
-"Q8MIP0"	"FRIH_HORSE"
-"Q9Z126"	"PLF4_MOUSE"
-"P01850"	"TRBC1_HUMAN"
-"O60449"	"LY75_HUMAN"
-"Q0VD59"	"MARH8_BOVIN"
-"Q8N423"	"LIRB2_HUMAN"
-"P01909"	"DQA1_HUMAN"
-"P61771"	"B2MG_GORGO"
-"P41273"	"TNFL9_HUMAN"
-"P40933"	"IL15_HUMAN"
-"P04435"	"TVB79_HUMAN"
-"P27870"	"VAV_MOUSE"
-"P12544"	"GRAA_HUMAN"
-"P00491"	"PNPH_HUMAN"
-"Q7TNY1"	"BACD2_RAT"
-"P06909"	"CFAH_MOUSE"
-"Q92854"	"SEM4D_HUMAN"
-"P09912"	"IFI6_HUMAN"
-"Q13094"	"LCP2_HUMAN"
-"Q02556"	"IRF8_HUMAN"
-"P84022"	"SMAD3_HUMAN"
-"O35601"	"FYB1_MOUSE"
-"P34972"	"CNR2_HUMAN"
-"Q07021"	"C1QBP_HUMAN"
-"P50591"	"TNF10_HUMAN"
-"Q92626"	"PXDN_HUMAN"
-"P50453"	"SPB9_HUMAN"
-"Q9TV48"	"CCR5_CERAS"
-"O14862"	"AIM2_HUMAN"
-"P01743"	"HV146_HUMAN"
-"P51677"	"CCR3_HUMAN"
-"O76096"	"CYTF_HUMAN"
-"P30375"	"1A01_GORGO"
-"P15330"	"DORS_DROME"
-"Q07325"	"CXCL9_HUMAN"
-"P15018"	"LIF_HUMAN"
-"P09528"	"FRIH_MOUSE"
-"P41274"	"TNFL9_MOUSE"
-"A0JD36"	"TRDV2_HUMAN"
-"P46531"	"NOTC1_HUMAN"
-"O95976"	"IGSF6_HUMAN"
-"P15498"	"VAV_HUMAN"
-"P01584"	"IL1B_HUMAN"
-"P31785"	"IL2RG_HUMAN"
-"P06802"	"ENPP1_MOUSE"
-"Q15399"	"TLR1_HUMAN"
-"P15538"	"C11B1_HUMAN"
-"Q14005"	"IL16_HUMAN"
-"Q12851"	"M4K2_HUMAN"
-"P97430"	"SLPI_MOUSE"
-"P09564"	"CD7_HUMAN"
-"P30377"	"1A03_GORGO"
-"O00626"	"CCL22_HUMAN"
-"Q62293"	"TGTP1_MOUSE"
-"Q86WI1"	"PKHL1_HUMAN"
-"Q9Y487"	"VPP2_HUMAN"
-"P04945"	"KV6AB_MOUSE"
-"Q06643"	"TNFC_HUMAN"
-"P41155"	"TNFC_MOUSE"
-"Q9UKI3"	"VPRE3_HUMAN"
-"O00453"	"LST1_HUMAN"
-"O43541"	"SMAD6_HUMAN"
-"O18793"	"CCR2_MACMU"
-"P35225"	"IL13_HUMAN"
-"Q3ZKN1"	"CATK_CANLF"
-"P30382"	"1B04_GORGO"
-"P16410"	"CTLA4_HUMAN"
-"P02778"	"CXL10_HUMAN"
-"P32971"	"TNFL8_HUMAN"
-"P19875"	"CXCL2_HUMAN"
-"P49238"	"CX3C1_HUMAN"
-"Q9BQ51"	"PD1L2_HUMAN"
-"Q8TCB0"	"IFI44_HUMAN"
-"O35796"	"C1QBP_RAT"
-"P35408"	"PE2R4_HUMAN"
-"P24394"	"IL4RA_HUMAN"
-"O43557"	"TNF14_HUMAN"
-"O15533"	"TPSN_HUMAN"
-"P84750"	"KVM5_MOUSE"
-"Q08857"	"CD36_MOUSE"
-"Q13829"	"BACD2_HUMAN"
-"P40200"	"TACT_HUMAN"
-"P70380"	"IL18_MOUSE"
-"Q9Y6K9"	"NEMO_HUMAN"
-"Q6NZQ8"	"MARH1_MOUSE"
-"P01658"	"KV3A6_MOUSE"
-"O35182"	"SMAD6_MOUSE"
-"P02794"	"FRIH_HUMAN"
-"O00574"	"CXCR6_HUMAN"
-"Q03167"	"TGBR3_HUMAN"
-"Q9EP73"	"PD1L1_MOUSE"
-"O15117"	"FYB1_HUMAN"
-"P20036"	"DPA1_HUMAN"
-"Q92956"	"TNR14_HUMAN"
-"P16391"	"HA12_RAT"
-"Q9NZQ7"	"PD1L1_HUMAN"
-"Q64610"	"ENPP2_RAT"
-"Q04900"	"MUC24_HUMAN"
-"P20023"	"CR2_HUMAN"
-"Q95029"	"CATL_DROME"
-"P31995"	"FCG2C_HUMAN"
-"Q9Y275"	"TN13B_HUMAN"
-"P16646"	"PMP22_MOUSE"
-"O70479"	"BACD2_MOUSE"
-"P15248"	"IL9_HUMAN"
-"P01899"	"HA11_MOUSE"
-"P58681"	"TLR7_MOUSE"
-"P30385"	"1C02_GORGO"
-"P01635"	"KV5A3_MOUSE"
-"P41597"	"CCR2_HUMAN"
-"P01597"	"KV139_HUMAN"
-"P32246"	"CCR1_HUMAN"
-"P04940"	"KV6A6_MOUSE"
-"P01582"	"IL1A_MOUSE"
-"Q13822"	"ENPP2_HUMAN"
-"P40259"	"CD79B_HUMAN"
-"Q9Y255"	"PRLD1_HUMAN"
-"A0A075B6H9"	"LV469_HUMAN"
-"P25445"	"TNR6_HUMAN"
-"P61073"	"CXCR4_HUMAN"
-"Q9Y5P4"	"CERT_HUMAN"
-"P03986"	"TRGC2_HUMAN"
-"O15111"	"IKKA_HUMAN"
-"O75569"	"PRKRA_HUMAN"
-"P78556"	"CCL20_HUMAN"
-"P56485"	"ACKR3_MOUSE"
-"Q17DK2"	"NAA25_AEDAE"
-"O08750"	"NFIL3_MOUSE"
-"Q9Y5Y4"	"PD2R2_HUMAN"
-"P43489"	"TNR4_HUMAN"
-"P01633"	"KV5A1_MOUSE"
-"P01854"	"IGHE_HUMAN"
-"Q08334"	"I10R2_HUMAN"
-"O54907"	"TNF12_MOUSE"
-"P10966"	"CD8B_HUMAN"
-"P01715"	"LV301_HUMAN"
-"P01897"	"HA1L_MOUSE"
-"Q9Y3Z3"	"SAMH1_HUMAN"
-"Q9BXR5"	"TLR10_HUMAN"
-"Q3TTA7"	"CBLB_MOUSE"
-"P01703"	"LV140_HUMAN"
-"P01730"	"CD4_HUMAN"
-"P13236"	"CCL4_HUMAN"
-"P17676"	"CEBPB_HUMAN"
-"Q04683"	"CXCR5_MOUSE"
-"P53568"	"CEBPG_MOUSE"
-"P04141"	"CSF2_HUMAN"
-"P36894"	"BMR1A_HUMAN"
-"P01638"	"KV5A6_MOUSE"
-"Q02086"	"SP2_HUMAN"
-"P01594"	"KV133_HUMAN"
-"P01700"	"LV147_HUMAN"
-"Q01629"	"IFM2_HUMAN"
-"Q9NR96"	"TLR9_HUMAN"
-"O43561"	"LAT_HUMAN"
-"Q6TMK4"	"POXA_DICDI"
-"P42081"	"CD86_HUMAN"
-"P01680"	"KV4A1_MOUSE"
-"P05113"	"IL5_HUMAN"
-"P47774"	"CCR7_MOUSE"
-"P05112"	"IL4_HUMAN"
-"P10145"	"IL8_HUMAN"
-"P49682"	"CXCR3_HUMAN"
-"P56202"	"CATW_HUMAN"
-"P60568"	"IL2_HUMAN"
-"P01825"	"HV459_HUMAN"
-"Q53G44"	"IF44L_HUMAN"
-"P01589"	"IL2RA_HUMAN"
-"A0A0A6YYC5"	"TVA14_HUMAN"
-"P25774"	"CATS_HUMAN"
-"P23083"	"HV102_HUMAN"
-"P33076"	"C2TA_HUMAN"
-"O14625"	"CXL11_HUMAN"
-"P43030"	"CXCL7_PIG"
-"P01906"	"DQA2_HUMAN"
-"P13725"	"ONCM_HUMAN"
-"P01726"	"LV1D_MOUSE"
-"Q9JJ00"	"PLS1_MOUSE"
-"P51685"	"CCR8_HUMAN"
-"P55097"	"CATK_MOUSE"
-"P22366"	"MYD88_MOUSE"
-"P32249"	"GP183_HUMAN"
-"Q9JM10"	"TNFC_MARMO"
-"Q06265"	"EXOS9_HUMAN"
-"P04433"	"KV311_HUMAN"
-"Q8IYL9"	"PSYR_HUMAN"
-"P01644"	"KV5AB_MOUSE"
-"P03979"	"TRGV3_HUMAN"
-"Q9Z0D9"	"CX3C1_MOUSE"
-"A0A075B6S2"	"KVD29_HUMAN"
-"P01665"	"KV3AD_MOUSE"
-"O62618"	"MK38A_DROME"
-"O54957"	"LAT_MOUSE"
-"O46414"	"FRIH_BOVIN"
-"P01903"	"DRA_HUMAN"
-"D3ZZ07"	"CAT7_RAT"
-"Q99731"	"CCL19_HUMAN"
-"Q9Y6W8"	"ICOS_HUMAN"
-"P01701"	"LV151_HUMAN"
-"P06797"	"CATL1_MOUSE"
-"Q08116"	"RGS1_HUMAN"
-"P32302"	"CXCR5_HUMAN"
-"P32248"	"CCR7_HUMAN"
-"P08637"	"FCG3A_HUMAN"
-"P06315"	"KV502_HUMAN"
-"P01732"	"CD8A_HUMAN"
-"P04437"	"TVA29_HUMAN"
-"P01591"	"IGJ_HUMAN"
-"A0A075B6P5"	"KV228_HUMAN"
+"Accession_ID"	"species"	"Protein.names"	"Gene.names"	"Organism"	"Length"
+"P50284"	"TNR3_MOUSE"	"Tumor necrosis factor receptor superfamily member 3 (Lymphotoxin-beta receptor)"	"Ltbr Tnfcr Tnfrsf3"	"Mus musculus (Mouse)"	415
+"P01602"	"KV105_HUMAN"	"Immunoglobulin kappa variable 1-5 (Ig kappa chain V-I region CAR) (Ig kappa chain V-I region EU) (Ig kappa chain V-I region HK102) (Ig kappa chain V-I region Kue)"	"IGKV1-5"	"Homo sapiens (Human)"	117
+"P30379"	"1B01_GORGO"	"Class I histocompatibility antigen, Gogo-B*0101 alpha chain"	""	"Gorilla gorilla gorilla (Western lowland gorilla)"	362
+"P07996"	"TSP1_HUMAN"	"Thrombospondin-1 (Glycoprotein G)"	"THBS1 TSP TSP1"	"Homo sapiens (Human)"	1170
+"P01896"	"HA1Z_MOUSE"	"H-2 class I histocompatibility antigen, alpha chain (Clone PH-2D-2) (Fragment)"	""	"Mus musculus (Mouse)"	185
+"P22413"	"ENPP1_HUMAN"	"Ectonucleotide pyrophosphatase/phosphodiesterase family member 1 (E-NPP 1) (Membrane component chromosome 6 surface marker 1) (Phosphodiesterase I/nucleotide pyrophosphatase 1) (Plasma-cell membrane glycoprotein PC-1) [Cleaved into: Ectonucleotide pyrophosphatase/phosphodiesterase family member 1, secreted form] [Includes: Alkaline phosphodiesterase I (EC 3.1.4.1); Nucleotide pyrophosphatase (NPPase) (EC 3.6.1.9) (Nucleotide diphosphatase)]"	"ENPP1 M6S1 NPPS PC1 PDNP1"	"Homo sapiens (Human)"	925
+"O95977"	"S1PR4_HUMAN"	"Sphingosine 1-phosphate receptor 4 (S1P receptor 4) (S1P4) (Endothelial differentiation G-protein coupled receptor 6) (Sphingosine 1-phosphate receptor Edg-6) (S1P receptor Edg-6)"	"S1PR4 EDG6"	"Homo sapiens (Human)"	384
+"P16209"	"1A01_PANTR"	"Patr class I histocompatibility antigen, A-2 alpha chain (ChLa class I histocompatibility antigen, A-2 alpha chain)"	""	"Pan troglodytes (Chimpanzee)"	365
+"P16210"	"1A02_PANTR"	"Patr class I histocompatibility antigen, A-5 alpha chain (ChLa class I histocompatibility antigen, A-5 alpha chain)"	""	"Pan troglodytes (Chimpanzee)"	362
+"Q12770"	"SCAP_HUMAN"	"Sterol regulatory element-binding protein cleavage-activating protein (SCAP) (SREBP cleavage-activating protein)"	"SCAP KIAA0199 PSEC0227"	"Homo sapiens (Human)"	1279
+"P48960"	"CD97_HUMAN"	"Adhesion G protein-coupled receptor E5 (Leukocyte antigen CD97) (CD antigen CD97) [Cleaved into: Adhesion G protein-coupled receptor E5 subunit alpha; Adhesion G protein-coupled receptor E5 subunit beta]"	"ADGRE5 CD97"	"Homo sapiens (Human)"	835
+"P04439"	"HLAA_HUMAN"	"HLA class I histocompatibility antigen, A alpha chain (Human leukocyte antigen A) (HLA-A)"	"HLA-A HLAA"	"Homo sapiens (Human)"	365
+"P32456"	"GBP2_HUMAN"	"Guanylate-binding protein 2 (EC 3.6.5.-) (GTP-binding protein 2) (GBP-2) (HuGBP-2) (Guanine nucleotide-binding protein 2) (Interferon-induced guanylate-binding protein 2)"	"GBP2"	"Homo sapiens (Human)"	591
+"P43403"	"ZAP70_HUMAN"	"Tyrosine-protein kinase ZAP-70 (EC 2.7.10.2) (70 kDa zeta-chain associated protein) (Syk-related tyrosine kinase)"	"ZAP70 SRK"	"Homo sapiens (Human)"	619
+"P02686"	"MBP_HUMAN"	"Myelin basic protein (MBP) (Myelin A1 protein) (Myelin membrane encephalitogenic protein)"	"MBP"	"Homo sapiens (Human)"	304
+"P25119"	"TNR1B_MOUSE"	"Tumor necrosis factor receptor superfamily member 1B (Tumor necrosis factor receptor 2) (TNF-R2) (Tumor necrosis factor receptor type II) (TNF-RII) (TNFR-II) (p75) (p80 TNF-alpha receptor) (CD antigen CD120b)"	"Tnfrsf1b Tnfr-2 Tnfr2"	"Mus musculus (Mouse)"	474
+"P51679"	"CCR4_HUMAN"	"C-C chemokine receptor type 4 (C-C CKR-4) (CC-CKR-4) (CCR-4) (CCR4) (K5-5) (CD antigen CD194)"	"CCR4 CMKBR4"	"Homo sapiens (Human)"	360
+"P53634"	"CATC_HUMAN"	"Dipeptidyl peptidase 1 (EC 3.4.14.1) (Cathepsin C) (Cathepsin J) (Dipeptidyl peptidase I) (DPP-I) (DPPI) (Dipeptidyl transferase) [Cleaved into: Dipeptidyl peptidase 1 exclusion domain chain (Dipeptidyl peptidase I exclusion domain chain); Dipeptidyl peptidase 1 heavy chain (Dipeptidyl peptidase I heavy chain); Dipeptidyl peptidase 1 light chain (Dipeptidyl peptidase I light chain)]"	"CTSC CPPI"	"Homo sapiens (Human)"	463
+"Q13231"	"CHIT1_HUMAN"	"Chitotriosidase-1 (EC 3.2.1.14) (Chitinase-1)"	"CHIT1"	"Homo sapiens (Human)"	466
+"Q16649"	"NFIL3_HUMAN"	"Nuclear factor interleukin-3-regulated protein (E4 promoter-binding protein 4) (Interleukin-3 promoter transcriptional activator) (Interleukin-3-binding protein 1) (Transcriptional activator NF-IL3A)"	"NFIL3 E4BP4 IL3BP1"	"Homo sapiens (Human)"	462
+"P42768"	"WASP_HUMAN"	"Wiskott-Aldrich syndrome protein (WASp)"	"WAS IMD2"	"Homo sapiens (Human)"	502
+"P24001"	"IL32_HUMAN"	"Interleukin-32 (IL-32) (Natural killer cells protein 4) (Tumor necrosis factor alpha-inducing factor)"	"IL32 NK4 TAIF"	"Homo sapiens (Human)"	234
+"Q5T0T0"	"MARH8_HUMAN"	"E3 ubiquitin-protein ligase MARCHF8 (EC 2.3.2.27) (Cellular modulator of immune recognition) (c-MIR) (Membrane-associated RING finger protein 8) (Membrane-associated RING-CH protein VIII) (MARCH-VIII) (RING finger protein 178) (RING-type E3 ubiquitin transferase MARCHF8)"	"MARCHF8 MARCH8 MIR RNF178"	"Homo sapiens (Human)"	291
+"Q9R1E6"	"ENPP2_MOUSE"	"Ectonucleotide pyrophosphatase/phosphodiesterase family member 2 (E-NPP 2) (EC 3.1.4.39) (Autotaxin) (Extracellular lysophospholipase D) (LysoPLD)"	"Enpp2 Npps2 Pdnp2"	"Mus musculus (Mouse)"	862
+"Q8IWV1"	"LAX1_HUMAN"	"Lymphocyte transmembrane adapter 1 (Linker for activation of X cells) (Membrane-associated adapter protein LAX)"	"LAX1 LAX"	"Homo sapiens (Human)"	398
+"Q01628"	"IFM3_HUMAN"	"Interferon-induced transmembrane protein 3 (Dispanin subfamily A member 2b) (DSPA2b) (Interferon-inducible protein 1-8U)"	"IFITM3"	"Homo sapiens (Human)"	133
+"Q94527"	"NFKB1_DROME"	"Nuclear factor NF-kappa-B p110 subunit (Rel-p110) (Relish protein) [Cleaved into: Nuclear factor NF-kappa-B p68 subunit (Rel-p68); Nuclear factor NF-kappa-B p49 subunit (Rel-p49)]"	"Rel CG11992"	"Drosophila melanogaster (Fruit fly)"	971
+"P13751"	"1B02_PANTR"	"Patr class I histocompatibility antigen, B-2 alpha chain (ChLa class I histocompatibility antigen, B-2 alpha chain)"	""	"Pan troglodytes (Chimpanzee)"	362
+"P30686"	"1C01_PANTR"	"Patr class I histocompatibility antigen, C alpha chain (ChLa class I histocompatibility antigen, C alpha chain)"	""	"Pan troglodytes (Chimpanzee)"	366
+"P01911"	"DRB_HUMAN"	"HLA class II histocompatibility antigen, DRB1 beta chain (Human leukocyte antigen DRB1) (HLA-DRB1)"	"HLA-DRB1"	"Homo sapiens (Human)"	266
+"Q9NPH3"	"IL1AP_HUMAN"	"Interleukin-1 receptor accessory protein (IL-1 receptor accessory protein) (IL-1RAcP) (EC 3.2.2.6) (Interleukin-1 receptor 3) (IL-1R-3) (IL-1R3)"	"IL1RAP C3orf13 IL1R3"	"Homo sapiens (Human)"	570
+"O70370"	"CATS_MOUSE"	"Cathepsin S (EC 3.4.22.27)"	"Ctss Cats"	"Mus musculus (Mouse)"	340
+"P14483"	"HB2A_MOUSE"	"H-2 class II histocompatibility antigen, A beta chain"	"H2-Ab1 H2-iabeta"	"Mus musculus (Mouse)"	265
+"P13750"	"1B01_PANTR"	"Patr class I histocompatibility antigen, B-1 alpha chain (ChLa class I histocompatibility antigen, B-1 alpha chain) (Fragment)"	""	"Pan troglodytes (Chimpanzee)"	359
+"Q91XB0"	"TREX1_MOUSE"	"Three-prime repair exonuclease 1 (EC 3.1.11.2) (3'-5' exonuclease TREX1)"	"Trex1"	"Mus musculus (Mouse)"	314
+"Q08D88"	"NFIL3_BOVIN"	"Nuclear factor interleukin-3-regulated protein"	"NFIL3"	"Bos taurus (Bovine)"	462
+"P36402"	"TCF7_HUMAN"	"Transcription factor 7 (TCF-7) (T-cell-specific transcription factor 1) (T-cell factor 1) (TCF-1)"	"TCF7 TCF1"	"Homo sapiens (Human)"	384
+"Q91XA9"	"CHIA_MOUSE"	"Acidic mammalian chitinase (AMCase) (EC 3.2.1.14) (YNL)"	"Chia Chia1"	"Mus musculus (Mouse)"	473
+"Q99558"	"M3K14_HUMAN"	"Mitogen-activated protein kinase kinase kinase 14 (EC 2.7.11.25) (NF-kappa-beta-inducing kinase) (HsNIK) (Serine/threonine-protein kinase NIK)"	"MAP3K14 NIK"	"Homo sapiens (Human)"	947
+"P01824"	"HV439_HUMAN"	"Immunoglobulin heavy variable 4-39 (Ig heavy chain V-II region WAH)"	"IGHV4-39"	"Homo sapiens (Human)"	125
+"P01764"	"HV323_HUMAN"	"Immunoglobulin heavy variable 3-23 (Ig heavy chain V-III region LAY) (Ig heavy chain V-III region POM) (Ig heavy chain V-III region TEI) (Ig heavy chain V-III region TIL) (Ig heavy chain V-III region TUR) (Ig heavy chain V-III region VH26) (Ig heavy chain V-III region WAS) (Ig heavy chain V-III region ZAP)"	"IGHV3-23"	"Homo sapiens (Human)"	117
+"P17861"	"XBP1_HUMAN"	"X-box-binding protein 1 (XBP-1) (Tax-responsive element-binding protein 5) (TREB-5) [Cleaved into: X-box-binding protein 1, cytoplasmic form; X-box-binding protein 1, luminal form]"	"XBP1 TREB5 XBP2"	"Homo sapiens (Human)"	261
+"O14931"	"NCTR3_HUMAN"	"Natural cytotoxicity triggering receptor 3 (Activating natural killer receptor p30) (Natural killer cell p30-related protein) (NK-p30) (NKp30) (CD antigen CD337)"	"NCR3 1C7 LY117"	"Homo sapiens (Human)"	201
+"P50238"	"CRIP1_HUMAN"	"Cysteine-rich protein 1 (CRP-1) (Cysteine-rich heart protein) (CRHP) (hCRHP) (Cysteine-rich intestinal protein) (CRIP)"	"CRIP1 CRIP CRP1"	"Homo sapiens (Human)"	77
+"P84023"	"SMAD3_CHICK"	"Mothers against decapentaplegic homolog 3 (MAD homolog 3) (Mad3) (Mothers against DPP homolog 3) (SMAD family member 3) (SMAD 3) (Smad3)"	"SMAD3 MADH3"	"Gallus gallus (Chicken)"	426
+"Q95460"	"HMR1_HUMAN"	"Major histocompatibility complex class I-related gene protein (MHC class I-related gene protein) (Class I histocompatibility antigen-like protein)"	"MR1"	"Homo sapiens (Human)"	341
+"P01717"	"LV325_HUMAN"	"Immunoglobulin lambda variable 3-25 (Ig lambda chain V-IV region Hil)"	"IGLV3-25"	"Homo sapiens (Human)"	112
+"Q14164"	"IKKE_HUMAN"	"Inhibitor of nuclear factor kappa-B kinase subunit epsilon (I-kappa-B kinase epsilon) (IKK-E) (IKK-epsilon) (IkBKE) (EC 2.7.11.10) (Inducible I kappa-B kinase) (IKK-i)"	"IKBKE IKKE IKKI KIAA0151"	"Homo sapiens (Human)"	716
+"Q6V1X1"	"DPP8_HUMAN"	"Dipeptidyl peptidase 8 (DP8) (EC 3.4.14.5) (Dipeptidyl peptidase IV-related protein 1) (DPRP-1) (Dipeptidyl peptidase VIII) (DPP VIII) (Prolyl dipeptidase DPP8)"	"DPP8 DPRP1 MSTP097 MSTP135 MSTP141"	"Homo sapiens (Human)"	898
+"P08267"	"FRIH_CHICK"	"Ferritin heavy chain (Ferritin H subunit) (EC 1.16.3.1)"	"FTH"	"Gallus gallus (Chicken)"	180
+"P14921"	"ETS1_HUMAN"	"Protein C-ets-1 (p54)"	"ETS1 EWSR2"	"Homo sapiens (Human)"	441
+"P10321"	"HLAC_HUMAN"	"HLA class I histocompatibility antigen, C alpha chain (HLA-C) (HLA-Cw) (Human leukocyte antigen C)"	"HLA-C HLAC"	"Homo sapiens (Human)"	366
+"Q13478"	"IL18R_HUMAN"	"Interleukin-18 receptor 1 (IL-18R-1) (IL-18R1) (EC 3.2.2.6) (CD218 antigen-like family member A) (CDw218a) (IL1 receptor-related protein) (IL-1Rrp) (IL1R-rp) (Interleukin-18 receptor alpha) (IL-18R-alpha) (IL-18Ralpha) (CD antigen CD218a)"	"IL18R1 IL1RRP"	"Homo sapiens (Human)"	541
+"P53567"	"CEBPG_HUMAN"	"CCAAT/enhancer-binding protein gamma (C/EBP gamma)"	"CEBPG"	"Homo sapiens (Human)"	150
+"P01920"	"DQB1_HUMAN"	"HLA class II histocompatibility antigen, DQ beta 1 chain (MHC class II antigen DQB1)"	"HLA-DQB1 HLA-DQB"	"Homo sapiens (Human)"	261
+"O95256"	"I18RA_HUMAN"	"Interleukin-18 receptor accessory protein (IL-18 receptor accessory protein) (IL-18RAcP) (EC 3.2.2.6) (Accessory protein-like) (AcPL) (CD218 antigen-like family member B) (CDw218b) (IL-1R accessory protein-like) (IL-1RAcPL) (Interleukin-1 receptor 7) (IL-1R-7) (IL-1R7) (Interleukin-18 receptor accessory protein-like) (Interleukin-18 receptor beta) (IL-18R-beta) (IL-18Rbeta) (CD antigen CD218b)"	"IL18RAP IL1R7"	"Homo sapiens (Human)"	599
+"Q6ZN66"	"GBP6_HUMAN"	"Guanylate-binding protein 6 (GTP-binding protein 6) (GBP-6) (Guanine nucleotide-binding protein 6)"	"GBP6"	"Homo sapiens (Human)"	633
+"Q8BMT4"	"LRC33_MOUSE"	"Transforming growth factor beta activator LRRC33 (Leucine-rich repeat-containing protein 33) (Negative regulator of reactive oxygen species)"	"Nrros Lrrc33"	"Mus musculus (Mouse)"	693
+"P56439"	"CCR5_GORGO"	"C-C chemokine receptor type 5 (C-C CKR-5) (CC-CKR-5) (CCR-5) (CCR5) (CD antigen CD195)"	"CCR5 CMKBR5"	"Gorilla gorilla gorilla (Western lowland gorilla)"	352
+"Q8IYM9"	"TRI22_HUMAN"	"E3 ubiquitin-protein ligase TRIM22 (EC 2.3.2.27) (50 kDa-stimulated trans-acting factor) (RING finger protein 94) (RING-type E3 ubiquitin transferase TRIM22) (Staf-50) (Tripartite motif-containing protein 22)"	"TRIM22 RNF94 STAF50"	"Homo sapiens (Human)"	498
+"P07711"	"CATL1_HUMAN"	"Procathepsin L (EC 3.4.22.15) (Cathepsin L1) (Major excreted protein) (MEP) [Cleaved into: Cathepsin L; Cathepsin L heavy chain; Cathepsin L light chain]"	"CTSL CTSL1"	"Homo sapiens (Human)"	333
+"P01889"	"HLAB_HUMAN"	"HLA class I histocompatibility antigen, B alpha chain (Human leukocyte antigen B) (HLA-B)"	"HLA-B HLAB"	"Homo sapiens (Human)"	362
+"Q9R0Q8"	"CLC4E_MOUSE"	"C-type lectin domain family 4 member E (C-type lectin superfamily member 9) (Macrophage-inducible C-type lectin) (Mincle)"	"Clec4e Clecsf9 Mincle"	"Mus musculus (Mouse)"	214
+"Q6UWB1"	"I27RA_HUMAN"	"Interleukin-27 receptor subunit alpha (IL-27 receptor subunit alpha) (IL-27R subunit alpha) (IL-27R-alpha) (IL-27RA) (Cytokine receptor WSX-1) (Cytokine receptor-like 1) (Type I T-cell cytokine receptor) (TCCR) (ZcytoR1)"	"IL27RA CRL1 TCCR WSX1 UNQ296/PRO336"	"Homo sapiens (Human)"	636
+"P06331"	"HV434_HUMAN"	"Immunoglobulin heavy variable 4-34 (Ig heavy chain V-II region ARH-77)"	"IGHV4-34"	"Homo sapiens (Human)"	123
+"O08843"	"LST1_MOUSE"	"Leukocyte-specific transcript 1 protein (Protein B144)"	"Lst1 B144"	"Mus musculus (Mouse)"	95
+"P22670"	"RFX1_HUMAN"	"MHC class II regulatory factor RFX1 (Enhancer factor C) (EF-C) (Regulatory factor X 1) (RFX) (Transcription factor RFX1)"	"RFX1"	"Homo sapiens (Human)"	979
+"P01893"	"HLAH_HUMAN"	"Putative HLA class I histocompatibility antigen, alpha chain H (HLA-12.4) (HLA-AR) (MHC class I antigen H)"	"HLA-H HLAH"	"Homo sapiens (Human)"	362
+"P30387"	"1C04_GORGO"	"Class I histocompatibility antigen, Gogo-C*0203 alpha chain"	""	"Gorilla gorilla gorilla (Western lowland gorilla)"	366
+"O75888"	"TNF13_HUMAN"	"Tumor necrosis factor ligand superfamily member 13 (A proliferation-inducing ligand) (APRIL) (TNF- and APOL-related leukocyte expressed ligand 2) (TALL-2) (TNF-related death ligand 1) (TRDL-1) (CD antigen CD256)"	"TNFSF13 APRIL TALL2 ZTNF2 UNQ383/PRO715"	"Homo sapiens (Human)"	250
+"Q96BF3"	"TMIG2_HUMAN"	"Transmembrane and immunoglobulin domain-containing protein 2 (CD28 homolog) (Immunoglobulin and proline-rich receptor 1) (IGPR-1)"	"TMIGD2 CD28H IGPR1 UNQ3059/PRO9879"	"Homo sapiens (Human)"	282
+"P01876"	"IGHA1_HUMAN"	"Immunoglobulin heavy constant alpha 1 (Ig alpha-1 chain C region) (Ig alpha-1 chain C region BUR) (Ig alpha-1 chain C region TRO)"	"IGHA1"	"Homo sapiens (Human)"	353
+"P06312"	"KV401_HUMAN"	"Immunoglobulin kappa variable 4-1 (Ig kappa chain V-IV region B17) (Ig kappa chain V-IV region JI) (Ig kappa chain V-IV region Len) (Ig kappa chain V-IV region STH)"	"IGKV4-1"	"Homo sapiens (Human)"	121
+"P01901"	"HA1B_MOUSE"	"H-2 class I histocompatibility antigen, K-B alpha chain (H-2K(B))"	"H2-K1 H2-K"	"Mus musculus (Mouse)"	369
+"P01900"	"HA12_MOUSE"	"H-2 class I histocompatibility antigen, D-D alpha chain (H-2D(D))"	"H2-D1"	"Mus musculus (Mouse)"	365
+"P33681"	"CD80_HUMAN"	"T-lymphocyte activation antigen CD80 (Activation B7-1 antigen) (BB1) (CTLA-4 counter-receptor B7.1) (B7) (CD antigen CD80)"	"CD80 CD28LG CD28LG1 LAB7"	"Homo sapiens (Human)"	288
+"Q99081"	"HTF4_HUMAN"	"Transcription factor 12 (TCF-12) (Class B basic helix-loop-helix protein 20) (bHLHb20) (DNA-binding protein HTF4) (E-box-binding protein) (Transcription factor HTF-4)"	"TCF12 BHLHB20 HEB HTF4"	"Homo sapiens (Human)"	682
+"P01631"	"KV2A7_MOUSE"	"Ig kappa chain V-II region 26-10"	""	"Mus musculus (Mouse)"	113
+"P16871"	"IL7RA_HUMAN"	"Interleukin-7 receptor subunit alpha (IL-7 receptor subunit alpha) (IL-7R subunit alpha) (IL-7R-alpha) (IL-7RA) (CDw127) (CD antigen CD127)"	"IL7R"	"Homo sapiens (Human)"	459
+"P01817"	"HV205_HUMAN"	"Immunoglobulin heavy variable 2-5 (Ig heavy chain V-II region HE) (Ig heavy chain V-II region MCE)"	"IGHV2-5"	"Homo sapiens (Human)"	119
+"P23611"	"IRF8_MOUSE"	"Interferon regulatory factor 8 (IRF-8) (Interferon consensus sequence-binding protein) (ICSBP)"	"Irf8 Icsbp Icsbp1"	"Mus musculus (Mouse)"	424
+"P16150"	"LEUK_HUMAN"	"Leukosialin (GPL115) (Galactoglycoprotein) (GALGP) (Leukocyte sialoglycoprotein) (Sialophorin) (CD antigen CD43) [Cleaved into: CD43 cytoplasmic tail (CD43-ct) (CD43ct)]"	"SPN CD43"	"Homo sapiens (Human)"	400
+"A0A0A6YYK7"	"TVA19_HUMAN"	"T cell receptor alpha variable 19 (T-cell receptor alpha chain V region HPB-MLT)"	"TRAV19"	"Homo sapiens (Human)"	116
+"Q8MIP0"	"FRIH_HORSE"	"Ferritin heavy chain (Ferritin H subunit) (EC 1.16.3.1) [Cleaved into: Ferritin heavy chain, N-terminally processed]"	"FTH1 FTH"	"Equus caballus (Horse)"	182
+"Q9Z126"	"PLF4_MOUSE"	"Platelet factor 4 (PF-4) (C-X-C motif chemokine 4)"	"Pf4 Cxcl4 Scyb4"	"Mus musculus (Mouse)"	105
+"P01850"	"TRBC1_HUMAN"	"T cell receptor beta constant 1"	"TRBC1"	"Homo sapiens (Human)"	176
+"O60449"	"LY75_HUMAN"	"Lymphocyte antigen 75 (Ly-75) (C-type lectin domain family 13 member B) (DEC-205) (gp200-MR6) (CD antigen CD205)"	"LY75 CD205 CLEC13B"	"Homo sapiens (Human)"	1722
+"Q0VD59"	"MARH8_BOVIN"	"E3 ubiquitin-protein ligase MARCHF8 (EC 2.3.2.27) (Membrane-associated RING finger protein 8) (Membrane-associated RING-CH protein VIII) (MARCH-VIII) (RING-type E3 ubiquitin transferase MARCHF8)"	"MARCHF8 MARCH8"	"Bos taurus (Bovine)"	289
+"Q8N423"	"LIRB2_HUMAN"	"Leukocyte immunoglobulin-like receptor subfamily B member 2 (LIR-2) (Leukocyte immunoglobulin-like receptor 2) (CD85 antigen-like family member D) (Immunoglobulin-like transcript 4) (ILT-4) (Monocyte/macrophage immunoglobulin-like receptor 10) (MIR-10) (CD antigen CD85d)"	"LILRB2 ILT4 LIR2 MIR10"	"Homo sapiens (Human)"	598
+"P01909"	"DQA1_HUMAN"	"HLA class II histocompatibility antigen, DQ alpha 1 chain (DC-1 alpha chain) (DC-alpha) (HLA-DCA) (MHC class II DQA1)"	"HLA-DQA1"	"Homo sapiens (Human)"	254
+"P61771"	"B2MG_GORGO"	"Beta-2-microglobulin"	"B2M"	"Gorilla gorilla gorilla (Western lowland gorilla)"	119
+"P41273"	"TNFL9_HUMAN"	"Tumor necrosis factor ligand superfamily member 9 (4-1BB ligand) (4-1BBL)"	"TNFSF9"	"Homo sapiens (Human)"	254
+"P40933"	"IL15_HUMAN"	"Interleukin-15 (IL-15)"	"IL15"	"Homo sapiens (Human)"	162
+"P04435"	"TVB79_HUMAN"	"T cell receptor beta variable 7-9"	"TRBV7-9"	"Homo sapiens (Human)"	115
+"P27870"	"VAV_MOUSE"	"Proto-oncogene vav (p95vav)"	"Vav1 Vav"	"Mus musculus (Mouse)"	845
+"P12544"	"GRAA_HUMAN"	"Granzyme A (EC 3.4.21.78) (CTL tryptase) (Cytotoxic T-lymphocyte proteinase 1) (Fragmentin-1) (Granzyme-1) (Hanukkah factor) (H factor) (HF)"	"GZMA CTLA3 HFSP"	"Homo sapiens (Human)"	262
+"P00491"	"PNPH_HUMAN"	"Purine nucleoside phosphorylase (PNP) (EC 2.4.2.1) (Inosine phosphorylase) (Inosine-guanosine phosphorylase)"	"PNP NP"	"Homo sapiens (Human)"	289
+"Q7TNY1"	"BACD2_RAT"	"BTB/POZ domain-containing adapter for CUL3-mediated RhoA degradation protein 2 (BTB/POZ domain-containing protein TNFAIP1) (Tumor necrosis factor-induced protein 1)"	"Tnfaip1"	"Rattus norvegicus (Rat)"	316
+"P06909"	"CFAH_MOUSE"	"Complement factor H (Protein beta-1-H)"	"Cfh Hf1"	"Mus musculus (Mouse)"	1234
+"Q92854"	"SEM4D_HUMAN"	"Semaphorin-4D (A8) (BB18) (GR3) (CD antigen CD100)"	"SEMA4D C9orf164 CD100 SEMAJ"	"Homo sapiens (Human)"	862
+"P09912"	"IFI6_HUMAN"	"Interferon alpha-inducible protein 6 (Interferon-induced protein 6-16) (Ifi-6-16)"	"IFI6 G1P3"	"Homo sapiens (Human)"	130
+"Q13094"	"LCP2_HUMAN"	"Lymphocyte cytosolic protein 2 (SH2 domain-containing leukocyte protein of 76 kDa) (SLP-76 tyrosine phosphoprotein) (SLP76)"	"LCP2"	"Homo sapiens (Human)"	533
+"Q02556"	"IRF8_HUMAN"	"Interferon regulatory factor 8 (IRF-8) (Interferon consensus sequence-binding protein) (H-ICSBP) (ICSBP)"	"IRF8 ICSBP1"	"Homo sapiens (Human)"	426
+"P84022"	"SMAD3_HUMAN"	"Mothers against decapentaplegic homolog 3 (MAD homolog 3) (Mad3) (Mothers against DPP homolog 3) (hMAD-3) (JV15-2) (SMAD family member 3) (SMAD 3) (Smad3) (hSMAD3)"	"SMAD3 MADH3"	"Homo sapiens (Human)"	425
+"O35601"	"FYB1_MOUSE"	"FYN-binding protein 1 (Adhesion and degranulation promoting adaptor protein) (ADAP) (FYB-120/130) (p120/p130) (FYN-T-binding protein) (SLAP-130) (SLP-76-associated phosphoprotein)"	"Fyb1 Fyb"	"Mus musculus (Mouse)"	819
+"P34972"	"CNR2_HUMAN"	"Cannabinoid receptor 2 (CB-2) (CB2) (hCB2) (CX5)"	"CNR2 CB2A CB2B"	"Homo sapiens (Human)"	360
+"Q07021"	"C1QBP_HUMAN"	"Complement component 1 Q subcomponent-binding protein, mitochondrial (ASF/SF2-associated protein p32) (Glycoprotein gC1qBP) (C1qBP) (Hyaluronan-binding protein 1) (Mitochondrial matrix protein p32) (gC1q-R protein) (p33) (SF2AP32)"	"C1QBP GC1QBP HABP1 SF2P32"	"Homo sapiens (Human)"	282
+"P50591"	"TNF10_HUMAN"	"Tumor necrosis factor ligand superfamily member 10 (Apo-2 ligand) (Apo-2L) (TNF-related apoptosis-inducing ligand) (Protein TRAIL) (CD antigen CD253)"	"TNFSF10 APO2L TRAIL"	"Homo sapiens (Human)"	281
+"Q92626"	"PXDN_HUMAN"	"Peroxidasin homolog (EC 1.11.1.7) (Melanoma-associated antigen MG50) (Vascular peroxidase 1) (p53-responsive gene 2 protein)"	"PXDN KIAA0230 MG50 PRG2 VPO VPO1"	"Homo sapiens (Human)"	1479
+"P50453"	"SPB9_HUMAN"	"Serpin B9 (Cytoplasmic antiproteinase 3) (CAP-3) (CAP3) (Peptidase inhibitor 9) (PI-9)"	"SERPINB9 PI9"	"Homo sapiens (Human)"	376
+"Q9TV48"	"CCR5_CERAS"	"C-C chemokine receptor type 5 (C-C CKR-5) (CC-CKR-5) (CCR-5) (CCR5) (CD antigen CD195)"	"CCR5 CMKBR5"	"Cercopithecus ascanius (Black-cheeked white-nosed monkey) (Redtail monkey)"	352
+"O14862"	"AIM2_HUMAN"	"Interferon-inducible protein AIM2 (Absent in melanoma 2)"	"AIM2"	"Homo sapiens (Human)"	343
+"P01743"	"HV146_HUMAN"	"Immunoglobulin heavy variable 1-46 (Ig heavy chain V-I region DOT) (Ig heavy chain V-I region HG3) (Ig heavy chain V-I region Mot)"	"IGHV1-46"	"Homo sapiens (Human)"	117
+"P51677"	"CCR3_HUMAN"	"C-C chemokine receptor type 3 (C C CKR3) (C-C CKR-3) (CC-CKR-3) (CCR-3) (CCR3) (CKR 3) (CKR3) (Eosinophil eotaxin receptor) (CD antigen CD193)"	"CCR3 CMKBR3"	"Homo sapiens (Human)"	355
+"O76096"	"CYTF_HUMAN"	"Cystatin-F (Cystatin-7) (Cystatin-like metastasis-associated protein) (CMAP) (Leukocystatin)"	"CST7"	"Homo sapiens (Human)"	145
+"P30375"	"1A01_GORGO"	"Class I histocompatibility antigen, Gogo-A*0101 alpha chain"	""	"Gorilla gorilla gorilla (Western lowland gorilla)"	365
+"P15330"	"DORS_DROME"	"Embryonic polarity protein dorsal"	"dl CG6667"	"Drosophila melanogaster (Fruit fly)"	999
+"Q07325"	"CXCL9_HUMAN"	"C-X-C motif chemokine 9 (Gamma-interferon-induced monokine) (Monokine induced by interferon-gamma) (HuMIG) (MIG) (Small-inducible cytokine B9)"	"CXCL9 CMK MIG SCYB9"	"Homo sapiens (Human)"	125
+"P15018"	"LIF_HUMAN"	"Leukemia inhibitory factor (LIF) (Differentiation-stimulating factor) (D factor) (Melanoma-derived LPL inhibitor) (MLPLI) (Emfilermin)"	"LIF HILDA"	"Homo sapiens (Human)"	202
+"P09528"	"FRIH_MOUSE"	"Ferritin heavy chain (Ferritin H subunit) (EC 1.16.3.1) [Cleaved into: Ferritin heavy chain, N-terminally processed]"	"Fth1 Fth"	"Mus musculus (Mouse)"	182
+"P41274"	"TNFL9_MOUSE"	"Tumor necrosis factor ligand superfamily member 9 (4-1BB ligand) (4-1BBL)"	"Tnfsf9 Cd137l Cd157l Ly63l"	"Mus musculus (Mouse)"	309
+"A0JD36"	"TRDV2_HUMAN"	"T cell receptor delta variable 2"	"TRDV2 hDV102S1"	"Homo sapiens (Human)"	115
+"P46531"	"NOTC1_HUMAN"	"Neurogenic locus notch homolog protein 1 (Notch 1) (hN1) (Translocation-associated notch protein TAN-1) [Cleaved into: Notch 1 extracellular truncation (NEXT); Notch 1 intracellular domain (NICD)]"	"NOTCH1 TAN1"	"Homo sapiens (Human)"	2555
+"O95976"	"IGSF6_HUMAN"	"Immunoglobulin superfamily member 6 (IgSF6) (Protein DORA)"	"IGSF6 DORA"	"Homo sapiens (Human)"	241
+"P15498"	"VAV_HUMAN"	"Proto-oncogene vav"	"VAV1 VAV"	"Homo sapiens (Human)"	845
+"P01584"	"IL1B_HUMAN"	"Interleukin-1 beta (IL-1 beta) (Catabolin)"	"IL1B IL1F2"	"Homo sapiens (Human)"	269
+"P31785"	"IL2RG_HUMAN"	"Cytokine receptor common subunit gamma (Interleukin-2 receptor subunit gamma) (IL-2 receptor subunit gamma) (IL-2R subunit gamma) (IL-2RG) (gammaC) (p64) (CD antigen CD132)"	"IL2RG"	"Homo sapiens (Human)"	369
+"P06802"	"ENPP1_MOUSE"	"Ectonucleotide pyrophosphatase/phosphodiesterase family member 1 (E-NPP 1) (Lymphocyte antigen 41) (Ly-41) (Phosphodiesterase I/nucleotide pyrophosphatase 1) (Plasma-cell membrane glycoprotein PC-1) [Cleaved into: Ectonucleotide pyrophosphatase/phosphodiesterase family member 1, secreted form] [Includes: Alkaline phosphodiesterase I (EC 3.1.4.1); Nucleotide pyrophosphatase (NPPase) (EC 3.6.1.9) (Nucleotide diphosphatase)]"	"Enpp1 Npps Pc1 Pdnp1"	"Mus musculus (Mouse)"	906
+"Q15399"	"TLR1_HUMAN"	"Toll-like receptor 1 (EC 3.2.2.6) (Toll/interleukin-1 receptor-like protein) (TIL) (CD antigen CD281)"	"TLR1 KIAA0012"	"Homo sapiens (Human)"	786
+"P15538"	"C11B1_HUMAN"	"Cytochrome P450 11B1, mitochondrial (CYPXIB1) (Cytochrome P-450c11) (Cytochrome P450C11) (Steroid 11-beta-hydroxylase, CYP11B1) (EC 1.14.15.4)"	"CYP11B1 S11BH"	"Homo sapiens (Human)"	503
+"Q14005"	"IL16_HUMAN"	"Pro-interleukin-16 [Cleaved into: Interleukin-16 (IL-16) (Lymphocyte chemoattractant factor) (LCF)]"	"IL16"	"Homo sapiens (Human)"	1332
+"Q12851"	"M4K2_HUMAN"	"Mitogen-activated protein kinase kinase kinase kinase 2 (EC 2.7.11.1) (B lymphocyte serine/threonine-protein kinase) (Germinal center kinase) (GC kinase) (MAPK/ERK kinase kinase kinase 2) (MEK kinase kinase 2) (MEKKK 2) (Rab8-interacting protein)"	"MAP4K2 GCK RAB8IP"	"Homo sapiens (Human)"	820
+"P97430"	"SLPI_MOUSE"	"Antileukoproteinase (ALP) (Secretory leukocyte protease inhibitor)"	"Slpi"	"Mus musculus (Mouse)"	131
+"P09564"	"CD7_HUMAN"	"T-cell antigen CD7 (GP40) (T-cell leukemia antigen) (T-cell surface antigen Leu-9) (TP41) (CD antigen CD7)"	"CD7"	"Homo sapiens (Human)"	240
+"P30377"	"1A03_GORGO"	"Class I histocompatibility antigen, Gogo-A*0401 alpha chain"	""	"Gorilla gorilla gorilla (Western lowland gorilla)"	365
+"O00626"	"CCL22_HUMAN"	"C-C motif chemokine 22 (CC chemokine STCP-1) (MDC(1-69)) (Macrophage-derived chemokine) (Small-inducible cytokine A22) (Stimulated T-cell chemotactic protein 1) [Cleaved into: MDC(3-69); MDC(5-69); MDC(7-69)]"	"CCL22 MDC SCYA22 A-152E5.1"	"Homo sapiens (Human)"	93
+"Q62293"	"TGTP1_MOUSE"	"T-cell-specific guanine nucleotide triphosphate-binding protein 1 (EC 3.6.5.-) (Interferon-gamma-inducible GTPase Ifggb5)"	"Tgtp1 Ifggb5 Irgb6 Mg21"	"Mus musculus (Mouse)"	415
+"Q86WI1"	"PKHL1_HUMAN"	"Fibrocystin-L (Polycystic kidney and hepatic disease 1-like protein 1) (PKHD1-like protein 1)"	"PKHD1L1"	"Homo sapiens (Human)"	4243
+"Q9Y487"	"VPP2_HUMAN"	"V-type proton ATPase 116 kDa subunit a2 (V-ATPase 116 kDa subunit a2) (Lysosomal H(+)-transporting ATPase V0 subunit a2) (TJ6) (Vacuolar proton translocating ATPase 116 kDa subunit a isoform 2)"	"ATP6V0A2"	"Homo sapiens (Human)"	856
+"P04945"	"KV6AB_MOUSE"	"Ig kappa chain V-VI region NQ2-6.1"	""	"Mus musculus (Mouse)"	108
+"Q06643"	"TNFC_HUMAN"	"Lymphotoxin-beta (LT-beta) (Tumor necrosis factor C) (TNF-C) (Tumor necrosis factor ligand superfamily member 3)"	"LTB TNFC TNFSF3"	"Homo sapiens (Human)"	244
+"P41155"	"TNFC_MOUSE"	"Lymphotoxin-beta (LT-beta) (Tumor necrosis factor C) (TNF-C) (Tumor necrosis factor ligand superfamily member 3)"	"Ltb Tnfc Tnfsf3"	"Mus musculus (Mouse)"	306
+"Q9UKI3"	"VPRE3_HUMAN"	"Pre-B lymphocyte protein 3 (N27C7-2) (Protein VPreB3)"	"VPREB3 UNQ355/PRO619"	"Homo sapiens (Human)"	123
+"O00453"	"LST1_HUMAN"	"Leukocyte-specific transcript 1 protein (Protein B144)"	"LST1 B144"	"Homo sapiens (Human)"	97
+"O43541"	"SMAD6_HUMAN"	"Mothers against decapentaplegic homolog 6 (MAD homolog 6) (Mothers against DPP homolog 6) (SMAD family member 6) (SMAD 6) (Smad6) (hSMAD6)"	"SMAD6 MADH6"	"Homo sapiens (Human)"	496
+"O18793"	"CCR2_MACMU"	"C-C chemokine receptor type 2 (C-C CKR-2) (CC-CKR-2) (CCR-2) (CCR2) (Monocyte chemoattractant protein 1 receptor) (MCP-1-R) (CD antigen CD192)"	"CCR2 CMKBR2"	"Macaca mulatta (Rhesus macaque)"	360
+"P35225"	"IL13_HUMAN"	"Interleukin-13 (IL-13)"	"IL13 NC30"	"Homo sapiens (Human)"	146
+"Q3ZKN1"	"CATK_CANLF"	"Cathepsin K (EC 3.4.22.38)"	"CTSK"	"Canis lupus familiaris (Dog) (Canis familiaris)"	330
+"P30382"	"1B04_GORGO"	"Class I histocompatibility antigen, Gogo-B*0201 alpha chain"	""	"Gorilla gorilla gorilla (Western lowland gorilla)"	363
+"P16410"	"CTLA4_HUMAN"	"Cytotoxic T-lymphocyte protein 4 (Cytotoxic T-lymphocyte-associated antigen 4) (CTLA-4) (CD antigen CD152)"	"CTLA4 CD152"	"Homo sapiens (Human)"	223
+"P02778"	"CXL10_HUMAN"	"C-X-C motif chemokine 10 (10 kDa interferon gamma-induced protein) (Gamma-IP10) (IP-10) (Small-inducible cytokine B10) [Cleaved into: CXCL10(1-73)]"	"CXCL10 INP10 SCYB10"	"Homo sapiens (Human)"	98
+"P32971"	"TNFL8_HUMAN"	"Tumor necrosis factor ligand superfamily member 8 (CD30 ligand) (CD30-L) (CD antigen CD153)"	"TNFSF8 CD30L CD30LG"	"Homo sapiens (Human)"	234
+"P19875"	"CXCL2_HUMAN"	"C-X-C motif chemokine 2 (Growth-regulated protein beta) (Gro-beta) (Macrophage inflammatory protein 2-alpha) (MIP2-alpha) [Cleaved into: GRO-beta(5-73) (GRO-beta-T) (Hematopoietic synergistic factor) (HSF) (SB-251353)]"	"CXCL2 GRO2 GROB MIP2A SCYB2"	"Homo sapiens (Human)"	107
+"P49238"	"CX3C1_HUMAN"	"CX3C chemokine receptor 1 (C-X3-C CKR-1) (CX3CR1) (Beta chemokine receptor-like 1) (CMK-BRL-1) (CMK-BRL1) (Fractalkine receptor) (G-protein coupled receptor 13) (V28)"	"CX3CR1 CMKBRL1 GPR13"	"Homo sapiens (Human)"	355
+"Q9BQ51"	"PD1L2_HUMAN"	"Programmed cell death 1 ligand 2 (PD-1 ligand 2) (PD-L2) (PDCD1 ligand 2) (Programmed death ligand 2) (Butyrophilin B7-DC) (B7-DC) (CD antigen CD273)"	"PDCD1LG2 B7DC CD273 PDCD1L2 PDL2"	"Homo sapiens (Human)"	273
+"Q8TCB0"	"IFI44_HUMAN"	"Interferon-induced protein 44 (p44) (Microtubule-associated protein 44)"	"IFI44 MTAP44"	"Homo sapiens (Human)"	444
+"O35796"	"C1QBP_RAT"	"Complement component 1 Q subcomponent-binding protein, mitochondrial (GC1q-R protein) (Glycoprotein gC1qBP) (C1qBP)"	"C1qbp Gc1qbp"	"Rattus norvegicus (Rat)"	279
+"P35408"	"PE2R4_HUMAN"	"Prostaglandin E2 receptor EP4 subtype (PGE receptor EP4 subtype) (PGE2 receptor EP4 subtype) (Prostanoid EP4 receptor)"	"PTGER4 PTGER2"	"Homo sapiens (Human)"	488
+"P24394"	"IL4RA_HUMAN"	"Interleukin-4 receptor subunit alpha (IL-4 receptor subunit alpha) (IL-4R subunit alpha) (IL-4R-alpha) (IL-4RA) (CD antigen CD124) [Cleaved into: Soluble interleukin-4 receptor subunit alpha (Soluble IL-4 receptor subunit alpha) (Soluble IL-4R-alpha) (sIL4Ralpha/prot) (IL-4-binding protein) (IL4-BP)]"	"IL4R IL4RA 582J2.1"	"Homo sapiens (Human)"	825
+"O43557"	"TNF14_HUMAN"	"Tumor necrosis factor ligand superfamily member 14 (Herpes virus entry mediator ligand) (HVEM-L) (Herpesvirus entry mediator ligand) (CD antigen CD258) [Cleaved into: Tumor necrosis factor ligand superfamily member 14, membrane form; Tumor necrosis factor ligand superfamily member 14, soluble form]"	"TNFSF14 HVEML LIGHT UNQ391/PRO726"	"Homo sapiens (Human)"	240
+"O15533"	"TPSN_HUMAN"	"Tapasin (TPN) (TPSN) (NGS-17) (TAP-associated protein) (TAP-binding protein)"	"TAPBP NGS17 TAPA"	"Homo sapiens (Human)"	448
+"P84750"	"KVM5_MOUSE"	"Ig kappa chain V region Mem5 (Fragment)"	""	"Mus musculus (Mouse)"	121
+"Q08857"	"CD36_MOUSE"	"Platelet glycoprotein 4 (Glycoprotein IIIb) (GPIIIB) (PAS IV) (PAS-4) (Platelet glycoprotein IV) (GPIV) (CD antigen CD36)"	"Cd36"	"Mus musculus (Mouse)"	472
+"Q13829"	"BACD2_HUMAN"	"BTB/POZ domain-containing adapter for CUL3-mediated RhoA degradation protein 2 (hBACURD2) (BTB/POZ domain-containing protein TNFAIP1) (Protein B12) (Tumor necrosis factor, alpha-induced protein 1, endothelial)"	"TNFAIP1 BACURD2 EDP1"	"Homo sapiens (Human)"	316
+"P40200"	"TACT_HUMAN"	"T-cell surface protein tactile (Cell surface antigen CD96) (T cell-activated increased late expression protein) (CD antigen CD96)"	"CD96"	"Homo sapiens (Human)"	585
+"P70380"	"IL18_MOUSE"	"Interleukin-18 (IL-18) (Interferon gamma-inducing factor) (IFN-gamma-inducing factor) (Interleukin-1 gamma) (IL-1 gamma)"	"Il18 Igif"	"Mus musculus (Mouse)"	192
+"Q9Y6K9"	"NEMO_HUMAN"	"NF-kappa-B essential modulator (NEMO) (FIP-3) (IkB kinase-associated protein 1) (IKKAP1) (Inhibitor of nuclear factor kappa-B kinase subunit gamma) (I-kappa-B kinase subunit gamma) (IKK-gamma) (IKKG) (IkB kinase subunit gamma) (NF-kappa-B essential modifier)"	"IKBKG FIP3 NEMO"	"Homo sapiens (Human)"	419
+"Q6NZQ8"	"MARH1_MOUSE"	"E3 ubiquitin-protein ligase MARCHF1 (EC 2.3.2.27) (Membrane-associated RING finger protein 1) (Membrane-associated RING-CH protein I) (MARCH-I) (RING-type E3 ubiquitin transferase MARCHF1)"	"Marchf1 March1"	"Mus musculus (Mouse)"	289
+"P01658"	"KV3A6_MOUSE"	"Ig kappa chain V-III region MOPC 321"	""	"Mus musculus (Mouse)"	132
+"O35182"	"SMAD6_MOUSE"	"Mothers against decapentaplegic homolog 6 (MAD homolog 6) (Mothers against DPP homolog 6) (Mad homolog 7) (SMAD family member 6) (SMAD 6) (Smad6)"	"Smad6 Madh6 Madh7 Msmad6"	"Mus musculus (Mouse)"	495
+"P02794"	"FRIH_HUMAN"	"Ferritin heavy chain (Ferritin H subunit) (EC 1.16.3.1) (Cell proliferation-inducing gene 15 protein) [Cleaved into: Ferritin heavy chain, N-terminally processed]"	"FTH1 FTH FTHL6 OK/SW-cl.84 PIG15"	"Homo sapiens (Human)"	183
+"O00574"	"CXCR6_HUMAN"	"C-X-C chemokine receptor type 6 (CXC-R6) (CXCR-6) (CDw186) (G-protein coupled receptor STRL33) (G-protein coupled receptor bonzo) (CD antigen CD186)"	"CXCR6 BONZO STRL33 TYMSTR"	"Homo sapiens (Human)"	342
+"Q03167"	"TGBR3_HUMAN"	"Transforming growth factor beta receptor type 3 (TGF-beta receptor type 3) (TGFR-3) (Betaglycan) (Transforming growth factor beta receptor III) (TGF-beta receptor type III)"	"TGFBR3"	"Homo sapiens (Human)"	851
+"Q9EP73"	"PD1L1_MOUSE"	"Programmed cell death 1 ligand 1 (PD-L1) (PDCD1 ligand 1) (Programmed death ligand 1) (B7 homolog 1) (B7-H1) (CD antigen CD274)"	"Cd274 B7h1 Pdcd1l1 Pdcd1lg1 Pdl1"	"Mus musculus (Mouse)"	290
+"O15117"	"FYB1_HUMAN"	"FYN-binding protein 1 (Adhesion and degranulation promoting adaptor protein) (ADAP) (FYB-120/130) (p120/p130) (FYN-T-binding protein) (SLAP-130) (SLP-76-associated phosphoprotein)"	"FYB1 FYB SLAP130"	"Homo sapiens (Human)"	783
+"P20036"	"DPA1_HUMAN"	"HLA class II histocompatibility antigen, DP alpha 1 chain (DP(W3)) (DP(W4)) (HLA-SB alpha chain) (MHC class II DP3-alpha) (MHC class II DPA1)"	"HLA-DPA1 HLA-DP1A HLASB"	"Homo sapiens (Human)"	260
+"Q92956"	"TNR14_HUMAN"	"Tumor necrosis factor receptor superfamily member 14 (Herpes virus entry mediator A) (Herpesvirus entry mediator A) (HveA) (Tumor necrosis factor receptor-like 2) (TR2) (CD antigen CD270)"	"TNFRSF14 HVEA HVEM UNQ329/PRO509"	"Homo sapiens (Human)"	283
+"P16391"	"HA12_RAT"	"RT1 class I histocompatibility antigen, AA alpha chain"	""	"Rattus norvegicus (Rat)"	371
+"Q9NZQ7"	"PD1L1_HUMAN"	"Programmed cell death 1 ligand 1 (PD-L1) (PDCD1 ligand 1) (Programmed death ligand 1) (hPD-L1) (B7 homolog 1) (B7-H1) (CD antigen CD274)"	"CD274 B7H1 PDCD1L1 PDCD1LG1 PDL1"	"Homo sapiens (Human)"	290
+"Q64610"	"ENPP2_RAT"	"Ectonucleotide pyrophosphatase/phosphodiesterase family member 2 (E-NPP 2) (EC 3.1.4.39) (Autotaxin) (Extracellular lysophospholipase D) (LysoPLD)"	"Enpp2 Atx Npps2"	"Rattus norvegicus (Rat)"	887
+"Q04900"	"MUC24_HUMAN"	"Sialomucin core protein 24 (MUC-24) (Endolyn) (Multi-glycosylated core protein 24) (MGC-24) (MGC-24v) (CD antigen CD164)"	"CD164"	"Homo sapiens (Human)"	197
+"P20023"	"CR2_HUMAN"	"Complement receptor type 2 (Cr2) (Complement C3d receptor) (Epstein-Barr virus receptor) (EBV receptor) (CD antigen CD21)"	"CR2 C3DR"	"Homo sapiens (Human)"	1033
+"Q95029"	"CATL_DROME"	"Cathepsin L (EC 3.4.22.15) (Cysteine proteinase 1) [Cleaved into: Cathepsin L heavy chain; Cathepsin L light chain]"	"Cp1 fs(2)50Ca CG6692"	"Drosophila melanogaster (Fruit fly)"	371
+"P31995"	"FCG2C_HUMAN"	"Low affinity immunoglobulin gamma Fc region receptor II-c (IgG Fc receptor II-c) (CDw32) (Fc-gamma RII-c) (Fc-gamma-RIIc) (FcRII-c) (CD antigen CD32)"	"FCGR2C CD32 FCG2 IGFR2"	"Homo sapiens (Human)"	323
+"Q9Y275"	"TN13B_HUMAN"	"Tumor necrosis factor ligand superfamily member 13B (B lymphocyte stimulator) (BLyS) (B-cell-activating factor) (BAFF) (Dendritic cell-derived TNF-like molecule) (TNF- and APOL-related leukocyte expressed ligand 1) (TALL-1) (CD antigen CD257) [Cleaved into: Tumor necrosis factor ligand superfamily member 13b, membrane form; Tumor necrosis factor ligand superfamily member 13b, soluble form]"	"TNFSF13B BAFF BLYS TALL1 TNFSF20 ZTNF4 UNQ401/PRO738"	"Homo sapiens (Human)"	285
+"P16646"	"PMP22_MOUSE"	"Peripheral myelin protein 22 (PMP-22) (Growth arrest-specific protein 3) (GAS-3)"	"Pmp22 Gas-3 Gas3 Pmp-22"	"Mus musculus (Mouse)"	161
+"O70479"	"BACD2_MOUSE"	"BTB/POZ domain-containing adapter for CUL3-mediated RhoA degradation protein 2 (BTB/POZ domain-containing protein TNFAIP1) (Tumor necrosis factor, alpha-induced protein 1, endothelial)"	"Tnfaip1 Edp1"	"Mus musculus (Mouse)"	316
+"P15248"	"IL9_HUMAN"	"Interleukin-9 (IL-9) (Cytokine P40) (T-cell growth factor P40)"	"IL9"	"Homo sapiens (Human)"	144
+"P01899"	"HA11_MOUSE"	"H-2 class I histocompatibility antigen, D-B alpha chain (H-2D(B))"	"H2-D1"	"Mus musculus (Mouse)"	362
+"P58681"	"TLR7_MOUSE"	"Toll-like receptor 7"	"Tlr7"	"Mus musculus (Mouse)"	1050
+"P30385"	"1C02_GORGO"	"Class I histocompatibility antigen, Gogo-C*0201 alpha chain"	""	"Gorilla gorilla gorilla (Western lowland gorilla)"	366
+"P01635"	"KV5A3_MOUSE"	"Ig kappa chain V-V region K2 (Fragment)"	""	"Mus musculus (Mouse)"	115
+"P41597"	"CCR2_HUMAN"	"C-C chemokine receptor type 2 (C-C CKR-2) (CC-CKR-2) (CCR-2) (CCR2) (Monocyte chemoattractant protein 1 receptor) (MCP-1-R) (CD antigen CD192)"	"CCR2 CMKBR2"	"Homo sapiens (Human)"	374
+"P01597"	"KV139_HUMAN"	"Immunoglobulin kappa variable 1-39 (Ig kappa chain V-I region DEE) (Ig kappa chain V-I region Hau) (Ig kappa chain V-I region Mev) (Ig kappa chain V-I region OU) (Ig kappa chain V-I region Walker)"	"IGKV1-39"	"Homo sapiens (Human)"	117
+"P32246"	"CCR1_HUMAN"	"C-C chemokine receptor type 1 (C-C CKR-1) (CC-CKR-1) (CCR-1) (CCR1) (HM145) (LD78 receptor) (Macrophage inflammatory protein 1-alpha receptor) (MIP-1alpha-R) (RANTES-R) (CD antigen CD191)"	"CCR1 CMKBR1 CMKR1 SCYAR1"	"Homo sapiens (Human)"	355
+"P04940"	"KV6A6_MOUSE"	"Ig kappa chain V-VI region NQ2-17.4.1"	""	"Mus musculus (Mouse)"	107
+"P01582"	"IL1A_MOUSE"	"Interleukin-1 alpha (IL-1 alpha)"	"Il1a"	"Mus musculus (Mouse)"	270
+"Q13822"	"ENPP2_HUMAN"	"Ectonucleotide pyrophosphatase/phosphodiesterase family member 2 (E-NPP 2) (EC 3.1.4.39) (Autotaxin) (Extracellular lysophospholipase D) (LysoPLD)"	"ENPP2 ATX PDNP2"	"Homo sapiens (Human)"	863
+"P40259"	"CD79B_HUMAN"	"B-cell antigen receptor complex-associated protein beta chain (B-cell-specific glycoprotein B29) (Ig-beta) (Immunoglobulin-associated B29 protein) (CD antigen CD79b)"	"CD79B B29 IGB"	"Homo sapiens (Human)"	229
+"Q9Y255"	"PRLD1_HUMAN"	"PRELI domain-containing protein 1, mitochondrial (25 kDa protein of relevant evolutionary and lymphoid interest) (Px19-like protein)"	"PRELID1 PRELI CGI-106 SBBI12"	"Homo sapiens (Human)"	219
+"A0A075B6H9"	"LV469_HUMAN"	"Immunoglobulin lambda variable 4-69"	"IGLV4-69"	"Homo sapiens (Human)"	119
+"P25445"	"TNR6_HUMAN"	"Tumor necrosis factor receptor superfamily member 6 (Apo-1 antigen) (Apoptosis-mediating surface antigen FAS) (FASLG receptor) (CD antigen CD95)"	"FAS APT1 FAS1 TNFRSF6"	"Homo sapiens (Human)"	335
+"P61073"	"CXCR4_HUMAN"	"C-X-C chemokine receptor type 4 (CXC-R4) (CXCR-4) (FB22) (Fusin) (HM89) (LCR1) (Leukocyte-derived seven transmembrane domain receptor) (LESTR) (Lipopolysaccharide-associated protein 3) (LAP-3) (LPS-associated protein 3) (NPYRL) (Stromal cell-derived factor 1 receptor) (SDF-1 receptor) (CD antigen CD184)"	"CXCR4"	"Homo sapiens (Human)"	352
+"Q9Y5P4"	"CERT_HUMAN"	"Ceramide transfer protein (hCERT) (Collagen type IV alpha-3-binding protein) (Goodpasture antigen-binding protein) (GPBP) (START domain-containing protein 11) (StARD11) (StAR-related lipid transfer protein 11)"	"CERT1 CERT COL4A3BP STARD11"	"Homo sapiens (Human)"	624
+"P03986"	"TRGC2_HUMAN"	"T cell receptor gamma constant 2"	"TRGC2 TCRGC2"	"Homo sapiens (Human)"	189
+"O15111"	"IKKA_HUMAN"	"Inhibitor of nuclear factor kappa-B kinase subunit alpha (I-kappa-B kinase alpha) (IKK-A) (IKK-alpha) (IkBKA) (IkappaB kinase) (EC 2.7.11.10) (Conserved helix-loop-helix ubiquitous kinase) (I-kappa-B kinase 1) (IKK1) (Nuclear factor NF-kappa-B inhibitor kinase alpha) (NFKBIKA) (Transcription factor 16) (TCF-16)"	"CHUK IKKA TCF16"	"Homo sapiens (Human)"	745
+"O75569"	"PRKRA_HUMAN"	"Interferon-inducible double-stranded RNA-dependent protein kinase activator A (PKR-associated protein X) (PKR-associating protein X) (Protein activator of the interferon-induced protein kinase) (Protein kinase, interferon-inducible double-stranded RNA-dependent activator)"	"PRKRA PACT RAX HSD-14 HSD14"	"Homo sapiens (Human)"	313
+"P78556"	"CCL20_HUMAN"	"C-C motif chemokine 20 (Beta-chemokine exodus-1) (CC chemokine LARC) (Liver and activation-regulated chemokine) (Macrophage inflammatory protein 3 alpha) (MIP-3-alpha) (Small-inducible cytokine A20) [Cleaved into: CCL20(1-67); CCL20(1-64); CCL20(2-70)]"	"CCL20 LARC MIP3A SCYA20"	"Homo sapiens (Human)"	96
+"P56485"	"ACKR3_MOUSE"	"Atypical chemokine receptor 3 (C-X-C chemokine receptor type 7) (CXC-R7) (CXCR-7) (Chemokine orphan receptor 1) (G-protein coupled receptor RDC1 homolog) (RDC-1)"	"Ackr3 Cmkor1 Cxcr7 Rdc1"	"Mus musculus (Mouse)"	362
+"Q17DK2"	"NAA25_AEDAE"	"Phagocyte signaling-impaired protein (N-terminal acetyltransferase B complex subunit MDM20 homolog) (N-terminal acetyltransferase B complex subunit NAA25 homolog)"	"psidin AAEL004142"	"Aedes aegypti (Yellowfever mosquito) (Culex aegypti)"	940
+"O08750"	"NFIL3_MOUSE"	"Nuclear factor interleukin-3-regulated protein (E4 promoter-binding protein 4) (Embryo implantation-related NFIL3/E4BP4-like transcription factor)"	"Nfil3 E4bp4"	"Mus musculus (Mouse)"	462
+"Q9Y5Y4"	"PD2R2_HUMAN"	"Prostaglandin D2 receptor 2 (Chemoattractant receptor-homologous molecule expressed on Th2 cells) (G-protein coupled receptor 44) (CD antigen CD294)"	"PTGDR2 CRTH2 DL1R GPR44"	"Homo sapiens (Human)"	395
+"P43489"	"TNR4_HUMAN"	"Tumor necrosis factor receptor superfamily member 4 (ACT35 antigen) (OX40L receptor) (TAX transcriptionally-activated glycoprotein 1 receptor) (CD antigen CD134)"	"TNFRSF4 TXGP1L"	"Homo sapiens (Human)"	277
+"P01633"	"KV5A1_MOUSE"	"Ig kappa chain V19-17 (Ig kappa chain V-V region MPC11)"	"Igk-V19-17"	"Mus musculus (Mouse)"	149
+"P01854"	"IGHE_HUMAN"	"Immunoglobulin heavy constant epsilon (Ig epsilon chain C region) (Ig epsilon chain C region ND)"	"IGHE"	"Homo sapiens (Human)"	428
+"Q08334"	"I10R2_HUMAN"	"Interleukin-10 receptor subunit beta (IL-10 receptor subunit beta) (IL-10R subunit beta) (IL-10RB) (Cytokine receptor class-II member 4) (Cytokine receptor family 2 member 4) (CRF2-4) (Interleukin-10 receptor subunit 2) (IL-10R subunit 2) (IL-10R2) (CD antigen CDw210b)"	"IL10RB CRFB4 D21S58 D21S66"	"Homo sapiens (Human)"	325
+"O54907"	"TNF12_MOUSE"	"Tumor necrosis factor ligand superfamily member 12 (TNF-related weak inducer of apoptosis) (TWEAK) [Cleaved into: Tumor necrosis factor ligand superfamily member 12, membrane form; Tumor necrosis factor ligand superfamily member 12, secreted form]"	"Tnfsf12"	"Mus musculus (Mouse)"	249
+"P10966"	"CD8B_HUMAN"	"T-cell surface glycoprotein CD8 beta chain (CD antigen CD8b)"	"CD8B CD8B1"	"Homo sapiens (Human)"	210
+"P01715"	"LV301_HUMAN"	"Immunoglobulin lambda variable 3-1 (Ig lambda chain V-IV region Bau) (Ig lambda chain V-IV region MOL) (Ig lambda chain V-IV region X)"	"IGLV3-1"	"Homo sapiens (Human)"	115
+"P01897"	"HA1L_MOUSE"	"H-2 class I histocompatibility antigen, L-D alpha chain"	"H2-L"	"Mus musculus (Mouse)"	362
+"Q9Y3Z3"	"SAMH1_HUMAN"	"Deoxynucleoside triphosphate triphosphohydrolase SAMHD1 (dNTPase) (EC 3.1.5.-) (Dendritic cell-derived IFNG-induced protein) (DCIP) (Monocyte protein 5) (MOP-5) (SAM domain and HD domain-containing protein 1) (hSAMHD1)"	"SAMHD1 MOP5"	"Homo sapiens (Human)"	626
+"Q9BXR5"	"TLR10_HUMAN"	"Toll-like receptor 10 (EC 3.2.2.6) (CD antigen CD290)"	"TLR10 UNQ315/PRO358"	"Homo sapiens (Human)"	811
+"Q3TTA7"	"CBLB_MOUSE"	"E3 ubiquitin-protein ligase CBL-B (EC 2.3.2.27) (Casitas B-lineage lymphoma proto-oncogene b) (RING-type E3 ubiquitin transferase CBL-B) (SH3-binding protein CBL-B) (Signal transduction protein CBL-B)"	"Cblb"	"Mus musculus (Mouse)"	982
+"P01703"	"LV140_HUMAN"	"Immunoglobulin lambda variable 1-40 (Ig lambda chain V-I region NEWM)"	"IGLV1-40"	"Homo sapiens (Human)"	118
+"P01730"	"CD4_HUMAN"	"T-cell surface glycoprotein CD4 (T-cell surface antigen T4/Leu-3) (CD antigen CD4)"	"CD4"	"Homo sapiens (Human)"	458
+"P13236"	"CCL4_HUMAN"	"C-C motif chemokine 4 (G-26 T-lymphocyte-secreted protein) (HC21) (Lymphocyte activation gene 1 protein) (LAG-1) (MIP-1-beta(1-69)) (Macrophage inflammatory protein 1-beta) (MIP-1-beta) (PAT 744) (Protein H400) (SIS-gamma) (Small-inducible cytokine A4) (T-cell activation protein 2) (ACT-2) [Cleaved into: MIP-1-beta(3-69)]"	"CCL4 LAG1 MIP1B SCYA4"	"Homo sapiens (Human)"	92
+"P17676"	"CEBPB_HUMAN"	"CCAAT/enhancer-binding protein beta (C/EBP beta) (Liver activator protein) (LAP) (Liver-enriched inhibitory protein) (LIP) (Nuclear factor NF-IL6) (Transcription factor 5) (TCF-5)"	"CEBPB TCF5 PP9092"	"Homo sapiens (Human)"	345
+"Q04683"	"CXCR5_MOUSE"	"C-X-C chemokine receptor type 5 (CXC-R5) (CXCR-5) (Burkitt lymphoma receptor 1 homolog) (CD antigen CD185)"	"Cxcr5 Blr1 Gpcr6"	"Mus musculus (Mouse)"	374
+"P53568"	"CEBPG_MOUSE"	"CCAAT/enhancer-binding protein gamma (C/EBP gamma) (Granulocyte colony-stimulating factor promoter element 1-binding protein) (GPE1-BP) (GPE1-binding protein) (Immunoglobulin enhancer-binding protein 1) (IG/EBP-1)"	"Cebpg"	"Mus musculus (Mouse)"	150
+"P04141"	"CSF2_HUMAN"	"Granulocyte-macrophage colony-stimulating factor (GM-CSF) (Colony-stimulating factor) (CSF) (Molgramostin) (Sargramostim)"	"CSF2 GMCSF"	"Homo sapiens (Human)"	144
+"P36894"	"BMR1A_HUMAN"	"Bone morphogenetic protein receptor type-1A (BMP type-1A receptor) (BMPR-1A) (EC 2.7.11.30) (Activin receptor-like kinase 3) (ALK-3) (Serine/threonine-protein kinase receptor R5) (SKR5) (CD antigen CD292)"	"BMPR1A ACVRLK3 ALK3"	"Homo sapiens (Human)"	532
+"P01638"	"KV5A6_MOUSE"	"Ig kappa chain V-V region L6 (Fragment)"	""	"Mus musculus (Mouse)"	115
+"Q02086"	"SP2_HUMAN"	"Transcription factor Sp2"	"SP2 KIAA0048"	"Homo sapiens (Human)"	613
+"P01594"	"KV133_HUMAN"	"Immunoglobulin kappa variable 1-33 (Ig kappa chain V-I region AU) (Ig kappa chain V-I region Ka)"	"IGKV1-33"	"Homo sapiens (Human)"	117
+"P01700"	"LV147_HUMAN"	"Immunoglobulin lambda variable 1-47 (Ig lambda chain V-I region HA) (Ig lambda chain V-I region WAH)"	"IGLV1-47"	"Homo sapiens (Human)"	117
+"Q01629"	"IFM2_HUMAN"	"Interferon-induced transmembrane protein 2 (Dispanin subfamily A member 2c) (DSPA2c) (Interferon-inducible protein 1-8D)"	"IFITM2"	"Homo sapiens (Human)"	132
+"Q9NR96"	"TLR9_HUMAN"	"Toll-like receptor 9 (CD antigen CD289)"	"TLR9 UNQ5798/PRO19605"	"Homo sapiens (Human)"	1032
+"O43561"	"LAT_HUMAN"	"Linker for activation of T-cells family member 1 (36 kDa phospho-tyrosine adapter protein) (pp36) (p36-38)"	"LAT"	"Homo sapiens (Human)"	262
+"Q6TMK4"	"POXA_DICDI"	"Peroxinectin A (EC 1.11.1.7)"	"poxA DDB_G0277275"	"Dictyostelium discoideum (Slime mold)"	531
+"P42081"	"CD86_HUMAN"	"T-lymphocyte activation antigen CD86 (Activation B7-2 antigen) (B70) (BU63) (CTLA-4 counter-receptor B7.2) (FUN-1) (CD antigen CD86)"	"CD86 CD28LG2"	"Homo sapiens (Human)"	329
+"P01680"	"KV4A1_MOUSE"	"Ig kappa chain V-IV region S107B"	""	"Mus musculus (Mouse)"	129
+"P05113"	"IL5_HUMAN"	"Interleukin-5 (IL-5) (B-cell differentiation factor I) (Eosinophil differentiation factor) (T-cell replacing factor) (TRF)"	"IL5"	"Homo sapiens (Human)"	134
+"P47774"	"CCR7_MOUSE"	"C-C chemokine receptor type 7 (C-C CKR-7) (CC-CKR-7) (CCR-7) (Epstein-Barr virus-induced G-protein coupled receptor 1) (EBI1) (EBV-induced G-protein coupled receptor 1) (MIP-3 beta receptor) (CD antigen CD197)"	"Ccr7 Cmkbr7 Ebi1 Ebi1h"	"Mus musculus (Mouse)"	378
+"P05112"	"IL4_HUMAN"	"Interleukin-4 (IL-4) (B-cell stimulatory factor 1) (BSF-1) (Binetrakin) (Lymphocyte stimulatory factor 1) (Pitrakinra)"	"IL4"	"Homo sapiens (Human)"	153
+"P10145"	"IL8_HUMAN"	"Interleukin-8 (IL-8) (C-X-C motif chemokine 8) (Chemokine (C-X-C motif) ligand 8) (Emoctakin) (Granulocyte chemotactic protein 1) (GCP-1) (Monocyte-derived neutrophil chemotactic factor) (MDNCF) (Monocyte-derived neutrophil-activating peptide) (MONAP) (Neutrophil-activating protein 1) (NAP-1) (Protein 3-10C) (T-cell chemotactic factor) [Cleaved into: MDNCF-a (GCP/IL-8 protein IV) (IL8/NAP1 form I); Interleukin-8 ((Ala-IL-8)77) (GCP/IL-8 protein II) (IL-8(1-77)) (IL8/NAP1 form II) (MDNCF-b); IL-8(5-77); IL-8(6-77) ((Ser-IL-8)72) (GCP/IL-8 protein I) (IL8/NAP1 form III) (Lymphocyte-derived neutrophil-activating factor) (LYNAP) (MDNCF-c) (Neutrophil-activating factor) (NAF); IL-8(7-77) (GCP/IL-8 protein V) (IL8/NAP1 form IV); IL-8(8-77) (GCP/IL-8 protein VI) (IL8/NAP1 form V); IL-8(9-77) (GCP/IL-8 protein III) (IL8/NAP1 form VI)]"	"CXCL8 IL8"	"Homo sapiens (Human)"	99
+"P49682"	"CXCR3_HUMAN"	"C-X-C chemokine receptor type 3 (CXC-R3) (CXCR-3) (CKR-L2) (G protein-coupled receptor 9) (Interferon-inducible protein 10 receptor) (IP-10 receptor) (CD antigen CD183)"	"CXCR3 GPR9"	"Homo sapiens (Human)"	368
+"P56202"	"CATW_HUMAN"	"Cathepsin W (EC 3.4.22.-) (Lymphopain)"	"CTSW"	"Homo sapiens (Human)"	376
+"P60568"	"IL2_HUMAN"	"Interleukin-2 (IL-2) (T-cell growth factor) (TCGF) (Aldesleukin)"	"IL2"	"Homo sapiens (Human)"	153
+"P01825"	"HV459_HUMAN"	"Immunoglobulin heavy variable 4-59 (Ig heavy chain V-II region NEWM)"	"IGHV4-59"	"Homo sapiens (Human)"	116
+"Q53G44"	"IF44L_HUMAN"	"Interferon-induced protein 44-like"	"IFI44L C1orf29 GS3686"	"Homo sapiens (Human)"	452
+"P01589"	"IL2RA_HUMAN"	"Interleukin-2 receptor subunit alpha (IL-2 receptor subunit alpha) (IL-2-RA) (IL-2R subunit alpha) (IL2-RA) (TAC antigen) (p55) (CD antigen CD25)"	"IL2RA"	"Homo sapiens (Human)"	272
+"A0A0A6YYC5"	"TVA14_HUMAN"	"T cell receptor alpha variable 14/delta variable 4"	"TRAV14DV4"	"Homo sapiens (Human)"	116
+"P25774"	"CATS_HUMAN"	"Cathepsin S (EC 3.4.22.27)"	"CTSS"	"Homo sapiens (Human)"	331
+"P23083"	"HV102_HUMAN"	"Immunoglobulin heavy variable 1-2 (Ig heavy chain V-I region ND) (Ig heavy chain V-I region V35)"	"IGHV1-2"	"Homo sapiens (Human)"	117
+"P33076"	"C2TA_HUMAN"	"MHC class II transactivator (CIITA) (EC 2.3.1.-) (EC 2.7.11.1)"	"CIITA MHC2TA"	"Homo sapiens (Human)"	1130
+"O14625"	"CXL11_HUMAN"	"C-X-C motif chemokine 11 (Beta-R1) (H174) (Interferon gamma-inducible protein 9) (IP-9) (Interferon-inducible T-cell alpha chemoattractant) (I-TAC) (Small-inducible cytokine B11)"	"CXCL11 ITAC SCYB11 SCYB9B"	"Homo sapiens (Human)"	94
+"P43030"	"CXCL7_PIG"	"Platelet basic protein (PBP) (C-X-C motif chemokine 7) (Small-inducible cytokine B7)"	"PPBP CXCL7 SCYB7"	"Sus scrofa (Pig)"	119
+"P01906"	"DQA2_HUMAN"	"HLA class II histocompatibility antigen, DQ alpha 2 chain (DX alpha chain) (HLA class II histocompatibility antigen, DQ(6) alpha chain) (HLA-DQA1) (MHC class II DQA2)"	"HLA-DQA2 HLA-DXA"	"Homo sapiens (Human)"	255
+"P13725"	"ONCM_HUMAN"	"Oncostatin-M (OSM)"	"OSM"	"Homo sapiens (Human)"	252
+"P01726"	"LV1D_MOUSE"	"Ig lambda-1 chain V region H2020"	""	"Mus musculus (Mouse)"	129
+"Q9JJ00"	"PLS1_MOUSE"	"Phospholipid scramblase 1 (PL scramblase 1) (Ca(2+)-dependent phospholipid scramblase 1) (Mg(2+)-dependent nuclease) (EC 3.1.-.-) (Transplantability-associated protein 1) (NOR1) (TRA1)"	"Plscr1 Tra1b Tras1"	"Mus musculus (Mouse)"	328
+"P51685"	"CCR8_HUMAN"	"C-C chemokine receptor type 8 (C-C CKR-8) (CC-CKR-8) (CCR-8) (CC chemokine receptor CHEMR1) (CMKBRL2) (Chemokine receptor-like 1) (CKR-L1) (GPR-CY6) (GPRCY6) (TER1) (CD antigen CDw198)"	"CCR8 CKRL1 CMKBR8 CMKBRL2"	"Homo sapiens (Human)"	355
+"P55097"	"CATK_MOUSE"	"Cathepsin K (EC 3.4.22.38)"	"Ctsk"	"Mus musculus (Mouse)"	329
+"P22366"	"MYD88_MOUSE"	"Myeloid differentiation primary response protein MyD88"	"Myd88"	"Mus musculus (Mouse)"	296
+"P32249"	"GP183_HUMAN"	"G-protein coupled receptor 183 (Epstein-Barr virus-induced G-protein coupled receptor 2) (EBI2) (EBV-induced G-protein coupled receptor 2) (hEBI2)"	"GPR183 EBI2"	"Homo sapiens (Human)"	361
+"Q9JM10"	"TNFC_MARMO"	"Lymphotoxin-beta (LT-beta) (Tumor necrosis factor C) (TNF-C) (Tumor necrosis factor ligand superfamily member 3)"	"LTB TNFC TNFSF3"	"Marmota monax (Woodchuck)"	310
+"Q06265"	"EXOS9_HUMAN"	"Exosome complex component RRP45 (Autoantigen PM/Scl 1) (Exosome component 9) (P75 polymyositis-scleroderma overlap syndrome-associated autoantigen) (Polymyositis/scleroderma autoantigen 1) (Polymyositis/scleroderma autoantigen 75 kDa) (PM/Scl-75)"	"EXOSC9 PMSCL1"	"Homo sapiens (Human)"	439
+"P04433"	"KV311_HUMAN"	"Immunoglobulin kappa variable 3-11 (Ig kappa chain V-III region VG)"	"IGKV3-11"	"Homo sapiens (Human)"	115
+"Q8IYL9"	"PSYR_HUMAN"	"Psychosine receptor (G-protein coupled receptor 65) (T-cell death-associated gene 8 protein)"	"GPR65 TDAG8"	"Homo sapiens (Human)"	337
+"P01644"	"KV5AB_MOUSE"	"Ig kappa chain V-V region HP R16.7"	""	"Mus musculus (Mouse)"	108
+"P03979"	"TRGV3_HUMAN"	"T cell receptor gamma variable 3 (T-cell receptor gamma V-gamma-1.1 region)"	"TRGV3 TCRGV3"	"Homo sapiens (Human)"	118
+"Q9Z0D9"	"CX3C1_MOUSE"	"CX3C chemokine receptor 1 (C-X3-C CKR-1) (CX3CR1) (Fractalkine receptor)"	"Cx3cr1"	"Mus musculus (Mouse)"	354
+"A0A075B6S2"	"KVD29_HUMAN"	"Immunoglobulin kappa variable 2D-29"	"IGKV2D-29"	"Homo sapiens (Human)"	120
+"P01665"	"KV3AD_MOUSE"	"Ig kappa chain V-III region PC 7043"	""	"Mus musculus (Mouse)"	111
+"O62618"	"MK38A_DROME"	"Mitogen-activated protein kinase p38a (MAP kinase p38a) (MAPK p38a) (EC 2.7.11.24) (MAP kinase 14A) (p38 MAPK)"	"p38a Mpk2 CG5475"	"Drosophila melanogaster (Fruit fly)"	366
+"O54957"	"LAT_MOUSE"	"Linker for activation of T-cells family member 1 (36 kDa phospho-tyrosine adapter protein) (pp36) (p36-38)"	"Lat"	"Mus musculus (Mouse)"	242
+"O46414"	"FRIH_BOVIN"	"Ferritin heavy chain (Ferritin H subunit) (EC 1.16.3.1) [Cleaved into: Ferritin heavy chain, N-terminally processed]"	"FTH1 FTH"	"Bos taurus (Bovine)"	181
+"P01903"	"DRA_HUMAN"	"HLA class II histocompatibility antigen, DR alpha chain (MHC class II antigen DRA)"	"HLA-DRA HLA-DRA1"	"Homo sapiens (Human)"	254
+"D3ZZ07"	"CAT7_RAT"	"Cathepsin 7 (EC 3.4.22.-)"	"Cts7"	"Rattus norvegicus (Rat)"	331
+"Q99731"	"CCL19_HUMAN"	"C-C motif chemokine 19 (Beta-chemokine exodus-3) (CK beta-11) (Epstein-Barr virus-induced molecule 1 ligand chemokine) (EBI1 ligand chemokine) (ELC) (Macrophage inflammatory protein 3 beta) (MIP-3-beta) (Small-inducible cytokine A19)"	"CCL19 ELC MIP3B SCYA19"	"Homo sapiens (Human)"	98
+"Q9Y6W8"	"ICOS_HUMAN"	"Inducible T-cell costimulator (Activation-inducible lymphocyte immunomediatory molecule) (CD antigen CD278)"	"ICOS AILIM"	"Homo sapiens (Human)"	199
+"P01701"	"LV151_HUMAN"	"Immunoglobulin lambda variable 1-51 (Ig lambda chain V-I region BL2) (Ig lambda chain V-I region EPS) (Ig lambda chain V-I region NEW) (Ig lambda chain V-I region NIG-64)"	"IGLV1-51"	"Homo sapiens (Human)"	117
+"P06797"	"CATL1_MOUSE"	"Procathepsin L (EC 3.4.22.15) (Cathepsin L1) (Major excreted protein) (MEP) (p39 cysteine proteinase) [Cleaved into: Cathepsin L; Cathepsin L heavy chain; Cathepsin L light chain]"	"Ctsl Ctsl1"	"Mus musculus (Mouse)"	334
+"Q08116"	"RGS1_HUMAN"	"Regulator of G-protein signaling 1 (RGS1) (B-cell activation protein BL34) (Early response protein 1R20)"	"RGS1 1R20 BL34 IER1"	"Homo sapiens (Human)"	209
+"P32302"	"CXCR5_HUMAN"	"C-X-C chemokine receptor type 5 (CXC-R5) (CXCR-5) (Burkitt lymphoma receptor 1) (Monocyte-derived receptor 15) (MDR-15) (CD antigen CD185)"	"CXCR5 BLR1 MDR15"	"Homo sapiens (Human)"	372
+"P32248"	"CCR7_HUMAN"	"C-C chemokine receptor type 7 (C-C CKR-7) (CC-CKR-7) (CCR-7) (BLR2) (CDw197) (Epstein-Barr virus-induced G-protein coupled receptor 1) (EBI1) (EBV-induced G-protein coupled receptor 1) (MIP-3 beta receptor) (CD antigen CD197)"	"CCR7 CMKBR7 EBI1 EVI1"	"Homo sapiens (Human)"	378
+"P08637"	"FCG3A_HUMAN"	"Low affinity immunoglobulin gamma Fc region receptor III-A (CD16a antigen) (Fc-gamma RIII-alpha) (Fc-gamma RIII) (Fc-gamma RIIIa) (FcRIII) (FcRIIIa) (FcR-10) (IgG Fc receptor III-2) (CD antigen CD16a)"	"FCGR3A CD16A FCG3 FCGR3 IGFR3"	"Homo sapiens (Human)"	254
+"P06315"	"KV502_HUMAN"	"Immunoglobulin kappa variable 5-2 (Ig kappa chain V region EV15)"	"IGKV5-2"	"Homo sapiens (Human)"	115
+"P01732"	"CD8A_HUMAN"	"T-cell surface glycoprotein CD8 alpha chain (T-lymphocyte differentiation antigen T8/Leu-2) (CD antigen CD8a)"	"CD8A MAL"	"Homo sapiens (Human)"	235
+"P04437"	"TVA29_HUMAN"	"T cell receptor alpha variable 29/delta variable 5"	"TRAV29DV5"	"Homo sapiens (Human)"	119
+"P01591"	"IGJ_HUMAN"	"Immunoglobulin J chain (Joining chain of multimeric IgA and IgM)"	"JCHAIN IGCJ IGJ"	"Homo sapiens (Human)"	159
+"A0A075B6P5"	"KV228_HUMAN"	"Immunoglobulin kappa variable 2-28"	"IGKV2-28"	"Homo sapiens (Human)"	120
