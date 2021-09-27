@@ -171,13 +171,13 @@ for (i in 1:length(blast_filepaths)) {
     # Merge gene descriptions and immune genes by Accession ID
     gene_descriptions <- left_join(gene_names, go_descriptions, by = "Accession_ID")
     # Remove Entry.Name column, as it perfectly matches Species
-    gene_descriptions <- select(gene_descriptions, -)
-
+    gene_descriptions <- select(gene_descriptions, -c(Entry.name, Status))
+    # Remove all columns after the first 6 (all latter ones are specific GO terms)
+    gene_descriptions <- gene_descriptions[, 1:6]
     
     # Write to file
-    write.table(gene_names, file = paste0("../output/immune_genes/", transcriptomes[i], "/immune_gene_names.txt"),
-                row.names = FALSE,
-                sep = "\t")
+    write.csv(gene_descriptions, file = paste0("../output/immune_genes/", transcriptomes[i], "/immune_gene_names.csv"),
+                row.names = FALSE)
   }
   
   # Write table to file
