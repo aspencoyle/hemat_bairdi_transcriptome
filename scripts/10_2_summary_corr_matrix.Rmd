@@ -61,24 +61,123 @@ summ.dat <- select(summ.dat, -c(Crab, Uniq_ID, death, Timepoints))
 
 # Check class of each column
 str(summ.dat)
-# All are ints or numeric, can continue
 
-# Create correlation plot
-cor(summ.dat) %>%
+# Perform Shapiro-Wilk test on each column
+shapiro.test(summ.dat$Treatment)      # Fails (p = 0.037)
+shapiro.test(summ.dat$cPCR_positive)  # Fails (p = 1.6 x 10^-5)
+shapiro.test(summ.dat$qPCR_SQ_mean)   # Passes (p = 0.07)
+shapiro.test(summ.dat$cbaiv2.0_plasticity)    # Passes (p = 0.1)
+shapiro.test(summ.dat$cbaiv4.0_plasticity)    # Passes (p = 0.9)
+shapiro.test(summ.dat$hematv1.6_plasticity)   # Fails (p = 0.002)
+shapiro.test(summ.dat$cbaiv2.0_pctaligned)    # Passes (p = 0.1)
+shapiro.test(summ.dat$cbaiv4.0_pct_aligned)   # Passes (p = 0.2)
+shapiro.test(summ.dat$hematv1.6_pct_aligned)  # Passes (p = 0.3)
+shapiro.test(summ.dat$cbaiv2.0_transcripts)   # Passes (p = 0.08)
+shapiro.test(summ.dat$cbaiv4.0_transcripts)   # Passes (p = 0.9)
+shapiro.test(summ.dat$hematv1.6_transcripts)  # Fails (p = 0.01)
+shapiro.test(summ.dat$immune_transcripts_cbaiv2.0)  # Passes (p = 0.5)
+shapiro.test(summ.dat$immune_transcripts_cbaiv4.0)  # Passes (p = 0.7) 
+shapiro.test(summ.dat$immune_transcripts_hematv1.6) # Fails (p = 0.03) 
+shapiro.test(summ.dat$carapace_width)         # Passes (p = 0.06)
+shapiro.test(summ.dat$shell_cond)             # Fails (p = 1.7 x 10^-5)
+shapiro.test(summ.dat$chela_ht)               # Passes (p = 0.4)
+shapiro.test(summ.dat$imm_mature)             # Fails (p = 3.2 x 10^-7)
+```
+Alright, let's sum that up in a prettier way
+
+| Passes normality test                  | Fails normality test                    |
+|----------------------------------------|-----------------------------------------|
+| qPCR SQ mean                           | Treatment                               |
+| cbai v2.0 plasticity                   | cPCR positive                           |
+| cbai v4.0 plasticity                   | hemat v1.6 plasticity                   |
+| cbai v2.0 percent aligned              | hemat v1.6 number of transcripts        |
+| cbai v4.0 percent aligned              | hemat v1.6 number of immune transcripts |
+| hemat v1.6 percent aligned             | shell condition                         |
+| cbai v2.0 number of transcripts        | maturity                                |
+| cbai v4.0 number of transcripts        |                                         |
+| cbai v2.0 number of immune transcripts |                                         |
+| cbai v4.0 number of immune transcripts |                                         |
+| carapace width                         |                                         |
+| chela height                           |                                         |
+
+Looks like generally, our cbai metrics pass normality, while those for Hematodinium do not.
+
+Therefore, we're going to do the following:
+
+To compare variables that pass the Shapiro-Wilk test, we'll use the **Pearson correlation test**
+
+To compare variables that don't pass Shapiro-Wilk, we'll use the **Kendall rank correlation test**
+
+To compare variables that don't pass with those that do, we'll use the **Kendall rank correlation test** as well
+
+
+```{r}
+# Split variables into two tables
+norm.dat <- summ.dat %>%
+  select(c(qPCR_SQ_mean, cbaiv2.0_plasticity, cbaiv4.0_plasticity, cbaiv2.0_pctaligned, 
+           cbaiv4.0_pct_aligned, hematv1.6_pct_aligned, cbaiv2.0_transcripts, cbaiv4.0_transcripts,
+           immune_transcripts_cbaiv2.0, immune_transcripts_cbaiv4.0, carapace_width, chela_ht))
+nonnorm.dat <- summ.dat
+nonnorm.dat <- nonnorm.dat[, !summ.dat %in% norm.dat]
+
+#### NORMAL VARIABLES --------------------------------------------
+
+# Compare normal variables with Pearson correlation test
+cor(norm.dat, method = "pearson") %>%
   corrplot(tl.cex = .45)
-# Make it again, so we can save it as a .png
-path <- "../output/correlation/all_variables_corr_dot_plot.png"
+# Make again so we can save as .png
+path <- "../output/correlation/normal_vars_dot_plot.png"
 png(path)
-cor(summ.dat) %>%
+cor(norm.dat, method = "pearson") %>%
   corrplot(tl.cex = .45)
 dev.off()
 
 # Create chart of correlation
-chart.Correlation(summ.dat, histogram = F, pch = 5)
+chart.Correlation(norm.dat, histogram = F, pch = 5, method = "pearson")
+# Make it again so we can save it as a .png
+path <- "../output/correlation/normal_vars_corr_chart.png"
+png(path)
+chart.Correlation(norm.dat, histogram = F, pch = 8, method = "pearson")
+dev.off()
+
+#### NON-NORMAL VARIABLES --------------------------------------------
+
+# Compare normal variables with Kendall rank correlation test
+cor(nonnorm.dat, method = "kendall") %>%
+  corrplot(tl.cex = .45)
+# Make again so we can save as .png
+path <- "../output/correlation/non_normal_vars_dot_plot.png"
+png(path)
+cor(nonnorm.dat, method = "kendall") %>%
+  corrplot(tl.cex = .45)
+dev.off()
+
+# Create chart of correlation
+chart.Correlation(nonnorm.dat, histogram = F, pch = 5, method = "kendall")
+# Make it again so we can save it as a .png
+path <- "../output/correlation/non_normal_vars_corr_chart.png"
+png(path)
+chart.Correlation(nonnorm.dat, histogram = F, pch = 8, method = "kendall")
+dev.off()
+
+#### NORMAL AND NON-NORMAL VARIABLES
+
+# Compare variables with Kendall rank correlation test
+cor(summ.dat, method = "kendall") %>%
+  corrplot(tl.cex = .45)
+# Make it again, so we can save it as a .png
+path <- "../output/correlation/all_variables_corr_dot_plot.png"
+png(path)
+cor(summ.dat, method = "kendall") %>%
+  corrplot(tl.cex = .45)
+dev.off()
+
+# Create chart of correlation
+chart.Correlation(summ.dat, histogram = F, pch = 5, method = "kendall")
 # Make it again so we can save it as a .png
 path <- "../output/correlation/all_variables_corr_chart.png"
 png(path)
-chart.Correlation(summ.dat, histogram = F, pch = 8)
+chart.Correlation(summ.dat, histogram = F, pch = 8, method = "kendall")
 dev.off()
 
 
