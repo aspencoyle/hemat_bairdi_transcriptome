@@ -1,0 +1,5 @@
+"Accession_ID","Entry.name","Protein.names","Gene.names","Organism","Length"
+"P53634","CATC_HUMAN","Dipeptidyl peptidase 1 (EC 3.4.14.1) (Cathepsin C) (Cathepsin J) (Dipeptidyl peptidase I) (DPP-I) (DPPI) (Dipeptidyl transferase) [Cleaved into: Dipeptidyl peptidase 1 exclusion domain chain (Dipeptidyl peptidase I exclusion domain chain); Dipeptidyl peptidase 1 heavy chain (Dipeptidyl peptidase I heavy chain); Dipeptidyl peptidase 1 light chain (Dipeptidyl peptidase I light chain)]","CTSC CPPI","Homo sapiens (Human)",463
+"Q95029","CATL_DROME","Cathepsin L (EC 3.4.22.15) (Cysteine proteinase 1) [Cleaved into: Cathepsin L heavy chain; Cathepsin L light chain]","Cp1 fs(2)50Ca CG6692","Drosophila melanogaster (Fruit fly)",371
+"Q94503","CYSP6_DICDI","Cysteine proteinase 6 (EC 3.4.22.-)","cprF CP6 DDB_G0279185","Dictyostelium discoideum (Slime mold)",434
+"P09648","CATL1_CHICK","Procathepsin L (EC 3.4.22.15) (Cathepsin L1) [Cleaved into: Cathepsin L heavy chain; Cathepsin L light chain; Cathepsin L] (Fragments)","CTSL CTSL1","Gallus gallus (Chicken)",218

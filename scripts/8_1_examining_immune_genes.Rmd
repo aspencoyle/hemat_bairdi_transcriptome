@@ -178,6 +178,27 @@ for (i in 1:length(blast_filepaths)) {
     # Write to file
     write.csv(gene_descriptions, file = paste0("../output/immune_genes/", transcriptomes[i], "/immune_gene_names.csv"),
                 row.names = FALSE)
+    # Also want to do this for cbai_v4.0 and hemat_v1.6, but the formatting on these is a bit different
+  } else{
+    go_descriptions <- read.delim(file = "../data/all_uniprot_info_inc_GOterms.tab", sep = "\t")
+    go_descriptions <- rename(go_descriptions, "Accession_ID" = "Entry")
+    
+    # Drop the Transcript ID column from our immune genes table
+    gene_names <- select(immune_tab, -Transcript_ID)
+    gene_names <- unique(gene_names)
+    
+    # Merge gene descriptions and immune genes by Accession ID
+    gene_descriptions <- left_join(gene_names, go_descriptions, by = "Accession_ID")
+    
+    # Remove Status column, as it's identical for all
+    gene_descriptions <- select(gene_descriptions, -Status)
+
+    # Remove all columns after the first 6 (all latter ones are specific GO terms)
+    gene_descriptions <- gene_descriptions[, 1:6]
+    
+    # Write to file
+    write.csv(gene_descriptions, file = paste0("../output/immune_genes/", transcriptomes[i], "/immune_gene_names.csv"),
+              row.names = FALSE) 
   }
   
   # Write table to file
