@@ -895,7 +895,7 @@ full.plate.dat <- full.plate.dat %>%
 
 # Shell condition: Check just for consistent code use. Should be all 0-5, with nearly all 2-4
 table(full.plate.dat$Shell_Condition, useNA = "ifany")
-# Change the 9 to a NA. Likely entered as a -9, which means NA
+# Change the 9 to a NA. Almost certainly entered as a -9, which means NA in ADFG codes
 full.plate.dat <- full.plate.dat %>%
   mutate(Shell_Condition = na_if(Shell_Condition, "9"))
 # All good
@@ -1134,7 +1134,7 @@ full.plate.dat <- select(full.plate.dat, -Removed_Dead)
 table(full.plate.dat$Well_Num, useNA = "ifany")
 
 # Write plate data to file
-write.csv(full.dat, file = "../output/jensen_data/cleaned_data/relevant_sample_data.csv", row.names = FALSE)
+write.csv(full.plate.dat, file = "../output/jensen_data/cleaned_data/relevant_sample_data.csv", row.names = FALSE)
 
 ```
 # Conclusion

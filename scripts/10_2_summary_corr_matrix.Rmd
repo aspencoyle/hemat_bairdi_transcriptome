@@ -124,12 +124,12 @@ nonnorm.dat <- nonnorm.dat[, !summ.dat %in% norm.dat]
 
 # Compare normal variables with Pearson correlation test
 cor(norm.dat, method = "pearson") %>%
-  corrplot(tl.cex = .45)
+  corrplot(tl.cex = .7)
 # Make again so we can save as .png
 path <- "../output/correlation/normal_vars_dot_plot.png"
 png(path)
 cor(norm.dat, method = "pearson") %>%
-  corrplot(tl.cex = .45)
+  corrplot(tl.cex = .7)
 dev.off()
 
 # Create chart of correlation
@@ -144,12 +144,12 @@ dev.off()
 
 # Compare normal variables with Kendall rank correlation test
 cor(nonnorm.dat, method = "kendall") %>%
-  corrplot(tl.cex = .45)
+  corrplot(tl.cex = .7)
 # Make again so we can save as .png
 path <- "../output/correlation/non_normal_vars_dot_plot.png"
 png(path)
 cor(nonnorm.dat, method = "kendall") %>%
-  corrplot(tl.cex = .45)
+  corrplot(tl.cex = .7)
 dev.off()
 
 # Create chart of correlation
@@ -164,12 +164,12 @@ dev.off()
 
 # Compare variables with Kendall rank correlation test
 cor(summ.dat, method = "kendall") %>%
-  corrplot(tl.cex = .45)
+  corrplot(tl.cex = .7)
 # Make it again, so we can save it as a .png
 path <- "../output/correlation/all_variables_corr_dot_plot.png"
 png(path)
 cor(summ.dat, method = "kendall") %>%
-  corrplot(tl.cex = .45)
+  corrplot(tl.cex = .7)
 dev.off()
 
 # Create chart of correlation
@@ -181,7 +181,6 @@ chart.Correlation(summ.dat, histogram = F, pch = 8, method = "kendall")
 dev.off()
 
 
-table.Correlation(summ.dat)
 
 ```
 
