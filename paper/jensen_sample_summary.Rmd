@@ -1,0 +1,29 @@
+---
+title: "sample_summary"
+author: "Aidan Coyle"
+date: "11/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Sample Summary
+
+### Introduction
+
+This is a summary of the samples that Pam Jensen shipped to the Roberts Lab upon her retirement from NOAA. It is a close approximation, rather than an exact summary, as the source of this summary - Pam's data tables - was not cross-referenced with the physical samples (with ~30,000 samples, this would be quite time-consuming). 
+
+Data is sourced from the merged and cleaned Jensen data files created in ../scripts/9_2_merging_jensen_files.Rmd. For the original data files, along with the cleaning process, reference that script.
+
+### Sample Storage
+
+The majority are hemolymph samples in deep well plates, with a minority of tissue samples stored in tubes. All are kept in 100% EtOH.
+
+```{r}
+crabdat <- read.csv("../output/jensen_data/cleaned_data/relevant_sample_data.csv")
+
+filt_crabdat <- 
+```
+

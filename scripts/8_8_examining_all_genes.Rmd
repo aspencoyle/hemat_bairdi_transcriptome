@@ -1,0 +1,289 @@
+---
+title: "8_8_examining_all_genes"
+author: "Aidan Coyle"
+date: "11/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+The purpose of this script is to specifically examine all expressed genes aligned to the hemat_v1.6 transcriptome
+
+We have files of transcript IDs along with their Accession IDs, and also have files of Accession IDs with their GO terms. We will take the latter file join with the first file. This will produce a table of transcript IDs associated with immune response-related GO terms.
+
+First, we'll load all required libraries
+```{r libraries, message = FALSE, warning=FALSE}
+# Add all required libraries here
+list.of.packages <- "tidyverse"
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+```
+
+Now, we'll set all our inputs. We have three BLAST files and three GO files. Not all BLAST files follow the same directory setup, so here's a quick explainer.
+
+## BLAST files
+
+#### cbai_transcriptomev2.0
+
+Kept in ../data/cbai_diamond_blastx_table_transcriptomev2.0.txt
+
+File directly available at https://gannet.fish.washington.edu/Atumefaciens/20200508_cbai_diamond_blastx_transcriptome-v2.0/20200507.C_bairdi.Trinity.blastx.outfmt6
+
+Additional details available at https://robertslab.github.io/resources/Genomic-Resources/
+
+#### cbai_transcriptomev4.0
+
+Kept in ../output/BLASTs/uniprot_swissprot/cbai4.0_blastxres
+
+File created with scripts/4_0_cbai4.0_indexcreation
+
+#### hemat_transcriptomev1.6
+
+Kept in ../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres
+
+File created with scripts/3_0_hemat1.6_indexcreation
+
+## GO files
+
+All were created as part of scripts/x_3_uniprot_to_GO (x = 1 for cbai_transcriptomev2.0, x = 3 for hemat_transcriptomev1.6, x = 4 for cbai_transcriptomev4.0)
+
+## Setting up inputs
+
+```{r}
+# Paths to BLAST tables
+blast_filepaths <- c("../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",  # For cbai_transcriptomev2.0
+                     "../output/BLASTs/uniprot_swissprot/cbai4.0_blastxres.tab",     # For cbai_transcriptomev4.0
+                     "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab")    # For hemat_transcriptomev1.6
+
+# Vector of our transcriptomes. Will be used in assembling file paths for GO files and our output files. 
+# Make sure these are in the same order as the above BLAST filepaths.
+transcriptomes <- c("cbai_transcriptomev2.0", "cbai_transcriptomev4.0", "hemat_transcriptomev1.6")
+
+
+# Previously, we used all GO terms that popped up when you search "immune" on amigo.geneontology.org
+# To keep things simpler and more straightforward, we'll now just use the GO term for immune response, GO:0006955
+
+immune_terms <- "GO:0006955"
+
+# Create vector of all GO terms associated with immune response
+# GO terms from amigo.geneontology.org
+# immune_terms <- c("GO:0006955",    # Immune Response
+#                  "GO:0006959",    # Humoral Immune Response
+#                  "GO:1905036",    # Positive regulation of antifungal innate immune response
+#                  "GO:1905035",    # Negative regulation of antifungal innate immune response
+#                  "GO:1905675",    # Negative regulation of adaptive immune memory response
+#                  "GO:1905674",    # Regulation of adaptive immune memory response
+#                 "GO:1905679",    # Positive regulation of adaptive immune effector response
+#                  "GO:1905678",    # Negative regulation of adaptive immune effector response
+#                  "GO:1905677",    # Regulation of adaptive immune effector response
+#                  "GO:1905676")    # Positive regulation of adaptive immune memory response
+
+
+```
+
+In each iteration of the for loop, we'll read in our BLAST and GO files, clean them up, merge, and then write the output to a file
+
+```{r}
+for (i in 1:length(blast_filepaths)) {
+  #### BLAST file
+  
+  # Read in BLAST file
+  blast_tab <- read.delim(blast_filepaths[i], header = FALSE, sep = "\t")
+  
+  # Columns have no names - add names for first two columns
+  colnames(blast_tab)[1:2] <- c("Transcript_ID", "Gene_ID")
+  
+  # Remove all but the first two columns so we just have Transcript ID and Gene ID
+  blast_tab <- blast_tab %>%
+    select(Transcript_ID, Gene_ID)
+  
+  # If pipes in Gene ID column, separate to get accession ID and remove unnecessary info
+  gene_ids <- dplyr::pull(blast_tab, Gene_ID)
+  if(any(grepl("|", gene_ids, fixed = TRUE))){
+    # Separate into different columns
+    blast_tab <- separate(data = blast_tab, col = Gene_ID,
+                          into = c("sp", "Accession_ID", "species"), 
+                          sep = "\\|")
+    # Remove irrelevant "sp" column
+    blast_tab <- select(blast_tab, -sp)
+    # Otherwise, rename Gene ID to Accession ID so we know we got past this point
+  } else {
+    blast_tab <- blast_tab %>%
+      dplyr::rename(Accession_ID = Gene_ID)
+    
+  }
+  
+  #### GO file
+  
+  # Read in GO terms file
+  go_tab <- read.delim(paste0("../output/accession_n_GOids/", transcriptomes[i], "/allgenes_IDs/all_indiv_libraries_All_GOIDs.txt"),
+                       header = FALSE, sep = "\t", na.strings = c("", "NA"))
+  
+  # Give columns names
+  colnames(go_tab) <- c("Accession_ID", "GO_terms")
+  
+  # Remove lines without GO terms
+  go_tab <- na.omit(go_tab, cols = GO_terms)
+  
+  
+  #### Merge genes table with BLAST table
+  
+  # Use left join to merge
+  genes_tab <- left_join(go_tab, blast_tab, by = "Accession_ID")
+  
+  # Remove GO terms column
+  genes_tab <- genes_tab %>%
+    select(-GO_terms)
+  
+  # Reorder columns so Transcript ID is on left. This matches most other tables with Transcript ID
+  genes_tab <- genes_tab %>%
+    relocate(Transcript_ID)
+  
+  # Remove duplicate transcript IDs
+  genes_tab <- unique(genes_tab)
+  
+  # One intermediate step - we want to create a file of the unique genes with names. 
+  # This will only apply to cbai_v2.0, as it's the only one that had species and gene name built into the table
+  if("species" %in% colnames(genes_tab)) {
+    # Read in table of detailed gene descriptions
+    go_descriptions <- read.delim(file = "../data/all_uniprot_info_inc_GOterms.tab", sep = "\t")
+    go_descriptions <- rename(go_descriptions, "Accession_ID" = "Entry")
+    
+    # Drop the Transcript ID column from our immune genes table
+    gene_names <- select(genes_tab, -Transcript_ID)
+    gene_names <- unique(gene_names)
+    
+    # Merge gene descriptions and immune genes by Accession ID
+    gene_descriptions <- left_join(gene_names, go_descriptions, by = "Accession_ID")
+    # Remove Entry.Name column, as it perfectly matches Species
+    gene_descriptions <- select(gene_descriptions, -c(Entry.name, Status))
+    # Remove all columns after the first 6 (all latter ones are specific GO terms)
+    gene_descriptions <- gene_descriptions[, 1:6]
+    
+    # Write to file
+    write.csv(gene_descriptions, file = paste0("../output/all_genes/", transcriptomes[i], "/all_gene_names.csv"),
+                row.names = FALSE)
+    # Also want to do this for cbai_v4.0 and hemat_v1.6, but the formatting on these is a bit different
+  } else{
+    go_descriptions <- read.delim(file = "../data/all_uniprot_info_inc_GOterms.tab", sep = "\t")
+    go_descriptions <- rename(go_descriptions, "Accession_ID" = "Entry")
+    
+    # Drop the Transcript ID column from our immune genes table
+    gene_names <- select(genes_tab, -Transcript_ID)
+    gene_names <- unique(gene_names)
+    
+    # Merge gene descriptions and immune genes by Accession ID
+    gene_descriptions <- left_join(gene_names, go_descriptions, by = "Accession_ID")
+    
+    # Remove Status column, as it's identical for all
+    gene_descriptions <- select(gene_descriptions, -Status)
+
+    # Remove all columns after the first 6 (all latter ones are specific GO terms)
+    gene_descriptions <- gene_descriptions[, 1:6]
+    
+    # Write to file
+    write.csv(gene_descriptions, file = paste0("../output/all_genes/", transcriptomes[i], "/all_gene_names.csv"),
+              row.names = FALSE) 
+  }
+  
+  # Write table to file
+  write.table(genes_tab, file = paste0("../output/all_genes/", transcriptomes[i], "/transcript_accession_IDs/all_indiv_libraries.txt"),
+              row.names = FALSE,
+              sep = "\t")
+
+  
+  
+}
+```
+
+     
+Now that we've got a two-column table of the transcript IDs and accession IDs of all genes related to immune function, we'll read that file back in and then merge it with our Transcript Per Million tables we created in scripts 5_12 through 5_14 (titled cbaiv4.0/cbaiv2.0/hematv1.6_AllCrabs)
+
+Sure it's less efficient to read the file we just created back in, but it also keeps our for loop from becoming quite large - instead, we're separating into two for loops.
+
+This file we created here will be used for the manual clustering used in earlier scripts
+
+```{r}
+for (i in 1:length(transcriptomes)) {
+  # Read in the file we created in the for loop
+  immune_tab <- read.table(file = paste0("../output/immune_genes/", transcriptomes[i], "/transcript_accession_IDs/all_indiv_libraries.txt"),
+                           header = TRUE)
+  
+  # Read in the TPM file containing info for all libraries. Note that check.names = FALSE - this is because 
+  # the file has the 3-digit library IDs as column names.
+  TPM_tab <- read.table(file = paste0("../output/TPM_counts/", transcriptomes[i], "/all_indiv_library_TPMcts.txt"),
+                        header = TRUE,
+                        check.names = FALSE)
+  
+  # Left join file of all immune tab files and our TPM file, so we're only left with TPMs for immune genes
+  immune_TPM <- left_join(immune_tab, TPM_tab, by = "Transcript_ID")
+  
+  # Remove Accession ID column
+  immune_TPM <- select(immune_TPM, -Accession_ID)
+  
+  # Write table to file
+  write.table(immune_TPM, file = paste0("../output/TPM_counts/", transcriptomes[i], "/immune_genes_all_libs_TPMcts.txt"),
+              row.names = FALSE,
+              sep = "\t")
+  
+}
+```
+
+Above, we created a file of the TPM counts. However, we also want a file of the raw counts of immune genes for each library, so that we can use that as input for DESeq2
+
+```{r}
+for (i in 1:length(transcriptomes)) {
+  # Read in the file of Transcript IDs and Accession IDs of immune-related genes we created earlier
+  immune_tab <- read.table(file = paste0("../output/immune_genes/", transcriptomes[i], "/transcript_accession_IDs/all_indiv_libraries.txt"),
+                           header = TRUE)
+  
+  # Create the a general path to our kallisto files. Wildcard for 3-digit indiv. libraries = ???. For pooled, use ??????. For both, use *
+  kallisto_filepath <- paste0("../output/kallisto_libraries/", transcriptomes[i], "/id???/abundance.tsv")
+  
+  # Get a list of all matching files
+  kallisto_files <- Sys.glob(kallisto_filepath)
+  
+  for (j in 1:length(kallisto_files)) {
+    # Extract the ID number from the kallisto file
+    idnum <- str_extract(kallisto_files[j], "id[0-9]+")
+    # Read in the kallisto file
+    kallisto_output <- read.delim(file = kallisto_files[j], 
+                                  header = TRUE,
+                                  sep = "\t")
+    # Select only transcript ID and estimated counts columns
+    kallisto_output <- kallisto_output %>%
+      select(target_id, est_counts)
+    
+    # Rename kallisto column names
+    colnames(kallisto_output)[1:2] <- c("Transcript_ID", 
+                                        paste0(idnum, "_EstCts"))
+    # Add TPM value to table of DEGs
+    immune_tab <- left_join(immune_tab, kallisto_output, by = "Transcript_ID")
+  }
+  
+  # Remove Accession ID column
+  immune_tab <- select(immune_tab, -Accession_ID)
+  
+  # Write table to file
+  write.table(immune_tab, file = paste0("../output/kallisto_matrices/", transcriptomes[i], "/immune_genes_indiv_libraries/manual_cts_matrix.txt"),
+              row.names = FALSE,
+              sep = "\t")
+  
+}
+
+```
+
+This concludes our file creation session. Next, we'll move on to creating PCAs
+

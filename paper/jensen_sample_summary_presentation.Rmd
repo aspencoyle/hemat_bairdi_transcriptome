@@ -1,0 +1,124 @@
+---
+title: "Sample Summary"
+author: "Aidan Coyle"
+date: "2021-11-01"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r libraries, include = FALSE}
+library(tidyverse)
+```
+
+
+## Introduction
+
+Samples were shipped from Pam Jensen to the Roberts Lab upon her retirement from NOAA. 
+
+Uses Pam's data tables - which have not yet been cross-referenced with the physical samples - as the data source.
+
+Total samples: 27,387
+
+
+## Background: Sample Storage
+
+- Majority: hemolymph samples in deep well plates
+- Minority: tissue samples in tubes
+- All: Preserved in 100% EtOH
+
+## Background: Sample Location
+
+```{r}
+crabdat <- read.csv("../output/jensen_data/cleaned_data/relevant_sample_data.csv")
+
+filt_crabdat <- crabdat
+
+filt_crabdat$General_Location <- recode(filt_crabdat$General_Location, 
+                                   "BS" = "Bering Sea",
+                                   "GL" = "Greenland",
+                                   "GOA" = "Gulf of Alaska",
+                                   "OC" = "Oregon Coast",
+                                   "SE" = "Southeast AK")
+
+filt_crabdat %>%
+  ggplot(aes(x = General_Location)) +
+  geom_bar(fill = "steelblue", color = "steelblue") + 
+  labs(x = "General Area", 
+       y = "Number of Samples") +
+  theme_minimal() + 
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+## Background: Sample Taxa
+
+```{r}
+filt_crabdat <- crabdat
+filt_crabdat$Species_Name <- filt_crabdat$Species_Name
+
+filt_crabdat$Species_Name <- recode(filt_crabdat$Species_Name, 
+                                    "Cancer magister" = "Cancer sp.",
+                                    "Cancer oregonensis" = "Cancer sp.",
+                                    "Cancer productus" = "Cancer sp.",
+                                    "Chionoecetes bairdi" = "C. bairdi",
+                                    "Chionoecetes opilio" = "C. opilio",
+                                    "Hyas coarctatus" = "Hyas sp.",
+                                    "Hyas lyratus" = "Hyas sp.",
+                                    "Labidochirus splendescens" = "Pagurid",
+                                    "Lithodes aequispinus" = "Lithodid",
+                                    "Pagurus aleuticus" = "Pagurid",
+                                    "Pagurus confragosus" = "Pagurid",
+                                    "Pagurus ochotensis" = "Pagurid",
+                                    "Pagurus rathbuni" = "Pagurid",
+                                    "Pagurus sp." = "Pagurid",
+                                    "Pagurus trigonocheirus" = "Pagurid",
+                                    "Pagurus platyceros " = "Pagurid",
+                                    "Paralithodes camtschaticus" = "Lithodid",
+                                    "Paralithodes platypus" = "Lithodid",
+                                    "Pandalus platyceros" = "other",
+                                    "Placetron wosnessenskii" = "Lithodid",
+                                    "Telmessus cheiragonus" = "other", 
+                                    "Elassochirus cavimanus" = "Pagurid",
+                                    "Erimacrus isenbeckii" = "other",
+                                    "Chionoecetes hybrid" = "other")
+
+filt_crabdat %>%
+  ggplot(aes(x = as.factor(Species_Name))) +
+  geom_bar(fill = "steelblue", color = "steelblue") + 
+  labs(x = "Taxa", 
+       y = "Number of Samples") +
+  theme_minimal() + 
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+## Samples of Interest: Bering Sea 2018-2019
+
+Graph of positive Hematodinium rates by year
+
+## Samples of Interest: Bering Sea 2018-2019
+
+Summary of samples by species and location
+
+## Lab Resources
+
+Summarize lab resources, approx. cost to sequence (+ cost of labor?)
+
+## 
+
+
+
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
