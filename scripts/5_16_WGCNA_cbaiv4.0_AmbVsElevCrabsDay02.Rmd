@@ -1,5 +1,5 @@
 ---
-title: "5_15_WGCNA_hematv1.6_AmbVsElevCrabs_Day02"
+title: "5_16_WGCNA_cbaiv4.0_AmbVsElevCrabs_Day02"
 author: "Aidan Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: 
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 We will now run WGCNA on all individual libraries of ambient and elevated-temperature crabs over days 0 and 2 ONLY
 
-We will include transcripts from only Hematodinium by using kallisto alignments to a transcriptome filtered to only include Alveolata sequences
+We will include transcripts from only _C. bairdi_ by using kallisto alignments to a transcriptome filtered to only include _Chionoecetes_ sequences
 
 Table of crabs and libraries included in analysis:
 | Crab ID | Treatment Group | Day 0 Sample ID | Day 2 Sample ID |
@@ -24,19 +24,14 @@ Table of crabs and libraries included in analysis:
 | B       | ambient         | 118             | 349             |
 | C       | ambient         | 132             | 334             |
 | G       | elevated        | 173             | 272             |
-| H       | elevated        | 072             | 294             | 
-| I       | elevated        | 127             | 280             | 
+| H       | elevated        | 072             | 294             |
+| I       | elevated        | 127             | 280             |
 
 Again, script is based largely on [Yaamini's script](https://github.com/eimd-2019/project-EWD-transcriptomics/blob/master/analyses/WGCNA/WGCNA.md), which is based largely on [the official WGCNA tutorial](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/)
 
 We will first extract the TPM (transcripts per million) counts from the kallisto libraries created earlier in the pipeline. We will then change those to logTPM counts, and then begin the WGCNA analysis
 
-All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, hemat_blastx_table_transcriptome_v1.6.txt,is not. This is a BLASTx annotation of hemat_transcriptome_v1.6.fasta.
-
-Annotation description available [here](https://robertslab.github.io/sams-notebook/2020/08/14/Transcriptome-Annotation-Hematodinium-Transcriptomes-v1.6-v1.7-v2.1-v3.1-with-DIAMOND-BLASTx-on-Mox.html), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20200814_hemat_diamond_blastx_v1.6_v1.7_v2.1_v3.1/hemat_transcriptome_v1.6.fasta.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210308_hemat_trinity_v1.6_v1.7/hemat_transcriptome_v1.6.fasta_trinity_out_dir/hemat_transcriptome_v1.6.fasta), 
-md5sum: 698513d787f92a65debb9f70dbb2e32f
-
-Note that for this, minimum module size was reduced to 10, due to the much smaller number of Hematodinium genes
+All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, cbai_blastx_table_transcriptomev4.0.txt,is not. This is a BLASTx annotation of cbai_transcriptomev4.0.fasta.
 
 
 ```{r libraries, message = FALSE, warning=FALSE}
@@ -72,7 +67,7 @@ Later in the script, you will need to specify a soft thresholding power to choos
 
 ```{r TPMextract}
 # Path to kallisto libraries
-kallisto_path <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
+kallisto_path <- "../output/kallisto_libraries/cbai_transcriptomev4.0/"
 
 # Libraries we want to read in to our TPM matrix
 libraries <- c("178", "118", "132", "173", "072", "127", "359", "349", "334", "272", "294", "280")
@@ -113,16 +108,13 @@ crabClinicalData <- data.frame("crab" = rep(c(1, 2, 3, 4, 5, 6), times = 2),
 variable <- "temp"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/hemat_transcriptomev1.6/amb_vs_elev_days_02/day0_elev_as_amb/"
+file_start <- "../output/WGCNA_output/cbai_transcriptomev4.0/amb_vs_elev_days_02/day0_elev_as_amb/"
 
 # Location of blastx table
-blastx_table_site <- "../data/hemat_blastx_table_transcriptome_v1.6.txt"
+blastx_table_site <- "../data/cbai_blastx_table_transcriptome_v4.0.txt"
 
 # Number of samples we're examining
 numsamples <- 12
-
-# Minimum module size (number of genes per module)
-minimum_module <- 10
 ```
 
 Then, we begin creating our TPM matrix for all transcripts
@@ -327,17 +319,13 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
      col = "red")
 ```
 
-Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. However, no eligible soft-thresholding power reached 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), this indicates the following:
-
-"If the scale-free topology fit index fails to reach values above 0.8 for reasonable powers (less than 15 for unsigned or signed hybrid networks, and less than 30 for signed networks) and the mean connectivity remains relatively high (in the hundreds or above) [note: which our data does], chances are that the data exhibit a strong driver that makes a subset of the samples globally different from the rest. The difference causes high correlation among large groups of genes which invalidates the assumption of the scale-free topology approximation."
-
-I chose to use an unsigned network, since the direction of correlation could be quite interesting (i.e. associating up-regulated C. bairdi with down-regulated Hemat.). Therefore, the WGCNA FAQ recommends choosing a soft-thresholding power of 9, since we have fewer than 20 samples total.
+Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. Therefore, we will choose 12!
 
 
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
 
 ```{r coexpression}
-softPower <- 9
+softPower <- 12
 adjacency <- adjacency(CrabExpr0, power = softPower)
 
 # Minimize noise and spurious associations by transforming adjacency into TOM
@@ -371,7 +359,7 @@ plot(geneTree, xlab = "", sub = "",
 
 ```{r min_module_size}
 # Set minimum module size, AKA num of genes that need to be in a module. WGCNA default is 30
-minModuleSize <- minimum_module
+minModuleSize <- 30
 # Cut branches of dendrogram to ID WGCNA modules
 dynamicMods <- cutreeDynamic(dendro =  geneTree,
                              distM = dissTOM,
