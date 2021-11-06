@@ -1,5 +1,5 @@
 ---
-title: "Sample Summary"
+title: "Proposed Chionoecetes/Hemat. Study"
 author: "Aidan Coyle"
 date: "2021-11-01"
 output: ioslides_presentation
@@ -14,7 +14,45 @@ library(tidyverse)
 ```
 
 
-## Introduction
+## Plan Summary
+
+- Examine genetic differences over space, time, and host species in Alaskan _Chionoecetes_ and _Hematodinium_ 
+
+  - Looking at host, parasite, host/parasite interactions
+  - Determine _Hematodinium_ population structure
+  - Measure _Hematodinium_ gene flow
+  - Better understand _Hematodinium_ transmission dynamics
+  
+- Possible exploration of 2020-2021 mortality event 
+  
+- Funding source: NPRB
+
+## NPRB Summary
+
+- Rolling deadline (began Sept. 28th)
+
+- Timeline:
+  - 1-6 months: Proposal peer review
+  - Dates TBD: Approved at board meeting
+  - 1 year: Suggested project start date
+  
+- Co-funding partners: **BSFRF**, Oil Spill Recovery Institute, Pollock Conservation Cooperative Research Center
+
+## NPRB: Research Category
+
+- Goal research category: Fishes and Invertebrates
+  - Project cap: $600,000
+  - Total goal: $1,000,000
+  
+- Relevant general topics:
+  - Estimation of life history parameters that impact stock assessments
+  - Analyses of survey design and data (depending on methods)
+    - qPCR vs. cPCR vs. histology
+  - Ecology and physiology of forage species
+  - Characterization of cross-species interactions
+
+
+## Sample Description
 
 Samples were shipped from Pam Jensen to the Roberts Lab upon her retirement from NOAA. 
 
@@ -23,13 +61,13 @@ Uses Pam's data tables - which have not yet been cross-referenced with the physi
 Total samples: 27,387
 
 
-## Background: Sample Storage
+## Sample Storage
 
 - Majority: hemolymph samples in deep well plates
 - Minority: tissue samples in tubes
 - All: Preserved in 100% EtOH
 
-## Background: Sample Location
+## Sample Location
 
 ```{r}
 crabdat <- read.csv("../output/jensen_data/cleaned_data/relevant_sample_data.csv")
@@ -93,32 +131,4 @@ filt_crabdat %>%
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
-## Samples of Interest: Bering Sea 2018-2019
-
-Graph of positive Hematodinium rates by year
-
-## Samples of Interest: Bering Sea 2018-2019
-
-Summary of samples by species and location
-
-## Lab Resources
-
-Summarize lab resources, approx. cost to sequence (+ cost of labor?)
-
-## 
-
-
-
-
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-## Slide with Plot
-
-```{r pressure}
-plot(pressure)
-```
 
