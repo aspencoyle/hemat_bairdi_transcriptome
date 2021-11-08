@@ -1,7 +1,7 @@
 ---
 title: "Proposed Chionoecetes/Hemat. Study"
 author: "Aidan Coyle"
-date: "2021-11-01"
+date: "2021-11-08"
 output: ioslides_presentation
 ---
 
@@ -18,7 +18,7 @@ library(tidyverse)
 
 - Examine genetic differences over space, time, and host species in Alaskan _Chionoecetes_ and _Hematodinium_ 
 
-  - Looking at host, parasite, host/parasite interactions
+  - Changes in host, parasite, host/parasite interactions
   - Determine _Hematodinium_ population structure
   - Measure _Hematodinium_ gene flow
   - Better understand _Hematodinium_ transmission dynamics
@@ -46,11 +46,17 @@ library(tidyverse)
   
 - Relevant general topics:
   - Estimation of life history parameters that impact stock assessments
-  - Analyses of survey design and data (depending on methods)
-    - qPCR vs. cPCR vs. histology
   - Ecology and physiology of forage species
   - Characterization of cross-species interactions
+  - Analyses of survey design and data (depending on methods)
+    - qPCR vs. cPCR vs. histology
+    
+## Next Steps
 
+- Iron out specifics within methods
+- Ensure samples can be extracted and amplified
+- Apply for NPRB!
+    
 
 ## Sample Description
 
