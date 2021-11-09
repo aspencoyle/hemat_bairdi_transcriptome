@@ -9,20 +9,20 @@
 
 # We will run GO-MWU twice - once for each comparison
 
-# After each analysis, move the output files from the 16_running_GO-MWU directory into an output folder.
+# After each analysis, move the output files from the 1_6_running_GO-MWU directory into an output folder.
 # I used /output/GO-MWU_output/[analysis name]
 
 library(ape)
 
 # Need to be in same directory as all other GO-MWU files - 
 # both data files and analysis files
-setwd("16_running_GO-MWU")
+setwd("1_6_running_GO-MWU")
 
 #### GO-MWU Run 1: Elevated Day 2 vs. Ambient Days 0+2, Individual Libraries Only --------------------------
 
 # Edit these to match your data file names: 
-input="cbai2.0_elev2_vs_amb02_indiv_only_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
-goAnnotations="cbai2.0_elev2_vs_amb02_indiv_only_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
+input="cbai2.0_elev2_vs_amb02_indiv_l2FC.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
+goAnnotations="cbai2.0_elev2_vs_amb02_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
 goDatabase="go.obo" # download from http://www.geneontology.org/GO.downloads.ontology.shtml
 goDivision="BP" # either MF, or BP, or CC
 source("gomwu.functions.R")
@@ -101,8 +101,8 @@ bestGOs
 #### GO-MWU Run 2: Elevated Day 2 vs. Ambient Day 0+2+17 + Elevated Day 0 + Lowered Day 0 --------------------------
 
 # Edit these to match your data file names: 
-input="amb0217_elev0_low0_vs_elev2_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
-goAnnotations="amb0217_elev0_low0_vs_elev2_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
+input="cbai2.0_amb0217_elev0_low0_vs_elev2_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
+goAnnotations="cbai2.0_amb0217_elev0_low0_vs_elev2_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
 goDatabase="go.obo" # download from http://www.geneontology.org/GO.downloads.ontology.shtml
 goDivision="BP" # either MF, or BP, or CC
 source("gomwu.functions.R")
@@ -184,8 +184,8 @@ bestGOs
 #### GO-MWU Run 3: Elevated Day 0 vs. Elevated Day 2, Indiv. Libraries Only ---------------------------------------
 
 # Edit these to match your data file names: 
-input="elev0_vs_elev2_indiv_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
-goAnnotations="elev0_vs_elev2_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
+input="cbai2.0_elev0_vs_elev2_indiv_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
+goAnnotations="cbai2.0_elev0_vs_elev2_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
 goDatabase="go.obo" # download from http://www.geneontology.org/GO.downloads.ontology.shtml
 goDivision="BP" # either MF, or BP, or CC
 source("gomwu.functions.R")
@@ -265,8 +265,8 @@ bestGOs
 #### GO-MWU Run 4: Ambient Day 0 vs. Ambient Day 2, Individual Libraries Only --------------------------
 
 # Edit these to match your data file names: 
-input="amb0_vs_amb2_indiv_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
-goAnnotations="amb0_vs_amb2_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
+input="cbai2.0_amb0_vs_amb2_indiv_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
+goAnnotations="cbai2.0_amb0_vs_amb2_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
 goDatabase="go.obo" # download from http://www.geneontology.org/GO.downloads.ontology.shtml
 goDivision="BP" # either MF, or BP, or CC
 source("gomwu.functions.R")
@@ -345,8 +345,8 @@ bestGOs
 #### GO-MWU Run 5: Elevated Day 0 vs. Elevated Day 17, Individual Libraries Only --------------------------
 
 # Edit these to match your data file names: 
-input="amb0_vs_amb17_indiv_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
-goAnnotations="amb0_vs_amb17_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
+input="cbai2.0_amb0_vs_amb17_indiv_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
+goAnnotations="cbai2.0_amb0_vs_amb17_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
 goDatabase="go.obo" # download from http://www.geneontology.org/GO.downloads.ontology.shtml
 goDivision="BP" # either MF, or BP, or CC
 source("gomwu.functions.R")
@@ -425,8 +425,8 @@ bestGOs
 #### GO-MWU Run 6: Ambient Day 2 vs. Ambient Day 17, Individual Libraries Only --------------------------
 
 # Edit these to match your data file names: 
-input="amb2_vs_amb17_indiv_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
-goAnnotations="amb2_vs_amb17_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
+input="cbai2.0_amb2_vs_amb17_indiv_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
+goAnnotations="cbai2.0_amb2_vs_amb17_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
 goDatabase="go.obo" # download from http://www.geneontology.org/GO.downloads.ontology.shtml
 goDivision="BP" # either MF, or BP, or CC
 source("gomwu.functions.R")
@@ -505,8 +505,8 @@ bestGOs
 #### GO-MWU Run 7: Ambient Day 2 vs. Elevated Day 2, Individual Libraries Only --------------------------
 
 # Edit these to match your data file names: 
-input="amb2_vs_elev2_indiv_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
-goAnnotations="amb2_vs_elev2_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
+input="cbai2.0_amb2_vs_elev2_indiv_pvals.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
+goAnnotations="cbai2.0_amb2_vs_elev2_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
 goDatabase="go.obo" # download from http://www.geneontology.org/GO.downloads.ontology.shtml
 goDivision="BP" # either MF, or BP, or CC
 source("gomwu.functions.R")

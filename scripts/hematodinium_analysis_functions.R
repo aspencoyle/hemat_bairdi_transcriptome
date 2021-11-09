@@ -206,15 +206,15 @@ import_DEGs <- function(filepath) {
   return(transcripts)
 } 
 
-#### geneIDs_pvals(): Turn DESeq2 output into CSV of gene IDs and p-values --------------------
+#### geneIDs_foldchange(): Turn DESeq2 output into CSV of gene IDs and log2 fold change --------------------
 # P-values are unadjusted
 # Creates one of the input files for GO-MWU
 
-# input_file: DESeq2 output file containing transcript IDs and unadjusted p-values
+# input_file: DESeq2 output file containing transcript IDs and log2 fold change
 # blast_file: path that leads to transcript ID/gene ID table
 # output_file: path to the output file, ending in .csv
 
-geneIDs_pvals <- function(input_file, blast_file, output_file) {
+geneIDs_foldchange <- function(input_file, blast_file, output_file) {
   # Import gene list
   transcript_data <- read.table(input_file,
                                 header = TRUE, sep = "\t")
@@ -235,7 +235,7 @@ geneIDs_pvals <- function(input_file, blast_file, output_file) {
   transcript_data <- left_join(transcript_data, blastkey, by = "Transcript_ID")
   
   # Select only the Transcript ID, p-value, and Gene ID columns
-  transcript_key <- transcript_data[,c("Transcript_ID", "pvalue", "Gene_ID")]
+  transcript_key <- transcript_data[,c("Transcript_ID", "log2FoldChange", "Gene_ID")]
   
   
   # If pipes in accession ID column, separate to get accession ID,
