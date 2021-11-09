@@ -34,7 +34,7 @@ library(tidyverse)
 - Timeline:
   - 1-6 months: Proposal peer review
   - Dates TBD: Approved at board meeting
-  - 1 year: Suggested project start date
+  - 1 year: NRPB suggested project start date
   
 - Co-funding partners: **BSFRF**, Oil Spill Recovery Institute, Pollock Conservation Cooperative Research Center
 
@@ -53,7 +53,7 @@ library(tidyverse)
     
 ## Next Steps
 
-- Iron out specifics within methods
+- Iron out specifics of methods
 - Ensure samples can be extracted and amplified
 - Apply for NPRB!
     
@@ -136,5 +136,21 @@ filt_crabdat %>%
   theme_minimal() + 
   theme(plot.title = element_text(hjust = 0.5))
 ```
+
+
+## Background: Year
+
+```{r}
+crabdat <- read.csv("../output/jensen_data/cleaned_data/relevant_sample_data.csv")
+
+crabdat %>%
+  ggplot(aes(x = Year)) +
+  geom_bar(fill = "steelblue", color = "steelblue") + 
+  labs(x = "Year", 
+       y = "Number of Samples") +
+  theme_minimal() + 
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
 
 

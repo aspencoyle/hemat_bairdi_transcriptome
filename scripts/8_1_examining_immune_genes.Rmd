@@ -279,11 +279,34 @@ for (i in 1:length(transcriptomes)) {
   # Remove Accession ID column
   immune_tab <- select(immune_tab, -Accession_ID)
   
+  # Remove species column if present
+  if("species" %in% colnames(immune_tab)) {
+    immune_tab <- select(immune_tab, -species)
+    
+  }
+  
   # Write table to file
   write.table(immune_tab, file = paste0("../output/kallisto_matrices/", transcriptomes[i], "/immune_genes_indiv_libraries/manual_cts_matrix.txt"),
               row.names = FALSE,
               sep = "\t")
   
+  # Remove all columns that aren't Elevated + Ambient, Days 0+2
+  immune_tab <- select(immune_tab, -c(id073_EstCts,
+                                      id113_EstCts,
+                                      id151_EstCts,
+                                      id221_EstCts,
+                                      id222_EstCts,
+                                      id254_EstCts,
+                                      id425_EstCts,
+                                      id427_EstCts,
+                                      id445_EstCts,
+                                      id463_EstCts,
+                                      id481_EstCts,
+                                      id485_EstCts,
+                                      ))
+    write.table(immune_tab, file = paste0("../output/kallisto_matrices/", transcriptomes[i], "/immune_genes_indiv_libraries/elev02_amb02_matrix.txt"),
+              row.names = FALSE,
+              sep = "\t")
 }
 
 ```

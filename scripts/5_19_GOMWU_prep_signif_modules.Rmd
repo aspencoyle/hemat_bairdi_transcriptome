@@ -1,0 +1,17 @@
+---
+title: "5_19_GOMWU_prep_signif_modules"
+author: "Aidan Coyle"
+date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+output: 
+  html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+We previously performed WGCNA on a series of pairwise comparisons. Notably, we examined individual libraries aligned to our crab transcriptome (cbai_v4.0) for ambient-temperature and elevated-temperature crab over days 0 and 2. 
+
+This WGCNA analysis produced a significant module. We will now examine the composition of that module using GO-MWU.
