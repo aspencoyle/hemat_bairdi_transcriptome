@@ -9,9 +9,6 @@
 
 # We will run GO-MWU twice - once for each comparison
 
-# After each analysis, move the output files from the 1_6_running_GO-MWU directory into an output folder.
-# I used /output/GO-MWU_output/[analysis name]
-
 library(ape)
 library(tidyverse)
 
