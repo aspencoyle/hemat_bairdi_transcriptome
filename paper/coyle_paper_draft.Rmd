@@ -1,7 +1,7 @@
 ---
 title: "Differential Expression in _Hematodinium sp._"
 author: "Aidan Coyle"
-date: "2/17/2021"
+date: "2021-11-09"
 output: pdf_document
 ---
 
@@ -99,15 +99,7 @@ Process TK, haven't completed this yet
 
 ### DESeq2
 
-We used the DESeq2 package to examine differential expression between libraries, and to perform various pairwise comparisons between sample groups. Principal component analyses of samples taken from the elevated-temperature treatment group showed clustering by day, and thus by temperature. This was observed for libraries aligned to both the unfiltered and host-only transcriptomes. Due to low counts, a PCA could not be created for libraries aligned to the parasite-only transcriptome. No such clustering was observed for the ambient-temperature libraries, regardless of transcriptome, along this same timeframe. [TK: CHANGE IMAGE LEGENDS FROM TEMPERATURE TO DAY]. 
-
-[TK: Should we perform GO-MWU but looking at MF or CC?]
-
-[TK: Perform GO-MWU on WGCNA module with p-val = 0.05]
-
-[TK: RUN PCA ON ELEV 0v2 AND AMB 0v2 IMMUNE GENES?]
-
-[TK: Try running GO-MWU on cbaiv4.0 Elev2 vs Elev0 + Amb 0 + Amb 2? Same setup as our signif module for WGCNA. Might conflate crab/temp effects, but also might increase sample size to good point]
+We used the DESeq2 package to examine differential expression between libraries, and to perform various pairwise comparisons between sample groups. Principal component analyses of samples taken from the elevated-temperature treatment group showed clustering by day, and thus by temperature. This was observed for libraries aligned to both the unfiltered and host-only transcriptomes. Due to low counts, a PCA could not be created for libraries aligned to the parasite-only transcriptome. No such clustering was observed for the ambient-temperature libraries, regardless of transcriptome, along this same timeframe. 
 
 
 ```{r, fig.cap = "PCA for elevated-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
@@ -133,7 +125,7 @@ crop <- function(im, left = 0, top = 0, right = 0, bottom = 0) {
 
 "../graphs/DESeq2_output/cbai_transcriptomev4.0/elev0_vs_elev2_indiv/PCA_plot.png" %>%
   image_read() %>%
-crop(top = 110, bottom = 140)
+crop(top = 110, bottom = 120)
 
 ```
 
@@ -177,9 +169,22 @@ crop(top = 100, bottom = 90)
 ```
 
 
+[TK: CHANGE IMAGE LEGENDS FROM TEMPERATURE TO DAY]. 
+
+[TK: Should we perform GO-MWU but looking at MF or CC?]
+
+[TK: Perform GO-MWU on WGCNA module with p-val = 0.05]
+
+[TK: Try running GO-MWU on cbaiv4.0 Elev2 vs Elev0 + Amb 0 + Amb 2? Same setup as our signif module for WGCNA. Might conflate crab/temp effects, but also might increase sample size to good point]
+
+[TK: Run analysis on Amb Day 0-17 to look at progression of]
+
+
+
+
 ### GO-MWU
 
-We then performed pairwise comparisons using GO-MWU to determine which biological processes were enriched. Unfiltered libraries from the elevated-temperature treatment group saw changes in expression for numerous biological processes, including immune response, activation of MAPK, and TK. Meanwhile, the ambient-temperature treatment group saw minimal module enrichment over the same timeframe.
+We then performed pairwise comparisons using GO-MWU to determine which biological processes were enriched. Unfiltered libraries from the elevated-temperature treatment group saw changes in expression for numerous biological processes, including TK, TK, and TK. These modules were not enriched in the ambient-temperature treatment group over the same timespan
 
 ```{r, fig.cap = "Module enrichment for elevated-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
 
@@ -188,14 +193,20 @@ crop <- function(im, left = 0, top = 0, right = 0, bottom = 0) {
   image_crop(im, glue::glue("{w-left-right}x{h-top-bottom}+{left}+{top}"))
 }
 
-"../graphs/DESeq2_output/hemat_transcriptomev1.6/amb0_vs_amb2_indiv/PCA_plot.png" %>%
-  image_read() %>%
-crop(top = 100, bottom = 90)
+"../graphs/GOMWU_output/cbai_transcriptomev2.0/elev0_vs_elev2_indiv.png" %>%
+  image_read()
 
 ```
 
 
 
+```{r, fig.cap = "Module enrichment for ambient-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
+
+
+"../graphs/GOMWU_output/cbai_transcriptomev2.0/amb0_vs_amb2_indiv.png" %>%
+  image_read() 
+
+```
 
 
 
