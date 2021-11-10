@@ -70,4 +70,9 @@ geneIDs_foldchange(input_file = "../graphs/DESeq2_output/cbai_transcriptomev4.0/
 geneIDs_foldchange(input_file = "../graphs/DESeq2_output/cbai_transcriptomev4.0/amb0_vs_amb2_indiv/AllGenes_wcols.txt",
               blast_file = "../output/BLASTs/uniprot_swissprot/cbai4.0_blastxres.tab",
               output_file = "../scripts/4_6_running_GO-MWU/cbai4.0_amb0_vs_amb2_indiv_l2FC.csv")
+
+# Ambient Day 0 vs. Ambient Day 17, indiv. libraries only
+geneIDs_foldchange(input_file = "../graphs/DESeq2_output/cbai_transcriptomev4.0/amb0_vs_amb17_indiv/AllGenes_wcols.txt",
+              blast_file = "../output/BLASTs/uniprot_swissprot/cbai4.0_blastxres.tab",
+              output_file = "../scripts/4_6_running_GO-MWU/cbai4.0_amb0_vs_amb17_indiv_l2FC.csv")
 ```
