@@ -15,3 +15,14 @@ knitr::opts_chunk$set(echo = TRUE)
 We previously performed WGCNA on a series of pairwise comparisons. Notably, we examined individual libraries aligned to our crab transcriptome (cbai_v4.0) for ambient-temperature and elevated-temperature crab over days 0 and 2. 
 
 This WGCNA analysis produced a significant module. We will now examine the composition of that module using GO-MWU.
+
+But first, we need to prepare that module for GO-MWU. As detailed in earlier scripts, we need several files in the same directory (5_20_running_GOMWU)
+
+- The GO-MWU scripts and hierarchy file (available at https://github.com/z0on/GO_MWU). These are identical for each GO-MWU run
+
+- A two-column table of GO annotations for sequences, with only one line per gene and multiple GO terms separated by semicolons
+
+- A table of measure of interest for the sequences. For previous GO-MWU runs, we used log2-fold change as our measure of interest. However, to analyze modules derived from WGCNA, we need to specify 0 for genes not included in module, and the module membership score for genes included in the module.
+
+
+

@@ -92,3 +92,19 @@ uniprot_to_GO(accession_path = "../output/accession_n_GOids/cbai_transcriptomev4
               output_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/allgenes_IDs/all_indiv_libraries_All_GOIDs.txt")
 
 ```
+
+Alright, we'll do just a bit extra here, and include another run for DEGs for Elev. Day 0 vs. Day 2. This will be used to select all immune genes
+
+
+```{r}
+# Elevated Day 0 vs. Elevated Day 2. Individual libraries 
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/DEG_IDs/elev0_vs_elev2_indiv_DEG_IDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/DEG_IDs/elev0_vs_elev2_indiv_DEG_GOIDs.txt")
+
+# Ambient Day 0 vs. Ambient Day 2. Individual libraries 
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/DEG_IDs/amb0_vs_amb2_indiv_DEG_IDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/DEG_IDs/amb0_vs_amb2_indiv_DEG_GOIDs.txt")
+```
+

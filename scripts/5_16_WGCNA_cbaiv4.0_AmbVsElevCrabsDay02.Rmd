@@ -111,7 +111,7 @@ variable <- "temp"
 file_start <- "../output/WGCNA_output/cbai_transcriptomev4.0/amb_vs_elev_days_02/day0_elev_as_amb/"
 
 # Location of blastx table
-blastx_table_site <- "../data/cbai_blastx_table_transcriptome_v4.0.txt"
+blastx_table_site <- "../data/cbai_transcriptomev4.0_blastx.txt"
 
 # Number of samples we're examining
 numsamples <- 12
@@ -591,6 +591,9 @@ for (module in modNames) {
 }
 ```
 
+
+
+
 #### Master list with membership and gene significance information
 
 ```{r membership_and_gene_info}
@@ -610,6 +613,18 @@ if(any(grepl("|", gene_ids, fixed = TRUE))) {
                    sep = "\\|")
   crabGeneAnnot <- crabGeneAnnot[,-c(2, 4)]
 }
+
+# Match probes with annotations
+probes2annot <- match(probes, crabGeneAnnot$seqIDs)
+
+sum(is.na(probes2annot))
+
+geneInfo0 <- data.frame("geneID" = probes,
+                        "Uniprot" = crabGeneAnnot$Uniprot[probes2annot],
+                        moduleColor = moduleColors,
+                        geneTraitSignificance,
+                        GSPvalue)
+head(geneInfo0)
 
 # Also get all GO terms
 ```

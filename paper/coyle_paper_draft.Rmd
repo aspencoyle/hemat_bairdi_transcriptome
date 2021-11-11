@@ -9,7 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r add_packages}
+```{r add_packages, warning = FALSE, message=FALSE}
 library("kableExtra")
 library("tidyverse")
 library("knitr")
@@ -89,17 +89,21 @@ kbl(comps_table, caption = "PairwiseComparisons",
 
 ```
 
-### Enrichment Analysis
+## TK title
+
+Talk here about how lots of genes from the unfiltered transcriptome didn't match closely to either the host genome or parasite genes? Also did we make sure there was no overlap in transcripts between the two (i.e. none that were assigned to both the host and parasite transcriptome)?
+
+## Enrichment Analysis
 For each comparison (Table 2), the output from DESeq2 was cross-referenced with the annotated transcriptome and the UniProt database (citation TK) to produce a table of UniProt Accession IDs and GO terms, along with a table of UniProt Accession IDs and unadjusted p-values. GO categories were then tested for significant enrichment with the R package GO-MWU (citation TK), which utilizes the Mann-Whitney U test. 
 
-### Individual DEG Examination
+## Individual DEG Examination
 Process TK, haven't completed this yet
 
 # Results
 
-### DESeq2
+## DESeq2
 
-We used the DESeq2 package to examine differential expression between libraries, and to perform various pairwise comparisons between sample groups. Principal component analyses of samples taken from the elevated-temperature treatment group showed clustering by day, and thus by temperature. This was observed for libraries aligned to both the unfiltered and host-only transcriptomes. Due to low counts, a PCA could not be created for libraries aligned to the parasite-only transcriptome. No such clustering was observed for the ambient-temperature libraries, regardless of transcriptome, along this same timeframe. 
+The DESeq2 package was used to examine differential expression between libraries, and to perform various pairwise comparisons between sample groups. Principal component analyses of samples taken from the elevated-temperature treatment group showed clustering by day, and thus by temperature. This was observed for libraries aligned to both the unfiltered and host-only transcriptomes. Due to low counts, a PCA could not be created for libraries aligned to the parasite-only transcriptome. No such clustering was observed for the ambient-temperature libraries, regardless of transcriptome, along this same timeframe. 
 
 
 ```{r, fig.cap = "PCA for elevated-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
@@ -177,16 +181,17 @@ crop(top = 100, bottom = 90)
 
 [TK: Try running GO-MWU on cbaiv4.0 Elev2 vs Elev0 + Amb 0 + Amb 2? Same setup as our signif module for WGCNA. Might conflate crab/temp effects, but also might increase sample size to good point]
 
-[TK: Run analysis on Amb Day 0-17 to look at progression of]
+[TK: Run analysis on Amb Day 0-17 to look at progression of Hematodinium]
 
 
 
 
-### GO-MWU
 
-We then performed pairwise comparisons using GO-MWU to determine which biological processes were enriched. Unfiltered libraries from the elevated-temperature treatment group saw changes in expression for numerous biological processes, including TK, TK, and TK. These modules were not enriched in the ambient-temperature treatment group over the same timespan
+## GO-MWU
 
-```{r, fig.cap = "Module enrichment for elevated-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
+Pairwise comparisons were performed using GO-MWU to determine which biological processes were enriched. Unfiltered libraries from the elevated-temperature treatment group saw changes in expression for numerous biological processes, including TK, TK, and TK. These modules were not enriched in the ambient-temperature treatment group over the same timespan. 
+
+```{r, fig.cap = "GO term enrichment for elevated-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
 
 crop <- function(im, left = 0, top = 0, right = 0, bottom = 0) {
   d <- dim(im[[1]]); w <- d[2]; h <- d[3]
@@ -200,7 +205,7 @@ crop <- function(im, left = 0, top = 0, right = 0, bottom = 0) {
 
 
 
-```{r, fig.cap = "Module enrichment for ambient-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
+```{r, fig.cap = "GO term enrichment for ambient-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
 
 
 "../graphs/GOMWU_output/cbai_transcriptomev2.0/amb0_vs_amb2_indiv.png" %>%
@@ -208,5 +213,106 @@ crop <- function(im, left = 0, top = 0, right = 0, bottom = 0) {
 
 ```
 
+### Time
+
+Over the 17 days of the experiment, GO term expression changed substantially within the control group (due to the mortality event, no enrichment data is available for the experimental group). Overall, the samples saw changes in TK, TK, and TK. However, when examining host expression, only minor pathway expression changes were observed. This indicates TK MAYBE IMMUNOSUPPRESSIVE TALK HERE.
+
+While no major changes were observed in the host, _Hematodinium_ expression did shift substantially over the same time period. Generally, those changes were associated with TK and TK. This indicates TK DISCUSSION OF POSSIBLE CHANGES IN MORPHOLOGY
+
+```{r, fig.cap = "GO term enrichment for ambient-temperature libraries, Days 0-17 (unfiltered transcriptome)", echo = FALSE}
 
 
+"../graphs/GOMWU_output/cbai_transcriptomev2.0/amb0_vs_amb17_indiv.png" %>%
+  image_read() 
+
+```
+
+```{r, fig.cap = "GO term enrichment for parasite, Days 0-17", echo = FALSE}
+
+
+"../graphs/GOMWU_output/hemat_transcriptomev1.6/amb0_vs_amb17_indiv.png" %>%
+  image_read() 
+
+```
+
+
+TK: TALK ABOUT HOW CRAB TRANSCRIPTION DOESN'T CHANGE MUCH BUT UNFILTERED DOES. COULD INDICATE IMMUNOSUPPRESSION, OTHER STUFF IS GETTING IN AND CHANGING. OR LIMITATION OF GO-MWU, AS SAME PROB FOR ELEV0 VS ELEV2
+
+TK: DISCUSSION, TALK ABOUT HOW THIS COULD EITHER BE AN INDICATION OF CHANGES OVER COURSE OF INFECTION OR INDICATION OF TANK ADAPTATION. COULD LOOK AT LOWERED 0 VS 17 UNINFECTED TO GET AN IDEA, BUT ADDS TEMP AS COMPLICATING FACTOR...
+
+\pagebreak
+
+## Immune Genes
+
+### Host
+
+Numerous genes (n = TK) within the _C. bairdi_ transcriptome were associated with immune function (GO:0006955). Many were members of the Cathepsin family, with Cathepsins C, J, L, S, U, V, and W all present. Cathepsin L was particularly broadly expressed, with seven distinct genes coding for Cathepsin and Procathepsin L [TK: does this make sense to say?]. Furthermore, Procathepsin L was differentially-expressed in the experimental group. Several types of MAPKs (mitogen-activated protein kinases)  were also present within the transcriptome, including two p38 MAPKs and one one MAP4K. MAPKs are part of the IMD (immune deficiency) pathway, a notable component of the crustacean immune system. Several other genes associated with the IMD pathway were observed, including the transcription factor Relish and the kinase inhibitor IKK [TK: change 1st K to a kappa]. NFIL3, a nuclear factor which has been found to regulate Relish expression in similar systems, was also present.
+
+Other notable immune-linked genes observed were Transcription Activator Protein-1 (TF AP-1) and Granzyme A. TF AP-1 acts as an immune system regulator within other crab species, along with a potential role as an osmoregulator. Little research on the role of Granzyme A in invertebrates has been performed, but in vertebrates it has a cytotoxic role against intracellular pathogens.
+
+### Parasite
+
+Within the _Hematodinium sp._ transcriptome, 4 genes were linked to immune function. All four of these were cysteine proteases, which TK CP DESCRIPTION. Three of the four were cathepsins, including both Procathepsin and Cathepsin L. TK: PROBBALY TALK ABOUT ROLE OF CAT L IN PARASITES WITHIN DISCUSSION, BUT NEED A BIT MORE TO ROUND THIS SECTION OUT
+
+TK: SOME SORT OF TABLE FOR DESCRIBING IMMUNE GENES?
+
+## Characterizing Overall Expression Patterns
+
+Prior to filtering by taxa, samples from the lowered-temperature treatment group saw an average overall decrease in expression in 42% of transcripts, while the control group averaged a 33% decrease 
+
+Table TK: Overall expression in samples unfiltered by taxa
+
+|          | Ambient | Lowered |
+|----------|---------|---------|
+| Increase | 30.8%   | 27.4%   |
+| Decrease | 33.9%   | 42.9%   |
+| Neither  | 35.5%   | 29.6%   |
+
+However, this same pattern was not observed when examining expression within the host or parasite specifically. Within the host, overall expression patterns were remarkably similar regardless of temperature. And within the parasite, expression increased within the lowered-temperature treatment group (TK STATISTICAL TESTS ON THESE RESULTS - CHI-SQUARE?) TK: MENTION CAVEAT OF 2 UNINFECTED IN LOWERED-TEMP GROUP, OR DO IN DISCUSSION? 
+
+Table TK: Overall host transcript expression
+
+|          | Ambient | Lowered |
+|----------|---------|---------|
+| Increase | 28.9%   | 28.6%   |
+| Decrease | 31.8%   | 32.2%   |
+| Neither  | 39.3%   | 39.2%   |
+
+Table TK: Overall parasite transcript expression
+
+|          | Ambient | Lowered |
+|----------|---------|---------|
+| Increase | 32.3%   | 43.4%   |
+| Decrease | 29.5%   | 29.1%   |
+| Neither  | 42.3%   | 30.1%   |
+
+## Characterizing Immune Gene Expression Patterns
+
+NOTE: I really don't think our sample size of immune genes is large enough to make overall judgments on expression patterns, so this section is probably ripe for cutting. Still, I'll wait till I run a chi-square (or similar) test on this to see.
+
+I'll also avoid writing up a more detailed analysis until I run those tests
+
+
+Table TK: Immune gene expression in samples unfiltered by taxa
+
+|          | Ambient | Lowered |
+|----------|---------|---------|
+| Increase | 37.1%   | 8.1%    |
+| Decrease | 28.5%   | 67.2%   |
+| Neither  | 34.4%   | 24.7%   |
+
+Table TK: Immune gene host transcript expression
+
+|          | Ambient | Lowered |
+|----------|---------|---------|
+| Increase | 31.4%   | 9.7%    |
+| Decrease | 28.5%   | 57.6%   |
+| Neither  | 40.0%   | 32.7%   |
+
+Parasite expression: not available, only 5 genes total
+
+## WGCNA
+
+We've got some unfinished business as far as WGCNA goes. Essentially, I think that WGCNA is pretty useless without actually characterizing the contents of each module that's significantly different. So I'll describe each potentially-interesting comparison in a table below, and we can decide whether it's worth taking the time to figure out how to run them through GO-MWU to describe their function.
+
+TK: Run WGCNA again on all crabs, this time including all variables (H/L infection, for instance)! And hey, why not include shell condition? Plus should probs do same for ambient-vs-elev comparison only (no uninfected to stress about)

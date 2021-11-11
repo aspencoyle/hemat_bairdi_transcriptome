@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.21)  9 NOV 2021 13:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.21)  10 NOV 2021 23:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -368,6 +368,78 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \FrameRule=\dimen162
 \FrameSep=\dimen163
 )
+(c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.st
+y
+Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
+\LTleft=\skip54
+\LTright=\skip55
+\LTpre=\skip56
+\LTpost=\skip57
+\LTchunksize=\count281
+\LTcapwidth=\dimen164
+\LT@head=\box50
+\LT@firsthead=\box51
+\LT@foot=\box52
+\LT@lastfoot=\box53
+\LT@cols=\count282
+\LT@rows=\count283
+\c@LT@tables=\count284
+\c@LT@chunks=\count285
+\LT@p@ftn=\toks24
+)
+(c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.
+sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen165
+\lightrulewidth=\dimen166
+\cmidrulewidth=\dimen167
+\belowrulesep=\dimen168
+\belowbottomsep=\dimen169
+\aboverulesep=\dimen170
+\abovetopsep=\dimen171
+\cmidrulesep=\dimen172
+\cmidrulekern=\dimen173
+\defaultaddspace=\dimen174
+\@cmidla=\count286
+\@cmidlb=\count287
+\@aboverulesep=\dimen175
+\@belowrulesep=\dimen176
+\@thisruleclass=\count288
+\@lastruleclass=\count289
+\@thisrulewidth=\dimen177
+) (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
+\col@sep=\dimen178
+\ar@mcellbox=\box54
+\extrarowheight=\dimen179
+\NC@list=\toks25
+\extratabsurround=\skip58
+\backup@length=\skip59
+\ar@cellbox=\box55
+) (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count290
+\calc@Bcount=\count291
+\calc@Adimen=\dimen180
+\calc@Bdimen=\dimen181
+\calc@Askip=\skip60
+\calc@Bskip=\skip61
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count292
+\calc@Cskip=\skip62
+)
+(c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.
+sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count293
+)
+(c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.
+sty
+Package: footnote 1997/01/28 1.13 Save footnotes around boxes
+\fn@notes=\box56
+\fn@width=\dimen182
+)
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.
 sty
 Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
@@ -384,87 +456,38 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
 )
-\Gin@req@height=\dimen164
-\Gin@req@width=\dimen165
-)
-(c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.
-sty
-Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen166
-\lightrulewidth=\dimen167
-\cmidrulewidth=\dimen168
-\belowrulesep=\dimen169
-\belowbottomsep=\dimen170
-\aboverulesep=\dimen171
-\abovetopsep=\dimen172
-\cmidrulesep=\dimen173
-\cmidrulekern=\dimen174
-\defaultaddspace=\dimen175
-\@cmidla=\count281
-\@cmidlb=\count282
-\@aboverulesep=\dimen176
-\@belowrulesep=\dimen177
-\@thisruleclass=\count283
-\@lastruleclass=\count284
-\@thisrulewidth=\dimen178
-)
-(c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.st
-y
-Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
-\LTleft=\skip54
-\LTright=\skip55
-\LTpre=\skip56
-\LTpost=\skip57
-\LTchunksize=\count285
-\LTcapwidth=\dimen179
-\LT@head=\box50
-\LT@firsthead=\box51
-\LT@foot=\box52
-\LT@lastfoot=\box53
-\LT@cols=\count286
-\LT@rows=\count287
-\c@LT@tables=\count288
-\c@LT@chunks=\count289
-\LT@p@ftn=\toks24
-) (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
-Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
-\col@sep=\dimen180
-\ar@mcellbox=\box54
-\extrarowheight=\dimen181
-\NC@list=\toks25
-\extratabsurround=\skip58
-\backup@length=\skip59
-\ar@cellbox=\box55
+\Gin@req@height=\dimen183
+\Gin@req@width=\dimen184
 )
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.
 sty
 Package: multirow 2021/01/29 v2.7 Span multiple rows of a table
-\multirow@colwidth=\skip60
-\multirow@cntb=\count290
-\multirow@dima=\skip61
-\bigstrutjot=\dimen182
+\multirow@colwidth=\skip63
+\multirow@cntb=\count294
+\multirow@dima=\skip64
+\bigstrutjot=\dimen185
 )
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.st
 y
-\wrapoverhang=\dimen183
-\WF@size=\dimen184
-\c@WF@wrappedlines=\count291
-\WF@box=\box56
+\wrapoverhang=\dimen186
+\WF@size=\dimen187
+\c@WF@wrappedlines=\count295
+\WF@box=\box57
 \WF@everypar=\toks26
 Package: wrapfig 2003/01/31  v 3.6
 ) (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count292
+\c@float@type=\count296
 \float@exts=\toks27
-\float@box=\box57
+\float@box=\box58
 \@float@everytoks=\toks28
-\@floatcapt=\box58
+\@floatcapt=\box59
 )
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.
 sty
 Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
 \everycr=\toks29
-\minrowclearance=\skip62
+\minrowclearance=\skip65
 )
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscap
 e.sty
@@ -481,38 +504,38 @@ Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.
 sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box59
-\sift@deathcycles=\count293
-\@vwid@loff=\dimen185
-\@vwid@roff=\dimen186
+\@vwid@box=\box60
+\sift@deathcycles=\count297
+\@vwid@loff=\dimen188
+\@vwid@roff=\dimen189
 )
-\c@taburow=\count294
-\tabu@nbcols=\count295
-\tabu@cnt=\count296
-\tabu@Xcol=\count297
-\tabu@alloc=\count298
-\tabu@nested=\count299
-\tabu@target=\dimen187
-\tabu@spreadtarget=\dimen188
-\tabu@naturalX=\dimen189
-\tabucolX=\dimen190
-\tabu@Xsum=\dimen191
-\extrarowdepth=\dimen192
-\abovetabulinesep=\dimen193
-\belowtabulinesep=\dimen194
-\tabustrutrule=\dimen195
+\c@taburow=\count298
+\tabu@nbcols=\count299
+\tabu@cnt=\count300
+\tabu@Xcol=\count301
+\tabu@alloc=\count302
+\tabu@nested=\count303
+\tabu@target=\dimen190
+\tabu@spreadtarget=\dimen191
+\tabu@naturalX=\dimen192
+\tabucolX=\dimen193
+\tabu@Xsum=\dimen194
+\extrarowdepth=\dimen195
+\abovetabulinesep=\dimen196
+\belowtabulinesep=\dimen197
+\tabustrutrule=\dimen198
 \tabu@thebody=\toks30
 \tabu@footnotes=\toks31
-\tabu@box=\box60
-\tabu@arstrutbox=\box61
-\tabu@hleads=\box62
-\tabu@vleads=\box63
-\tabu@cellskip=\skip63
+\tabu@box=\box61
+\tabu@arstrutbox=\box62
+\tabu@hleads=\box63
+\tabu@vleads=\box64
+\tabu@cellskip=\skip66
 )
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttable/thr
 eeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
-\@tempboxb=\box64
+\@tempboxb=\box65
 )
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttablex/th
 reeparttablex.sty
@@ -526,52 +549,52 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 ces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\TPTL@width=\skip64
+\TPTL@width=\skip67
 ) (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box65
-\UL@hyphenbox=\box66
-\UL@skip=\skip65
+\UL@box=\box66
+\UL@hyphenbox=\box67
+\UL@skip=\skip68
 \UL@hook=\toks32
-\UL@height=\dimen196
-\UL@pe=\count300
-\UL@pixel=\dimen197
-\ULC@box=\box67
+\UL@height=\dimen199
+\UL@pe=\count304
+\UL@pixel=\dimen256
+\ULC@box=\box68
 Package: ulem 2019/11/18
-\ULdepth=\dimen198
+\ULdepth=\dimen257
 )
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/makecell/makecell.
 sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen199
-\c@nlinenum=\count301
+\rotheadsize=\dimen258
+\c@nlinenum=\count305
 \TeXr@lab=\toks33
 )
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backen
 d-pdftex.def
 File: l3backend-pdftex.def 2021-02-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count302
-\l__pdf_internal_box=\box68
+\l__color_backend_stack_int=\count306
+\l__pdf_internal_box=\box69
 ) (./coyle_paper_draft.aux)
 \openout1 = `coyle_paper_draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
 
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epsto
 pdf-base.sty
@@ -584,7 +607,7 @@ df-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 124.
+Package hyperref Info: Link coloring OFF on input line 134.
 
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.s
 ty
@@ -598,11 +621,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count303
+\c@section@level=\count307
 )
-LaTeX Info: Redefining \ref on input line 124.
-LaTeX Info: Redefining \pageref on input line 124.
-LaTeX Info: Redefining \nameref on input line 124.
+LaTeX Info: Redefining \ref on input line 134.
+LaTeX Info: Redefining \pageref on input line 134.
+LaTeX Info: Redefining \nameref on input line 134.
 (./coyle_paper_draft.out) (./coyle_paper_draft.out)
 \@outlinefile=\write4
 \openout4 = `coyle_paper_draft.out'.
@@ -642,57 +665,52 @@ LaTeX Info: Redefining \nameref on input line 124.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-26.
+36.
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-26.
+36.
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-126.
+136.
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-126.
+136.
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 126.
+(Font)              <12> on input line 136.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 126.
+(Font)              <8> on input line 136.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 126.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 126
+(Font)              <6> on input line 136.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 136
 .
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 126
+LaTeX Font Info:    Trying to load font information for U+msb on input line 136
 .
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-28.
+38.
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (7.99359pt too wide) in paragraph at lines 163--163
-[]\T1/lmtt/m/n/10 ## Enabled features: cairo, freetype, fftw, ghostscript, heic
-, lcms, pango, raw, rsvg, webp[] 
- []
-
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 169.
+(hyperref)                than one, level fixed on input line 150.
 
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-78.
+59.
 (c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [1
@@ -700,181 +718,217 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 {c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
 x.map}]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 246.
+(Font)              <10> on input line 227.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 246.
+(Font)              <7> on input line 227.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 246.
+(Font)              <5> on input line 227.
 [2pdfTeX warning (ext4): destination with the same identifier (name{table.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.288 
+l.313 
       ]
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 334.
-
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1.png, id=78, 481.8pt x 2
-30.8625pt>
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1.png, id=108, 481.8pt x 
+230.8625pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1
-.png  used on input line 347.
+.png  used on input line 337.
 (pdftex.def)             Requested size: 481.79881pt x 230.86192pt.
 
-Overfull \hbox (12.0438pt too wide) in paragraph at lines 347--347
+Overfull \hbox (12.0438pt too wide) in paragraph at lines 337--337
 [][]
  []
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-2-1.png, id=79, 481.8pt x 2
-50.9375pt>
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-2-1.png, id=109, 481.8pt x 
+250.9375pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-2-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-2-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-2-1
-.png  used on input line 351.
+.png  used on input line 341.
 (pdftex.def)             Requested size: 481.82086pt x 250.94835pt.
 
-Overfull \hbox (12.06584pt too wide) in paragraph at lines 351--351
+Overfull \hbox (12.06584pt too wide) in paragraph at lines 341--341
 [][]
  []
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1.png, id=80, 481.8pt x 2
-81.05pt>
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1.png, id=110, 481.8pt x 
+281.05pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1
-.png  used on input line 355.
+.png  used on input line 345.
 (pdftex.def)             Requested size: 481.82822pt x 281.06645pt.
 
-Overfull \hbox (12.0732pt too wide) in paragraph at lines 355--355
+Overfull \hbox (12.0732pt too wide) in paragraph at lines 345--345
 [][]
  []
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-4-1.png, id=81, 481.8pt x 2
-81.05pt>
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-4-1.png, id=111, 481.8pt x 
+281.05pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-4-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-4-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-4-1
-.png  used on input line 359.
+.png  used on input line 349.
 (pdftex.def)             Requested size: 481.82822pt x 281.06645pt.
 
-Overfull \hbox (12.0732pt too wide) in paragraph at lines 359--359
+Overfull \hbox (12.0732pt too wide) in paragraph at lines 349--349
 [][]
  []
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png, id=82, 481.8pt x 2
-91.0875pt>
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png, id=112, 481.8pt x 
+291.0875pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1
-.png  used on input line 363.
+.png  used on input line 353.
 (pdftex.def)             Requested size: 481.83556pt x 291.10898pt.
 
-Overfull \hbox (12.08054pt too wide) in paragraph at lines 363--363
+Overfull \hbox (12.08054pt too wide) in paragraph at lines 353--353
 [][]
  []
 
-[3pdfTeX warning (ext4): destination with the same identifier (name{table.2}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.379 \subsubsection{GO-MWU}\label{go-mwu}}
-                                           ] [4pdfTeX warning (ext4): destinati
-on with the same identifier (name{figure.1}) has been already used, duplicate i
-gnored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.379 \subsubsection{GO-MWU}\label{go-mwu}}
-                                           pdfTeX warning (ext4): destination w
-ith the same identifier (name{figure.2}) has been already used, duplicate ignor
-ed
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.379 \subsubsection{GO-MWU}\label{go-mwu}}
-                                            <./coyle_paper_draft_files/figure-l
-atex/unnamed-chunk-1-1.png> <./coyle_paper_draft_files/figure-latex/unnamed-chu
-nk-2-1.png>] [5pdfTeX warning (ext4): destination with the same identifier (nam
-e{figure.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.379 \subsubsection{GO-MWU}\label{go-mwu}}
-                                           pdfTeX warning (ext4): destination w
-ith the same identifier (name{figure.4}) has been already used, duplicate ignor
-ed
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.379 \subsubsection{GO-MWU}\label{go-mwu}}
-                                            <./coyle_paper_draft_files/figure-l
-atex/unnamed-chunk-3-1.png> <./coyle_paper_draft_files/figure-latex/unnamed-chu
-nk-4-1.png>] [6pdfTeX warning (ext4): destination with the same identifier (nam
-e{figure.5}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.379 \subsubsection{GO-MWU}\label{go-mwu}}
-                                            <./coyle_paper_draft_files/figure-l
-atex/unnamed-chunk-5-1.png>]
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png, id=114, 721.19438p
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png, id=113, 721.19438p
 t x 743.77875pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1
-.png  used on input line 389.
+.png  used on input line 380.
 (pdftex.def)             Requested size: 630.70241pt x 650.45299pt.
 
-Overfull \hbox (160.94739pt too wide) in paragraph at lines 389--389
+Overfull \hbox (160.94739pt too wide) in paragraph at lines 380--380
 [][]
  []
 
 
-LaTeX Warning: Float too large for page by 36.52298pt on input line 390.
+LaTeX Warning: Float too large for page by 36.52298pt on input line 381.
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png, id=115, 961.5925pt
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png, id=114, 961.5925pt
  x 991.705pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1
-.png  used on input line 393.
+.png  used on input line 384.
 (pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
 
-Overfull \hbox (160.92169pt too wide) in paragraph at lines 393--393
+Overfull \hbox (160.92169pt too wide) in paragraph at lines 384--384
 [][]
  []
 
 
-LaTeX Warning: Float too large for page by 36.4965pt on input line 394.
+LaTeX Warning: Float too large for page by 36.4965pt on input line 385.
 
-[7] [8pdfTeX warning (ext4): destination with the same identifier (name{figure.
-6}) has been already used, duplicate ignored
+[3pdfTeX warning (ext4): destination with the same identifier (name{table.2}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.396 \end{document}
-                     <./coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.
-png>] [9pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.7}) has been already used, duplicate ignored
+l.396 
+      ] [4pdfTeX warning (ext4): destination with the same identifier (name{fig
+ure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.396 \end{document}
-                     <./coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.
-png>] (./coyle_paper_draft.aux)
+l.396 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.396 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1.png> <./coyle_
+paper_draft_files/figure-latex/unnamed-chunk-2-1.png>] [5pdfTeX warning (ext4):
+ destination with the same identifier (name{figure.3}) has been already used, d
+uplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.396 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.396 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1.png> <./coyle_
+paper_draft_files/figure-latex/unnamed-chunk-4-1.png>] [6pdfTeX warning (ext4):
+ destination with the same identifier (name{figure.5}) has been already used, d
+uplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.396 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png>] [7pdfTeX
+ warning (ext4): destination with the same identifier (name{figure.6}) has been
+ already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.396 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png>] [8pdfTeX
+ warning (ext4): destination with the same identifier (name{figure.7}) has been
+ already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.396 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png>]
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1.png, id=158, 961.5925pt
+ x 991.705pt>
+File: coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1.png Graphic file (
+type png)
+<use coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1.png>
+Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1
+.png  used on input line 403.
+(pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
+
+Overfull \hbox (160.92169pt too wide) in paragraph at lines 403--403
+[][]
+ []
+
+
+LaTeX Warning: Float too large for page by 36.4965pt on input line 404.
+
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1.png, id=159, 961.5925pt
+ x 991.705pt>
+File: coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1.png Graphic file (
+type png)
+<use coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1.png>
+Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1
+.png  used on input line 407.
+(pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
+
+Overfull \hbox (160.92169pt too wide) in paragraph at lines 407--407
+[][]
+ []
+
+
+LaTeX Warning: Float too large for page by 35.94093pt on input line 408.
+
+[9] [10pdfTeX warning (ext4): destination with the same identifier (name{figure
+.8}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.420 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1.png>] [11pdfTe
+X warning (ext4): destination with the same identifier (name{figure.9}) has bee
+n already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.420 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1.png>] [12] [13
+] (./coyle_paper_draft.aux)
 Package rerunfilecheck Info: File `coyle_paper_draft.out' has not changed.
-(rerunfilecheck)             Checksum: 6D41361D2405CD31911C6893EEC17327;1803.
+(rerunfilecheck)             Checksum: 69FB0B4614A0E710C6E0E3CE2AAC390B;2848.
  ) 
 Here is how much of TeX's memory you used:
- 12047 strings out of 480971
- 178881 string characters out of 5906254
- 504535 words of memory out of 5000000
- 28972 multiletter control sequences out of 15000+600000
- 455032 words of font info for 69 fonts, out of 8000000 for 9000
+ 12543 strings out of 480971
+ 185954 string characters out of 5906254
+ 515801 words of memory out of 5000000
+ 29431 multiletter control sequences out of 15000+600000
+ 458030 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 71i,12n,74p,304b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,12n,74p,353b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.
 enc}{c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec
 .enc}<c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/l
@@ -886,10 +940,10 @@ e1/public/lm/lmr12.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts
 onts/type1/public/lm/lmri10.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-d
 ist/fonts/type1/public/lm/lmri12.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/te
 xmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on coyle_paper_draft.pdf (9 pages, 300657 bytes).
+Output written on coyle_paper_draft.pdf (13 pages, 384510 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 143 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 132 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 241 PDF objects out of 1000 (max. 8388607)
+ 201 compressed objects within 3 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 198 words of extra memory for PDF output out of 10000 (max. 10000000)
 

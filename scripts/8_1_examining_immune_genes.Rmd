@@ -311,5 +311,34 @@ for (i in 1:length(transcriptomes)) {
 
 ```
 
+We're also going to quickly examine all cbai_v4.0 Elevated Day 0 vs Elevated Day 2 DEGs with GO terms related to immune response. This will be done by:
+
+- Pulling our table of accession IDs and GO terms for DEGs created in 4_3_uniprot_to_GO.Rmd
+
+- Selecting it for only genes that have a GO term related to immune response
+
+- Examining those genes 
+
+```{r}
+  # Read in GO terms file
+  go_tab <- read.delim("../output/accession_n_GOids/cbai_transcriptomev4.0/DEG_IDs/elev0_vs_elev2_indiv_DEG_GOIDs.txt",
+                       header = FALSE, sep = "\t", na.strings = c("", "NA"))
+  
+  # Give columns names
+  colnames(go_tab) <- c("Accession_ID", "GO_terms")
+  
+  # Remove lines without GO terms
+  go_tab <- na.omit(go_tab, cols = GO_terms)
+  
+  # Search GO terms column for immune response genes
+  immune_genes <- go_tab[grep(paste(immune_terms, collapse = "|"),
+                              go_tab$GO_terms), ]
+```
+
+This leaves us with exactly 1 gene - P07154 (CATL1_RAT), AKA Procathepsin L. 
+
+Procathepsin L is, as the name implies, a precursor to Cathepsin L
+
+
 This concludes our file creation session. Next, we'll move on to creating PCAs
 
