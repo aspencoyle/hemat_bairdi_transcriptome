@@ -77,16 +77,6 @@ libraries <- c("178", "118", "132", "173", "072", "127", "359", "349", "334", "2
 
 # For each row, crab and day should correspond to the order of libraries (ex: 4th row of crabTraits should match libraries[4])
 
-# If treating elevated day 0 as elevated
-#crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "G", "H", "I"), times = 2), "A", "B", "C"),
-#                         "day" = factor(c(rep(0, times = 6),
-#                                   rep(2, times = 6),
-#                                   rep(17, times = 3))),
-#                         "temp" = c(rep(c("Ambient", "Ambient", "Ambient", "Elevated", "Elevated", "Elevated"), times = 2),
-#                                    rep("Ambient", times = 3)))
-
-# Use the above one if categorizing Day 0 Elevated-temperature crab as "Elevated". If categorizing them as "Ambient" (since they were at ambient temperature when Day 0 samples were taken), use the one below. Comment out the one not used!
-
 # If treating elevated day 0 as ambient
 crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "G", "H", "I"), times = 2), "A", "B", "C"),
                          "day" = factor(c(rep(0, times = 6),
@@ -94,17 +84,16 @@ crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "G", "H", "I"), times =
                                    rep(17, times = 3))),
                          "temp" = c(rep("Ambient", times = 9),
                                     rep("Elevated", times = 3),
-                                    rep("Ambient", times = 3)))
+                                    rep("Ambient", times = 3)),
+                         "hemat_level" = rep(c("L", "H", "H"), times = 5),
+                         "CW" = c(rep(c(132.2, 128.8, 145, 
+                                        95.7, 111.8, 133.7), 
+                                      times = 2),
+                                  132.2, 128.8, 145))
+
 
 
 # Create clinical data trait matrix. Same rules as above, but all columns are numeric are numeric. Crab A will be noted as 1, B as 2, and C as 3. Again, comment out the one not used!
-
-# If treating elevated day 0 as elevated
-#crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1, 2, 3),
-#                         "day" = c(rep(0, times = 6),
-#                                   rep(2, times = 6),
-#                                   rep(17, times = 3)),
-#                         "temp" = c(rep(c(1, 1, 1, 2, 2, 2), times = 2), rep(1, times = 3)))
 
 # If treating elevated day 0 as ambient
 crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1, 2, 3),
@@ -113,16 +102,21 @@ crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1
                                    rep(17, times = 3)),
                          "temp" = c(rep(1, times = 9),
                                     rep(2, times = 3),
-                                    rep(1, times = 3)))
+                                    rep(1, times = 3)),
+                         "hemat_level" = rep(c(1, 2, 2), times = 5),
+                         "CW" = c(rep(c(132.2, 128.8, 145, 
+                                        95.7, 111.8, 133.7), 
+                                      times = 2),
+                                  132.2, 128.8, 145))
 
 # Variable being examined - should match column in two data frames above
-variable <- "temp"
+variable <- "CW"
 
 # Start and ending we want for each file and graph saved
-file_start <- "../output/WGCNA_output/cbai_transcriptomev2.0/amb_vs_elev_no_filter/day0_elev_as_amb/"
+file_start <- paste0("../output/WGCNA_output/cbai_transcriptomev2.0/amb_vs_elev_no_filter/", variable, "_as_var/")
 
 # Location of blastx table
-blastx_table_site <- "../data/cbai_blastx_table_transcriptomev2.0.txt"
+blastx_table_site <- "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt"
 
 # Number of samples we're examining
 numsamples <- 15
@@ -265,7 +259,7 @@ plotDendroAndColors(sampleTree2, traitColors,
 
 ```{r softthresholding}
 # Create set of soft-thresholding powers
-powers <- c(c(1:10), seq(from = 12, to = 20, by = 2))
+powers <- c(1:20)
 # Use network topology analysis function to eval soft-thresholding power vals
 sft <- pickSoftThreshold(CrabExpr0, powerVector = powers, verbose = 5)
 ```
@@ -330,13 +324,13 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
      col = "red")
 ```
 
-Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. Here, that means we will choose a soft-thresholding power of 10!
+Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. That means we will choose 11 as the power for day, temp, hemat_level, and CW alike
 
 
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
 
 ```{r coexpression}
-softPower <- 10
+softPower <- 11
 adjacency <- adjacency(CrabExpr0, power = softPower)
 
 # Minimize noise and spurious associations by transforming adjacency into TOM
