@@ -25,7 +25,9 @@ Table of crabs and libraries included in analysis:
 | A       | ambient         | 178             | 359             | 463              | infected        |  
 | B       | ambient         | 118             | 349             | 481              | infected        | 
 | C       | ambient         | 132             | 334             | 485              | infected        | 
+| D       | decreased       | 073             | 221             | 427              | uninfected      | 
 | E       | decreased       | 151             | 254             | 445              | infected        | 
+| F       | decreased       | 113             | 222             | 425              | uninfected      | 
 | G       | elevated        | 173             | 272             | NA               | infected        | 
 | H       | elevated        | 072             | 294             | NA               | infected        | 
 | I       | elevated        | 127             | 280             | NA               | infected        | 
@@ -82,44 +84,6 @@ libraries <- c("178", "118", "132", "073", "151", "113", "173", "072", "127", "3
 
 # For each row, crab and day should correspond to the order of libraries (ex: 4th row of crabTraits should match libraries[4])
 
-# If treating elevated day 0 as elevated
-#crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "D", "E", "F", "G", "H", "I"), times = 2), 
-#                                    "A", "B", "C", "D", "E", "F"),
-#                         "day" = factor(c(rep(0, times = 9),
-#                                   rep(2, times = 9),
-#                                   rep(17, times = 6))),
-#                         "temp" = c(rep(c(rep("Ambient", times = 3),
-#                                          rep("Lowered", times = 3), 
-#                                          rep("Elevated", times = 3)), times = 2),
-#                                    rep("Ambient", times = 3),
-#                                    rep("Lowered", times = 3)),
-#                         "infection" = c(rep(c(rep("Infected", times = 3),
-#                                               "Uninfected", "Infected", "Uninfected",
-#                                               rep("Infected", times = 3)), times = 2),
-#                                         rep("Infected", times = 3),
-#                                         "Uninfected", "Infected", "Uninfected"),
-#                         "hemat_level" = c(rep(c("L", "H", "H",
-#                                                 "H", "L", "L",
-#                                                 "L", "H", "H"),
-#                                               times = 2),
-#                                           "L", "H", "H",
-#                                           "H", "L", "L"),
-#                         "CW" = c(rep(c(132.2, 128.8, 145, 
-#                                        127.4, 134.1, 133.3, 
-#                                        95.7, 111.8, 133.7), 
-#                                      times = 2),
-#                                  132.2, 128.8, 145, 
-#                                  127.4, 134.1, 133.3),
-#                         "SC" = c(rep("New", times = 5),
-#                                  rep("Old", times = 2),
-#                                  rep("New", times = 7),
-#                                  rep("Old", times = 2),
-#                                  rep("New", times = 7),
-#                                  "Old"))
-
-# Use the above one if categorizing Day 0 Elevated-temperature crab as "Elevated" and Day 0 Lowered-temperature crab as "Lowered". If categorizing them as "Ambient" (since they were at ambient temperature when Day 0 samples were taken), use the one below. Comment out the one not used!
-
-# If treating elevated day 0 and lowered day 0 as ambient
 crabTraits <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c("A", "B", "C", "D", "E", "F", "G", "H", "I"), times = 2), 
                                     "A", "B", "C", "D", "E", "F"),
                                     includePairwise = FALSE,
@@ -159,44 +123,7 @@ crabTraits <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c("A", "
                                   rep("New", times = 7),
                                   "Old"))
 
-# Create clinical data trait matrix. Same rules as above, but all columns are numeric are numeric. Crab A will be noted as 1, B as 2, and C as 3. Again, comment out the one not used!
-
-# If treating elevated day 0 as elevated
-#crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6, 7, 8, 9), times = 2), 
-#                                    1, 2, 3, 4, 5, 6),
-#                         "day" = c(rep(0, times = 9),
-#                                  rep(2, times = 9),
-#                                  rep(17, times = 6)),
-#                         "temp" = c(rep(c(rep(2, times = 3),
-#                                         rep(1, times = 3), 
-#                                         rep(3, times = 3)), times = 2),
-#                                    rep(2, times = 3),
-#                                    rep(1, times = 3)),
-#                         "infection" = c(rep(c(rep(2, times = 3),
-#                                               1, 2, 1,
-#                                               rep(2, times = 3)), times = 2),
-#                                         rep(2, times = 3),
-#                                         1, 2, 1),
-#                         "hemat_level" = c(rep(c(1, 2, 2,
-#                                                2, 1, 1
-#                                                 1, 2, 2),
-#                                               times = 2),
-#                                           1, 2, 2,
-#                                           1, 1, 1),
-#                         "CW" = c(rep(c(132.2, 128.8, 145, 
-#                                        127.4, 134.1, 133.3, 
-#                                        95.7, 111.8, 133.7), 
-#                                      times = 2),
-#                                  132.2, 128.8, 145, 
-#                                  127.4, 134.1, 133.3),
-#                         "SC" = c(rep(1, times = 5),
-#                                  rep(2, times = 2),
-#                                  rep(1, times = 7),
-#                                  rep(2, times = 2),
-#                                  rep(1, times = 7),
-#                                  2))
-
-# If treating elevated day 0 as ambient
+# Create clinical data trait matrix. Same rules as above, but all columns are numeric are numeric. Crab A will be noted as 1, B as 2, and C as 3. 
 crabClinicalData <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c(1, 2, 3, 4, 5, 6, 7, 8, 9), times = 2), 
                                     1, 2, 3, 4, 5, 6),
                                     includePairwise = FALSE,
@@ -467,7 +394,7 @@ I chose to use a signed network, since that's generally recommended over unsigne
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
 
 ```{r coexpression}
-softPower <- 8
+softPower <- 16
 adjacency <- adjacency(CrabExpr0, power = softPower,
                        type = "signed")
 
@@ -505,7 +432,7 @@ plot(geneTree, xlab = "", sub = "",
 minModuleSize <- minimum_module
 # Cut branches of dendrogram to ID WGCNA modules
 dynamicMods <- cutreeDynamic(dendro =  geneTree,
-                             method = "hybrid"
+                             method = "hybrid",
                              distM = dissTOM,
                              deepSplit = 2,
                              pamRespectsDendro = FALSE,

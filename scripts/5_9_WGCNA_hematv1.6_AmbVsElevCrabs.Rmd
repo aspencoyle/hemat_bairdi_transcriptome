@@ -84,7 +84,7 @@ libraries <- c("178", "118", "132", "173", "072", "127", "359", "349", "334", "2
 
 # If treating elevated day 0 as ambient
 # binarizeCategoricalVariable is because WGCNA doesn't play well with categorical variables. This turns it into a series of Y/N
-# minCount is usually set at 3 - variables that don't appear 3+ times are excluded from the binarization
+# minCount is usually set at 3 - variables that don't appear 3+ times are excluded from the binarization unless otherwise specified
 crabTraits <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c("A", "B", "C", "G", "H", "I"), times = 2), "A", "B", "C"),
                                                               includePairwise = FALSE,
                                                               includeLevelVsAll = TRUE,
@@ -122,7 +122,7 @@ crabClinicalData <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c(
                                   132.2, 128.8, 145), center = TRUE))
 
 # Variable being examined - should match column in two data frames above
-variable <- "day"
+variable <- "CW"
 
 # Start and ending we want for each file and graph saved
 file_start <- paste0("../output/WGCNA_output/hemat_transcriptomev1.6/amb_vs_elev_no_filter/", variable, "_as_var/")
@@ -637,4 +637,6 @@ write.table(kME_table, file = fileName,
             sep = "\t",
             row.names = TRUE,
             col.names = TRUE)
+
+head(kME_table)
 ```

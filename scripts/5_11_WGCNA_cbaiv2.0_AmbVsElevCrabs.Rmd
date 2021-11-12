@@ -331,13 +331,16 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
      col = "red")
 ```
 
-Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. That means we will choose 11 as the power for day, temp, hemat_level, and CW alike
+Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. That means we will choose the following powers:
+
+19: day
+20: temp, hemat_level, CW
 
 
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
 
 ```{r coexpression}
-softPower <- 11
+softPower <- 20
 adjacency <- adjacency(CrabExpr0, power = softPower,
                        type = "signed")
 
