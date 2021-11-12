@@ -369,3 +369,5 @@ TK: Consider running DESeq2 on Hemat_Level H vs L
 TK: Also consider running DESeq with contrasts to run three-way comparison on Amb 0 vs 2 vs 17 all in one\
 
 TK: Check whether, for the All Crabs PCAs, I should put multiple legends into the plot
+
+

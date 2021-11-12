@@ -70,8 +70,9 @@ First, set all variables.
 
 Later in the script, you will need to specify a soft thresholding power to choose. But otherwise, minimal changes are necessary
 
-
 Not including SC in this WGCNA, as only 1 elevated-temp crab has it
+
+We'll also choose to scale and center CW, as numeric variables with means or SDs > 5 can induce collinearity with the intercept. 
 
 ```{r TPMextract}
 # Path to kallisto libraries
@@ -82,24 +83,32 @@ libraries <- c("178", "118", "132", "173", "072", "127", "359", "349", "334", "2
 
 
 # If treating elevated day 0 as ambient
-crabTraits <- data.frame("crab" = c(rep(c("A", "B", "C", "G", "H", "I"), times = 2), "A", "B", "C"),
+# binarizeCategoricalVariable is because WGCNA doesn't play well with categorical variables. This turns it into a series of Y/N
+# minCount is usually set at 3 - variables that don't appear 3+ times are excluded from the binarization
+crabTraits <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c("A", "B", "C", "G", "H", "I"), times = 2), "A", "B", "C"),
+                                                              includePairwise = FALSE,
+                                                              includeLevelVsAll = TRUE,
+                                                              minCount = 2),
                          "day" = factor(c(rep(0, times = 6),
-                                   rep(2, times = 6),
-                                   rep(17, times = 3))),
+                                          rep(2, times = 6),
+                                          rep(17, times = 3))),
                          "temp" = c(rep("Ambient", times = 9),
                                     rep("Elevated", times = 3),
                                     rep("Ambient", times = 3)),
                          "hemat_level" = rep(c("L", "H", "H"), times = 5),
-                         "CW" = c(rep(c(132.2, 128.8, 145, 
-                                        95.7, 111.8, 133.7), 
-                                      times = 2),
-                                  132.2, 128.8, 145))
-
+                         "CW" = scale(c(rep(c(132.2, 128.8, 145, 
+                                              95.7, 111.8, 133.7), 
+                                            times = 2),
+                                        132.2, 128.8, 145), center = TRUE))
+                         
 
 # Create clinical data trait matrix. Same rules as above, but all columns are numeric are numeric. Crab A will be noted as 1, B as 2, and C as 3. 
 
 # If treating elevated day 0 as ambient
-crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1, 2, 3),
+crabClinicalData <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1, 2, 3),
+                                                              includePairwise = FALSE,
+                                                              includeLevelVsAll = TRUE,
+                                                              minCount = 2),
                          "day" = c(rep(0, times = 6),
                                    rep(2, times = 6),
                                    rep(17, times = 3)),
@@ -107,13 +116,13 @@ crabClinicalData <- data.frame("crab" = c(rep(c(1, 2, 3, 4, 5, 6), times = 2), 1
                                     rep(2, times = 3),
                                     rep(1, times = 3)),
                          "hemat_level" = rep(c(1, 2, 2), times = 5),
-                         "CW" = c(rep(c(132.2, 128.8, 145, 
+                         "CW" = scale(c(rep(c(132.2, 128.8, 145, 
                                         95.7, 111.8, 133.7), 
                                       times = 2),
-                                  132.2, 128.8, 145))
+                                  132.2, 128.8, 145), center = TRUE))
 
 # Variable being examined - should match column in two data frames above
-variable <- "CW"
+variable <- "day"
 
 # Start and ending we want for each file and graph saved
 file_start <- paste0("../output/WGCNA_output/hemat_transcriptomev1.6/amb_vs_elev_no_filter/", variable, "_as_var/")
@@ -243,7 +252,7 @@ head(crabTraits)
 
 # Create a dendrogram to look at sample and trait clustering
 sampleTree2 <- hclust(dist(CrabExpr0), method = "average")
-traitColors <- numbers2colors(crabClinicalData, signed = FALSE)
+traitColors <- numbers2colors(crabClinicalData, signed = TRUE)
 ```
 
 ```{r sample_dendrogram}
@@ -265,9 +274,12 @@ plotDendroAndColors(sampleTree2, traitColors,
 
 ```{r softthresholding}
 # Create set of soft-thresholding powers
-powers <- c(c(1:10), seq(from = 12, to = 20, by = 2))
+powers <- c(c(1:10), seq(from = 12, to = 30, by = 2))
 # Use network topology analysis function to eval soft-thresholding power vals
-sft <- pickSoftThreshold(CrabExpr0, powerVector = powers, verbose = 5)
+sft <- pickSoftThreshold(CrabExpr0, 
+                         powerVector = powers, 
+                         verbose = 5, 
+                         networkType = "signed")
 ```
 
 #### Plot scale-free topology fit as function of soft-thresholding power
@@ -332,19 +344,21 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
 
 Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. However, no eligible soft-thresholding power reached 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), this indicates the following:
 
-"If the scale-free topology fit index fails to reach values above 0.8 for reasonable powers (less than 15 for unsigned or signed hybrid networks, and less than 30 for signed networks) and the mean connectivity remains relatively high (in the hundreds or above) [note: which our data does], chances are that the data exhibit a strong driver that makes a subset of the samples globally different from the rest. The difference causes high correlation among large groups of genes which invalidates the assumption of the scale-free topology approximation."
+`"If the scale-free topology fit index fails to reach values above 0.8 for reasonable powers (less than 15 for unsigned or signed hybrid networks, and less than 30 for signed networks) and the mean connectivity remains relatively high (in the hundreds or above), chances are that the data exhibit a strong driver that makes a subset of the samples globally different from the rest. The difference causes high correlation among large groups of genes which invalidates the assumption of the scale-free topology approximation."`
 
-I chose to use an unsigned network. Therefore, the WGCNA FAQ recommends choosing a soft-thresholding power of 9, since we have fewer than 20 samples total.
+Our mean connectivity drops below the hundreds, so we can safely continue.
+
+I chose to use a signed network, since that's generally recommended over unsigned. Therefore, the WGCNA FAQ recommends choosing a soft-thresholding power of 18, since we have fewer than 20 samples total.
 
 
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
 
 ```{r coexpression}
-softPower <- 9
-adjacency <- adjacency(CrabExpr0, power = softPower)
+softPower <- 18
+adjacency <- adjacency(CrabExpr0, power = softPower, type = "signed")
 
 # Minimize noise and spurious associations by transforming adjacency into TOM
-TOM <- TOMsimilarity(adjacency)
+TOM <- TOMsimilarity(adjacency, TOMType = "signed")
 
 #Calculate dissimilarity matrix
 dissTOM <- 1 - TOM
@@ -377,6 +391,7 @@ plot(geneTree, xlab = "", sub = "",
 minModuleSize <- minimum_module
 # Cut branches of dendrogram to ID WGCNA modules
 dynamicMods <- cutreeDynamic(dendro =  geneTree,
+                             method = "hybrid",
                              distM = dissTOM,
                              deepSplit = 2,
                              pamRespectsDendro = FALSE,
@@ -552,26 +567,26 @@ labeledHeatmap(Matrix = moduleTraitCor,
 Module membership info is needed for a possible downstream GO-MWU analysis. 
 
 ``` {r gene_significance}
-# Define "temp" using information from trait matrix
-temp <- as.data.frame(crabClinicalData$temp)
+# Define variable using information from trait matrix
+key_var <- as.data.frame(crabClinicalData[, variable])
 # Modify names
-names(temp) <- "temp"
+names(key_var) <- variable
 # Save module names without "ME" at beginning of each entry
 modNames <- substr(names(MEs), 3, nchar(names(MEs)))
 
 # Determine gene significance
 
 # Obtain gene significance statistics
-geneTraitSignificance <- as.data.frame(cor(CrabExpr0, temp, use = "p"))
+geneTraitSignificance <- as.data.frame(cor(CrabExpr0, key_var, use = "p"))
 # Add column names
-names(geneTraitSignificance) <- paste("GS.", names(temp), sep = "")
+names(geneTraitSignificance) <- paste("GS.", names(key_var), sep = "")
 # Confirm formatting
 head(geneTraitSignificance)
 
 # Obtain p-values for each gene significance stat
 GSPvalue <- as.data.frame(corPvalueStudent(as.matrix(geneTraitSignificance), nSamples))
 # Add column names
-names(GSPvalue) <- paste("p.GS", names(temp), sep = "")
+names(GSPvalue) <- paste("p.GS", names(key_var), sep = "")
 # Confirm formatting
 head(GSPvalue)
 
@@ -606,25 +621,20 @@ for (module in modNames) {
 }
 ```
 
-#### Master list with membership and gene significance information
+#### Get kME
+
+kME calculates module membership, and is used in the subsequent GO-MWU analysis that we'll perform on significant modules. 
+
+We'll keep things simple by making a table of the kME for all genes. In the actual GO-MWU analysis, we'll set the kME of all genes that aren't in the significant module to 0. But no need to worry about that now!
 
 ```{r membership_and_gene_info}
-# Import gene annotation info
-crabGeneAnnot <- read.delim(blastx_table_site, header = FALSE, sep = "\t")
-# Remove unnecessary columns
-crabGeneAnnot <- crabGeneAnnot[, -c(3:10, 12)]
-# Name columns
-colnames(crabGeneAnnot) <- c("seqIDs", "Uniprot", "e-value")
-# Look at column formatting
-head(crabGeneAnnot)
+kME_table <- signedKME(CrabExpr0,
+                       datME = MEs0)
 
-# If pipes in Uniprot ID column, separate to specifically get Uniprot ID, and then remove those new columns with species info
-gene_ids <- dplyr::pull(crabGeneAnnot, Uniprot)
-if(any(grepl("|", gene_ids, fixed = TRUE))) {
-  crabGeneAnnot <- separate(data = crabGeneAnnot, col = Uniprot, into = c("sp", "Uniprot", "Species"),
-                   sep = "\\|")
-  crabGeneAnnot <- crabGeneAnnot[,-c(2, 4)]
-}
-
-# Also get all GO terms
+# Write kME file
+fileName <- paste(file_start, "kME_table.txt")
+write.table(kME_table, file = fileName,
+            sep = "\t",
+            row.names = TRUE,
+            col.names = TRUE)
 ```
