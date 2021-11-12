@@ -58,8 +58,8 @@ These blocks take quite a long time to run, so **in the markdown file, I have se
 For all code blocks, **the order of rows in temperature and day values in exp_design should match the order of columns of the `kallisto.isoforms.counts.matrix` input file from Trinity for the pairwise comparison**. As an example, here's what the `exp_design` table should look like for hypothetical libraries A (day 0, lowered temp), B (day 2, ambient temp), and C (day 17, elevated temp) if the `kallisto.isoforms.counts.matrix` file columns are ordered A, B, C:
 
 ```{r example_table}
-exp_design <- data.frame(temp = factor(c("Low", "Amb", "Elev")),
-                         day = factor(c(0, 2, 17)))
+exp_design <- data.frame(Treatment = factor(c("Low", "Amb", "Elev")),
+                         Day = factor(c(0, 2, 17)))
 
 exp_design
 ```
@@ -101,14 +101,14 @@ exp_design = day and temperature data for libraries 173, 072, 127, 272, 294, 280
 # otherwise unchanged.
 
 
-exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb",
+exp_design <- data.frame(Temperature = factor(c("Amb", "Amb", "Amb",
                                          "Elev", "Elev", "Elev")),
-                         day = factor(c(0, 0, 0, 2, 2, 2)))
+                         Day = factor(c(0, 0, 0, 2, 2, 2)))
 
 kallisto_path <- "../output/kallisto_matrices/hemat_transcriptomev1.6/elev0_vs_elev2_indiv/kallisto.isoform.counts.matrix"
 experiment_table <- exp_design
 output_path <- "../graphs/DESeq2_output/hemat_transcriptomev1.6/elev0_vs_elev2_indiv"
-variable <- "temp"
+variable <- "Temperature"
 
 # Read in matrix created by Trinity from Kallisto outputs
 data <- read.table(kallisto_path, header = TRUE,
@@ -223,43 +223,43 @@ write.table(deseq2_tmp.sig, file.path(output_path, "DEGlist_wcols.txt"),
 exp_design = day and temperature data for libraries 359, 349, 334, 272, 294, 280 (in order)
 
 ```{r amb2vselev2, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "elev", "elev", "elev")),
-                         day = factor(c(2, 2, 2,
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Elevated", "Elevated", "Elevated")),
+                         Day = factor(c(2, 2, 2,
                                         2, 2, 2)))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev1.6/amb2_vs_elev2_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/amb2_vs_elev2_indiv",
-               variable = "temp")
+               variable = "Temperature")
 ```
 
 ### Ambient Day 0 vs. Ambient Day 2, Individual Libraries Only
 exp_design = day and temperature data for libraries 178, 118, 132, 359, 349, 334 (in order)
 
 ```{r amb0vsamb2, eval = FALSE}
-exp_design <- data.frame(day = factor(c(0, 0, 0, 
-                                        2, 2, 2)),
-                         temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb")))
+exp_design <- data.frame(Day = factor(c("Day 0", "Day 0", "Day 0", 
+                                        "Day 2", "Day 2", "Day 2")),
+                         Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient")))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev1.6/amb0_vs_amb2_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/amb0_vs_amb2_indiv",
-               variable = "day")
+               variable = "Day")
 ```
 
 ### Ambient Day 0 vs. Ambient Day 17, Individual Libraries Only
 exp_design = day and temperature data for libraries 178, 118, 132, 463, 481, 485 (in order)
 
 ```{r amb0vsamb17, eval = FALSE}
-exp_design <- data.frame(day = factor(c(0, 0, 0, 
-                                        17, 17, 17)))
+exp_design <- data.frame(Day = factor(c("Day 0", "Day 0", "Day 0", 
+                                        "Day 17", "Day 17", "Day 17")))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev1.6/amb0_vs_amb17_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/amb0_vs_amb17_indiv",
-               variable = "day")
+               variable = "Day")
 ```
 
 
@@ -273,36 +273,36 @@ That corresponds to Crab A Day 0, Crab A Day 2, Crab A Day 17, Crab B Day 0, Cra
 Using temperature at time of sampling, not treatment  group
 
 ```{r all_libs_temp, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         day = factor(c(0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17, 
-                                        0, 2, 17, 
-                                        0, 2, 0, 
-                                        2, 0, 2)),
-                         crab = factor(c(rep("A", times = 3),
-                                         rep("B", times = 3),
-                                         rep("C", times = 3),
-                                         rep("D", times = 3),
-                                         rep("E", times = 3),
-                                         rep("F", times = 3),
-                                         rep("G", times = 2),
-                                         rep("H", times = 2),
-                                         rep("I", times = 2))))
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Elevated", "Ambient",
+                                         "Elevated", "Ambient", "Elevated")),
+                         Day = factor(c("Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17", 
+                                        "Day 0", "Day 2", "Day 17", 
+                                        "Day 0", "Day 2", "Day 0", 
+                                        "Day 2", "Day 0", "Day 2")),
+                         ID = factor(c(rep("Crab A", times = 3),
+                                         rep("Crab B", times = 3),
+                                         rep("Crab C", times = 3),
+                                         rep("Crab D", times = 3),
+                                         rep("Crab E", times = 3),
+                                         rep("Crab F", times = 3),
+                                         rep("Crab G", times = 2),
+                                         rep("Crab H", times = 2),
+                                         rep("Crab I", times = 2))))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev1.6/all_indiv_libraries/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/all_indiv_libraries/temp_as_var/",
-               variable = "temp")
+               variable = "Temperature")
 ```
 
 
@@ -310,105 +310,105 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev
 
 
 ```{r all_libs_crab, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         day = factor(c(0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17, 
-                                        0, 2, 17, 
-                                        0, 2, 0, 
-                                        2, 0, 2)),
-                         crab = factor(c(rep("A", times = 3),
-                                         rep("B", times = 3),
-                                         rep("C", times = 3),
-                                         rep("D", times = 3),
-                                         rep("E", times = 3),
-                                         rep("F", times = 3),
-                                         rep("G", times = 2),
-                                         rep("H", times = 2),
-                                         rep("I", times = 2))))
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Elevated", "Ambient",
+                                         "Elevated", "Ambient", "Elevated")),
+                         Day = factor(c("Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17", 
+                                        "Day 0", "Day 2", "Day 17", 
+                                        "Day 0", "Day 2", "Day 0", 
+                                        "Day 2", "Day 0", "Day 2")),
+                         Individual = factor(c(rep("Crab A", times = 3),
+                                         rep("Crab B", times = 3),
+                                         rep("Crab C", times = 3),
+                                         rep("Crab D", times = 3),
+                                         rep("Crab E", times = 3),
+                                         rep("Crab F", times = 3),
+                                         rep("Crab G", times = 2),
+                                         rep("Crab H", times = 2),
+                                         rep("Crab I", times = 2))))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev1.6/all_indiv_libraries/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/all_indiv_libraries/crab_as_var/",
-               variable = "crab")
+               variable = "Individual")
 ```
 
 #### Day as variable
 
 
 ```{r all_libs_day, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         day = factor(c(0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17, 
-                                        0, 2, 17, 
-                                        0, 2, 0, 
-                                        2, 0, 2)),
-                         crab = factor(c(rep("A", times = 3),
-                                         rep("B", times = 3),
-                                         rep("C", times = 3),
-                                         rep("D", times = 3),
-                                         rep("E", times = 3),
-                                         rep("F", times = 3),
-                                         rep("G", times = 2),
-                                         rep("H", times = 2),
-                                         rep("I", times = 2))))
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Elevated", "Ambient",
+                                         "Elevated", "Ambient", "Elevated")),
+                         Day = factor(c("Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17", 
+                                        "Day 0", "Day 2", "Day 17", 
+                                        "Day 0", "Day 2", "Day 0", 
+                                        "Day 2", "Day 0", "Day 2")),
+                         Individual = factor(c(rep("Crab A", times = 3),
+                                         rep("Crab B", times = 3),
+                                         rep("Crab C", times = 3),
+                                         rep("Crab D", times = 3),
+                                         rep("Crab E", times = 3),
+                                         rep("Crab F", times = 3),
+                                         rep("Crab G", times = 2),
+                                         rep("Crab H", times = 2),
+                                         rep("Crab I", times = 2))))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev1.6/all_indiv_libraries/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/all_indiv_libraries/day_as_var/",
-               variable = "day")
+               variable = "Day")
 ```
 
 #### Infection as variable
 
 
 ```{r all_libs_inf, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         crab = factor(c(rep("A", times = 3),
-                                         rep("B", times = 3),
-                                         rep("C", times = 3),
-                                         rep("D", times = 3),
-                                         rep("E", times = 3),
-                                         rep("F", times = 3),
-                                         rep("G", times = 2),
-                                         rep("H", times = 2),
-                                         rep("I", times = 2))),
-                         infection = factor(c(rep("Inf", times = 9),
-                                              rep("Uninf", times = 3),
-                                              rep("Inf", times = 3),
-                                              rep("Uninf", times = 3),
-                                              rep("Inf", times = 6))))
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                                "Ambient", "Ambient", "Ambient",
+                                                "Ambient", "Ambient", "Ambient",
+                                                "Ambient", "Decreased", "Decreased",
+                                                "Ambient", "Decreased", "Decreased",
+                                                "Ambient", "Decreased", "Decreased",
+                                                "Ambient", "Elevated", "Ambient",
+                                                "Elevated", "Ambient", "Elevated")),
+                         Individual = factor(c(rep("Crab A", times = 3),
+                                       rep("Crab B", times = 3),
+                                       rep("Crab C", times = 3),
+                                       rep("Crab D", times = 3),
+                                       rep("Crab E", times = 3),
+                                       rep("Crab F", times = 3),
+                                       rep("Crab G", times = 2),
+                                       rep("Crab H", times = 2),
+                                       rep("Crab I", times = 2))),
+                         cPCR = factor(c(rep("Infected", times = 9),
+                                         rep("Uninfected", times = 3),
+                                         rep("Infected", times = 3),
+                                         rep("Uninfected", times = 3),
+                                         rep("Infected", times = 6))))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev1.6/all_indiv_libraries/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/all_indiv_libraries/infection_as_var/",
-               variable = "infection")
+               variable = "cPCR")
 ```
 
 #### Hematodinium infection level as variable
@@ -442,31 +442,31 @@ Crab I = 211000
 
 
 ```{r all_libs_inf_status, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         day = factor(c(0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17, 
-                                        0, 2, 17, 
-                                        0, 2, 0, 
-                                        2, 0, 2)),
-                         hemat_level = factor(c(rep("L", times = 3),
-                                               rep("H", times = 9),
-                                               rep("L", times = 8),
-                                               rep("H", times = 4))))
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Elevated", "Ambient",
+                                         "Elevated", "Ambient", "Elevated")),
+                         Day = factor(c("Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17", 
+                                        "Day 0", "Day 2", "Day 17", 
+                                        "Day 0", "Day 2", "Day 0", 
+                                        "Day 2", "Day 0", "Day 2")),
+                         Infection = factor(c(rep("Light", times = 3),
+                                               rep("Heavy", times = 9),
+                                               rep("Light", times = 8),
+                                               rep("Heavy", times = 4))))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev1.6/all_indiv_libraries/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/all_indiv_libraries/hemat_level_as_var/",
-               variable = "hemat_level")
+               variable = "Infection")
 ```
 
 ### All Samples
@@ -480,41 +480,43 @@ After that, we'll also calculate the plasticity by getting the data from our PCA
 ```{r}
 # Create experimental table. Again, order should correspond to order of columns in our data file
 
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         day = factor(c(0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17,
-                                        0, 2, 17, 
-                                        0, 2, 17, 
-                                        0, 2, 0, 
-                                        2, 0, 2)),
-                         hemat_level = factor(c(rep("L", times = 3),
-                                                rep("H", times = 9),
-                                                rep("L", times = 8),
-                                                rep("H", times = 4))),
-                         crab = factor(c(rep("A", times = 3),
-                                         rep("B", times = 3),
-                                         rep("C", times = 3),
-                                         rep("D", times = 3),
-                                         rep("E", times = 3),
-                                         rep("F", times = 3),
-                                         rep("G", times = 2),
-                                         rep("H", times = 2),
-                                         rep("I", times = 2))),
-                         infection = factor(c(rep("Inf", times = 9),
-                                              rep("Uninf", times = 3),
-                                              rep("Inf", times = 3),
-                                              rep("Uninf", times = 3),
-                                              rep("Inf", times = 6))))
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Decreased", "Decreased",
+                                         "Ambient", "Elevated", "Ambient",
+                                         "Elevated", "Ambient", "Elevated")),
+                         Day = factor(c("Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17",
+                                        "Day 0", "Day 2", "Day 17", 
+                                        "Day 0", "Day 2", "Day 17", 
+                                        "Day 0", "Day 2", "Day 0", 
+                                        "Day 2", "Day 0", "Day 2")),
+                         Infection = factor(c(rep("Light", times = 3),
+                                                rep("Heavy", times = 9),
+                                                rep("Light", times = 8),
+                                                rep("Heavy", times = 4))),
+                         Individual = factor(c(rep("Crab A", times = 3),
+                                       rep("Crab B", times = 3),
+                                       rep("Crab C", times = 3),
+                                       rep("Crab D", times = 3),
+                                       rep("Crab E", times = 3),
+                                       rep("Crab F", times = 3),
+                                       rep("Crab G", times = 2),
+                                       rep("Crab H", times = 2),
+                                       rep("Crab I", times = 2))),
+                         cPCR = factor(c(rep("Infected", times = 9),
+                                              rep("Uninfected", times = 3),
+                                              rep("Infected", times = 3),
+                                              rep("Uninfected", times = 3),
+                                              rep("Infected", times = 6))))
 
+# Specify variable
+variable <- "Individual"
 
 # Read in data
 data <- read.table("../output/kallisto_matrices/hemat_transcriptomev1.6/all_indiv_libraries/kallisto.isoform.counts.matrix", header = TRUE, sep = "\t")
@@ -548,7 +550,7 @@ print(exp_design)
 # Create DESeq object that looks at effect of variable
 deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
                                      colData = exp_design,
-                                     design = as.formula("~temp"))
+                                     design = as.formula("~Individual"))
 
 deseq2.dds <- DESeq(deseq2.dds)
 
@@ -562,15 +564,21 @@ vsd <- vst(deseq2.dds, blind = FALSE)
 
 colData(vsd)
 
-# Plot plotly for PCA
-ggplotly(
-  plotPCA(vsd, intgroup= "crab") +
-    ggtitle("PCA of all crabs for hemat_transcriptomev1.6") +
-    geom_point(size = 3, aes(text = colnames(vsd))) +
-    theme_minimal(), tooltip = "text")
+# Plot PCA
 
+# Use plotPCA function to create the plot
+pcaData <- DESeq2::plotPCA(vsd, intgroup=variable, returnData=TRUE)
+# Round the percent variance for the labels
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+# Create the actual plot 
+ggplot(pcaData, aes(PC1, PC2, color = pcaData[, variable])) +
+  geom_point(size=3) + 
+  ggtitle("PCA of all crabs for hemat_transcriptomev1.6") +
+  scale_color_discrete(variable) +
+  xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+  ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+  coord_fixed()
 
-# Run PCA to create object. This uses the same code found in plotPCA()
 rv <- rowVars(assay(vsd))
 select <- order(rv, decreasing = TRUE)[seq_len(min(500, 
                                                    length(rv)))]
@@ -580,7 +588,7 @@ pca <- prcomp(t(assay(vsd)[select, ]))
 points <- pca[["x"]]
 
 # Change rownames from sample ID to crab ID
-rownames(points) <- exp_design$crab
+rownames(points) <- exp_design$Individual
 
 # Eliminate all columns except PC1 and PC2
 points <- points[,1:2]

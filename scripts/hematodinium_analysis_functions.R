@@ -113,8 +113,19 @@ deseq_analysis <- function(kallisto_path,
   # Transform values
   vsd <- vst(deseq2.dds, blind = FALSE)
   head(assay(vsd), 3)
-  # Create plot
-  PCA_plot <- plotPCA(vsd, intgroup = variable)
+
+  pcaData <- DESeq2::plotPCA(vsd, intgroup=variable, returnData=TRUE)
+  # Round the percent variance for the labels
+  percentVar <- round(100 * attr(pcaData, "percentVar"))
+  # Create the actual plot 
+  PCA_plot <- ggplot(pcaData, aes(PC1, PC2, color = pcaData[, variable])) +
+    geom_point(size=3) + 
+    scale_color_discrete(variable) +
+    xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+    ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+    coord_fixed()
+  
+  # Print the PCA plot and save to output path
   print(PCA_plot)
   dev.copy(png, file.path(output_path, "PCA_plot.png"))
   dev.off()

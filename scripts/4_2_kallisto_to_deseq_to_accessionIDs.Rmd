@@ -94,13 +94,13 @@ exp_design = day and temperature data for libraries 173, 072, 127, 272, 294, 280
 
 ```{r elev0vselev2, eval = FALSE}
 
-exp_design <- data.frame(day = factor(c(0, 0, 0,
-                                        2, 2, 2)))
+exp_design <- data.frame(Day = factor(c("Day 0", "Day 0", "Day 0",
+                                        "Day 2", "Day 2", "Day 2")))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4.0/elev0_vs_elev2_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev4.0/elev0_vs_elev2_indiv",
-               variable = "day")
+               variable = "Day")
 ```
   
 
@@ -112,13 +112,13 @@ exp_design = day and temperature data for libraries 359, 349, 334, 272, 294, 280
 
 ```{r amb2vselev2, eval = FALSE}
 
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "elev", "elev", "elev")))
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Elevated", "Elevated", "Elevated")))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4.0/amb2_vs_elev2_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev4.0/amb2_vs_elev2_indiv",
-               variable = "temp")
+               variable = "Temperature")
 ```
 
 
