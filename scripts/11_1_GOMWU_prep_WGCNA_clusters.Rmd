@@ -1,0 +1,75 @@
+---
+title: "11_1_module_GO-MWU_prep_WGCNA_clusters"
+author: "Aidan Coyle"
+date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Previously, we ran GO-MWU on a variety of pairwise comparisons for each transcriptome. That's useful, but there's another way to use GO-MWU.
+
+Essentially, you take a module that was deemed significant by WGCNA, and analyze that in the context of all genes that were analyzed by WGCNA.
+
+To do this, you give GO-MWU two inputs.
+
+- A 2-column table of accession IDs and kME values (with the kME values of genes outside the module set to 0). A header line is required, although the contents are irrelevant.
+
+- A tab-delimited 2-column table of accession IDs and GO terms with no header and only 1 line per gene.
+
+This script produces the CSV needed for GO-MWU, which is a 2-column table of accession IDs and log2 fold changes. A header line is required, although the contents are irrelevant.
+
+GO-MWU also requires another input file which we already created - a tab-delimited 2-column table of accession IDs and GO terms with no header and only 1 line per gene
+
+In this script, we'll work to create the first of those two files.
+
+First, here's a list of all significant modules for all 3 transcriptomes (that aren't associated with a crab). Ones that seem particularly interesting are bolded. Names correspond to what they're called in the hemat_level analysis for that respective transcriptome/comparison combination
+
+
+| Transcriptome | Comparison | Trait               | Module name | p-value | Lowest?                  | Others                                         |
+|---------------|------------|---------------------|-------------|---------|--------------------------|------------------------------------------------|
+| Unfiltered    | All        | **day**             | **black**   | 0.04    | Y                        |                                                |
+| Unfiltered    | All        | Temp (Low vs Amb)   | tan         | 0.05    | Y                        |                                                |
+| Unfiltered    | All        | Temp (Low vs Amb)   | **cyan**    | 0.02    | N (Crab C, 0.002)        | Crab B, Temp (Elev), Hemat_Level               |
+| Unfiltered    | All        | Temp (Low vs Elev)  | **brown**   | 0.02    | Y                        | Temp (Elev)                                    |
+| Unfiltered    | All        | Temp (Elev)         | **cyan**    | 0.04    | N (Crab C, 0.002)        | Crab B, Temp (Low vs Amb), Hemat_Level         |
+| Unfiltered    | All        | Temp (Elev)         | **brown**   | 0.03    | N (Low vs Elev, 0.02)    |                                                |
+| Unfiltered    | All        | infection           | red         | 0.05    | N (Crab F, 0.004)        |                                                |
+| Unfiltered    | All        | hemat_level         | magenta     | 0.02    | N (Crab C, 6x10^-13)     | CW                                             |
+| Unfiltered    | All        | **hemat_level**     | **cyan**    | 0.008   | N (Crab C, 0.002)        | Crab B, Temp (Low vs Amb), Temp (Elev) |
+| Unfiltered    | All        | SC                  | red         | 0.05    | N (Crab F, 0.004)        | Infection                                      |
+| Unfiltered    | Amb + Elev | hemat_level         | lightcyan   | 0.03    | N (Crab A, 8x10^-4)      |                                                |
+| Unfiltered    | Amb + Elev | CW                  | darkgrey    | 0.04    | Tie (Crab C)             |                                                |
+| Unfiltered    | Amb + Elev | CW                  | darkorange  | 0.05    | N (Crab H, 3x10^-9)      |                                                |
+| Unfiltered    | Amb + Elev | CW                  | skyblue     | 3x10^-4 | N (Crab G, 8x10&-9)      |                                                |
+| Unfiltered    | Amb + Elev | CW                  | lightgreen  | 0.03    | N (Crab C, 8x10^-8)      |                                                |
+| Host          | All        |**Temp (Low v Amb)** | black       | 6x10^-4 | Y                        | Elev                                           |
+| Host          | All        | Temp (Low vs. Amb)  | red         | 0.01    | N (Crab C, 2x10^-8)      | hemat_level, CW                                |
+| Host          | All        |**Temp (Low v Elev)**| blue        | 0.02    | Y                        | Elev                                           |
+| Host          | All        | Temp (Elev)         | blue        | 0.03    | N (Low vs. Elev, 0.02)   |                                                |
+| Host          | All        | Temp (Elev)         | black       | 0.05    | N (Low vs. Amb, 6x10^-4) |                                                |
+| Host          | All        | hemat_level         | red         | 0.01    | N (Crab C, 2x10^-8)      | Low vs. Amb, CW                                |
+| Host          | All        | CW                  | red         | 0.04    | N (Crab C, 2x10^-8)      | Low vs. Amb, hemat_level                       |
+| Host          | All        | SC                  | pink        | 0.03    | N (Crab F, 0.002)        |                                                |
+| Host          | Amb + Elev | CW                  | pink        | 0.02    | N (Crab C, 9x10^-6)      |                                                |
+| Parasite      | All        | **day**             | black       | 0.04    | Y                        |                                                |
+| Parasite      | All        | Temp (Low vs. Amb)  | turquoise   | 0.02    | N (Crab C, 4x10^-6)      | hemat_level, CW                                |
+| Parasite      | All        | hemat_level         | turquoise   | 0.01    | N (Crab C, 4x10^-6)      | Low vs Amb, CW                                 |
+| Parasite      | All        | **hemat_level**     | blue        | 0.01    | N (Crab B, 0.002)        | Crab B, Crab C                                 |
+
+Modules
+
+**Unfiltered, All**
+- Black (day)
+- Cyan (temperature, hemat level)
+- Brown (temperature)
+
+**Host, All**
+- Black (temperature)
+- Blue (temperature)
+
+**Parasite, All**
+- Black (day)
+- Blue (hemat_level)

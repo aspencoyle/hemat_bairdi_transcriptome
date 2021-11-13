@@ -198,6 +198,83 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
                variable = "temp")
 ```
 
+# Lowered Day 0 vs. Lowered Day 2, Individual Libraries Only
+
+exp_design = day and temperature data for libraries 073, 151, 113, 221, 254, 222 (in order)
+
+```{r low0vslow2, eval = FALSE}
+exp_design <- data.frame(Day = factor(c(0, 0, 0,
+                                        2, 2, 2)))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/low0_vs_low2_indiv/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low0_vs_low2_indiv",
+               variable = "Day")
+```
+
+# Lowered Day 0 vs. Lowered Days 2 + 17, Individual Libraries Only
+
+exp_design = day and temperature data for libraries 073, 151, 113, 221, 254, 222, 427, 445, 425 (in order)
+
+```{r low0vslow217, eval = FALSE}
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                                "Decreased", "Decreased", "Decreased",
+                                                "Decreased", "Decreased", "Decreased")),
+                         Day = factor(c(0, 0, 0,
+                                        2, 2, 2,
+                                        17, 17, 17)))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/low0_vs_low217_indiv/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low0_vs_low217_indiv",
+               variable = "Temperature")
+```
+
+# Lowered Day 0 + Ambient Day 0/2/17 vs. Lowered Day 2/17, Individual
+
+exp_design = day and temperature data for libraries 073, 151, 113, 178, 118, 132, 359, 349, 334, 463, 481, 485, 221, 254, 222, 427, 445, 425
+
+```{r low0amb0217vslow217, eval = FALSE}
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                                "Ambient", "Ambient", "Ambient",
+                                                "Ambient", "Ambient", "Ambient",
+                                                "Ambient", "Ambient", "Ambient",
+                                                "Decreased", "Decreased", "Decreased",
+                                                "Decreased", "Decreased", "Decreased")),
+                         Day = factor(c(0, 0, 0,
+                                        0, 0, 0,
+                                        2, 2, 2,
+                                        17, 17, 17,
+                                        2, 2, 2,
+                                        17, 17, 17)))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/low0_amb0217_vs_low217_indiv/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low0_amb0217_vs_low217_indiv",
+               variable = "Temperature")
+```
+
+# Lowered Day 2 + 17 vs. Ambient Day 2 + 17, Individual
+
+exp_design = day and temperature data for libraries 221, 254, 222, 427, 445, 425, 359, 349, 334, 463, 481, 485 (in order)
+
+```{r low217vsamb217, eval = FALSE}
+exp_design <- data.frame(Temperature = factor(c("Decreased", "Decreased", "Decreased",
+                                                "Decreased", "Decreased", "Decreased",
+                                                "Ambient", "Ambient", "Ambient",
+                                                "Ambient", "Ambient", "Ambient")),
+                         Day = factor(c(2, 2, 2,
+                                        17, 17, 17,
+                                        2, 2, 2,
+                                        17, 17, 17)))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/low217_vs_amb217_indiv/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low217_vs_amb217_indiv",
+               variable = "Temperature")
+```
+
+
 ### All Individual Libraries
 exp_design = day and temperature data for libraries 178, 359, 463, 118, 349, 481, 132, 334, 485, 073, 221, 427, 151, 254, 445, 113, 222, 425, 173, 272, 072, 294, 127, 280. 
 
@@ -615,6 +692,26 @@ transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcript
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb2_vs_elev2_indiv/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
                        output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/amb2_vs_elev2_indiv_DEG_IDs.txt")
+
+# Lowered Day 0 vs. Lowered Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low0_vs_low2_indiv/DEGlist_wcols.txt", 
+                       blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
+                       output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/low0_vs_low2_indiv_DEG_IDs.txt")
+
+# Lowered Day 0 vs. Lowered Day 2 + 17
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low0_vs_low217_indiv/DEGlist_wcols.txt", 
+                       blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
+                       output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/low0_vs_low217_indiv_DEG_IDs.txt")
+
+# Lowered Day 0 + Ambient Day 0 + 2 + 17 vs. Lowered Day 2 + 17
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low0_amb0217_vs_low217_indiv/DEGlist_wcols.txt", 
+                       blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
+                       output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/low0_amb0217_vs_low217_indiv_DEG_IDs.txt")
+
+# Lowered Day 2 + 17 vs. Ambient Day 2+17
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low217_vs_amb217_indiv/DEGlist_wcols.txt", 
+                       blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
+                       output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/low217_vs_amb217_indiv_DEG_IDs.txt")
 ```
 
 # UniProt accession IDs for all transcripts
@@ -649,6 +746,26 @@ transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcript
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb2_vs_elev2_indiv/AllGenes_wcols.txt", 
                        blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
                        output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/allgenes_IDs/amb2_vs_elev2_indiv_All_GeneIDs.txt")
+
+# Lowered Day 0 vs. Lowered Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low0_vs_low2_indiv/AllGenes_wcols.txt", 
+                       blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
+                       output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/low0_vs_low2_indiv_All_GeneIDs.txt")
+
+# Lowered Day 0 vs. Lowered Day 2 + 17
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low0_vs_low217_indiv/AllGenes_wcols.txt", 
+                       blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
+                       output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/low0_vs_low217_indiv_All_GeneIDs.txt")
+
+# Lowered Day 0 + Ambient Day 0 + 2 + 17 vs. Lowered Day 2 + 17
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low0_amb0217_vs_low217_indiv/AllGenes_wcols.txt", 
+                       blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
+                       output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/low0_amb0217_vs_low217_indiv_All_GeneIDs.txt")
+
+# Lowered Day 2 + 17 vs. Ambient Day 2+17
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/low217_vs_amb217_indiv/AllGenes_wcols.txt", 
+                       blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
+                       output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/low217_vs_amb217_indiv_All_GeneIDs.txt")
 
 # All Genes
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/all_indiv_libraries/crab_as_var/AllGenes_wcols.txt", 
