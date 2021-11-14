@@ -31,7 +31,7 @@ First, here's a list of all significant modules for all 3 transcriptomes (that a
 | Transcriptome | Comparison | Trait               | Module name | p-value | Lowest?                  | Others                                         |
 |---------------|------------|---------------------|-------------|---------|--------------------------|------------------------------------------------|
 | Unfiltered    | All        | **day**             | **black**   | 0.04    | Y                        |                                                |
-| Unfiltered    | All        | Temp (Low vs Amb)   | tan         | 0.05    | Y                        |                                                |
+| Unfiltered    | All        | **Temp (Low v Amb)**| **tan**     | 0.05    | Y                        |                                                |
 | Unfiltered    | All        | Temp (Low vs Amb)   | **cyan**    | 0.02    | N (Crab C, 0.002)        | Crab B, Temp (Elev), Hemat_Level               |
 | Unfiltered    | All        | Temp (Low vs Elev)  | **brown**   | 0.02    | Y                        | Temp (Elev)                                    |
 | Unfiltered    | All        | Temp (Elev)         | **cyan**    | 0.04    | N (Crab C, 0.002)        | Crab B, Temp (Low vs Amb), Hemat_Level         |
@@ -45,21 +45,23 @@ First, here's a list of all significant modules for all 3 transcriptomes (that a
 | Unfiltered    | Amb + Elev | CW                  | darkorange  | 0.05    | N (Crab H, 3x10^-9)      |                                                |
 | Unfiltered    | Amb + Elev | CW                  | skyblue     | 3x10^-4 | N (Crab G, 8x10&-9)      |                                                |
 | Unfiltered    | Amb + Elev | CW                  | lightgreen  | 0.03    | N (Crab C, 8x10^-8)      |                                                |
-| Host          | All        |**Temp (Low v Amb)** | black       | 6x10^-4 | Y                        | Elev                                           |
-| Host          | All        | Temp (Low vs. Amb)  | red         | 0.01    | N (Crab C, 2x10^-8)      | hemat_level, CW                                |
-| Host          | All        |**Temp (Low v Elev)**| blue        | 0.02    | Y                        | Elev                                           |
-| Host          | All        | Temp (Elev)         | blue        | 0.03    | N (Low vs. Elev, 0.02)   |                                                |
-| Host          | All        | Temp (Elev)         | black       | 0.05    | N (Low vs. Amb, 6x10^-4) |                                                |
-| Host          | All        | hemat_level         | red         | 0.01    | N (Crab C, 2x10^-8)      | Low vs. Amb, CW                                |
-| Host          | All        | CW                  | red         | 0.04    | N (Crab C, 2x10^-8)      | Low vs. Amb, hemat_level                       |
+| Host          | All        |**Temp (Low v Amb)** | **black**   | 6x10^-4 | Y                        | Elev                                           |
+| Host          | All        | **Temp (Low v Amb)**| **red**     | 0.01    | N (Crab C, 2x10^-8)      | hemat_level, CW                                |
+| Host          | All        |**Temp (Low v Elev)**| **blue**    | 0.02    | Y                        | Elev                                           |
+| Host          | All        | Temp (Elev)         | **blue**    | 0.03    | N (Low vs. Elev, 0.02)   |                                                |
+| Host          | All        | Temp (Elev)         | **black**   | 0.05    | N (Low vs. Amb, 6x10^-4) |                                                |
+| Host          | All        | hemat_level         | **red**     | 0.01    | N (Crab C, 2x10^-8)      | Low vs. Amb, CW                                |
+| Host          | All        | CW                  | **red**     | 0.04    | N (Crab C, 2x10^-8)      | Low vs. Amb, hemat_level                       |
 | Host          | All        | SC                  | pink        | 0.03    | N (Crab F, 0.002)        |                                                |
 | Host          | Amb + Elev | CW                  | pink        | 0.02    | N (Crab C, 9x10^-6)      |                                                |
 | Parasite      | All        | **day**             | black       | 0.04    | Y                        |                                                |
-| Parasite      | All        | Temp (Low vs. Amb)  | turquoise   | 0.02    | N (Crab C, 4x10^-6)      | hemat_level, CW                                |
-| Parasite      | All        | hemat_level         | turquoise   | 0.01    | N (Crab C, 4x10^-6)      | Low vs Amb, CW                                 |
+| Parasite      | All        | **Temp (Low v Amb)**|**turquoise**| 0.02    | N (Crab C, 4x10^-6)      | hemat_level, CW                                |
+| Parasite      | All        | **hemat_level**     |**turquoise**| 0.01    | N (Crab C, 4x10^-6)      | Low vs Amb, CW                                 |
 | Parasite      | All        | **hemat_level**     | blue        | 0.01    | N (Crab B, 0.002)        | Crab B, Crab C                                 |
 
 Modules
+
+Round 1:
 
 **Unfiltered, All**
 - Black (day)
@@ -74,6 +76,16 @@ Modules
 - Black (day)
 - Blue (hemat_level)
 
+Round 2:
+
+**Unfiltered, All**
+- Tan (Low vs. Amb, hemat_level)
+
+**Host, All**
+- Red (Low vs Amb)
+
+**Parasite, All**
+- Turquoise ( Low vs Amb, hemat_level)
 
 Alright, let's get started:
 
@@ -151,6 +163,14 @@ WGCNA_modules_accessions_kMEs(module_name = "brown",
                               output_GOMWU = "../scripts/11_4_running_GOMWU/",
                               output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
 
+# Tan module, cbai2.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "tan",
+                              transcriptome = "cbai_transcriptomev2.0",
+                              compar = "all_crabs_no_filter",
+                              blast_path = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
 #### HOST TRANSCRIPTOME -------------------------------
 
 # Black module, cbai4.0, all crabs
@@ -169,6 +189,14 @@ WGCNA_modules_accessions_kMEs(module_name = "blue",
                               output_GOMWU = "../scripts/11_4_running_GOMWU/",
                               output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
 
+# Red module, cbai4.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "red",
+                              transcriptome = "cbai_transcriptomev4.0",
+                              compar = "all_crabs_no_filter",
+                              blast_path = "../data/cbai_blastx_table_transcriptome_v4.0.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
 #### PARASITE TRANSCRIPTOME -------------------------
 
 # Black module, hemat1.6, all crabs
@@ -181,6 +209,14 @@ WGCNA_modules_accessions_kMEs(module_name = "black",
 
 # Blue module, hemat1.6, all crabs
 WGCNA_modules_accessions_kMEs(module_name = "blue",
+                              transcriptome = "hemat_transcriptomev1.6",
+                              compar = "all_crabs_no_filter",
+                              blast_path = "../data/hemat_blastx_table_transcriptome_v1.6.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
+# Turquoise module, hemat1.6, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "turquoise",
                               transcriptome = "hemat_transcriptomev1.6",
                               compar = "all_crabs_no_filter",
                               blast_path = "../data/hemat_blastx_table_transcriptome_v1.6.txt",

@@ -370,4 +370,5 @@ TK: Also consider running DESeq with contrasts to run three-way comparison on Am
 
 TK: Check whether, for the All Crabs PCAs, I should put multiple legends into the plot
 
+TK: When we decide when/if to use WGCNA heatmaps, expand em to make em prettier
 
