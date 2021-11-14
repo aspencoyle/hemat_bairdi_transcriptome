@@ -68,6 +68,11 @@ uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_t
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
               output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_brown_GOIDs.txt")
 
+# Tan module, cbai2.0, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_tan_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_tan_GOIDs.txt")
+
 #### HOST TRANSCRIPTOME -------------------------------
 
 # Black module, cbai4.0, all crabs
@@ -80,6 +85,11 @@ uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_t
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
               output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_blue_GOIDs.txt")
 
+# Red module, cbai4.0, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_red_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_red_GOIDs.txt")
+
 #### PARASITE TRANSCRIPTOME -------------------------
 
 # Black module, hemat1.6, all crabs
@@ -91,6 +101,11 @@ uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/hemat_
 uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_blue_GeneIDs.txt",
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
               output_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_blue_GOIDs.txt")
+
+# Turquoise module, hemat1.6, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_turquoise_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_turquoise_GOIDs.txt")
 
 ```
 
