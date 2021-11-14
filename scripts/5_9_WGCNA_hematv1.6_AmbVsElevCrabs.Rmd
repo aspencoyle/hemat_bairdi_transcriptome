@@ -632,7 +632,7 @@ kME_table <- signedKME(CrabExpr0,
                        datME = MEs0)
 
 # Write kME file
-fileName <- paste(file_start, "kME_table.txt")
+fileName <- paste0(file_start, "kME_table.txt")
 write.table(kME_table, file = fileName,
             sep = "\t",
             row.names = TRUE,

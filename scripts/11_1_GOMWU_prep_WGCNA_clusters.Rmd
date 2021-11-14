@@ -73,3 +73,117 @@ Modules
 **Parasite, All**
 - Black (day)
 - Blue (hemat_level)
+
+
+Alright, let's get started:
+
+First, load all libraries as usual
+
+```{r libraries, message = FALSE, warning=FALSE}
+# Add all required libraries that are installed with install.packages() here
+list.of.packages <- "tidyverse"
+# Add all libraries that are installed using BiocManager here
+bioconductor.packages <- ""
+
+# Install BiocManager if needed
+if(!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+new.bioc.packages <- bioconductor.packages[!(bioconductor.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+if(length(new.bioc.packages)) BiocManager::install(new.bioc.packages)
+
+# Load all required libraries
+all.packages <- c(list.of.packages, bioconductor.packages)
+lapply(all.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+
+source("hematodinium_analysis_functions.R")
+
+```
+
+
+We'll now repeatedly run WGCNA_modules_accessions_KMEs()
+
+This works as follows:
+
+
+Inputs:
+- The transcripts within a module produced by WGCNA
+- All kMEs for all modules in your WGCNA run (should be in same directory as significant module)
+- A BLAST file for your relevant transcriptome
+
+
+Output:
+  - A tab-separated two-column table of accession IDs and module kME values for all genes (kME values for genes not in module should be set to 0)
+      - This goes in the output_GOMWU directory
+  - A single column of accession IDs (this will be used to create the second input for GO-MWU)
+      - This will be put in the output_accessions directory
+      
+Function arguments:
+- module_name: color of the module you want to examine
+- transcriptome: name of the relevant transcriptome
+- compar: libraries used in WGCNA. Should be all_crabs_no_filter or amb_vs_elev_no_filter
+- blast_path: path to the BLAST file for your relevant transcriptome
+- output_GOMWU: path to the folder you want to put your files in (should be the one you run GO-MWU in)
+- output_accessions: path to the folder you want to put your single column of accession IDs in
+
+```{r inputs}
+
+# UNFILTERED TRANSCRIPTOME ------------------------------
+
+# Cyan module, cbai2.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "cyan",
+                              transcriptome = "cbai_transcriptomev2.0",
+                              compar = "all_crabs_no_filter",
+                              blast_path = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
+# Brown module, cbai2.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "brown",
+                              transcriptome = "cbai_transcriptomev2.0",
+                              compar = "all_crabs_no_filter",
+                              blast_path = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
+#### HOST TRANSCRIPTOME -------------------------------
+
+# Black module, cbai4.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "black",
+                              transcriptome = "cbai_transcriptomev4.0",
+                              compar = "all_crabs_no_filter",
+                              blast_path = "../data/cbai_blastx_table_transcriptome_v4.0.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
+# Blue module, cbai4.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "blue",
+                              transcriptome = "cbai_transcriptomev4.0",
+                              compar = "all_crabs_no_filter",
+                              blast_path = "../data/cbai_blastx_table_transcriptome_v4.0.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
+#### PARASITE TRANSCRIPTOME -------------------------
+
+# Black module, hemat1.6, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "black",
+                              transcriptome = "hemat_transcriptomev1.6",
+                              compar = "all_crabs_no_filter",
+                              blast_path = "../data/hemat_blastx_table_transcriptome_v1.6.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
+# Blue module, hemat1.6, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "blue",
+                              transcriptome = "hemat_transcriptomev1.6",
+                              compar = "all_crabs_no_filter",
+                              blast_path = "../data/hemat_blastx_table_transcriptome_v1.6.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+```

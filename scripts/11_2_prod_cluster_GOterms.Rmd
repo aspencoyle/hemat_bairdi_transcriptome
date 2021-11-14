@@ -1,0 +1,96 @@
+---
+title: "11_2_prod_cluster_GOterms"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+In the previous script, we produced a 2-column table of accession IDs and kME values for each module we wanted to examine.
+
+We also produced a single column of accession IDs in that same script.
+
+Here, we will use that single column to produce the other input necessary for GO-MWU - a **2-column table of accession IDs and GO terms with no header**
+
+We will later need to reduce it to just one line per unique accession ID, but that's simple enough to do later
+
+First, load libraries and functions
+
+```{r libraries, message = FALSE, warning=FALSE}
+# Add all required libraries that are installed with install.packages() here
+list.of.packages <- "tidyverse"
+# Add all libraries that are installed using BiocManager here
+bioconductor.packages <- ""
+
+# Install BiocManager if needed
+if(!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+new.bioc.packages <- bioconductor.packages[!(bioconductor.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+if(length(new.bioc.packages)) BiocManager::install(new.bioc.packages)
+
+# Load all required libraries
+all.packages <- c(list.of.packages, bioconductor.packages)
+lapply(all.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+
+# Functions are defined in hematodinium_analysis_functions.R
+source("hematodinium_analysis_functions.R")
+```
+
+We'll use the same function we've used in earlier runs when trying to create inputs for GO-MWU - uniprot_to_GO()
+
+# Description of uniprot_to_GO():
+Inputs:
+
+accession_path: A newline-separated file of accession IDs
+
+swissprot_path: path to a downloaded uncompressed copy of the SwissProt database with all GO terms included, available at https://www.uniprot.org/uniprot/
+
+output_path: path to output .txt file
+
+```{r}
+# UNFILTERED TRANSCRIPTOME ------------------------------
+
+# Cyan module, cbai2.0, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_cyan_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_cyan_GOIDs.txt")
+
+# Brown module, cbai2.0, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_brown_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_brown_GOIDs.txt")
+
+#### HOST TRANSCRIPTOME -------------------------------
+
+# Black module, cbai4.0, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_black_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_black_GOIDs.txt")
+
+# Blue module, cbai4.0, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_blue_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_blue_GOIDs.txt")
+
+#### PARASITE TRANSCRIPTOME -------------------------
+
+# Black module, hemat1.6, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_black_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_black_GOIDs.txt")
+
+# Blue module, hemat1.6, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_blue_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_blue_GOIDs.txt")
+
+```
+

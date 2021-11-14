@@ -250,7 +250,7 @@ geneIDs_foldchange <- function(input_file, blast_file, output_file) {
   
   
   # If pipes in accession ID column, separate to get accession ID,
-  # remove all columns except transcript ID, accession ID, and p-value
+  # remove all columns except transcript ID, accession ID, and log2-fold change
   # and remove all rows with an NA accession ID
   gene_ids <- dplyr::pull(transcript_key, Gene_ID)
   if(any(grepl("|", gene_ids, fixed = TRUE))){
@@ -260,7 +260,7 @@ geneIDs_foldchange <- function(input_file, blast_file, output_file) {
     transcript_key <- transcript_key[!is.na(transcript_key$Accession_ID), c(4, 2)]
   } else {
     # If no pipes in accession ID column, remove all rows with an NA accession ID,
-    # remove the first column (transcript ID), and reorder the 2nd and 3rd (should be accession ID, then p-value)
+    # remove the first column (transcript ID), and reorder the 2nd and 3rd (should be accession ID, then log2-fold change)
     transcript_key <- transcript_key %>%
       rename("Gene_ID" = "Accession_ID")
     transcript_key <- transcript_key[!is.na(transcript_key$Accession_ID), c(3, 2)]
@@ -327,4 +327,137 @@ uniprot_to_GO <- function(accession_path, swissprot_path, output_path) {
   
 }
 
+#### WGCNA_modules_accessions_kMEs ------------------------------------------
+# Inputs:
+# - The transcripts within a module produced by WGCNA
+# - All kMEs for all modules in your WGCNA run (should be in same directory as significant module)
+# - A BLAST file for your relevant transcriptome
 
+
+# Output:
+# - A tab-separated two-column table of accession IDs and module kME values for all genes (kME values for genes not in module should be set to 0)
+#     - This goes in the output_GOMWU directory
+# - A single column of accession IDs (this will be used to create the second input for GO-MWU)
+#     - This will be put in the output_accessions directory
+
+# Function arguments:
+# - module_name: color of the module you want to examine
+# - transcriptome: name of the relevant transcriptome
+# - compar: libraries used in WGCNA. Should be all_crabs_no_filter or amb_vs_elev_no_filter
+# - blast_path: path to the BLAST file for your relevant transcriptome
+# - output_GOMWU: path to the folder you want to put your files in (should be the one you run GO-MWU in)
+# - output_accessions: path to the folder you want to put your single column of accession IDs in
+
+WGCNA_modules_accessions_kMEs <- function(module_name, transcriptome, 
+                                          compar, blast_path, output_GOMWU, 
+                                          output_accessions) {
+  # Load in module data, which is just one column of transcript IDs in module
+  module.dat <- read.delim(file = paste0("../output/WGCNA_output/", transcriptome, "/", 
+                                         compar, "/hemat_level_as_var/GeneList-", 
+                                         module_name, ".txt"),
+                           sep = "\t",
+                           col.names = "Transcript_ID")
+  
+  # Add column of 1s to module.dat. This'll be used to signify the transcript is in the relevant module later.
+  module.dat <- module.dat %>%
+    add_column(member = rep(1, times = nrow(module.dat)))
+  
+  # Alright, module data is now ready for joining. Let's read in the kME file and prep it
+  
+  # Load kME data, which is a column of all transcript IDs in WGCNA, plus the kME scores for each module
+  # Each module is a separate column, but we just care about the one being examined here.
+  kME.dat <- read.delim(file = paste0("../output/WGCNA_output/", transcriptome, "/", 
+                                      compar, "/hemat_level_as_var/ kME_table.txt"),
+                        sep = "\t")
+  
+  # Move rownames (the transcript IDs) to columns
+  kME.dat <- kME.dat %>%
+    rownames_to_column(var = "Transcript_ID")
+  
+  # Remove all columns in our kME data table that don't pertain to the relevant module
+  kME.dat <- kME.dat %>%
+    select(Transcript_ID, paste0("kME", module_name))
+  
+  # Rename 2nd column (the kME values) to "kME_vals" so we don't need to keep messing with the module color
+  colnames(kME.dat)[2] <- "kME_vals"
+  
+  # kME data is now ready for joining! Let's do that
+  
+  full.dat <- left_join(kME.dat, module.dat, by = "Transcript_ID")
+  
+  # To analyze a WGCNA module using GO-MWU, all genes that aren't members of the relevant module should have their kME set to 0
+  full.dat[is.na(full.dat$member), ]$kME_vals <- 0
+  
+  # We can now remove the membership column, since it's served its purpose of the kMEs of non-members to 0
+  full.dat <- full.dat %>%
+    select(-member)
+  
+  # We now have a two-column file of transcript IDs and kMEs for the relevant module
+  # However, GO-MWU needs accession IDs, not transcript IDs.
+  # Therefore, we'll read in the BLAST table and use that as a key to match accession IDs and transcript IDs
+  
+  # Read in BLAST table
+  blast_data <- read.table(blast_path, header = FALSE,
+                           sep = "\t")
+  
+  # Add names for first two columns of BLAST data
+  colnames(blast_data)[1:2] <- c("Transcript_ID", "Gene_ID")
+  
+  # Select only the first two columns
+  blast_data <- blast_data %>%
+    select(Transcript_ID, Gene_ID)
+  
+  # Add Gene ID column to transcript data, using Transcript ID column to match
+  full.dat <- left_join(full.dat, blast_data, by = "Transcript_ID")
+  
+  # If pipes in accession ID column, separate to get accession ID,
+  # remove all columns except transcript ID, accession ID, and kME
+  # and remove all rows with an NA accession ID
+  gene_ids <- dplyr::pull(full.dat, Gene_ID)
+  if(any(grepl("|", gene_ids, fixed = TRUE))){
+    transcript_key <- separate(data = full.dat, col = Gene_ID,
+                               into = c("sp", "Accession_ID", "species"), 
+                               sep = "\\|")
+    transcript_key <- transcript_key[!is.na(transcript_key$Accession_ID), c(4, 2)]
+  } else {
+    # If no pipes in accession ID column, remove all rows with an NA accession ID,
+    # remove the first column (transcript ID), and reorder the 2nd and 3rd (should be accession ID, then kME)
+    transcript_key <- transcript_key %>%
+      rename("Gene_ID" = "Accession_ID")
+    transcript_key <- transcript_key[!is.na(transcript_key$Accession_ID), c(3, 2)]
+  }
+  
+  end_loc <- str_split(transcriptome, pattern = "_transcriptome")
+  
+  output_file <- paste0(output_GOMWU,
+                        paste0(end_loc[[1]][1]),
+                        paste0(end_loc[[1]][2]),
+                        "_", compar, "_",
+                        module_name, 
+                        "_module_kMEs.csv")
+  
+  # Write to GOMWUoutput path
+  rownames(transcript_key) <- NULL
+  write.csv(transcript_key, output_file, row.names = FALSE, quote = FALSE)
+  
+  # At this point, we have a two-column file of accession IDs and kME values
+  # We can remove the kME values column, thus producing the starting point for our 
+  # two-column table of accession IDs and GO terms
+  
+  accession_IDs <- transcript_key %>%
+    select(-kME_vals)
+  
+  accessions_out <- paste0(output_accessions,
+                              transcriptome, "/",
+                              compar, "_", 
+                              module_name, "_GeneIDs.txt")
+  
+  # Create vector of non-NA accession IDs
+  accession_IDs <- na.omit(transcript_key$Accession_ID)
+  
+  # Create file of accession IDs separated by newline
+  write_lines(x =accession_IDs, file = accessions_out, sep = "\n")
+  
+  
+  
+}
