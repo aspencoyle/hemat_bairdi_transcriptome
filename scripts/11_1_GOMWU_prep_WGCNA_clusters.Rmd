@@ -54,10 +54,10 @@ First, here's a list of all significant modules for all 3 transcriptomes (that a
 | Host          | All        | CW                  | **red**     | 0.04    | N (Crab C, 2x10^-8)      | Low vs. Amb, hemat_level                       |
 | Host          | All        | SC                  | pink        | 0.03    | N (Crab F, 0.002)        |                                                |
 | Host          | Amb + Elev | CW                  | pink        | 0.02    | N (Crab C, 9x10^-6)      |                                                |
-| Parasite      | All        | **day**             | black       | 0.04    | Y                        |                                                |
+| Parasite      | All        | **day**             | **black**   | 0.04    | Y                        |                                                |
 | Parasite      | All        | **Temp (Low v Amb)**|**turquoise**| 0.02    | N (Crab C, 4x10^-6)      | hemat_level, CW                                |
 | Parasite      | All        | **hemat_level**     |**turquoise**| 0.01    | N (Crab C, 4x10^-6)      | Low vs Amb, CW                                 |
-| Parasite      | All        | **hemat_level**     | blue        | 0.01    | N (Crab B, 0.002)        | Crab B, Crab C                                 |
+| Parasite      | All        | **hemat_level**     | **blue**    | 0.01    | N (Crab B, 0.002)        | Crab B, Crab C                                 |
 
 Modules
 
@@ -146,6 +146,14 @@ Function arguments:
 ```{r inputs}
 
 # UNFILTERED TRANSCRIPTOME ------------------------------
+
+# Black module, cbai2.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "black",
+                              transcriptome = "cbai_transcriptomev2.0",
+                              compar = "all_crabs_no_filter",
+                              blast_path = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
 
 # Cyan module, cbai2.0, all crabs
 WGCNA_modules_accessions_kMEs(module_name = "cyan",

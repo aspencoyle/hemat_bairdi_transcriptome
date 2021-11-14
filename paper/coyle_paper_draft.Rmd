@@ -177,8 +177,6 @@ crop(top = 100, bottom = 90)
 
 [TK: Should we perform GO-MWU but looking at MF or CC?]
 
-[TK: Perform GO-MWU on WGCNA modules with p-val = 0.05]
-
 ## GO-MWU
 
 Pairwise comparisons were performed using GO-MWU to determine which biological processes were enriched. Unfiltered libraries from the elevated-temperature treatment group saw changes in expression for numerous biological processes, including TK, TK, and TK. These modules were not enriched in the ambient-temperature treatment group over the same timespan. 
@@ -305,68 +303,68 @@ Parasite expression: not available, only 5 genes total
 
 ## WGCNA
 
-We've got some unfinished business as far as WGCNA goes. Essentially, I think that WGCNA is pretty useless without actually characterizing the contents of each module that's significantly different. So I'll describe each potentially-interesting comparison in a table below, and we can decide whether it's worth taking the time to figure out how to run them through GO-MWU to describe their function.
-
-For each transcriptome, we ran WGCNA twice. The first included all crab in the experiment, while in the second only Ambient- and Elevated-temperature treatment group crab were included. Here is a table of all interesting significant modules (p < 0.05) in all six WGCNA runs.
-
-Notes: 
-- The addition of Hemat. Level, Shell Condition, and Carapace Width is recent
-
-- Shell Condition wasn't added for Ambient + Elevated comparisons, as only 1 had shell condition = Old (all others new). In the full experiment, 7 crabs were new-shell and 2 were old-shell
-
-- TK: Check if immature/mature status is accurate (if all are terminally-molted, significance of CW has implications for growth + vulnerability)
+A signed weighted correlation network analysis (WGCNA) was run on all libraries aligned to each transcriptome (TK citation). This clustered genes into modules according to expression pattern, and then correlated them with our variables. We took all modules that were significantly correlated, and discarded those in which the correlation to the variable appeared to be due to extremely strong correlation to a single crab. This produced the following modules (Table TK).
 
 
-| Transcriptome | Comparison         | Variable        | # of Signif Modules | p-value(s)         | Comments                                                             |
-|---------------|--------------------|-----------------|---------------------|--------------------|----------------------------------------------------------------------|
-| Unfiltered    | All crabs          | Day             | 1                   | 0.04               |                                                                      |
-| Unfiltered    | All crabs          | Infection       | 2                   | 0.05, 0.006        |                                                                      |
-| Unfiltered    | All crabs          | Hemat. Level    | 2                   | 0.02, 0.008        | Depending on which variable examined, potentially a third (p = 0.05) |
-| Unfiltered    | All crabs          | Carapace width  | 1                   | 0.03               |                                                                      |
-| Unfiltered    | All crabs          | Shell Condition | 1                   | 0.05               |                                                                      |
-| Unfiltered    | Ambient + Elevated | Hemat. Level    | 1                   | 0.04               |                                                                      |
-| Unfiltered    | Ambient + Elevated | Carapace width  | 3                   | 0.04, 0.02, 0.0001 | Interesting! Biologically relevant?                                  |
-| Host          | All crabs          | Day             | 1                   | 0.05               |                                                                      |
-| Host          | All crabs          | Hemat. Level    | 1                   | 0.01               |                                                                      |
-| Host          | All crabs          | Carapace width  | 1                   | 0.03               |                                                                      |
-| Host          | All crabs          | Shell Condition | 1                   | 0.03               |                                                                      |
-| Host          | Ambient + Elevated | Day             | 2                   | 0.01, 0.02         |                                                                      |
-| Host          | Ambient + Elevated | Hemat. Level    | 2                   | 0.05, 0.01         |                                                                      |
-| Host          | Ambient + Elevated | Carapace width  | 2                   | 0.02, 0.03         |                                                                      |
-| Parasite      | All crabs          | Day             | 1                   | 0.02               |                                                                      |
-| Parasite      | All crabs          | Hemat. Level    | 2                   | 0.01, 0.01         |                                                                      |
-| Parasite      | Ambient + Elevated | Carapace width  | 1                   | 0.05               |                                                                      |
+| Transcriptome | Module    | Trait and p-values                                                    |
+|---------------|-----------|-----------------------------------------------------------------------|
+| Unfiltered    | black     | Day (0.04)                                                            |
+| Unfiltered    | tan       | Low vs. Ambient (0.05)                                                |
+| Unfiltered    | cyan      | Low vs. Ambient (0.02), Elevated vs. All (0.04)                       |
+| Unfiltered    | brown     | Low vs. Elevated (0.02), Elevated vs. All (0.03)                      |
+| Host          | black     | Low vs. Ambient (6x10^-4), Elevated (0.05)                            |
+| Host          | red       | Low vs. Ambient (0.01), Infection Level (0.01), Carapace Width (0.04) |
+| Host          | blue      | Low vs. Elevated (0.02), Elevated (0.03)                              |
+| Parasite      | black     | Day (0.04)                                                            |
+| Parasite      | turquoise | Low vs. Ambient (0.02), Infection Level (0.01)                        |
+| Parasite      | blue      | Infection Level (0.01)                                                |
 
 
-And here's a summary table of the above. I added Crabs as a variable (left out of the above table, since I didn't think it was biologically interesting, but we did have some significant modules)
+Each of these modules was then analyzed using GO-MWU. No groups of GO terms were differentially enriched for any unfiltered or host module. However, all three modules within the parasite transcriptome saw differential enrichment. TK: Discussion of differential enrichment comes here
 
-| Variable                  | Number of significant modules | Total module number | Percent of significant modules |
-|---------------------------|-------------------------------|---------------------|--------------------------------|
-| Crab                      | 4                             | 57                  | 7.7                            |
-| Day                       | 5                             | 57                  | 8.8                            |
-| Temperature               | 0                             | 57                  | 0                              |
-| Infection (cPCR)          | 2                             | 29                  | 6.9                            |
-| Hematodinium level (qPCR) | 8                             | 57                  | 14.0                           |
-| Carapace width            | 8                             | 57                  | 14.0                           |
-| Shell condition           | 2                             | 29                  | 6.9                            |
+```{r, fig.cap = "WGCNA Cluster Dendrogram for traits in parasite libraries", echo = FALSE}
 
 
-Overall, I think the following:
+"../output/WGCNA_output/hemat_transcriptomev1.6/all_crabs_no_filter/hemat_level_as_var/ClusterDendrogram_W_Colors.png" %>%
+  image_read() 
+```
+
+```{r, fig.cap = "WGCNA Cluster Dendrogram of original and merged eigengenes for parasite libraries", echo = FALSE}
 
 
-- If we trust the qPCR results (essentially, that all crabs were infected), we should use the All Crabs run Adds another level to the Temperature factor, but also a lot of power for other variables
+"../output/WGCNA_output/hemat_transcriptomev1.6/all_crabs_no_filter/hemat_level_as_var/ClusterDendrogramOrigAndMergedEigengenes.png" %>%
+  image_read() 
+```
 
-- If we instead trust the cPCR results, we should use the Ambient + Elevated run That would reduce our sample size from 24 to 15, but would eliminate the complicating factor of infection. All 15 samples in Ambient + Elevated are infected according to cPCR, while 6 of the 9 in the additional Decreased group are uninfected (plus, adds another level to the Temperature factor)
 
-- Examine Carapace Width and Shell Condition in the host and parasite transcriptomes
-- Examine Day in the Host and Parasite transcriptomes (change in infection over time)
-- If we trust the qPCR results (essentially, that all crab were infected), we should DEFINITELY look at Hemat_Level.
-  - If not, look at Infection
+
+```{r, fig.cap = "GO term enrichment for parasite black module (linked to day)", echo = FALSE}
+
+
+"../graphs/GOMWU_output/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_black_module.png" %>%
+  image_read() 
+```
+
+```{r, fig.cap = "GO term enrichment for parasite turquoise module (linked to temperature and infection level)", echo = FALSE}
+
+
+"../graphs/GOMWU_output/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_turquoise_module.png" %>%
+  image_read() 
+```
+
+```{r, fig.cap = "GO term enrichment for parasite blue module (linked to infection level)", echo = FALSE}
+
+
+"../graphs/GOMWU_output/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_blue_module.png" %>%
+  image_read() 
+```
+
+
 
 
 TK: Consider running DESeq2 on Hemat_Level H vs L
 
-TK: Also consider running DESeq with contrasts to run three-way comparison on Amb 0 vs 2 vs 17 all in one\
+TK: Also consider running DESeq with contrasts to run three-way comparison on Amb 0 vs 2 vs 17 all in one
 
 TK: Check whether, for the All Crabs PCAs, I should put multiple legends into the plot
 

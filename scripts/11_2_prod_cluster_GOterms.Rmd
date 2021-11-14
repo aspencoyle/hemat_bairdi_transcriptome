@@ -58,6 +58,11 @@ output_path: path to output .txt file
 ```{r}
 # UNFILTERED TRANSCRIPTOME ------------------------------
 
+# Black module, cbai2.0, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_black_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_black_GOIDs.txt")
+
 # Cyan module, cbai2.0, all crabs
 uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_cyan_GeneIDs.txt",
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
