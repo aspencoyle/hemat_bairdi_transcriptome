@@ -534,6 +534,23 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev
                variable = "Temperature")
 ```
 
+### Decreased Day 0 vs. Ambient Day 0, Individual Libraries Only
+exp_design = day and temperature data for libraries 073, 151, 113, 178, 118, 132 (in order)
+
+Note: In this case, "Temperature" stands for TREATMENT temperature, not ACTUAL temperature (in all others, it's the actual temperature). However, this is a test for differences in base infection rate for treatment groups.
+
+```{r low0vsamb0, eval = FALSE}
+exp_design <- data.frame(Temperature = factor(c("Decreased", "Decreased", "Decreased",
+                                         "Ambient", "Ambient", "Ambient")))
+
+deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev1.6/low0_vs_amb0_indiv/kallisto.isoform.counts.matrix",
+               experiment_table = exp_design,
+               output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/low0_vs_amb0_indiv",
+               variable = "Temperature")
+```
+
+
+
 ### Ambient Day 0 vs. Ambient Day 2, Individual Libraries Only
 exp_design = day and temperature data for libraries 178, 118, 132, 359, 349, 334 (in order)
 
@@ -1001,6 +1018,11 @@ transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcrip
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/low217_vs_amb217_indiv/DEGlist_wcols.txt", 
                        blast_filepath = "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
                        output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/DEG_IDs/low217_vs_amb217_indiv_DEG_IDs.txt")
+
+# Lowered Day 0 vs. Ambient Day 0
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/low0_vs_amb0_indiv/DEGlist_wcols.txt", 
+                       blast_filepath = "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
+                       output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/DEG_IDs/low0_vs_amb0_indiv_DEG_IDs.txt")
 ```
 
 ### UniProt accession IDs for all transcripts
@@ -1045,6 +1067,11 @@ transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcrip
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/low217_vs_amb217_indiv/AllGenes_wcols.txt", 
                        blast_filepath = "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
                        output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/low217_vs_amb217_indiv_All_GeneIDs.txt")
+
+# Lowered Day 0 vs. Ambient Day 0
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/low0_vs_amb0_indiv/AllGenes_wcols.txt", 
+                       blast_filepath = "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
+                       output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/low0_vs_amb0_indiv_All_GeneIDs.txt")
 
 # All Genes
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/all_indiv_libraries/crab_as_var/AllGenes_wcols.txt", 

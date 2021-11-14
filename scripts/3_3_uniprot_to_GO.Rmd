@@ -105,9 +105,15 @@ uniprot_to_GO(accession_path = "../output/accession_n_GOids/hemat_transcriptomev
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
               output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/low217_vs_amb217_indiv_All_GOIDs.txt")
 
+# Lowered Day 0 vs. Ambient Day 0
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/low0_vs_amb0_indiv_All_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
+              output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/low0_vs_amb0_indiv_All_GOIDs.txt")
+
 # All Genes
 uniprot_to_GO(accession_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/all_indiv_libraries_All_GeneIDs.txt",
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
               output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/all_indiv_libraries_All_GOIDs.txt")
+
 
 ```
