@@ -1,0 +1,1125 @@
+name	term	lev	seq	value
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	B3NML0	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	Q17Q06	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	Q6DRC4	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	K7IM66	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	Q173M7	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	Q9GV27	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	P79083	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	Q7T2A5	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	Q28C65	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	Q1LUA8	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	Q1HPW4	0
+"formation of cytoplasmic translation initiation complex"	GO:0001732	2	Q7Q068	0
+"anatomical structure morphogenesis"	GO:0009653	2	P40792	0
+"anatomical structure morphogenesis"	GO:0009653	2	O61307	0.4743578174624
+"anatomical structure morphogenesis"	GO:0009653	2	Q9VU68	0
+"anatomical structure morphogenesis"	GO:0009653	2	P14315	0
+"anatomical structure morphogenesis"	GO:0009653	2	P46150	0
+"anatomical structure morphogenesis"	GO:0009653	2	Q292U2	0
+"anatomical structure morphogenesis"	GO:0009653	2	Q8VCN9	0
+"anatomical structure morphogenesis"	GO:0009653	2	P55162	0
+"anatomical structure morphogenesis"	GO:0009653	2	P32392	0
+"anatomical structure morphogenesis"	GO:0009653	2	P54367	0
+"anatomical structure morphogenesis"	GO:0009653	2	Q9W2N0	0
+"anatomical structure morphogenesis"	GO:0009653	2	Q9DDJ0	0
+"anatomical structure morphogenesis"	GO:0009653	2	P11584	0
+"anatomical structure morphogenesis"	GO:0009653	2	Q3SYV4	0
+"anatomical structure morphogenesis"	GO:0009653	2	Q9XZH6	0
+"anatomical structure morphogenesis"	GO:0009653	2	Q8T4F7	0
+"anatomical structure morphogenesis"	GO:0009653	2	P61209	0
+"anatomical structure morphogenesis"	GO:0009653	2	A1Z7A6	0
+"anatomical structure morphogenesis"	GO:0009653	2	Q7Z7M0	0.869515679642873
+"anatomical structure morphogenesis"	GO:0009653	2	Q0KHT7	0
+"anatomical structure morphogenesis"	GO:0009653	2	P58751	0.889759333586019
+"anatomical structure morphogenesis"	GO:0009653	2	A4II29	0
+"macromolecule catabolic process"	GO:0009057	2	Q5QMN3	0
+"macromolecule catabolic process"	GO:0009057	2	P46778	0
+"macromolecule catabolic process"	GO:0009057	2	P23128	0
+"macromolecule catabolic process"	GO:0009057	2	O95628	0
+"macromolecule catabolic process"	GO:0009057	2	Q9VM71	0
+"macromolecule catabolic process"	GO:0009057	2	Q8H136	0
+"macromolecule catabolic process"	GO:0009057	2	P49010	0.389495812482361
+"macromolecule catabolic process"	GO:0009057	2	P50897	0
+"macromolecule catabolic process"	GO:0009057	2	Q95M17	0
+"macromolecule catabolic process"	GO:0009057	2	Q5E9Z8	0
+"macromolecule catabolic process"	GO:0009057	2	O61470	0
+"macromolecule catabolic process"	GO:0009057	2	Q0VC92	0
+"macromolecule catabolic process"	GO:0009057	2	Q9W092	0
+"macromolecule catabolic process"	GO:0009057	2	Q08473	0
+"macromolecule catabolic process"	GO:0009057	2	Q13231	0.68947522226658
+"cellular developmental process"	GO:0048869	2	Q8ML92	0
+"cellular developmental process"	GO:0048869	2	Q6PG34	0
+"cellular developmental process"	GO:0048869	2	P86049	0.941151532064812
+"cellular developmental process"	GO:0048869	2	Q9UHQ4	0
+"cellular developmental process"	GO:0048869	2	G5EFD9	0
+"cellular developmental process"	GO:0048869	2	Q14318	0
+"cellular developmental process"	GO:0048869	2	O00329	0
+"mitotic cell cycle"	GO:0000278;GO:0007049	3	Q68FD5	0
+"mitotic cell cycle"	GO:0000278;GO:0007049	3	Q9V831	0
+"mitotic cell cycle"	GO:0000278;GO:0007049	3	O60232	0
+"mitotic cell cycle"	GO:0000278;GO:0007049	3	Q9V439	0
+"mitotic cell cycle"	GO:0000278;GO:0007049	3	P29349	0
+"mitotic cell cycle"	GO:0000278;GO:0007049	3	Q9VEN1	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	Q5U550	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	P62253	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	Q8NHG8	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	Q9Y0H4	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	Q6P8D9	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	P61085	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	A9JRZ0	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	P52485	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	P52478	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	Q8LGF7	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	P25867	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	Q712K3	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	Q24306	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	Q01820	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	Q9UBW8	0
+"protein modification by small protein conjugation or removal"	GO:0000209;GO:0016567;GO:0032446;GO:0070647	4	Q6NUC2	0
+"regulation of signaling"	GO:0023051;GO:0043405;GO:0043408;GO:1902531;GO:0009966;GO:0010646	3	Q8TBP0	0.858558345657159
+"regulation of signaling"	GO:0023051;GO:0043405;GO:0043408;GO:1902531;GO:0009966;GO:0010646	3	P45985	0
+"regulation of signaling"	GO:0023051;GO:0043405;GO:0043408;GO:1902531;GO:0009966;GO:0010646	3	Q6NN85	0
+"regulation of signaling"	GO:0023051;GO:0043405;GO:0043408;GO:1902531;GO:0009966;GO:0010646	3	P06800	0
+"regulation of signaling"	GO:0023051;GO:0043405;GO:0043408;GO:1902531;GO:0009966;GO:0010646	3	Q9PU13	0
+"regulation of signaling"	GO:0023051;GO:0043405;GO:0043408;GO:1902531;GO:0009966;GO:0010646	3	Q8HXQ3	0
+"regulation of signaling"	GO:0023051;GO:0043405;GO:0043408;GO:1902531;GO:0009966;GO:0010646	3	Q9D7X3	0
+"mitochondrion organization"	GO:0007005	2	Q2HJ97	0
+"mitochondrion organization"	GO:0007005	2	Q7ZV90	0
+"mitochondrion organization"	GO:0007005	2	Q8CFY5	0
+"mitochondrion organization"	GO:0007005	2	Q6NWH5	0
+"mitochondrion organization"	GO:0007005	2	P29845	0
+"mitochondrion organization"	GO:0007005	2	Q6PCS6	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	P50613	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	Q5ZJH7	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	Q9VFR0	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	P45985	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	O18640	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	Q6NN85	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	A2ASQ1	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	Q9CXZ1	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	P06800	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	P53767	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	Q9PU13	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	O08648	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	Q8HXQ3	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	Q9D7X3	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	P56392	0
+"regulation of phosphorylation"	GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0019220;GO:0051246;GO:0051174	3	P13184	0
+"positive regulation of biological process"	GO:0048518	2	Q9WTS8	0
+"positive regulation of biological process"	GO:0048518	2	Q9VMU8	0
+"positive regulation of biological process"	GO:0048518	2	O54890	0
+"positive regulation of biological process"	GO:0048518	2	Q8C8M1	0
+"positive regulation of biological process"	GO:0048518	2	P45985	0
+"positive regulation of biological process"	GO:0048518	2	O70165	0
+"positive regulation of biological process"	GO:0048518	2	Q24740	0
+"positive regulation of biological process"	GO:0048518	2	Q15485	0
+"positive regulation of biological process"	GO:0048518	2	P06800	0
+"positive regulation of biological process"	GO:0048518	2	P53767	0
+"positive regulation of biological process"	GO:0048518	2	Q9PU13	0
+"positive regulation of biological process"	GO:0048518	2	O08648	0
+"positive regulation of biological process"	GO:0048518	2	Q8HXQ3	0
+"positive regulation of biological process"	GO:0048518	2	Q13177	0.716285506776742
+"positive regulation of biological process"	GO:0048518	2	Q921M7	0
+"positive regulation of cellular process"	GO:0048522	4	O54890	0
+"positive regulation of cellular process"	GO:0048522	4	Q8C8M1	0
+"positive regulation of cellular process"	GO:0048522	4	P45985	0
+"positive regulation of cellular process"	GO:0048522	4	Q24740	0
+"positive regulation of cellular process"	GO:0048522	4	P06800	0
+"positive regulation of cellular process"	GO:0048522	4	P53767	0
+"positive regulation of cellular process"	GO:0048522	4	Q9PU13	0
+"positive regulation of cellular process"	GO:0048522	4	O08648	0
+"positive regulation of cellular process"	GO:0048522	4	Q8HXQ3	0
+"positive regulation of cellular process"	GO:0048522	4	Q921M7	0
+"multicellular organismal process"	GO:0032501	1	Q9W4T4	0
+"multicellular organismal process"	GO:0032501	1	Q5XJA3	0
+"multicellular organismal process"	GO:0032501	1	O94901	0
+"multicellular organismal process"	GO:0032501	1	O76080	0
+"multicellular organismal process"	GO:0032501	1	Q9VPW8	0
+"multicellular organismal process"	GO:0032501	1	B4K4G5	0
+"multicellular organismal process"	GO:0032501	1	Q6TEN1	0
+"multicellular organismal process"	GO:0032501	1	Q6GMI9	0
+"multicellular organismal process"	GO:0032501	1	Q9DFZ4	0.68337967947252
+"multicellular organismal process"	GO:0032501	1	Q3TCH7	0
+"multicellular organismal process"	GO:0032501	1	Q9VNV3	0
+"multicellular organismal process"	GO:0032501	1	B7ZMP1	0
+"multicellular organismal process"	GO:0032501	1	Q9GJS9	0.892482607189848
+"multicellular organismal process"	GO:0032501	1	Q9XZH6	0
+"multicellular organismal process"	GO:0032501	1	Q99873	0
+"multicellular organismal process"	GO:0032501	1	Q8UVK2	0
+"multicellular organismal process"	GO:0032501	1	P30189	0
+"multicellular organismal process"	GO:0032501	1	Q21086	0
+"multicellular organismal process"	GO:0032501	1	O01479	0
+"multicellular organismal process"	GO:0032501	1	P62068	0.486970022446833
+"multicellular organismal process"	GO:0032501	1	P20042	0
+"multicellular organismal process"	GO:0032501	1	Q17800	0
+"multicellular organismal process"	GO:0032501	1	Q06561	0
+"multicellular organismal process"	GO:0032501	1	Q9QZ03	0
+"multicellular organismal process"	GO:0032501	1	A4II29	0
+"organelle organization"	GO:0006996	4	Q9BXW4	0
+"organelle organization"	GO:0006996	4	P06603	0.774159609114598
+"organelle organization"	GO:0006996	4	Q6PF93	0
+"organelle organization"	GO:0006996	4	Q2HJ97	0
+"organelle organization"	GO:0006996	4	O14185	0
+"organelle organization"	GO:0006996	4	P63171	0
+"organelle organization"	GO:0006996	4	Q7ZV90	0
+"organelle organization"	GO:0006996	4	Q5ZJJ2	0
+"organelle organization"	GO:0006996	4	Q5I0B9	0
+"organelle organization"	GO:0006996	4	Q9P2S5	0.875109846676731
+"organelle organization"	GO:0006996	4	Q8UVJ6	0.901501106446715
+"organelle organization"	GO:0006996	4	P09644	0.908508145913477
+"organelle organization"	GO:0006996	4	Q8CFY5	0
+"organelle organization"	GO:0006996	4	P55035	0
+"organelle organization"	GO:0006996	4	Q7ZXV8	0
+"organelle organization"	GO:0006996	4	Q8NEB9	0
+"organelle organization"	GO:0006996	4	Q6NWH5	0
+"organelle organization"	GO:0006996	4	Q96MC6	0
+"organelle organization"	GO:0006996	4	Q26228	0.915940928114338
+"organelle organization"	GO:0006996	4	Q24117	0
+"organelle organization"	GO:0006996	4	Q6PDL0	0
+"organelle organization"	GO:0006996	4	Q9D906	0
+"organelle organization"	GO:0006996	4	Q3ZCJ7	0
+"organelle organization"	GO:0006996	4	Q0WWQ1	0
+"organelle organization"	GO:0006996	4	O62698	0
+"organelle organization"	GO:0006996	4	Q3T0E8	0
+"organelle organization"	GO:0006996	4	Q9QX47	0
+"organelle organization"	GO:0006996	4	Q9VCE1	0
+"organelle organization"	GO:0006996	4	P78406	0
+"organelle organization"	GO:0006996	4	Q9Z336	0
+"organelle organization"	GO:0006996	4	Q2HJB8	0
+"organelle organization"	GO:0006996	4	Q03206	0
+"organelle organization"	GO:0006996	4	B7PS00	0
+"organelle organization"	GO:0006996	4	A8WYE4	0
+"organelle organization"	GO:0006996	4	Q9GJW7	0
+"organelle organization"	GO:0006996	4	P29845	0
+"organelle organization"	GO:0006996	4	Q6PCS6	0
+"organelle organization"	GO:0006996	4	Q99J83	0
+"organelle organization"	GO:0006996	4	P48612	0
+"organelle organization"	GO:0006996	4	Q86YS6	0
+"organelle organization"	GO:0006996	4	P06604	0
+"organelle organization"	GO:0006996	4	Q0P9V4	0.813018255533332
+"organelle organization"	GO:0006996	4	P62822	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q29RZ2	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q5U550	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q39613	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	A4FYX5	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	P62253	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q7K237	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	P30405	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q5M9B7	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	O55035	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q8NHG8	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q9Y0H4	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q6P8D9	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	P61085	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q9VLM5	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	P24367	0.518363821614623
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	P30404	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	P50897	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q9UBW8	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	A9JRZ0	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	P48375	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	P52485	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	P52478	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q8LGF7	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	P25867	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q712K3	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q6NUC2	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q5BIN5	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q9VP65	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q24306	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q01820	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q5ZKM1	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	A3KQ55	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q08647	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q501Z5	0.896306625180162
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q9D7B1	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q91VU7	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q9DBE9	0
+"macromolecule modification"	GO:0006464;GO:0036211;GO:0043412	3	Q45826	0
+"positive regulation of response to stimulus"	GO:0048584	3	Q9WTS8	0
+"positive regulation of response to stimulus"	GO:0048584	3	Q9VMU8	0
+"positive regulation of response to stimulus"	GO:0048584	3	P45985	0
+"positive regulation of response to stimulus"	GO:0048584	3	O70165	0
+"positive regulation of response to stimulus"	GO:0048584	3	Q15485	0
+"positive regulation of response to stimulus"	GO:0048584	3	P06800	0
+"positive regulation of response to stimulus"	GO:0048584	3	Q9PU13	0
+"positive regulation of response to stimulus"	GO:0048584	3	Q8HXQ3	0
+"positive regulation of response to stimulus"	GO:0048584	3	Q13177	0.716285506776742
+"positive regulation of response to stimulus"	GO:0048584	3	Q921M7	0
+"embryo development ending in birth or egg hatching"	GO:0001701;GO:0043009;GO:0009792;GO:0009790	6	O76080	0
+"embryo development ending in birth or egg hatching"	GO:0001701;GO:0043009;GO:0009792;GO:0009790	6	Q3TCH7	0
+"embryo development ending in birth or egg hatching"	GO:0001701;GO:0043009;GO:0009792;GO:0009790	6	Q99873	0
+"embryo development ending in birth or egg hatching"	GO:0001701;GO:0043009;GO:0009792;GO:0009790	6	P20042	0
+"embryo development ending in birth or egg hatching"	GO:0001701;GO:0043009;GO:0009792;GO:0009790	6	Q9QZ03	0
+"embryo development ending in birth or egg hatching"	GO:0001701;GO:0043009;GO:0009792;GO:0009790	6	Q9VNV3	0
+"cell morphogenesis"	GO:0000902	2	P40792	0
+"cell morphogenesis"	GO:0000902	2	P14315	0
+"cell morphogenesis"	GO:0000902	2	Q8VCN9	0
+"cell morphogenesis"	GO:0000902	2	P55162	0
+"cell morphogenesis"	GO:0000902	2	P32392	0
+"cell morphogenesis"	GO:0000902	2	P54367	0
+"cell morphogenesis"	GO:0000902	2	Q9W2N0	0
+"cell morphogenesis"	GO:0000902	2	Q3SYV4	0
+"cell morphogenesis"	GO:0000902	2	Q8T4F7	0
+"cell morphogenesis"	GO:0000902	2	P58751	0.889759333586019
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	B3NML0	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	P12297	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	P62846	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	C9WPN6	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q17Q06	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	P31674	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q53GS9	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q6DRC4	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	P19889	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	O61231	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q9CQL4	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	O14112	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	P23588	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	A7YW45	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q7ZV34	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q9VLV5	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q9VV74	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q2KIH4	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	K7IM66	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q3SZZ0	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q173M7	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q15459	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q8BHE1	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q5WR10	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q8BM39	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	P21533	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q9GV27	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q8BK35	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	A8WQ43	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	P79083	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	P83876	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q9UKD2	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q3T0F4	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q7T2A5	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	P61284	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q5E988	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q7ZUG0	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q9VX98	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q24297	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q28C65	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q1LUA8	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	P82912	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q9NQ55	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q3SZ12	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	O14744	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q9CAX6	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q1HPW4	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	O16797	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q7Q068	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q9Y3A4	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q9Y333	0
+"ribonucleoprotein complex subunit organization"	GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933	4	Q69ZQ2	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q5QMN3	0
+"catabolic process"	GO:1901575;GO:0009056	2	P46778	0
+"catabolic process"	GO:1901575;GO:0009056	2	P23128	0
+"catabolic process"	GO:1901575;GO:0009056	2	O95628	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q99757	0
+"catabolic process"	GO:1901575;GO:0009056	2	I6YCA3	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q9VM71	0
+"catabolic process"	GO:1901575;GO:0009056	2	P34275	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q8H136	0
+"catabolic process"	GO:1901575;GO:0009056	2	P49010	0.389495812482361
+"catabolic process"	GO:1901575;GO:0009056	2	P50897	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q95M17	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q5E9Z8	0
+"catabolic process"	GO:1901575;GO:0009056	2	P57093	0
+"catabolic process"	GO:1901575;GO:0009056	2	O61470	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q0VC92	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q9W092	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q08473	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q13231	0.68947522226658
+"catabolic process"	GO:1901575;GO:0009056	2	Q2HJ97	0
+"catabolic process"	GO:1901575;GO:0009056	2	Q9QX67	0
+"catabolic process"	GO:1901575;GO:0009056	2	P29845	0
+"cellular catabolic process"	GO:0044248	2	Q5QMN3	0
+"cellular catabolic process"	GO:0044248	2	Q2HJ97	0
+"cellular catabolic process"	GO:0044248	2	P46778	0
+"cellular catabolic process"	GO:0044248	2	P23128	0
+"cellular catabolic process"	GO:0044248	2	O95628	0
+"cellular catabolic process"	GO:0044248	2	Q99757	0
+"cellular catabolic process"	GO:0044248	2	Q9VM71	0
+"cellular catabolic process"	GO:0044248	2	P34275	0
+"cellular catabolic process"	GO:0044248	2	Q9QX67	0
+"cellular catabolic process"	GO:0044248	2	Q8H136	0
+"cellular catabolic process"	GO:0044248	2	Q5E9Z8	0
+"cellular catabolic process"	GO:0044248	2	P57093	0
+"cellular catabolic process"	GO:0044248	2	O61470	0
+"cellular catabolic process"	GO:0044248	2	Q0VC92	0
+"cellular catabolic process"	GO:0044248	2	P29845	0
+"cellular catabolic process"	GO:0044248	2	Q08473	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	P06603	0.774159609114598
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	O14185	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	P63171	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q8UVJ6	0.901501106446715
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	P09644	0.908508145913477
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q24117	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q6PDL0	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q3ZCJ7	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	O62698	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q3T0E8	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q9QX47	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q9Z336	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q2HJB8	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q03206	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	B7PS00	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	A8WYE4	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	P48612	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	P06604	0
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q1ECV4	0.87332274755256
+"microtubule-based process"	GO:0000226;GO:0007010;GO:0007017	3	Q63170	0
+"nuclear-transcribed mRNA catabolic process, nonsense-mediated decay"	GO:0000184	2	Q5QMN3	0
+"nuclear-transcribed mRNA catabolic process, nonsense-mediated decay"	GO:0000184	2	P46778	0
+"nuclear-transcribed mRNA catabolic process, nonsense-mediated decay"	GO:0000184	2	Q8H136	0
+"nuclear-transcribed mRNA catabolic process, nonsense-mediated decay"	GO:0000184	2	Q0VC92	0
+"nuclear-transcribed mRNA catabolic process, nonsense-mediated decay"	GO:0000184	2	Q08473	0
+"multicellular organism development"	GO:0007275	2	O76080	0
+"multicellular organism development"	GO:0007275	2	Q9DFZ4	0.68337967947252
+"multicellular organism development"	GO:0007275	2	Q3TCH7	0
+"multicellular organism development"	GO:0007275	2	Q9VNV3	0
+"multicellular organism development"	GO:0007275	2	Q99873	0
+"multicellular organism development"	GO:0007275	2	P30189	0
+"multicellular organism development"	GO:0007275	2	Q21086	0
+"multicellular organism development"	GO:0007275	2	O01479	0
+"multicellular organism development"	GO:0007275	2	P20042	0
+"multicellular organism development"	GO:0007275	2	Q17800	0
+"multicellular organism development"	GO:0007275	2	Q06561	0
+"multicellular organism development"	GO:0007275	2	Q9QZ03	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q9BXW4	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q6PF93	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q5I0B9	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q8NEB9	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q9D906	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q0WWQ1	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q9VCE1	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q9GJW7	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q99J83	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q86YS6	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	P62822	0
+"organelle assembly"	GO:0000045;GO:0070925;GO:1905037;GO:0007033	2	Q96MC6	0
+"organelle localization"	GO:0051656;GO:0051640	3	Q8BMC4	0
+"organelle localization"	GO:0051656;GO:0051640	3	P63171	0
+"organelle localization"	GO:0051656;GO:0051640	3	Q8UVJ6	0.901501106446715
+"organelle localization"	GO:0051656;GO:0051640	3	Q24117	0
+"organelle localization"	GO:0051656;GO:0051640	3	Q08DS5	0
+"organelle localization"	GO:0051656;GO:0051640	3	Q9W590	0
+"organelle localization"	GO:0051656;GO:0051640	3	Q9Z336	0
+"organelle localization"	GO:0051656;GO:0051640	3	Q03206	0
+"organelle localization"	GO:0051656;GO:0051640	3	B7PS00	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	P50613	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	Q5ZJH7	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	Q9VFR0	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	P45985	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	Q6NN85	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	P06800	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	Q9PU13	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	Q8HXQ3	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	Q9D7X3	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	P53767	0
+"regulation of kinase activity"	GO:0071900;GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790	3	O08648	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q12955	0
+"cell cycle process"	GO:1903047;GO:0022402	2	P30153	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q15286	0
+"cell cycle process"	GO:1903047;GO:0022402	2	P10987	0
+"cell cycle process"	GO:1903047;GO:0022402	2	P63171	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q9P2S5	0.875109846676731
+"cell cycle process"	GO:1903047;GO:0022402	2	Q6GQG3	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q8UVJ6	0.901501106446715
+"cell cycle process"	GO:1903047;GO:0022402	2	Q9VND8	0.92633602261164
+"cell cycle process"	GO:1903047;GO:0022402	2	P55035	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q7ZXV8	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q99323	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q28021	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q24117	0
+"cell cycle process"	GO:1903047;GO:0022402	2	P25843	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q13616	0
+"cell cycle process"	GO:1903047;GO:0022402	2	O01971	0
+"cell cycle process"	GO:1903047;GO:0022402	2	O15297	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q8K1S5	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q80U87	0.52735082186902
+"cell cycle process"	GO:1903047;GO:0022402	2	Q9Z336	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q96SN8	0
+"cell cycle process"	GO:1903047;GO:0022402	2	P0DM41	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q03206	0
+"cell cycle process"	GO:1903047;GO:0022402	2	P40423	0
+"cell cycle process"	GO:1903047;GO:0022402	2	B7PS00	0
+"cell cycle process"	GO:1903047;GO:0022402	2	P54359	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q6J1J1	0
+"cell cycle process"	GO:1903047;GO:0022402	2	P04818	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q54GX7	0
+"cell cycle process"	GO:1903047;GO:0022402	2	P45594	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q60876	0
+"cell cycle process"	GO:1903047;GO:0022402	2	O62698	0
+"cell cycle process"	GO:1903047;GO:0022402	2	Q9VIP0	0
+"cell cycle process"	GO:1903047;GO:0022402	2	P48612	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P50882	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	Q56JV1	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	Q10101	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P61257	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	Q9V3G1	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P0CT60	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P32234	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P27085	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	Q9CQK7	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	A4IGY3	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P55935	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	Q9UNX3	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P48149	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P36241	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	Q58D56	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	Q9U9L2	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	Q9P1Y6	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	Q6X4M3	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P13280	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P10173	0
+"cellular macromolecule biosynthetic process"	GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603	4	P51464	0
+"ribosomal large subunit assembly"	GO:0000027	7	P19889	0
+"ribosomal large subunit assembly"	GO:0000027	7	O61231	0
+"ribosomal large subunit assembly"	GO:0000027	7	Q9CQL4	0
+"ribosomal large subunit assembly"	GO:0000027	7	Q2KIH4	0
+"ribosomal large subunit assembly"	GO:0000027	7	Q3SZZ0	0
+"ribosomal large subunit assembly"	GO:0000027	7	P21533	0
+"ribosomal large subunit assembly"	GO:0000027	7	Q8BK35	0
+"ribosomal large subunit assembly"	GO:0000027	7	A8WQ43	0
+"ribosomal large subunit assembly"	GO:0000027	7	Q9UKD2	0
+"ribosomal large subunit assembly"	GO:0000027	7	P61284	0
+"ribosomal large subunit assembly"	GO:0000027	7	Q9NQ55	0
+"ribosomal large subunit assembly"	GO:0000027	7	Q3SZ12	0
+"ribosomal large subunit assembly"	GO:0000027	7	O16797	0
+"maturation of LSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)"	GO:0000463	4	Q8JHJ1	0
+"maturation of LSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)"	GO:0000463	4	Q8JIY8	0
+"maturation of LSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)"	GO:0000463	4	P0DJ13	0
+"maturation of LSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)"	GO:0000463	4	Q6ZWV7	0
+"maturation of LSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)"	GO:0000463	4	B4GIU9	0
+"maturation of LSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)"	GO:0000463	4	O01802	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	Q9H2J4	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	O01346	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	P18572	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	P82198	0.881493543081721
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	Q6TEN1	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	A2RRV9	0.376730187388142
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	Q96MC6	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	O42248	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	Q8UVK2	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	P08648	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	P23467	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	P15541	0.902295177193453
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	P60483	0
+"anatomical structure formation involved in morphogenesis"	GO:0048646	2	Q17QE5	0
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	2	Q9VEG6	0
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	2	P34275	0
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	2	O95573	0.609630842298625
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	2	P57093	0
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	2	O94760	0
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	2	O60488	0
+"organic acid metabolic process"	GO:0019752;GO:0043436;GO:0006082	2	Q99757	0
+"animal organ development"	GO:0048513	3	P98158	0
+"animal organ development"	GO:0048513	3	Q5EB77	0
+"animal organ development"	GO:0048513	3	O75096	0
+"animal organ development"	GO:0048513	3	O35674	0
+"animal organ development"	GO:0048513	3	O75844	0
+"animal organ development"	GO:0048513	3	O35643	0
+"animal organ development"	GO:0048513	3	P29410	0
+"animal organ development"	GO:0048513	3	Q99798	0
+"animal organ development"	GO:0048513	3	Q99KI0	0
+"mitotic cell cycle phase transition"	GO:0044772;GO:0044770	4	P30153	0
+"mitotic cell cycle phase transition"	GO:0044772;GO:0044770	4	Q6GQG3	0
+"mitotic cell cycle phase transition"	GO:0044772;GO:0044770	4	Q9VND8	0.92633602261164
+"mitotic cell cycle phase transition"	GO:0044772;GO:0044770	4	Q13616	0
+"mitotic cell cycle phase transition"	GO:0044772;GO:0044770	4	O15297	0
+"mitotic cell cycle phase transition"	GO:0044772;GO:0044770	4	Q96SN8	0
+"mitotic cell cycle phase transition"	GO:0044772;GO:0044770	4	Q6J1J1	0
+"mitotic cell cycle phase transition"	GO:0044772;GO:0044770	4	Q60876	0
+"chromosome organization"	GO:0051276	5	Q5ZJJ2	0
+"chromosome organization"	GO:0051276	5	Q9P2S5	0.875109846676731
+"chromosome organization"	GO:0051276	5	P55035	0
+"chromosome organization"	GO:0051276	5	Q7ZXV8	0
+"chromosome organization"	GO:0051276	5	Q26228	0.915940928114338
+"chromosome organization"	GO:0051276	5	P78406	0
+"chromosome organization"	GO:0051276	5	Q0P9V4	0.813018255533332
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	O60508	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	O44424	0.632587940529915
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q9NXE8	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	O43390	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q7L014	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q6P8E9	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q7RTV0	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q5E992	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q9BW85	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q9BUJ2	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q12872	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q32PE9	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q6NUB2	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q9V3C0	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q6DGP2	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q1ZXK3	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	A2VDN6	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	O01159	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q9VHS8	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q2PFW9	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	O97018	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	P0DI19	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q05856	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q9H2H8	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q5F457	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q3UIK4	0.563486996860399
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q9V3B6	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q9VWV8	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	P57784	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q92841	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q2KID6	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q9C7E7	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q3T0Z3	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q8IYB3	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q9VD92	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q5QMN3	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	P46778	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	P23128	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	O95628	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q8H136	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q5E9Z8	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q0VC92	0
+"mRNA metabolic process"	GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071	3	Q08473	0
+"DNA metabolic process"	GO:0006259	3	Q5ZJJ2	0
+"DNA metabolic process"	GO:0006259	3	Q9VM71	0
+"DNA metabolic process"	GO:0006259	3	Q26228	0.915940928114338
+"DNA metabolic process"	GO:0006259	3	Q26454	0.788394839727233
+"DNA metabolic process"	GO:0006259	3	P18887	0
+"DNA metabolic process"	GO:0006259	3	Q502K2	0
+"DNA metabolic process"	GO:0006259	3	Q9VQY9	0
+"DNA metabolic process"	GO:0006259	3	Q0P9V4	0.813018255533332
+"maturation of LSU-rRNA"	GO:0000470	2	Q8JHJ1	0
+"maturation of LSU-rRNA"	GO:0000470	2	Q8JIY8	0
+"maturation of LSU-rRNA"	GO:0000470	2	P0DJ13	0
+"maturation of LSU-rRNA"	GO:0000470	2	O76732	0
+"maturation of LSU-rRNA"	GO:0000470	2	Q6ZWV7	0
+"maturation of LSU-rRNA"	GO:0000470	2	P49692	0
+"maturation of LSU-rRNA"	GO:0000470	2	B4GIU9	0
+"maturation of LSU-rRNA"	GO:0000470	2	O01802	0
+"maturation of LSU-rRNA"	GO:0000470	2	P32429	0
+"maturation of LSU-rRNA"	GO:0000470	2	Q2TBQ5	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q5ZMP6	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q8BMC4	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q17QC5	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q08DS5	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q9W590	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q9W4C5	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q8AVC3	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q8IQC1	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q568N4	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q9SL56	0
+"organic substance transport"	GO:0071702;GO:0006820	6	Q6DK84	0
+"organic substance transport"	GO:0071702;GO:0006820	6	P31639	0.79930281446094
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q29RZ2	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q5U550	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q39613	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	A4FYX5	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P62253	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P50882	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q7K237	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q56JV1	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P30405	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q5M9B7	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q10101	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	O55035	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P61257	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q8NHG8	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q9V3G1	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P0CT60	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q9Y0H4	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P32234	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q6P8D9	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P61085	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q9VLM5	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P24367	0.518363821614623
+"protein metabolic process"	GO:0044267;GO:0019538	2	P30404	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P27085	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q9CQK7	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P50897	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q9UBW8	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	A9JRZ0	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	A4IGY3	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P48375	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P52485	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P55935	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P52478	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q8LGF7	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P25867	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q712K3	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q9UNX3	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P48149	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P36241	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q6NUC2	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q5BIN5	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q9VP65	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q24306	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q58D56	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q01820	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	Q9U9L2	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	P90893	0
+"protein metabolic process"	GO:0044267;GO:0019538	2	O61470	0
+"morphogenesis of an epithelium"	GO:0002009;GO:0048729	2	P46150	0
+"morphogenesis of an epithelium"	GO:0002009;GO:0048729	2	Q9DDJ0	0
+"morphogenesis of an epithelium"	GO:0002009;GO:0048729	2	P11584	0
+"morphogenesis of an epithelium"	GO:0002009;GO:0048729	2	Q9XZH6	0
+"morphogenesis of an epithelium"	GO:0002009;GO:0048729	2	Q7Z7M0	0.869515679642873
+"morphogenesis of an epithelium"	GO:0002009;GO:0048729	2	Q0KHT7	0
+"morphogenesis of an epithelium"	GO:0002009;GO:0048729	2	A4II29	0
+"regulation of immune response"	GO:0050778;GO:0002684;GO:0050776;GO:0002682	5	Q9WTS8	0
+"regulation of immune response"	GO:0050778;GO:0002684;GO:0050776;GO:0002682	5	Q9VMU8	0
+"regulation of immune response"	GO:0050778;GO:0002684;GO:0050776;GO:0002682	5	O70165	0
+"regulation of immune response"	GO:0050778;GO:0002684;GO:0050776;GO:0002682	5	Q15485	0
+"regulation of immune response"	GO:0050778;GO:0002684;GO:0050776;GO:0002682	5	Q13177	0.716285506776742
+"regulation of immune response"	GO:0050778;GO:0002684;GO:0050776;GO:0002682	5	Q921M7	0
+"regulation of immune response"	GO:0050778;GO:0002684;GO:0050776;GO:0002682	5	Q03017	0
+"response to stimulus"	GO:0050896;GO:0006950	1	Q9WTS8	0
+"response to stimulus"	GO:0050896;GO:0006950	1	Q90687	0
+"response to stimulus"	GO:0050896;GO:0006950	1	P70531	0
+"response to stimulus"	GO:0050896;GO:0006950	1	Q3ZC31	0
+"response to stimulus"	GO:0050896;GO:0006950	1	B0BYW4	0
+"response to stimulus"	GO:0050896;GO:0006950	1	P92177	0
+"response to stimulus"	GO:0050896;GO:0006950	1	Q26454	0.788394839727233
+"response to stimulus"	GO:0050896;GO:0006950	1	Q9GJS9	0.892482607189848
+"response to stimulus"	GO:0050896;GO:0006950	1	P18887	0
+"response to stimulus"	GO:0050896;GO:0006950	1	Q66KY3	0
+"response to stimulus"	GO:0050896;GO:0006950	1	Q66HD0	0
+"response to stimulus"	GO:0050896;GO:0006950	1	P97493	0
+"response to stimulus"	GO:0050896;GO:0006950	1	Q96FW1	0
+"response to stimulus"	GO:0050896;GO:0006950	1	O70165	0
+"response to stimulus"	GO:0050896;GO:0006950	1	O55003	0
+"response to stimulus"	GO:0050896;GO:0006950	1	Q15485	0
+"response to stimulus"	GO:0050896;GO:0006950	1	P09671	0
+"response to stimulus"	GO:0050896;GO:0006950	1	Q502K2	0
+"response to stimulus"	GO:0050896;GO:0006950	1	Q9VQY9	0
+"response to stimulus"	GO:0050896;GO:0006950	1	P62068	0.486970022446833
+"response to stimulus"	GO:0050896;GO:0006950	1	O61661	0
+"response to stimulus"	GO:0050896;GO:0006950	1	O88407	0
+"spliceosomal snRNP assembly"	GO:0000387	4	A7YW45	0
+"spliceosomal snRNP assembly"	GO:0000387	4	Q9VLV5	0
+"spliceosomal snRNP assembly"	GO:0000387	4	Q9VV74	0
+"spliceosomal snRNP assembly"	GO:0000387	4	Q8BHE1	0
+"spliceosomal snRNP assembly"	GO:0000387	4	Q7ZUG0	0
+"spliceosomal snRNP assembly"	GO:0000387	4	Q24297	0
+"spliceosomal snRNP assembly"	GO:0000387	4	O14744	0
+"spliceosomal snRNP assembly"	GO:0000387	4	Q9Y333	0
+"intracellular transport"	GO:0046907	2	Q5ZMP6	0
+"intracellular transport"	GO:0046907	2	Q8BMC4	0
+"intracellular transport"	GO:0046907	2	Q6UWH6	0
+"intracellular transport"	GO:0046907	2	Q17QC5	0
+"intracellular transport"	GO:0046907	2	Q08DS5	0
+"intracellular transport"	GO:0046907	2	Q9W590	0
+"intracellular transport"	GO:0046907	2	Q6DK84	0
+"carbohydrate metabolic process"	GO:0005975	2	P10253	0
+"carbohydrate metabolic process"	GO:0005975	2	Q9VR81	0
+"carbohydrate metabolic process"	GO:0005975	2	P49010	0.389495812482361
+"carbohydrate metabolic process"	GO:0005975	2	Q95M17	0
+"carbohydrate metabolic process"	GO:0005975	2	Q9W092	0
+"carbohydrate metabolic process"	GO:0005975	2	Q13231	0.68947522226658
+"carbohydrate metabolic process"	GO:0005975	2	Q2YDR3	0
+"carbohydrate metabolic process"	GO:0005975	2	P13280	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q8JHJ1	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q8JIY8	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q9VKB4	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	P0DJ13	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	O76732	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q5ZKM1	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q08647	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q6ZWV7	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	P49692	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	B4GIU9	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q54GN8	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	O01802	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	P32429	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q6P7N1	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q3SX11	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q9DBE9	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q45826	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q2TBQ5	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	O44081	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q501Z5	0.896306625180162
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q9D7B1	0
+"ncRNA processing"	GO:0006364;GO:0016072;GO:0034470;GO:0034660	2	Q9VD92	0
+"ribosomal small subunit assembly"	GO:0000028	5	P62846	0
+"ribosomal small subunit assembly"	GO:0000028	5	P31674	0
+"ribosomal small subunit assembly"	GO:0000028	5	O14112	0
+"ribosomal small subunit assembly"	GO:0000028	5	Q3T0F4	0
+"ribosomal small subunit assembly"	GO:0000028	5	Q5E988	0
+"ribosomal small subunit assembly"	GO:0000028	5	P82912	0
+"ribosomal small subunit assembly"	GO:0000028	5	Q9CAX6	0
+"ribosomal small subunit assembly"	GO:0000028	5	Q9Y3A4	0
+"G2/M transition of mitotic cell cycle"	GO:0000086;GO:0044839	2	P30153	0
+"G2/M transition of mitotic cell cycle"	GO:0000086;GO:0044839	2	Q6GQG3	0
+"G2/M transition of mitotic cell cycle"	GO:0000086;GO:0044839	2	O15297	0
+"G2/M transition of mitotic cell cycle"	GO:0000086;GO:0044839	2	Q96SN8	0
+"G2/M transition of mitotic cell cycle"	GO:0000086;GO:0044839	2	Q6J1J1	0
+"transport"	GO:0006810;GO:0006811	3	Q5ZMP6	0
+"transport"	GO:0006810;GO:0006811	3	Q8BMC4	0
+"transport"	GO:0006810;GO:0006811	3	Q7T384	0.905760243005793
+"transport"	GO:0006810;GO:0006811	3	Q9VCA2	0
+"transport"	GO:0006810;GO:0006811	3	Q3ZMH1	0
+"transport"	GO:0006810;GO:0006811	3	Q8BH10	0
+"transport"	GO:0006810;GO:0006811	3	Q6UWH6	0
+"transport"	GO:0006810;GO:0006811	3	Q17QC5	0
+"transport"	GO:0006810;GO:0006811	3	Q8NBX0	0
+"transport"	GO:0006810;GO:0006811	3	Q08DS5	0
+"transport"	GO:0006810;GO:0006811	3	Q9W590	0
+"transport"	GO:0006810;GO:0006811	3	Q9W4C5	0
+"transport"	GO:0006810;GO:0006811	3	Q6DFR1	0.841829888220646
+"transport"	GO:0006810;GO:0006811	3	Q8AVC3	0
+"transport"	GO:0006810;GO:0006811	3	Q8IQC1	0
+"transport"	GO:0006810;GO:0006811	3	P83740	0
+"transport"	GO:0006810;GO:0006811	3	Q568N4	0
+"transport"	GO:0006810;GO:0006811	3	Q9SL56	0
+"transport"	GO:0006810;GO:0006811	3	Q6DK84	0
+"transport"	GO:0006810;GO:0006811	3	P31639	0.79930281446094
+"transport"	GO:0006810;GO:0006811	3	Q504N2	0.619050658445163
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q5ZMP6	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q8BMC4	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	P63171	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q8UVJ6	0.901501106446715
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q6UWH6	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q17QC5	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q24117	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q08DS5	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q9W590	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q9Z336	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q03206	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	B7PS00	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q6DK84	0
+"establishment of localization in cell"	GO:0051641;GO:0051649	2	Q8NBX0	0
+"establishment of mitotic spindle orientation"	GO:0000132;GO:0040001;GO:0051294;GO:0051293;GO:1902850;GO:0051653	4	P63171	0
+"establishment of mitotic spindle orientation"	GO:0000132;GO:0040001;GO:0051294;GO:0051293;GO:1902850;GO:0051653	4	Q8UVJ6	0.901501106446715
+"establishment of mitotic spindle orientation"	GO:0000132;GO:0040001;GO:0051294;GO:0051293;GO:1902850;GO:0051653	4	Q24117	0
+"establishment of mitotic spindle orientation"	GO:0000132;GO:0040001;GO:0051294;GO:0051293;GO:1902850;GO:0051653	4	Q9Z336	0
+"establishment of mitotic spindle orientation"	GO:0000132;GO:0040001;GO:0051294;GO:0051293;GO:1902850;GO:0051653	4	Q03206	0
+"establishment of mitotic spindle orientation"	GO:0000132;GO:0040001;GO:0051294;GO:0051293;GO:1902850;GO:0051653	4	B7PS00	0
+"lipid metabolic process"	GO:0044255;GO:0006629	3	Q9VEG6	0
+"lipid metabolic process"	GO:0044255;GO:0006629	3	Q8TC12	0.880075770534829
+"lipid metabolic process"	GO:0044255;GO:0006629	3	O95573	0.609630842298625
+"lipid metabolic process"	GO:0044255;GO:0006629	3	Q6IV76	0
+"lipid metabolic process"	GO:0044255;GO:0006629	3	P57093	0
+"lipid metabolic process"	GO:0044255;GO:0006629	3	P15122	0
+"lipid metabolic process"	GO:0044255;GO:0006629	3	O60488	0
+"lipid metabolic process"	GO:0044255;GO:0006629	3	Q96NR8	0
+"lipid metabolic process"	GO:0044255;GO:0006629	3	O00468	0
+"lipid metabolic process"	GO:0044255;GO:0006629	3	I6YCA3	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	Q3ZBT6	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	Q6NYA0	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	Q94535	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	Q3SZR8	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	P49762	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	Q7SXP4	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	P51513	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	A1Z9L3	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	Q3T106	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	P43332	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	Q8BL97	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	Q5ZME8	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	P14866	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	Q8R081	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	P26599	0
+"regulation of mRNA splicing, via spliceosome"	GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311	3	P39770	0
+"angiogenesis"	GO:0001525	3	Q9H2J4	0
+"angiogenesis"	GO:0001525	3	P18572	0
+"angiogenesis"	GO:0001525	3	P82198	0.881493543081721
+"angiogenesis"	GO:0001525	3	A2RRV9	0.376730187388142
+"angiogenesis"	GO:0001525	3	O42248	0
+"angiogenesis"	GO:0001525	3	P08648	0
+"angiogenesis"	GO:0001525	3	P23467	0
+"angiogenesis"	GO:0001525	3	P15541	0.902295177193453
+"angiogenesis"	GO:0001525	3	P60483	0
+"angiogenesis"	GO:0001525	3	Q17QE5	0
+"regulation of cell cycle"	GO:0051726	2	Q90687	0
+"regulation of cell cycle"	GO:0051726	2	P50613	0
+"regulation of cell cycle"	GO:0051726	2	Q5ZJH7	0
+"regulation of cell cycle"	GO:0051726	2	Q9VFR0	0
+"regulation of cell cycle"	GO:0051726	2	P92177	0
+"regulation of cell cycle"	GO:0051726	2	O61661	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q5ZMP6	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q8BMC4	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q7T384	0.905760243005793
+"establishment of localization"	GO:0051234;GO:0051179	2	P63171	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q9VCA2	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q3ZMH1	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q8UVJ6	0.901501106446715
+"establishment of localization"	GO:0051234;GO:0051179	2	Q8BH10	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q6UWH6	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q17QC5	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q24117	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q8NBX0	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q08DS5	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q9W590	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q9W4C5	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q6DFR1	0.841829888220646
+"establishment of localization"	GO:0051234;GO:0051179	2	Q8AVC3	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q8IQC1	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q9Z336	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q03206	0
+"establishment of localization"	GO:0051234;GO:0051179	2	P83740	0
+"establishment of localization"	GO:0051234;GO:0051179	2	B7PS00	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q568N4	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q9SL56	0
+"establishment of localization"	GO:0051234;GO:0051179	2	Q6DK84	0
+"establishment of localization"	GO:0051234;GO:0051179	2	P31639	0.79930281446094
+"establishment of localization"	GO:0051234;GO:0051179	2	Q504N2	0.619050658445163
+"cellular response to DNA damage stimulus"	GO:0006974;GO:0033554;GO:0051716	3	Q90687	0
+"cellular response to DNA damage stimulus"	GO:0006974;GO:0033554;GO:0051716	3	P92177	0
+"cellular response to DNA damage stimulus"	GO:0006974;GO:0033554;GO:0051716	3	Q26454	0.788394839727233
+"cellular response to DNA damage stimulus"	GO:0006974;GO:0033554;GO:0051716	3	P18887	0
+"cellular response to DNA damage stimulus"	GO:0006974;GO:0033554;GO:0051716	3	Q502K2	0
+"cellular response to DNA damage stimulus"	GO:0006974;GO:0033554;GO:0051716	3	Q9VQY9	0
+"cellular response to DNA damage stimulus"	GO:0006974;GO:0033554;GO:0051716	3	O61661	0
+"peptidyl-proline modification"	GO:0000413;GO:0018208;GO:0018193	7	Q29RZ2	0
+"peptidyl-proline modification"	GO:0000413;GO:0018208;GO:0018193	7	Q39613	0
+"peptidyl-proline modification"	GO:0000413;GO:0018208;GO:0018193	7	P30405	0
+"peptidyl-proline modification"	GO:0000413;GO:0018208;GO:0018193	7	O55035	0
+"peptidyl-proline modification"	GO:0000413;GO:0018208;GO:0018193	7	P24367	0.518363821614623
+"peptidyl-proline modification"	GO:0000413;GO:0018208;GO:0018193	7	P30404	0
+"peptidyl-proline modification"	GO:0000413;GO:0018208;GO:0018193	7	P48375	0
+"peptidyl-proline modification"	GO:0000413;GO:0018208;GO:0018193	7	Q5BIN5	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q9VEG6	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P50882	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q56JV1	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P10173	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q10101	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P61257	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q9V3G1	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P0CT60	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P51464	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P32234	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q9P1Y6	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P27085	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q9CQK7	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	A4IGY3	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q6X4M3	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P55935	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q9UNX3	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P48149	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P36241	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q2YDR3	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q58D56	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	P13280	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q5R751	0
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q3SZA5	0.601747832769192
+"cellular biosynthetic process"	GO:0044249;GO:1901576;GO:0009058;GO:1901566;GO:0044271	3	Q9U9L2	0
+"small molecule metabolic process"	GO:0044281	2	Q9VEG6	0
+"small molecule metabolic process"	GO:0044281	2	Q99757	0
+"small molecule metabolic process"	GO:0044281	2	P10173	0
+"small molecule metabolic process"	GO:0044281	2	I6YCA3	0
+"small molecule metabolic process"	GO:0044281	2	A5A761	0
+"small molecule metabolic process"	GO:0044281	2	P34275	0
+"small molecule metabolic process"	GO:0044281	2	P51464	0
+"small molecule metabolic process"	GO:0044281	2	O95573	0.609630842298625
+"small molecule metabolic process"	GO:0044281	2	P57093	0
+"small molecule metabolic process"	GO:0044281	2	O94760	0
+"small molecule metabolic process"	GO:0044281	2	O60488	0
+"small molecule metabolic process"	GO:0044281	2	Q2YDR3	0
+"nitrogen compound transport"	GO:0015031;GO:0015833;GO:0045184;GO:0042886;GO:0008104;GO:0071705;GO:0033036	5	Q5ZMP6	0
+"nitrogen compound transport"	GO:0015031;GO:0015833;GO:0045184;GO:0042886;GO:0008104;GO:0071705;GO:0033036	5	Q8BMC4	0
+"nitrogen compound transport"	GO:0015031;GO:0015833;GO:0045184;GO:0042886;GO:0008104;GO:0071705;GO:0033036	5	Q17QC5	0
+"nitrogen compound transport"	GO:0015031;GO:0015833;GO:0045184;GO:0042886;GO:0008104;GO:0071705;GO:0033036	5	Q08DS5	0
+"nitrogen compound transport"	GO:0015031;GO:0015833;GO:0045184;GO:0042886;GO:0008104;GO:0071705;GO:0033036	5	Q9W590	0
+"nitrogen compound transport"	GO:0015031;GO:0015833;GO:0045184;GO:0042886;GO:0008104;GO:0071705;GO:0033036	5	Q8IQC1	0
+"nitrogen compound transport"	GO:0015031;GO:0015833;GO:0045184;GO:0042886;GO:0008104;GO:0071705;GO:0033036	5	Q568N4	0
+"nitrogen compound transport"	GO:0015031;GO:0015833;GO:0045184;GO:0042886;GO:0008104;GO:0071705;GO:0033036	5	Q9W4C5	0
+"nitrogen compound transport"	GO:0015031;GO:0015833;GO:0045184;GO:0042886;GO:0008104;GO:0071705;GO:0033036	5	Q6DK84	0
+"immune system process"	GO:0002376	1	Q9WTS8	0
+"immune system process"	GO:0002376	1	Q99KQ4	0.590578076128162
+"immune system process"	GO:0002376	1	Q9VFC2	0.882328922713971
+"immune system process"	GO:0002376	1	Q96FW1	0
+"immune system process"	GO:0002376	1	O70165	0
+"immune system process"	GO:0002376	1	Q15485	0
+"immune system process"	GO:0002376	1	Q13177	0.716285506776742
+"immune system process"	GO:0002376	1	O00329	0
+"anatomical structure development"	GO:0048856	2	O76080	0
+"anatomical structure development"	GO:0048856	2	P98158	0
+"anatomical structure development"	GO:0048856	2	Q9DFZ4	0.68337967947252
+"anatomical structure development"	GO:0048856	2	Q5EB77	0
+"anatomical structure development"	GO:0048856	2	Q3TCH7	0
+"anatomical structure development"	GO:0048856	2	P16110	0
+"anatomical structure development"	GO:0048856	2	O35130	0.912440619548707
+"anatomical structure development"	GO:0048856	2	Q9VNV3	0
+"anatomical structure development"	GO:0048856	2	Q0V8R6	0
+"anatomical structure development"	GO:0048856	2	O75096	0
+"anatomical structure development"	GO:0048856	2	Q6PG34	0
+"anatomical structure development"	GO:0048856	2	O35674	0
+"anatomical structure development"	GO:0048856	2	Q99873	0
+"anatomical structure development"	GO:0048856	2	P30189	0
+"anatomical structure development"	GO:0048856	2	Q21086	0
+"anatomical structure development"	GO:0048856	2	O01479	0
+"anatomical structure development"	GO:0048856	2	P20042	0
+"anatomical structure development"	GO:0048856	2	Q17800	0
+"anatomical structure development"	GO:0048856	2	Q06561	0
+"anatomical structure development"	GO:0048856	2	O75844	0
+"anatomical structure development"	GO:0048856	2	Q641X3	0.90153657014194
+"anatomical structure development"	GO:0048856	2	Q9QZ03	0
+"anatomical structure development"	GO:0048856	2	O35643	0
+"anatomical structure development"	GO:0048856	2	Q92890	0
+"anatomical structure development"	GO:0048856	2	P29410	0
+"anatomical structure development"	GO:0048856	2	P80746	0
+"anatomical structure development"	GO:0048856	2	Q99798	0
+"anatomical structure development"	GO:0048856	2	Q99KI0	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	Q5QMN3	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	P46778	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	P23128	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	O95628	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	Q8H136	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	Q5E9Z8	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	Q0VC92	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	Q08473	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	Q9VM71	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	O61470	0
+"cellular macromolecule catabolic process"	GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361	4	I6YCA3	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q9JI44	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q9UH92	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P17030	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P17861	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	O75832	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	O75437	0.912591853170756
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q96MU6	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P16371	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q9HAU4	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q2KI95	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P98175	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	O14776	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q9BR84	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P55853	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q6KCD5	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q6P1J9	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P63271	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q24537	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P29375	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	B5DF89	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q6PDG5	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q13360	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	O57415	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q24143	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q14190	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q92793	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q7YU81	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q09472	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q9VJQ5	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q8CGF7	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q9V464	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	A8MT65	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P42282	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q08288	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P18491	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q24572	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	O97508	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q8R5A0	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q3T057	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q93008	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q8TD23	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q13501	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q9NZN8	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P92204	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q13569	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P45481	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q24174	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P18824	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q8K1S5	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	P04818	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	B2GUE2	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	O18640	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q6NN85	0
+"regulation of nucleic acid-templated transcription"	GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0031324;GO:0045934;GO:0051172	3	Q9D7X3	0
+"RNA modification"	GO:0009451	2	Q5ZKM1	0
+"RNA modification"	GO:0009451	2	A3KQ55	0
+"RNA modification"	GO:0009451	2	Q08647	0
+"RNA modification"	GO:0009451	2	Q501Z5	0.896306625180162
+"RNA modification"	GO:0009451	2	Q9D7B1	0
+"RNA modification"	GO:0009451	2	Q91VU7	0
+"RNA modification"	GO:0009451	2	Q9DBE9	0
+"RNA modification"	GO:0009451	2	Q45826	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	Q12955	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	Q15286	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	P10987	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	Q99323	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	Q28021	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	P25843	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	O01971	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	Q80U87	0.52735082186902
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	P0DM41	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	P40423	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	P54359	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	Q54GX7	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	P45594	0
+"cytoskeleton-dependent cytokinesis"	GO:0000281;GO:0061640;GO:0000910	4	Q9VIP0	0
+"reproductive process"	GO:0022414	1	Q297K8	0
+"reproductive process"	GO:0022414	1	Q96MC6	0
+"reproductive process"	GO:0022414	1	O62698	0
+"reproductive process"	GO:0022414	1	O35674	0
+"reproductive process"	GO:0022414	1	Q9VIP0	0
+"reproductive process"	GO:0022414	1	P48612	0
+"reproductive process"	GO:0022414	1	O44386	0
+"intracellular protein transport"	GO:0006886	2	Q5ZMP6	0
+"intracellular protein transport"	GO:0006886	2	Q8BMC4	0
+"intracellular protein transport"	GO:0006886	2	Q17QC5	0
+"intracellular protein transport"	GO:0006886	2	Q08DS5	0
+"intracellular protein transport"	GO:0006886	2	Q9W590	0
+"nucleic acid phosphodiester bond hydrolysis"	GO:0090305	5	Q9VM71	0
+"nucleic acid phosphodiester bond hydrolysis"	GO:0090305	5	A6QNR1	0
+"nucleic acid phosphodiester bond hydrolysis"	GO:0090305	5	Q9CX11	0
+"nucleic acid phosphodiester bond hydrolysis"	GO:0090305	5	Q9P7H0	0
+"nucleic acid phosphodiester bond hydrolysis"	GO:0090305	5	O74362	0
+"regulation of response to stimulus"	GO:0048583	2	Q9WTS8	0
+"regulation of response to stimulus"	GO:0048583	2	Q9VMU8	0
+"regulation of response to stimulus"	GO:0048583	2	Q5F433	0
+"regulation of response to stimulus"	GO:0048583	2	P45985	0
+"regulation of response to stimulus"	GO:0048583	2	O70165	0
+"regulation of response to stimulus"	GO:0048583	2	Q6NN85	0
+"regulation of response to stimulus"	GO:0048583	2	Q15485	0
+"regulation of response to stimulus"	GO:0048583	2	P06800	0
+"regulation of response to stimulus"	GO:0048583	2	Q9PU13	0
+"regulation of response to stimulus"	GO:0048583	2	Q8HXQ3	0
+"regulation of response to stimulus"	GO:0048583	2	Q03017	0
+"regulation of response to stimulus"	GO:0048583	2	Q13177	0.716285506776742
+"regulation of response to stimulus"	GO:0048583	2	Q921M7	0
+"regulation of response to stimulus"	GO:0048583	2	Q9D7X3	0
+"positive regulation of metabolic process"	GO:0010604;GO:0009893;GO:0032147;GO:0045860;GO:0001934;GO:0033674;GO:0031401;GO:0042327;GO:0051347;GO:0032270;GO:0045937;GO:0010562;GO:0031325;GO:0043085;GO:0051247;GO:0044093;GO:0051173	4	Q9VMU8	0
+"positive regulation of metabolic process"	GO:0010604;GO:0009893;GO:0032147;GO:0045860;GO:0001934;GO:0033674;GO:0031401;GO:0042327;GO:0051347;GO:0032270;GO:0045937;GO:0010562;GO:0031325;GO:0043085;GO:0051247;GO:0044093;GO:0051173	4	P45985	0
+"positive regulation of metabolic process"	GO:0010604;GO:0009893;GO:0032147;GO:0045860;GO:0001934;GO:0033674;GO:0031401;GO:0042327;GO:0051347;GO:0032270;GO:0045937;GO:0010562;GO:0031325;GO:0043085;GO:0051247;GO:0044093;GO:0051173	4	P06800	0
+"positive regulation of metabolic process"	GO:0010604;GO:0009893;GO:0032147;GO:0045860;GO:0001934;GO:0033674;GO:0031401;GO:0042327;GO:0051347;GO:0032270;GO:0045937;GO:0010562;GO:0031325;GO:0043085;GO:0051247;GO:0044093;GO:0051173	4	P53767	0
+"positive regulation of metabolic process"	GO:0010604;GO:0009893;GO:0032147;GO:0045860;GO:0001934;GO:0033674;GO:0031401;GO:0042327;GO:0051347;GO:0032270;GO:0045937;GO:0010562;GO:0031325;GO:0043085;GO:0051247;GO:0044093;GO:0051173	4	Q9PU13	0
+"positive regulation of metabolic process"	GO:0010604;GO:0009893;GO:0032147;GO:0045860;GO:0001934;GO:0033674;GO:0031401;GO:0042327;GO:0051347;GO:0032270;GO:0045937;GO:0010562;GO:0031325;GO:0043085;GO:0051247;GO:0044093;GO:0051173	4	O08648	0
+"positive regulation of metabolic process"	GO:0010604;GO:0009893;GO:0032147;GO:0045860;GO:0001934;GO:0033674;GO:0031401;GO:0042327;GO:0051347;GO:0032270;GO:0045937;GO:0010562;GO:0031325;GO:0043085;GO:0051247;GO:0044093;GO:0051173	4	Q8HXQ3	0
+"regulation of biological quality"	GO:0042592;GO:0065008	2	O89104	0
+"regulation of biological quality"	GO:0042592;GO:0065008	2	Q5ZJJ2	0
+"regulation of biological quality"	GO:0042592;GO:0065008	2	P13607	0
+"regulation of biological quality"	GO:0042592;GO:0065008	2	Q9NFT7	0
+"regulation of biological quality"	GO:0042592;GO:0065008	2	Q26228	0.915940928114338
+"regulation of biological quality"	GO:0042592;GO:0065008	2	Q0P9V4	0.813018255533332
+"regulation of biological quality"	GO:0042592;GO:0065008	2	P36368	0
+"regulation of biological quality"	GO:0042592;GO:0065008	2	Q26365	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	P25788	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	O00233	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	Q0KHQ5	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	O95819	0.688864939392464
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	P17980	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	P20936	0.831198243213699
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	Q6NVP7	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	O00487	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	P70236	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	P62333	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	B3M185	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	Q9BRX9	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	Q9R0Q8	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	P08953	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	O45040	0
+"signal transduction"	GO:0000165;GO:0035556;GO:0007165	5	Q13177	0.716285506776742
+"polysaccharide metabolic process"	GO:0005976	2	P49010	0.389495812482361
+"polysaccharide metabolic process"	GO:0005976	2	Q95M17	0
+"polysaccharide metabolic process"	GO:0005976	2	Q9W092	0
+"polysaccharide metabolic process"	GO:0005976	2	Q13231	0.68947522226658
+"polysaccharide metabolic process"	GO:0005976	2	P13280	0
+"larval development"	GO:0002164;GO:0009791	3	P30189	0
+"larval development"	GO:0002164;GO:0009791	3	Q21086	0
+"larval development"	GO:0002164;GO:0009791	3	O01479	0
+"larval development"	GO:0002164;GO:0009791	3	Q17800	0
+"larval development"	GO:0002164;GO:0009791	3	Q06561	0

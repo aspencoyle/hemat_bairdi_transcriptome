@@ -456,7 +456,7 @@ WGCNA_modules_accessions_kMEs <- function(module_name, transcriptome,
   accession_IDs <- na.omit(transcript_key$Accession_ID)
   
   # Create file of accession IDs separated by newline
-  write_lines(x =accession_IDs, file = accessions_out, sep = "\n")
+  write_lines(x = accession_IDs, file = accessions_out, sep = "\n")
   
   
   

@@ -745,16 +745,16 @@ gomwuStats(input, goDatabase, goAnnotations, goDivision,
 )
 
 # --------------- Results
-# 74 GO terms at 10% FDR
+# 163 GO terms at 10% FDR
 
 
 grDevices::windows()
 results=gomwuPlot(input,goAnnotations,goDivision,
                   #absValue=0.05,  # genes with the measure value exceeding this will be counted as "good genes". This setting is for signed log-pvalues. Specify absValue=0.001 if you are doing Fisher's exact test for standard GO enrichment or analyzing a WGCNA module (all non-zero genes = "good genes").
                   absValue=1, # un-remark this if you are using log2-fold changes
-                  level1=0.1, # FDR threshold for plotting. Specify level1=1 to plot all GO categories containing genes exceeding the absValue.
-                  level2=0.05, # FDR cutoff to print in regular (not italic) font.
-                  level3=0.01, # FDR cutoff to print in large bold font.
+                  level1=0.01, # FDR threshold for plotting. Specify level1=1 to plot all GO categories containing genes exceeding the absValue.
+                  level2=0.005, # FDR cutoff to print in regular (not italic) font.
+                  level3=0.001, # FDR cutoff to print in large bold font.
                   txtsize=1.2,    # decrease to fit more on one page, or increase (after rescaling the plot so the tree fits the text) for better "word cloud" effect
                   treeHeight=0.5, # height of the hierarchical clustering tree
                   #	colors=c("dodgerblue2","firebrick1","skyblue2","lightcoral") # these are default colors, un-remar and change if needed
@@ -844,7 +844,7 @@ gomwuStats(input, goDatabase, goAnnotations, goDivision,
 )
 
 # --------------- Results
-# 74 GO terms at 10% FDR
+# 60 GO terms at 10% FDR
 
 
 grDevices::windows()
@@ -943,7 +943,7 @@ gomwuStats(input, goDatabase, goAnnotations, goDivision,
 )
 
 # --------------- Results
-# 74 GO terms at 10% FDR
+# 58 GO terms at 10% FDR
 
 
 grDevices::windows()
@@ -1042,7 +1042,7 @@ gomwuStats(input, goDatabase, goAnnotations, goDivision,
 )
 
 # --------------- Results
-# 74 GO terms at 10% FDR
+# 75 GO terms at 10% FDR
 
 
 grDevices::windows()
