@@ -20,84 +20,63 @@ library("magick")
 
 
 # Methods
+TK male _C. bairdi_ were collected with pots from Stephen's Passage in southeastern Alaska between October TK and TK, 2017. Crabs were then transported to the [TK: Juneau or Douglas] National Oceanic and Atmospheric Administration (NOAA) facility within TK hours. All were placed in TK L flow-through seawater tanks (TK: assuming covered w/ insulating foam board) and held at 7.5°C for a 9-day acclimation period. At the end of this acclimation period, 0.2 ml of hemolymph was drawn from each crab and preserved in 1200 µl RNAlater. 
 
-### Collection
+At the conclusion of the acclimation period, crabs were divided randomly into three treatment groups. The control group was held at 7.5°C. The water temperature of the other two groups (henceforth the elevated and decreased groups) was gradually changed to 10°C and 4°C, respectively. This change took place over two days. At the end of the two-day temperature adjustment, an additional 0.2 ml of hemolymph was drawn from each crab and preserved in 1200 µl RNAlater. Tanks were held at their temperatures for an additional 15 days, for a total experimental duration of 17 days. All surviving crabs then had three additional 0.2 ml hemolymph samples withdrawn and preserved in 1200 µl RNAlater. Due to a mass mortality event in the elevated group, no samples in this group were taken. Crabs were then humanely euthanized.
 
-Between October TK and TK, 2017, TK male _C. bairdi_ were collected from Stephen's Passage in southeastern Alaska by the Alaska Department of Fish and Game (ADF&G). This site was selected due to its reliably high rate of _Hematodinium sp._ infection - approximately 50% (ADF&G, unpub. data). Crabs were caught using pots (TK: was this part of an ADFG survey?). Once collected, crabs were transported to the (TK: NOAA facility) within TK hours, and placed in flow-through seawater tanks (TK: assuming that's what was used) at 7.5°C - the benthic water temperature within Stephen's Passage at time of capture. 
+[TK: the below extraction and sequencing portion is largely a rephrased version of Grace's methods from her thesis That OK?]
+Hemolymph samples were centrifuged for 10 minutes at 14000g [TK: add supernatant removed?]. RNA was extracted using Quick DNA/RNA Microprep Plus Kit (Zymo Research), following the manufacturer's protocol. (TK: Add section about qPCR + all crabs being infected)
 
-### Verification of Infection
+To quantify RNA yield, 2 µl of each sample was run on Qubit 3.0 using the Qubit RNA HS kit (Invitrogen). Based on RNA yield, three crabs were chosen from each treatment group, and all samples from these three crabs were submitted (TK: verify location) to the Northwest Genomics Center at Foege Hall at the University of Washington for RNA-seq library sequencing and construction.
 
-To verify crabs were infected by _Hematodinium sp._, a TK ml aliquot of hemolymph was drawn from each crab and preserved in 800 µl 95% ethanol. 200 µl of that sample was centrifuged and pelleted. The pellet was then air-dried, and DNA was extracted with invertebrate lysis buffer. Extraction protocol followed a modified version of Ivanova et al.(2006), in which two washes with Wash Buffer were performed and eluted DNA (50 µl) was adjusted to 10 mM Tric-Cl, pH 8.0, and 0.1 mM EDTA. Once extracted, DNA was subjected to two rounds of cPCR with two primer pairs - Univ-F-15 / Hemat-R-1654 (Gruebl et al. 2002), and Hemat 18Sf / Hemat 18Sr (Bower et al. 2004). Both primer pairs are designed for the _Hematodinium spp._ small subunit (SSU) rRNA gene. After PCR, reaction aliquots were pooled and visualized on ethidium bromide-stained 2% agarose gels. If both _Hematodinium spp._ bands were visible on the gel, samples were scored as positive. If neither band was visible, samples were scored as negative. If one band amplified, samples were scored as indeterminate and (TK not selected for further analysis?)
+### Transcriptome Assembly and Annotation
 
-### Temperature Variation
+TK: Again, first paragraph is taken from Grace's thesis methods, check that's OK. Also I didn't do any of the transcritpome assembly, so no clue how much detail to go into here. 
 
-All crabs were acclimated to 7.5°C for nine days. 60 (TK) crabs were then selected based off cPCR results for temperature treatments and apparent recovery from capture stress. 0.2 ml of hemolymph was drawn from each selected crab and preserved in 1200 µl RNAlater. Crabs were divided randomly among six replicate tanks, with 10 crabs per tank. In three of the tanks, the water temperature was gradually raised to 10°C over a two-day period. In the three other tanks, water temperature was held at 7.5°C. At the end of the two-day acclimation period, another 0.2 ml hemolymph sample was taken from each crab and preserved in RNAlater. Following the conclusion of the experiment - 17 days after the acclimation period began - 3 samples of hemolymph were taken from each surviving crab in the ambient temperature treatment group, and 6 samples were taken from each surviving crab in the elevated temperature treatment group. The increased number of per-crab hemolymph samples in the elevated temperature treatment group was due to a mass mortality event between days 2 and 17 within that treatment group.
+Raw sequence data were assessed using FastQC (v0.11.8; Andrews 2010) [TK: verify version] and MultiQC (v1.6; Ewels et al. 2016) [TK: verify version] pre- and post-trimming. Data were quality trimmed using fastp (v.0.20.0) (Chen et al. 2018) with the "--detect_adapter_for_pe" setting. A transcriptome was _de novo_ assembled from all libraries from the nine sequenced crabs, along with a number of pooled samples (Supp. TK), using Trinity (v2.9.0; Grabherr et al. 2011; Haas et al. 2013). This is hereafter referred to as the unfiltered transcriptome. Trimmed sequencing reads were functionally annotated with a combination of DIAMOND BLASTx (0.9.26; Huson et al. 2016) and MEGAN6 (6.18.3; Huson et al. 2016). Annotation with DIAMOND BLASTx was run against NCBI nr database (downloaded TK DATE). 
 
-TK: edit methods to specify examining elev vs amb
+To examine host expression specifically, all libraries used in the creation of the unfiltered transcriptome were compared and annotated using DIAMOND BLASTx to a publicly-available _Chionoecetes opilio_ genome (NCBI Acc: GCA_016584305.1, citation TK). _C. opilio_ and _C. bairdi_ are quite closely related, and in fact often produce viable hybrids. Sequences from the libraries with an e-value below 1x10^-4 were kept and assembled using Trinity (v2.12.0; Citation TK). This is hereafter referred to as the host transcriptome.
 
-### RNA Extraction and Sequencing
+A third transcriptome was created to examine expression in _Hematodinium sp._ The same set of libraries were [TK: Not entirely sure how this transcriptome was made]
 
-TK hemolymph samples were centrifuged at 14000 g for 10 minutes. RNA was then extracted from the pellet (TK: did it pellet?) with Quick DNA/RNA Microprep Plus Kit (Zymo Research) using the manufacturer's protocol. To quantify RNA, 2 µl samples were then run on Qubit 3.0 with the Qubit RNA HS Kit (Invitrogen). Based on RNA yield and infection severity as determined by qPCR, six crabs were selected - three from the elevated-temperature treatment group and three from the ambient-temperature treatment group. All samples from these six crabs (Table 1) were sent to the Northwest Genomics Center at Foege Hall at the University of Washington for library construction and sequencing. Due to the mass mortality event in the elevated-temperature treatment groups, no libraries from Day 17 were available for these crabs.
+### Library Alignment and Differential Expression Analysis
 
+Every library was pseudoaligned to each of the three transcriptomes using kallisto (Bray et al. 2016), and abundance matrices were then produced using a perl script provided within the Trinity pipeline (v2.11.0; Citation TK). Pairwise comparisons for differential expression of contigs was performed with the R package DESeq2 (Love et al. 2014). Libraries were grouped based on treatment group, temperature at time of sample, and day for this series of pairwise comparisons. [TK: supplemental table of pairwise comparisons?]
+
+Gene ontology (GO) terms were obtained by cross-referencing the accession IDs of each contig with the Gene Ontology database (TK citation). For each pairwise comparison, the log2-fold changes were extracted from the DESeq2 output. These were used as input for GO-MWU (Wright et al. 2015), which performs a Mann-Whitney U test to and utilizes adaptive clustering to examine gene ontology term enrichment. 
+
+### Characterizing Immune Genes
+
+The cross-referenced table of accession IDs and GO terms for each transcriptome was filtered to examine genes with the GO term for "Immune Response" (GO: 0006955). Literature searches on function within closely-related species were performed TK: Add some more here
+
+### Network Analysis
+
+The libraries produced by the pseudoalignments were used for three weighted correlation network analyses - one per transcriptome. For this, the R package WGCNA (Langfelder & Horvath 2008) was used. Contigs were clustered by expression patterns into module eigengenes. Those modules were then correlated with sample traits, such as crab, temperature, day, carapace width, and infection level as determined by qPCR.
+
+### Analyzing WGCNA Modules
+
+All modules with a significant correlation to a sample trait were examined. If the significance appeared to be the result of correlation to libraries from a single crab, the module was discarded. The module membership (kME) of contigs belonging to that module was extracted and analyzed using GO-MWU. 
 
 
 ```{r indiv_libraries, echo = FALSE}
-crabIDs <- c("A", "B", "C", "G", "H", "I")
-temps <- c(rep("Ambient", 3), rep("Elevated", 3))
-day0ID <- c(178, 118, 132, 173, 072, 127)
-day2ID <- c(359, 349, 334, 272, 294, 280)
-day17ID <- c(463, 481, 485, NA, NA, NA)
+crabIDs <- LETTERS[1:9]
+temps <- c(rep("Ambient", 3), rep("Decreased", 3), rep("Elevated", 3))
+day0ID <- c(178, 118, 132, 073, 151, 113, 173, 072, 127)
+day2ID <- c(359, 349, 334, 221, 254, 222, 272, 294, 280)
+day17ID <- c(463, 481, 485, 427, 445, 425, NA, NA, NA)
 
 lib_table <- data.frame(crabIDs, temps, day0ID, 
                         day2ID, day17ID)
 colnames(lib_table) <- c("Crab ID", "Treatment group", "Day 0 sample ID", "Day 2 sample ID", "Day 17 sample ID")
 
-knitr::kable(lib_table, caption = "Individual libraries of infected crab", align = "c")
+knitr::kable(lib_table, caption = "Individual libraries", align = "c")
 
 ```
 
 
-### Transcriptome Assembly and Annotation
-TK. Grace's chapter describes Transcriptome 3.1. Looks similar except 3.1 has a filter - should check with Sam if Transcriptome 2.0 construction method matches. Also look at Sam's notebook posts.
-
-### Differential Expression Analysis
-An index of TK transcriptome was created with kallisto (TK citation), and each library was pseudoaligned to obtain counts. An abundance matrix for each pairwise comparison (Table 2) was then created using Trinity (v2.TK, TK citation?). Differential contig expression was calculated using a negative binomial GLM [TK: check if correct] using the R package DESeq2. Read counts were normalized using size factors and fit to a negative binomial distribution. The Wald test for significance of GLM terms for each comparison was used to obtain unadjusted p-values. For comparisons of crabs at different temperatures, a table of significantly differentially-expressed transcripts (Benjamini-Hochberg adjusted p < 0.05) was also obtained (Table 2).
-
-```{r pairwise_comparison, echo = FALSE}
-
-crab1ids <- c(rep("A,B,C", 4), "G,H,I")
-crab1temp <- c(rep("Ambient", 5))
-crab1date <- c(0, 0, 2, 2, 0)
-crab2ids <- c(rep("A,B,C", 3), rep("G,H,I", 2))
-crab2temp <- c(rep("Ambient", 3), rep("Elevated", 2))
-crab2date <- c(2, 17, 17, 2, 2)
-
-DEGs <- c(rep("No", 3), rep("Yes",2))
-
-comps_table <- data.frame(crab1ids, crab1temp, crab1date,
-                          crab2ids, crab2temp, crab2date,
-                          DEGs)
-colnames(comps_table) <- c("Crab IDs", "Temp. when sampled", "Sample day", "Crab IDs", "Temp. when sampled", "Sample day", "DEGs analyzed individually?")
-
-kbl(comps_table, caption = "PairwiseComparisons",
-    col.names = colnames(comps_table),
-    align = "c") %>%
-  column_spec(1:7, width = "2cm") %>%
-  add_header_above(c("Pair 1" = 3, "Pair 2" = 3, " " = 1)) %>%
-  kable_styling(latex_options = c("striped", "scale_down"))
-  
-
-```
-
-## TK title
+## TK section
 
 Talk here about how lots of genes from the unfiltered transcriptome didn't match closely to either the host genome or parasite genes? Also did we make sure there was no overlap in transcripts between the two (i.e. none that were assigned to both the host and parasite transcriptome)?
-
-## Enrichment Analysis
-For each comparison (Table 2), the output from DESeq2 was cross-referenced with the annotated transcriptome and the UniProt database (citation TK) to produce a table of UniProt Accession IDs and GO terms, along with a table of UniProt Accession IDs and unadjusted p-values. GO categories were then tested for significant enrichment with the R package GO-MWU (citation TK), which utilizes the Mann-Whitney U test. 
-
-## Individual DEG Examination
-Process TK, haven't completed this yet
 
 # Results
 
@@ -369,4 +348,17 @@ TK: Also consider running DESeq with contrasts to run three-way comparison on Am
 TK: Check whether, for the All Crabs PCAs, I should put multiple legends into the plot
 
 TK: When we decide when/if to use WGCNA heatmaps, expand em to make em prettier
+
+
+
+## Literature Cited
+
+Bray, N.L., Pimentel, H., Melsted, P., & Pachter, L. 2016. "Near-optimal probabilistic RNA-seq quantification", _Nature Biotechnology_ 34: 525-527 doi:10.1038/nbt.3519
+
+Langfelder, P., Horvath, S. 2008. "WGCNA: an R package for weighted correlation network analysis". _BMC Bioinformatics_ 9:559 https://doi.org/10.1186/1471-2105-9-559
+
+Love, M.I., Huber, W., Anders, S. 2014. "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. _Genome Biology_ 15:550. http://dx.doi.org/10.1186/s13059-014-0550-8
+
+Wright, R.M., Aglyamova, G.V., Meyer E., & Matz M.V. 2015. "Gene expression associated with white syndromes in a reef building coral, _Acropora hyacinthus_". _BMC Genomics_ 16:371. https://doi.org/10.1186/s12864-015-1540-2
+
 
