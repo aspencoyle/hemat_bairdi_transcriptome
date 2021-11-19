@@ -20,38 +20,35 @@ library("magick")
 
 
 # Methods
-TK male _C. bairdi_ were collected with pots from Stephen's Passage in southeastern Alaska between October TK and TK, 2017. Crabs were then transported to the [TK: Juneau or Douglas] National Oceanic and Atmospheric Administration (NOAA) facility within TK hours. All were placed in TK L flow-through seawater tanks (TK: assuming covered w/ insulating foam board) and held at 7.5°C for a 9-day acclimation period. At the end of this acclimation period, 0.2 ml of hemolymph was drawn from each crab and preserved in 1200 µl RNAlater. 
+400 [TK: this was for the full experiment, should we reduce to, say, the 9 with libraries?] male _C. bairdi_ were collected with pots from Stephen's Passage in southeastern Alaska in October 2017. Crabs were then transported to the Ted Stevens Marine Research Institute in Juneau, AK and placed in TK L flow-through seawater tanks. They were then (TK: assuming covered w/ insulating foam board) held at 7.5°C for a 9-day acclimation period. At the end of this acclimation period, 0.2 ml of hemolymph was drawn from each crab and preserved in 1200 µl RNAlater. 
 
 At the conclusion of the acclimation period, crabs were divided randomly into three treatment groups. The control group was held at 7.5°C. The water temperature of the other two groups (henceforth the elevated and decreased groups) was gradually changed to 10°C and 4°C, respectively. This change took place over two days. At the end of the two-day temperature adjustment, an additional 0.2 ml of hemolymph was drawn from each crab and preserved in 1200 µl RNAlater. Tanks were held at their temperatures for an additional 15 days, for a total experimental duration of 17 days. All surviving crabs then had three additional 0.2 ml hemolymph samples withdrawn and preserved in 1200 µl RNAlater. Due to a mass mortality event in the elevated group, no samples in this group were taken. Crabs were then humanely euthanized.
 
-[TK: the below extraction and sequencing portion is largely a rephrased version of Grace's methods from her thesis That OK?]
-Hemolymph samples were centrifuged for 10 minutes at 14000g [TK: add supernatant removed?]. RNA was extracted using Quick DNA/RNA Microprep Plus Kit (Zymo Research), following the manufacturer's protocol. (TK: Add section about qPCR + all crabs being infected)
+For samples from Day 17 of the experiment [TK: this looks like a real soft spot for any conclusions of high vs. low infection status for me - we're determining high vs. low after the majority of the samples were taken], DNA was extracted and subjected to qPCR following established protocol for _Hematodinium sp._ (Crosson 2011) and aligned to a provided species-specific standard curve. Samples were tested in duplicate. This provided a measure of the level of _Hematodinium sp._ infection.
 
-To quantify RNA yield, 2 µl of each sample was run on Qubit 3.0 using the Qubit RNA HS kit (Invitrogen). Based on RNA yield, three crabs were chosen from each treatment group, and all samples from these three crabs were submitted (TK: verify location) to the Northwest Genomics Center at Foege Hall at the University of Washington for RNA-seq library sequencing and construction.
+RNA was extracted from all samples using Quick DNA/RNA Microprep Plus Kit (Zymo Research) according to the manufacturer's protocol [TK: Cite Zymo in references?]. Samples were quantified (2 µl) on Qubit 3.0 using the Qubit RNA HS Kit (Invitrogen) [TK: Cite Invitrogen in references?]. Based on RNA yield, three crabs were chosen from each treatment group, and all samples from these crabs were submitted to the Northwest Genomics Center at Foege Hall at the University of Washington for construction and sequencing of RNA-seq libraries.
 
 ### Transcriptome Assembly and Annotation
 
-TK: Again, first paragraph is taken from Grace's thesis methods, check that's OK. Also I didn't do any of the transcritpome assembly, so no clue how much detail to go into here. 
+Raw sequence data were assessed using FastQC (v0.11.8; Andrews 2010) and MultiQC (v1.6; Ewels et al. 2016) pre- and post-trimming. Data were quality trimmed using fastp (v0.20.0) (Chen et al. 2018). A transcriptome was _de novo_ assembled from all libraries from the nine sequenced crabs, along with a number of pooled samples (Supp. Table TK), using Trinity (v2.9.0; Grabherr et al. 2011; Haas et al. 2013). This is hereafter referred to as the unfiltered transcriptome. Trimmed sequencing reads were functionally annotated with DIAMOND BLASTx (0.9.26; Buchfink et al. 2015) using the UniProt Swiss-Prot database (downloaded 2020-01-23) [TK: Sprot = Swiss-Prot db right?]. 
 
-Raw sequence data were assessed using FastQC (v0.11.8; Andrews 2010) [TK: verify version] and MultiQC (v1.6; Ewels et al. 2016) [TK: verify version] pre- and post-trimming. Data were quality trimmed using fastp (v.0.20.0) (Chen et al. 2018) with the "--detect_adapter_for_pe" setting. A transcriptome was _de novo_ assembled from all libraries from the nine sequenced crabs, along with a number of pooled samples (Supp. TK), using Trinity (v2.9.0; Grabherr et al. 2011; Haas et al. 2013). This is hereafter referred to as the unfiltered transcriptome. Trimmed sequencing reads were functionally annotated with a combination of DIAMOND BLASTx (0.9.26; Huson et al. 2016) and MEGAN6 (6.18.3; Huson et al. 2016). Annotation with DIAMOND BLASTx was run against NCBI nr database (downloaded TK DATE). 
+To examine host expression specifically, the individual libraries used in the creation of the unfiltered transcriptome were compared and annotated using DIAMOND BLASTx (v0.9.29) to a publicly-available _Chionoecetes opilio_ genome (NCBI Acc: GCA_016584305.1, citation TK). _C. opilio_ and _C. bairdi_ are quite closely related, and often produce viable hybrids. Sequences from the libraries with an e-value below 1x10^-4 were kept and assembled using Trinity (v2.12.0) into a transcriptome. This is hereafter referred to as the host transcriptome.
 
-To examine host expression specifically, all libraries used in the creation of the unfiltered transcriptome were compared and annotated using DIAMOND BLASTx to a publicly-available _Chionoecetes opilio_ genome (NCBI Acc: GCA_016584305.1, citation TK). _C. opilio_ and _C. bairdi_ are quite closely related, and in fact often produce viable hybrids. Sequences from the libraries with an e-value below 1x10^-4 were kept and assembled using Trinity (v2.12.0; Citation TK). This is hereafter referred to as the host transcriptome.
-
-A third transcriptome was created to examine expression in _Hematodinium sp._ The same set of libraries were [TK: Not entirely sure how this transcriptome was made]
+A third transcriptome was created to examine expression in _Hematodinium sp._ The same set of libraries were imported into MEGAN6 (citation TK) and a taxonomic filter was applied to select only _Alveolata_ sequences. These sequences were then assembled using Trinity (v2.9.0) and annotated with DIAMOND BLASTx (v0.9.29). This transcriptome is hereafter referred to as the parasite transcriptome 
 
 ### Library Alignment and Differential Expression Analysis
 
-Every library was pseudoaligned to each of the three transcriptomes using kallisto (Bray et al. 2016), and abundance matrices were then produced using a perl script provided within the Trinity pipeline (v2.11.0; Citation TK). Pairwise comparisons for differential expression of contigs was performed with the R package DESeq2 (Love et al. 2014). Libraries were grouped based on treatment group, temperature at time of sample, and day for this series of pairwise comparisons. [TK: supplemental table of pairwise comparisons?]
+Every library was pseudoaligned to each of the three transcriptomes (unfiltered, host, and parasite) using kallisto (Bray et al. 2016), and abundance matrices were then produced using a perl script provided within the Trinity pipeline (v2.12.0). Pairwise comparisons for differential expression of contigs was performed with the R package DESeq2 (Love et al. 2014). Libraries were grouped based on treatment group, temperature at time of sample, and day for this series of pairwise comparisons. [TK: supplemental table of pairwise comparisons?]
 
-Gene ontology (GO) terms were obtained by cross-referencing the accession IDs of each contig with the Gene Ontology database (TK citation). For each pairwise comparison, the log2-fold changes were extracted from the DESeq2 output. These were used as input for GO-MWU (Wright et al. 2015), which performs a Mann-Whitney U test to and utilizes adaptive clustering to examine gene ontology term enrichment. 
+Gene ontology (GO) terms were obtained by cross-referencing the accession IDs of each contig with the Gene Ontology database (TK citation). For each pairwise comparison, the log2-fold changes were extracted from the DESeq2 output. These were used as input for GO-MWU (Wright et al. 2015), which performs a Mann-Whitney U test and utilizes adaptive clustering to examine gene ontology term enrichment. 
 
 ### Characterizing Immune Genes
 
-The cross-referenced table of accession IDs and GO terms for each transcriptome was filtered to examine genes with the GO term for "Immune Response" (GO: 0006955). Literature searches on function within closely-related species were performed TK: Add some more here
+The cross-referenced table of accession IDs and GO terms for each transcriptome was filtered to examine genes with the GO term for "Immune Response" (GO: 0006955). Literature searches for functions within closely-related species were then performed 
 
 ### Network Analysis
 
-The libraries produced by the pseudoalignments were used for three weighted correlation network analyses - one per transcriptome. For this, the R package WGCNA (Langfelder & Horvath 2008) was used. Contigs were clustered by expression patterns into module eigengenes. Those modules were then correlated with sample traits, such as crab, temperature, day, carapace width, and infection level as determined by qPCR.
+The libraries produced by the pseudoalignments were used for three weighted correlation network analyses - one per transcriptome. For this, the R package WGCNA (Langfelder & Horvath 2008) was used. Categorical variables were binarized, and a signed network was used. Contigs were clustered by expression patterns into module eigengenes. Those modules were then correlated with sample traits, such as crab, temperature, day, carapace width, and infection level as determined by qPCR.
 
 ### Analyzing WGCNA Modules
 
@@ -154,11 +151,19 @@ crop(top = 100, bottom = 90)
 
 [TK: CHANGE IMAGE LEGENDS FROM TEMPERATURE TO DAY. Done for hemat1.6, just rerun DESeq for other PCAs needed (after updating exp_design table)]. 
 
-[TK: Should we perform GO-MWU but looking at MF or CC?]
+\pagebreak
 
 ## GO-MWU
 
-Pairwise comparisons were performed using GO-MWU to determine which biological processes were enriched. Unfiltered libraries from the elevated-temperature treatment group saw changes in expression for numerous biological processes, including TK, TK, and TK. These modules were not enriched in the ambient-temperature treatment group over the same timespan. 
+Pairwise comparisons were performed using GO-MWU to determine which biological processes were enriched. 
+
+### Temperature Adaptation
+
+Adaptation to temperature over the two-day temperature change period and, if applicable, the length of the experiment, was examined.
+
+#### Unfiltered Transcriptome
+
+Unfiltered libraries from both the elevated-temperature treatment group saw enrichment in numerous biological processes over the two-day period of temperature change from ambient. Notably, enriched pathways included TK, TK, and TK. A large number of pathways were also enriched for the decreased-temperature treatment group over this same time period, including TK, TK, and TK. Within the ambient-temperature control group, process enrichment was minimal over this timespan.
 
 ```{r, fig.cap = "GO term enrichment for elevated-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
 
@@ -172,7 +177,13 @@ crop <- function(im, left = 0, top = 0, right = 0, bottom = 0) {
 
 ```
 
+```{r, fig.cap = "GO term enrichment for decreased-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
 
+
+"../graphs/GOMWU_output/cbai_transcriptomev2.0/low0_vs_low2_indiv.png" %>%
+  image_read() 
+
+```
 
 ```{r, fig.cap = "GO term enrichment for ambient-temperature libraries, Days 0-2 (unfiltered transcriptome)", echo = FALSE}
 
@@ -182,11 +193,34 @@ crop <- function(im, left = 0, top = 0, right = 0, bottom = 0) {
 
 ```
 
+\pagebreak
+
 ### Time
 
-Over the 17 days of the experiment, GO term expression changed substantially within the control group (due to the mortality event, no enrichment data is available for the experimental group). Overall, the samples saw changes in TK, TK, and TK. However, when examining host expression, only minor pathway expression changes were observed. This indicates TK MAYBE IMMUNOSUPPRESSIVE TALK HERE.
+#### Unfiltered Transcriptome
 
-While no major changes were observed in the host, _Hematodinium_ expression did shift substantially over the same time period. Generally, those changes were associated with TK and TK. This indicates TK DISCUSSION OF POSSIBLE CHANGES IN MORPHOLOGY
+Over the 17 days of the experiment, GO term expression changed substantially within the control group. Overall, the control group saw changes in TK, TK, and TK pathways. Based on this, it appears that TK, TK, and TK pathways are involved in over the course of an infection with _Hematodinium_.
+
+TK: DISCUSSION, TALK ABOUT HOW THIS COULD EITHER BE AN INDICATION OF CHANGES OVER COURSE OF INFECTION OR INDICATION OF TANK ADAPTATION.
+
+```{r, fig.cap = "GO term enrichment for ambient-temperature libraries, Days 0-17 (unfiltered transcriptome)", echo = FALSE}
+
+
+"../graphs/GOMWU_output/cbai_transcriptomev2.0/amb0_vs_amb17_indiv.png" %>%
+  image_read() 
+
+```
+
+
+
+\pagebreak
+
+#### Host Transcriptome
+
+Over the course of the experiment, only minor pathway expression changes were observed. This indicates TK IMMUNOSUPPRESSIVE TALK HERE - IS OTHER STUFF GETTING IN AND CHANGING?
+
+#### Parasite Transcriptome
+While no major changes were observed in the host, _Hematodinium_ expression did shift substantially over the same time period. Generally, those changes were associated with TK and TK. This indicates that as _Hematodinium_ multiplies within the host, TK DISCUSSION OF POSSIBLE CHANGES IN MORPHOLOGY AND EXPRESSION AS DENSITY INCREASES
 
 ```{r, fig.cap = "GO term enrichment for ambient-temperature libraries, Days 0-17 (unfiltered transcriptome)", echo = FALSE}
 
@@ -204,18 +238,13 @@ While no major changes were observed in the host, _Hematodinium_ expression did 
 
 ```
 
-
-TK: TALK ABOUT HOW CRAB TRANSCRIPTION DOESN'T CHANGE MUCH BUT UNFILTERED DOES. COULD INDICATE IMMUNOSUPPRESSION, OTHER STUFF IS GETTING IN AND CHANGING. OR LIMITATION OF GO-MWU, AS SAME PROB FOR ELEV0 VS ELEV2
-
-TK: DISCUSSION, TALK ABOUT HOW THIS COULD EITHER BE AN INDICATION OF CHANGES OVER COURSE OF INFECTION OR INDICATION OF TANK ADAPTATION. COULD LOOK AT LOWERED 0 VS 17 UNINFECTED TO GET AN IDEA, BUT ADDS TEMP AS COMPLICATING FACTOR...
-
 \pagebreak
 
 ## Immune Genes
 
 ### Host
 
-Numerous genes (n = TK) within the _C. bairdi_ transcriptome were associated with immune function (GO:0006955). Many were members of the Cathepsin family, with Cathepsins C, J, L, S, U, V, and W all present. Cathepsin L was particularly broadly expressed, with seven distinct genes coding for Cathepsin and Procathepsin L [TK: does this make sense to say?]. Furthermore, Procathepsin L was differentially-expressed in the experimental group. Several types of MAPKs (mitogen-activated protein kinases)  were also present within the transcriptome, including two p38 MAPKs and one one MAP4K. MAPKs are part of the IMD (immune deficiency) pathway, a notable component of the crustacean immune system. Several other genes associated with the IMD pathway were observed, including the transcription factor Relish and the kinase inhibitor IKK [TK: change 1st K to a kappa]. NFIL3, a nuclear factor which has been found to regulate Relish expression in similar systems, was also present.
+Numerous genes (n = TK) within the _C. bairdi_ transcriptome were associated with immune function (GO:0006955). Many were members of the Cathepsin family, with Cathepsins C, J, L, S, U, V, and W all present. Cathepsin L was particularly broadly expressed, with seven distinct genes coding for Cathepsin and Procathepsin L [TK: does this make sense to say?]. Furthermore, Procathepsin L was differentially-expressed in the experimental group. Several types of MAPKs (mitogen-activated protein kinases)  were also present within the transcriptome, including two p38 MAPKs and one one MAP4K. MAPKs are part of the IMD (immune deficiency) pathway, a notable component of the crustacean immune system. Several other genes associated with the IMD pathway were observed, including the transcription factor Relish and the kinase inhibitor I$\kappa$K. NFIL3, a nuclear factor which has been found to regulate Relish expression in similar systems, was also present.
 
 Other notable immune-linked genes observed were Transcription Activator Protein-1 (TF AP-1) and Granzyme A. TF AP-1 acts as an immune system regulator within other crab species, along with a potential role as an osmoregulator. Little research on the role of Granzyme A in invertebrates has been performed, but in vertebrates it has a cytotoxic role against intracellular pathogens.
 
@@ -237,7 +266,7 @@ Table TK: Overall expression in samples unfiltered by taxa
 | Decrease | 33.9%   | 42.9%   |
 | Neither  | 35.5%   | 29.6%   |
 
-However, this same pattern was not observed when examining expression within the host or parasite specifically. Within the host, overall expression patterns were remarkably similar regardless of temperature. And within the parasite, expression increased within the lowered-temperature treatment group (TK STATISTICAL TESTS ON THESE RESULTS - CHI-SQUARE?) TK: MENTION CAVEAT OF 2 UNINFECTED IN LOWERED-TEMP GROUP, OR DO IN DISCUSSION? 
+However, this same pattern was not observed when examining expression within the host or parasite specifically. Within the host, overall expression patterns were remarkably similar regardless of temperature. And within the parasite, expression increased within the lowered-temperature treatment group (TK STATISTICAL TESTS ON THESE RESULTS - CHI-SQUARE?) 
 
 Table TK: Overall host transcript expression
 
@@ -282,8 +311,30 @@ Parasite expression: not available, only 5 genes total
 
 ## WGCNA
 
-A signed weighted correlation network analysis (WGCNA) was run on all libraries aligned to each transcriptome (TK citation). This clustered genes into modules according to expression pattern, and then correlated them with our variables. We took all modules that were significantly correlated, and discarded those in which the correlation to the variable appeared to be due to extremely strong correlation to a single crab. This produced the following modules (Table TK).
+[TK: Not much to necessarily say directly here, this is just a place to put some images of our WGCNA results if we feel like they're relevant enough to include. Some notable images from the run of our parasite libraries are included as an example. Not writing up for now because I feel like this is cuttable, but let me know if I should]
 
+```{r, fig.cap = "WGCNA Cluster Dendrogram for traits in parasite libraries", echo = FALSE}
+
+
+"../output/WGCNA_output/hemat_transcriptomev1.6/all_crabs_no_filter/hemat_level_as_var/ClusterDendrogram_W_Colors.png" %>%
+  image_read() 
+```
+
+```{r, fig.cap = "WGCNA Cluster Dendrogram of original and merged eigengenes for parasite libraries", echo = FALSE}
+
+
+"../output/WGCNA_output/hemat_transcriptomev1.6/all_crabs_no_filter/hemat_level_as_var/ClusterDendrogramOrigAndMergedEigengenes.png" %>%
+  image_read() 
+```
+
+```{r, fig.cap = "WGCNA heatmap of eigengenes and variables for parasite libraries", echo = FALSE}
+
+
+"../output/WGCNA_output/hemat_transcriptomev1.6/all_crabs_no_filter/hemat_level_as_var/ModuleTreatmentHeatMap.png" %>%
+  image_read() 
+```
+
+After taking all modules from each transcriptome's libraries that were significantly correlated with a variable and discarding those in which the correlation appeared to be due to strong correlation to a single crab, the following modules remained (Table TK).
 
 | Transcriptome | Module    | Trait and p-values                                                    |
 |---------------|-----------|-----------------------------------------------------------------------|
@@ -299,21 +350,7 @@ A signed weighted correlation network analysis (WGCNA) was run on all libraries 
 | Parasite      | blue      | Infection Level (0.01)                                                |
 
 
-Each of these modules was then analyzed using GO-MWU. No groups of GO terms were differentially enriched for any unfiltered or host module. However, all three modules within the parasite transcriptome saw differential enrichment. TK: Discussion of differential enrichment comes here
-
-```{r, fig.cap = "WGCNA Cluster Dendrogram for traits in parasite libraries", echo = FALSE}
-
-
-"../output/WGCNA_output/hemat_transcriptomev1.6/all_crabs_no_filter/hemat_level_as_var/ClusterDendrogram_W_Colors.png" %>%
-  image_read() 
-```
-
-```{r, fig.cap = "WGCNA Cluster Dendrogram of original and merged eigengenes for parasite libraries", echo = FALSE}
-
-
-"../output/WGCNA_output/hemat_transcriptomev1.6/all_crabs_no_filter/hemat_level_as_var/ClusterDendrogramOrigAndMergedEigengenes.png" %>%
-  image_read() 
-```
+Each of these modules was then analyzed using GO-MWU. No groups of GO terms were differentially enriched for any unfiltered or host module. However, all three modules within the parasite transcriptome saw differential enrichment. Within the parasite, the level of _Hematodinium_ infection appears to be linked to pathways associated with response to stress and decreased oxygen levels. Furthermore, both temperature and infection level altered _Hematodinium_ expression of ribosomal subunit assembly, intracellular signaling, and microtubule cytoskeleton organization.
 
 
 
@@ -338,12 +375,7 @@ Each of these modules was then analyzed using GO-MWU. No groups of GO terms were
   image_read() 
 ```
 
-
-
-
-TK: Consider running DESeq2 on Hemat_Level H vs L
-
-TK: Also consider running DESeq with contrasts to run three-way comparison on Amb 0 vs 2 vs 17 all in one
+TK: DESeq for Low Day 0 + Elevated Day 0 vs. Low Day 2 + Elevated Day 2 (general temperature response)
 
 TK: Check whether, for the All Crabs PCAs, I should put multiple legends into the plot
 
@@ -353,12 +385,26 @@ TK: When we decide when/if to use WGCNA heatmaps, expand em to make em prettier
 
 ## Literature Cited
 
-Bray, N.L., Pimentel, H., Melsted, P., & Pachter, L. 2016. "Near-optimal probabilistic RNA-seq quantification", _Nature Biotechnology_ 34: 525-527 doi:10.1038/nbt.3519
+Andrews S. 2010. "FastQC: A Quality Control Tool for High Throughput Sequence Data". Available online at http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
-Langfelder, P., Horvath, S. 2008. "WGCNA: an R package for weighted correlation network analysis". _BMC Bioinformatics_ 9:559 https://doi.org/10.1186/1471-2105-9-559
+Bray, N.L., Pimentel, H., Melsted, P., & Pachter, L. 2016. "Near-optimal probabilistic RNA-seq quantification". _Nature Biotechnology_ 34: 525-527 doi:10.1038/nbt.3519
 
-Love, M.I., Huber, W., Anders, S. 2014. "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. _Genome Biology_ 15:550. http://dx.doi.org/10.1186/s13059-014-0550-8
+Buchfink, B., Xie, C., & Huson, D.H. 2015. "Fast and sensitive protein alignment using DIAMOND". _Nature Methods_ 12(1): 59-60. doi: 10.1038/nmeth.3176
 
-Wright, R.M., Aglyamova, G.V., Meyer E., & Matz M.V. 2015. "Gene expression associated with white syndromes in a reef building coral, _Acropora hyacinthus_". _BMC Genomics_ 16:371. https://doi.org/10.1186/s12864-015-1540-2
+Chen, S., Zhou, Y., Chen, Y., & Gu, J. 2018. "fastp: an ultra-fast all-in-one FASTQ preprocessor". _Bioinformatics_ 34: i884-i890 doi:10.1093/bioinformatics/bty560
+
+Crosson, L.M. 2011. "Development and validation of a quantitative real-time polymerase chain reaction (qPCR) assay to assess the impact of Hematodinium, a parasitic dinoflagellate, on Tanner crab populations in Alaska". University of Washington
+
+Ewels, P., Magnusson, M., Lundin S., & Käller M. 2016. "MultiQC: summarize analysis results for multiple tools and samples in a single report". _Bioinformatics_ 32(19): 3047-3048 doi:10.1093/bioinformatics/btw354
+
+Grabherr, M.G., Hass, B.J., Yassour, M., Levin, J.Z., Thompson, D.A., Amit, I., Adiconis, X. et al. 2011. "Full-length transcriptome assembly from RNA-seq data without a reference genome". _Nature Biotechnology_ 29: 644-652 doi:10.1038/nbt.1883
+
+Haas, B.J., Papanicolaou, A., Yassour, M., Grabherr, M., Blood, P.D., Bowden, J., Cougar, M.B. et al. 2013. "De novo transcript sequence reconstruction from RNA-seq using the Trinity platform for reference generation and analysis". _Nature Protocols_ 8(8): 1494-1512 doi:10.1038/nprot.2013.084
+
+Langfelder, P., Horvath, S. 2008. "WGCNA: an R package for weighted correlation network analysis". _BMC Bioinformatics_ 9: 559 doi:10.1186/1471-2105-9-559 doi:10.1186/1471-2105-9-559
+
+Love, M.I., Huber, W., Anders, S. 2014. "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. _Genome Biology_ 15: 550. doi:10.1186/s13059-014-0550-8
+
+Wright, R.M., Aglyamova, G.V., Meyer E., & Matz M.V. 2015. "Gene expression associated with white syndromes in a reef building coral, _Acropora hyacinthus_". _BMC Genomics_ 16: 371. doi:10.1186/s12864-015-1540-2
 
 

@@ -182,12 +182,12 @@ dev.off()
 deseq2_tmp <- deseq2.res
 plot(deseq2_tmp$baseMean, deseq2_tmp$log2FoldChange, pch = 20,
      cex = 0.45, ylim = c(-28, 28), log = "x", col = "darkgray",
-     main = paste("Differences by", variable, "(padj <= 0.005)"),
+     main = paste("Differences by", variable, "(padj <= 0.05)"),
      xlab = "mean of normalized counts",
      ylab = "Log2 Fold Change")
 # Get significant points, plot again so they're a diff color
 deseq2_tmp.sig <- deseq2.res[!is.na(deseq2.res$padj) &
-                               deseq2.res$padj <= 0.005, ]
+                               deseq2.res$padj <= 0.05, ]
 points(deseq2_tmp.sig$baseMean, deseq2_tmp.sig$log2FoldChange,
        pch = 20, cex = 0.45, col = "red")
 abline(h=c(-1,1), col = "blue")
@@ -325,12 +325,12 @@ dev.off()
 deseq2_tmp <- deseq2.res
 plot(deseq2_tmp$baseMean, deseq2_tmp$log2FoldChange, pch = 20,
      cex = 0.45, ylim = c(-28, 28), log = "x", col = "darkgray",
-     main = paste("Differences by", variable, "(padj <= 0.005)"),
+     main = paste("Differences by", variable, "(padj <= 0.05)"),
      xlab = "mean of normalized counts",
      ylab = "Log2 Fold Change")
 # Get significant points, plot again so they're a diff color
 deseq2_tmp.sig <- deseq2.res[!is.na(deseq2.res$padj) &
-                               deseq2.res$padj <= 0.005, ]
+                               deseq2.res$padj <= 0.05, ]
 points(deseq2_tmp.sig$baseMean, deseq2_tmp.sig$log2FoldChange,
        pch = 20, cex = 0.45, col = "red")
 abline(h=c(-1,1), col = "blue")
@@ -455,12 +455,12 @@ dev.off()
 deseq2_tmp <- deseq2.res
 plot(deseq2_tmp$baseMean, deseq2_tmp$log2FoldChange, pch = 20,
      cex = 0.45, ylim = c(-28, 28), log = "x", col = "darkgray",
-     main = paste("Differences by", variable, "(padj <= 0.005)"),
+     main = paste("Differences by", variable, "(padj <= 0.05)"),
      xlab = "mean of normalized counts",
      ylab = "Log2 Fold Change")
 # Get significant points, plot again so they're a diff color
 deseq2_tmp.sig <- deseq2.res[!is.na(deseq2.res$padj) &
-                               deseq2.res$padj <= 0.005, ]
+                               deseq2.res$padj <= 0.05, ]
 points(deseq2_tmp.sig$baseMean, deseq2_tmp.sig$log2FoldChange,
        pch = 20, cex = 0.45, col = "red")
 abline(h=c(-1,1), col = "blue")
@@ -669,12 +669,12 @@ dev.off()
 deseq2_tmp <- deseq2.res
 plot(deseq2_tmp$baseMean, deseq2_tmp$log2FoldChange, pch = 20,
      cex = 0.45, ylim = c(-28, 28), log = "x", col = "darkgray",
-     main = paste("Differences by", variable, "(padj <= 0.005)"),
+     main = paste("Differences by", variable, "(padj <= 0.05)"),
      xlab = "mean of normalized counts",
      ylab = "Log2 Fold Change")
 # Get significant points, plot again so they're a diff color
 deseq2_tmp.sig <- deseq2.res[!is.na(deseq2.res$padj) &
-                               deseq2.res$padj <= 0.005, ]
+                               deseq2.res$padj <= 0.05, ]
 points(deseq2_tmp.sig$baseMean, deseq2_tmp.sig$log2FoldChange,
        pch = 20, cex = 0.45, col = "red")
 abline(h=c(-1,1), col = "blue")
@@ -721,6 +721,138 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/hemat_transcriptomev
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/hemat_transcriptomev1.6/low0_amb0_vs_low17_amb17_indiv",
                variable = "Day")
+```
+
+
+### Decreased Day 0 + Elevated Day 0 vs. Decreased Day 2 + Elevated Day 2, Individual Libraries Only
+exp_design = day and temperature data for libraries 073, 151, 113, 173, 072, 127, 221, 254, 222, 272, 294, 280 (in order)
+
+```{r low0amb0vslow17amb17, eval = FALSE}
+# Due to low numbers of normalized counts, the function returns an error when ran.
+# This will be avoided by removing the call to DESeq2::vst(), which performs the analysis 
+# necessary for our PCA plot. Therefore, our output will lack a PCA plot, but will be 
+# otherwise unchanged.
+
+exp_design <- data.frame(Day = factor(c("Day 0", "Day 0", "Day 0", 
+                                        "Day 0", "Day 0", "Day 0", 
+                                        "Day 2", "Day 2", "Day 2",
+                                        "Day 2", "Day 2", "Day 2")),
+                         Temperature = factor(c("Decreased", "Decreased", "Decreased", 
+                                                "Elevated", "Elevated", "Elevated", 
+                                                "Decreased", "Decreased", "Decreased",
+                                                "Elevated", "Elevated", "Elevated")))
+
+kallisto_path <- "../output/kallisto_matrices/hemat_transcriptomev1.6/low0_elev0_vs_low2_elev2_indiv/kallisto.isoform.counts.matrix"
+experiment_table <-  exp_design
+output_path <- "../graphs/DESeq2_output/hemat_transcriptomev1.6/low0_elev0_vs_low2_elev2_indiv"
+variable <- "Day"
+
+
+# Read in matrix created by Trinity from Kallisto outputs
+data <- read.table(kallisto_path, header = TRUE,
+                     sep = "\t")
+# Rename first column
+names(data)[1] <- "target_ID"
+  
+# Set row names equal to the first column
+rownames(data) <- data$target_ID
+  
+# Remove the now-irrelevant first column
+data <- data[,-1]
+  
+# Make sure everything looks okay
+print("HEAD")
+print(head(data))
+  
+print("STRUCTURE")
+print(str(data))
+  
+# Round counts to integers - needed for DESeqDataSetFromMatrix()
+data <- round(data, digits = 0)
+  
+# Rename rows to correspond to library numbers
+rownames(experiment_table) <- colnames(data)
+  
+# Check that experiment_table appears to match columns with matrix from Trinity
+print("EXPERIMENTAL DESIGN")
+print(experiment_table)
+  
+# Create DESeq object that looks at effect of variable
+deseq2.dds <- DESeqDataSetFromMatrix(countData = (data),
+                                     colData = experiment_table,
+                                     design = as.formula(paste0("~", variable)))
+ 
+deseq2.dds <- DESeq(deseq2.dds)
+  
+#Look at results
+deseq2.res <- results(deseq2.dds)
+print("SUMMARY:")
+print(summary(deseq2.res))
+  
+# Shrink LFC estimates - used in shrunken MA plot
+lfcnames <- resultsNames(deseq2.dds)
+print(lfcnames[2])
+resLFC <- lfcShrink(deseq2.dds, coef = lfcnames[2], 
+                    type = "apeglm")
+
+
+# Look specifically at results w/ adjusted p-value < 0.05
+deseq_res05 <- results(deseq2.dds, alpha = 0.05)
+print("Number of DEGs (padj <= 0.05)")
+print(sum(deseq_res05$padj < 0.05, na.rm = TRUE))
+  
+# Plot of full results, not shrunken
+plotMA(deseq2.res, ylim = c(-28, 28))
+dev.copy(png, file.path(output_path, "allres_MAplot.png"))
+dev.off()
+  
+# Plot of full results, shrunken
+plotMA(resLFC, ylim = c(-2, 2), main = "apeglm")
+dev.copy(png, file.path(output_path, "allres_shrunken_MAplot.png"))
+dev.off()
+  
+# Plot of res05 results, not shrunken
+plotMA(deseq_res05, ylim = c(-20, 20))
+dev.copy(png, file.path(output_path, "res05_MAplot.png"))
+dev.off()
+  
+# Create a plot of Log2 fold change vs. normalized counts
+deseq2_tmp <- deseq2.res
+plot(deseq2_tmp$baseMean, deseq2_tmp$log2FoldChange, pch = 20,
+     cex = 0.45, ylim = c(-28, 28), log = "x", col = "darkgray",
+     main = paste("Differences by", variable, "(padj <= 0.05)"),
+     xlab = "mean of normalized counts",
+     ylab = "Log2 Fold Change")
+# Get significant points, plot again so they're a diff color
+deseq2_tmp.sig <- deseq2.res[!is.na(deseq2.res$padj) &
+                               deseq2.res$padj <= 0.05, ]
+points(deseq2_tmp.sig$baseMean, deseq2_tmp.sig$log2FoldChange,
+       pch = 20, cex = 0.45, col = "red")
+abline(h=c(-1,1), col = "blue")
+dev.copy(png, file.path(output_path, "normalizedcts_v_log2foldchange.png"))
+dev.off()
+  
+# Plot dispersion estimates
+plotDispEsts(deseq2.dds)
+dev.copy(png, file.path(output_path, "dispersion_estimates.png"))
+dev.off()
+  
+# write all genes to table
+write.table(deseq2_tmp, file.path(output_path, "AllGenes.txt"), 
+            row.names = TRUE, col.names = FALSE, 
+            quote = FALSE, sep = "\t")
+write.table(deseq2_tmp, file.path(output_path, "AllGenes_wcols.txt"),
+            row.names = TRUE, col.names = TRUE,
+            quote = FALSE, sep = "\t")
+  
+# Write significant day-differing genes to table
+write.table(deseq2_tmp.sig, file.path(output_path, "DEGlist.txt"),
+            row.names = TRUE, col.names = FALSE, quote = FALSE,
+            sep = "\t")
+write.table(deseq2_tmp.sig, file.path(output_path, "DEGlist_wcols.txt"),
+            row.names = TRUE, col.names = TRUE, quote = FALSE,
+            sep = "\t")
+  
 ```
 
 ### All Individual Libraries
@@ -1176,6 +1308,12 @@ transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcrip
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/low0_amb0_vs_low17_amb17_indiv/DEGlist_wcols.txt", 
                        blast_filepath = "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
                        output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/DEG_IDs/low0_amb0_vs_low17_amb17_indiv_DEG_IDs.txt")
+
+# Lowered Day 0 + Elevated Day 0 vs. Lowered Day 2 + Elevated Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/low0_elev0_vs_low2_elev2_indiv/DEGlist_wcols.txt", 
+                       blast_filepath = "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
+                       output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/DEG_IDs/low0_elev0_vs_low2_elev2_indiv_DEG_IDs.txt")
+
 ```
 
 ### UniProt accession IDs for all transcripts
@@ -1235,6 +1373,11 @@ transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcrip
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/low0_amb0_vs_low17_amb17_indiv/AllGenes_wcols.txt", 
                        blast_filepath = "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
                        output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/low0_amb0_vs_low17_amb17_indiv_All_GeneIDs.txt")
+
+# Lowered Day 0 + Elevated Day 0 vs. Lowered Day 2 + Elevated Day 2
+transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/low0_elev0_vs_low2_elev2_indiv/AllGenes_wcols.txt", 
+                       blast_filepath = "../output/BLASTs/uniprot_swissprot/hemat1.6_blastxres.tab",
+                       output_path = "../output/accession_n_GOids/hemat_transcriptomev1.6/allgenes_IDs/low0_elev0_vs_low2_elev2_indiv_All_GeneIDs.txt")
 
 # All Genes
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/hemat_transcriptomev1.6/all_indiv_libraries/crab_as_var/AllGenes_wcols.txt", 

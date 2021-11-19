@@ -97,12 +97,12 @@ deseq_analysis <- function(kallisto_path,
   deseq2_tmp <- deseq2.res
   plot(deseq2_tmp$baseMean, deseq2_tmp$log2FoldChange, pch = 20,
        cex = 0.45, ylim = c(-28, 28), log = "x", col = "darkgray",
-       main = paste("Differences by", variable, "(padj <= 0.005)"),
+       main = paste("Differences by", variable, "(padj <= 0.05)"),
        xlab = "mean of normalized counts",
        ylab = "Log2 Fold Change")
   # Get significant points, plot again so they're a diff color
   deseq2_tmp.sig <- deseq2.res[!is.na(deseq2.res$padj) &
-                                 deseq2.res$padj <= 0.005, ]
+                                 deseq2.res$padj <= 0.05, ]
   points(deseq2_tmp.sig$baseMean, deseq2_tmp.sig$log2FoldChange,
          pch = 20, cex = 0.45, col = "red")
   abline(h=c(-1,1), col = "blue")
@@ -262,7 +262,7 @@ geneIDs_foldchange <- function(input_file, blast_file, output_file) {
     # If no pipes in accession ID column, remove all rows with an NA accession ID,
     # remove the first column (transcript ID), and reorder the 2nd and 3rd (should be accession ID, then log2-fold change)
     transcript_key <- transcript_key %>%
-      rename("Gene_ID" = "Accession_ID")
+      rename("Accession_ID" = "Gene_ID")
     transcript_key <- transcript_key[!is.na(transcript_key$Accession_ID), c(3, 2)]
     
   }

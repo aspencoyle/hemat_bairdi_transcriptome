@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.21)  14 NOV 2021 22:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.21)  18 NOV 2021 22:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -712,339 +712,385 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 187.
+(hyperref)                than one, level fixed on input line 191.
 
 [1
 
 {c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
 x.map}]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 263.
+(Font)              <10> on input line 274.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 263.
+(Font)              <7> on input line 274.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 263.
+(Font)              <5> on input line 274.
 [2]
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1.png, id=110, 481.8pt x 
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1.png, id=105, 481.8pt x 
 230.8625pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1
-.png  used on input line 339.
+.png  used on input line 325.
 (pdftex.def)             Requested size: 481.79881pt x 230.86192pt.
 
-Overfull \hbox (12.0438pt too wide) in paragraph at lines 339--339
+Overfull \hbox (12.0438pt too wide) in paragraph at lines 325--325
 [][]
  []
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-2-1.png, id=111, 481.8pt x 
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-2-1.png, id=106, 481.8pt x 
 250.9375pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-2-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-2-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-2-1
-.png  used on input line 343.
+.png  used on input line 329.
 (pdftex.def)             Requested size: 481.82086pt x 250.94835pt.
 
-Overfull \hbox (12.06584pt too wide) in paragraph at lines 343--343
+Overfull \hbox (12.06584pt too wide) in paragraph at lines 329--329
 [][]
  []
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1.png, id=112, 481.8pt x 
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1.png, id=107, 481.8pt x 
 281.05pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1
-.png  used on input line 347.
+.png  used on input line 333.
 (pdftex.def)             Requested size: 481.82822pt x 281.06645pt.
 
-Overfull \hbox (12.0732pt too wide) in paragraph at lines 347--347
+Overfull \hbox (12.0732pt too wide) in paragraph at lines 333--333
 [][]
  []
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-4-1.png, id=113, 481.8pt x 
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-4-1.png, id=108, 481.8pt x 
 281.05pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-4-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-4-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-4-1
-.png  used on input line 351.
+.png  used on input line 337.
 (pdftex.def)             Requested size: 481.82822pt x 281.06645pt.
 
-Overfull \hbox (12.0732pt too wide) in paragraph at lines 351--351
+Overfull \hbox (12.0732pt too wide) in paragraph at lines 337--337
 [][]
  []
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png, id=114, 481.8pt x 
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png, id=109, 481.8pt x 
 291.0875pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1
-.png  used on input line 355.
+.png  used on input line 341.
 (pdftex.def)             Requested size: 481.83556pt x 291.10898pt.
 
-Overfull \hbox (12.08054pt too wide) in paragraph at lines 355--355
+Overfull \hbox (12.08054pt too wide) in paragraph at lines 341--341
 [][]
  []
-
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png, id=115, 721.19438p
-t x 743.77875pt>
-File: coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png Graphic file (
-type png)
-<use coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png>
-Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1
-.png  used on input line 375.
-(pdftex.def)             Requested size: 630.70241pt x 650.45299pt.
-
-Overfull \hbox (160.94739pt too wide) in paragraph at lines 375--375
-[][]
- []
-
-
-LaTeX Warning: Float too large for page by 36.52298pt on input line 376.
-
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png, id=116, 961.5925pt
- x 991.705pt>
-File: coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png Graphic file (
-type png)
-<use coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png>
-Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1
-.png  used on input line 379.
-(pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
-
-Overfull \hbox (160.92169pt too wide) in paragraph at lines 379--379
-[][]
- []
-
-
-LaTeX Warning: Float too large for page by 36.4965pt on input line 380.
 
 [3pdfTeX warning (ext4): destination with the same identifier (name{table.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.391 
+l.349 
       ] [4pdfTeX warning (ext4): destination with the same identifier (name{fig
 ure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.391 
+l.349 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.391 
+l.349 
        <./coyle_paper_draft_files/figure-latex/unnamed-chunk-1-1.png> <./coyle_
 paper_draft_files/figure-latex/unnamed-chunk-2-1.png>] [5pdfTeX warning (ext4):
  destination with the same identifier (name{figure.3}) has been already used, d
 uplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.391 
+l.349 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.391 
+l.349 
        <./coyle_paper_draft_files/figure-latex/unnamed-chunk-3-1.png> <./coyle_
 paper_draft_files/figure-latex/unnamed-chunk-4-1.png>] [6pdfTeX warning (ext4):
  destination with the same identifier (name{figure.5}) has been already used, d
 uplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.391 
-       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png>] [7pdfTeX
- warning (ext4): destination with the same identifier (name{figure.6}) has been
- already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.391 
-       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png>] [8pdfTeX
- warning (ext4): destination with the same identifier (name{figure.7}) has been
- already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.391 
-       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png>]
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1.png, id=160, 961.5925pt
+l.349 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-5-1.png>]
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png, id=139, 721.19438p
+t x 743.77875pt>
+File: coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png Graphic file (
+type png)
+<use coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png>
+Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1
+.png  used on input line 374.
+(pdftex.def)             Requested size: 630.70241pt x 650.45299pt.
+
+Overfull \hbox (160.94739pt too wide) in paragraph at lines 374--374
+[][]
+ []
+
+
+LaTeX Warning: Float too large for page by 36.52298pt on input line 375.
+
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png, id=140, 961.5925pt
+ x 991.705pt>
+File: coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png Graphic file (
+type png)
+<use coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png>
+Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1
+.png  used on input line 378.
+(pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
+
+Overfull \hbox (160.92169pt too wide) in paragraph at lines 378--378
+[][]
+ []
+
+
+LaTeX Warning: Float too large for page by 36.4965pt on input line 379.
+
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1.png, id=141, 961.5925pt
  x 991.705pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1
-.png  used on input line 398.
+.png  used on input line 382.
 (pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
 
-Overfull \hbox (160.92169pt too wide) in paragraph at lines 398--398
+Overfull \hbox (160.92169pt too wide) in paragraph at lines 382--382
 [][]
  []
 
 
-LaTeX Warning: Float too large for page by 36.4965pt on input line 399.
+LaTeX Warning: Float too large for page by 36.4965pt on input line 383.
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1.png, id=161, 961.5925pt
+[7] [8pdfTeX warning (ext4): destination with the same identifier (name{figure.
+6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.386 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-6-1.png>] [9pdfTeX
+ warning (ext4): destination with the same identifier (name{figure.7}) has been
+ already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.386 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-7-1.png>] [10pdfTe
+X warning (ext4): destination with the same identifier (name{figure.8}) has bee
+n already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.386 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1.png>]
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1.png, id=167, 961.5925pt
  x 991.705pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1.png Graphic file (
 type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1
-.png  used on input line 402.
+.png  used on input line 403.
 (pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
 
-Overfull \hbox (160.92169pt too wide) in paragraph at lines 402--402
+Overfull \hbox (160.92169pt too wide) in paragraph at lines 403--403
 [][]
  []
 
 
-LaTeX Warning: Float too large for page by 35.94093pt on input line 403.
+LaTeX Warning: Float too large for page by 36.4965pt on input line 404.
 
-[9] [10pdfTeX warning (ext4): destination with the same identifier (name{figure
-.8}) has been already used, duplicate ignored
+[11] [12pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.9}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.415 
-       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-8-1.png>] [11pdfTe
-X warning (ext4): destination with the same identifier (name{figure.9}) has bee
-n already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.415 
-       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1.png>] [12] [13
-]
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-10-1.png, id=200, 481.8pt x
- 481.8pt>
+l.407 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-9-1.png>]
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-10-1.png, id=180, 961.5925p
+t x 991.705pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-10-1.png Graphic file 
 (type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-10-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-10-
-1.png  used on input line 598.
-(pdftex.def)             Requested size: 481.8135pt x 481.8135pt.
+1.png  used on input line 425.
+(pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
 
-Overfull \hbox (12.05849pt too wide) in paragraph at lines 598--598
+Overfull \hbox (160.92169pt too wide) in paragraph at lines 425--425
 [][]
  []
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-11-1.png, id=201, 481.8pt x
- 481.8pt>
+
+LaTeX Warning: Float too large for page by 36.4965pt on input line 426.
+
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-11-1.png, id=181, 961.5925p
+t x 991.705pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-11-1.png Graphic file 
 (type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-11-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-11-
-1.png  used on input line 602.
-(pdftex.def)             Requested size: 481.8135pt x 481.8135pt.
+1.png  used on input line 429.
+(pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
 
-Overfull \hbox (12.05849pt too wide) in paragraph at lines 602--602
+Overfull \hbox (160.92169pt too wide) in paragraph at lines 429--429
 [][]
  []
 
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-12-1.png, id=202, 961.5925p
-t x 991.705pt>
+
+LaTeX Warning: Float too large for page by 35.94093pt on input line 430.
+
+[13] [14pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.10}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.433 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-10-1.png>] [15pdfT
+eX warning (ext4): destination with the same identifier (name{figure.11}) has b
+een already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.433 
+       <./coyle_paper_draft_files/figure-latex/unnamed-chunk-11-1.png>] [16] [1
+7]
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-12-1.png, id=224, 481.8pt x
+ 481.8pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-12-1.png Graphic file 
 (type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-12-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-12-
-1.png  used on input line 606.
-(pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
+1.png  used on input line 616.
+(pdftex.def)             Requested size: 481.8135pt x 481.8135pt.
 
-Overfull \hbox (160.92169pt too wide) in paragraph at lines 606--606
+Overfull \hbox (12.05849pt too wide) in paragraph at lines 616--616
 [][]
  []
 
-
-LaTeX Warning: Float too large for page by 36.4965pt on input line 607.
-
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-13-1.png, id=203, 961.5925p
-t x 991.705pt>
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-13-1.png, id=225, 481.8pt x
+ 481.8pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-13-1.png Graphic file 
 (type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-13-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-13-
-1.png  used on input line 610.
-(pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
+1.png  used on input line 620.
+(pdftex.def)             Requested size: 481.8135pt x 481.8135pt.
 
-Overfull \hbox (160.92169pt too wide) in paragraph at lines 610--610
+Overfull \hbox (12.05849pt too wide) in paragraph at lines 620--620
 [][]
  []
 
-
-LaTeX Warning: Float too large for page by 36.4965pt on input line 611.
-
-<coyle_paper_draft_files/figure-latex/unnamed-chunk-14-1.png, id=204, 666.49pt 
-x 666.49pt>
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-14-1.png, id=226, 961.5925p
+t x 991.705pt>
 File: coyle_paper_draft_files/figure-latex/unnamed-chunk-14-1.png Graphic file 
 (type png)
 <use coyle_paper_draft_files/figure-latex/unnamed-chunk-14-1.png>
 Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-14-
-1.png  used on input line 614.
-(pdftex.def)             Requested size: 650.47092pt x 650.47092pt.
+1.png  used on input line 624.
+(pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
 
-Overfull \hbox (180.7159pt too wide) in paragraph at lines 614--614
+Overfull \hbox (160.92169pt too wide) in paragraph at lines 624--624
 [][]
  []
 
 
-LaTeX Warning: Float too large for page by 36.54091pt on input line 615.
+LaTeX Warning: Float too large for page by 36.4965pt on input line 625.
 
-[14] [15pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.10}) has been already used, duplicate ignored
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-15-1.png, id=227, 961.5925p
+t x 991.705pt>
+File: coyle_paper_draft_files/figure-latex/unnamed-chunk-15-1.png Graphic file 
+(type png)
+<use coyle_paper_draft_files/figure-latex/unnamed-chunk-15-1.png>
+Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-15-
+1.png  used on input line 628.
+(pdftex.def)             Requested size: 630.67671pt x 650.42651pt.
+
+Overfull \hbox (160.92169pt too wide) in paragraph at lines 628--628
+[][]
+ []
+
+
+LaTeX Warning: Float too large for page by 36.4965pt on input line 629.
+
+<coyle_paper_draft_files/figure-latex/unnamed-chunk-16-1.png, id=228, 666.49pt 
+x 666.49pt>
+File: coyle_paper_draft_files/figure-latex/unnamed-chunk-16-1.png Graphic file 
+(type png)
+<use coyle_paper_draft_files/figure-latex/unnamed-chunk-16-1.png>
+Package pdftex.def Info: coyle_paper_draft_files/figure-latex/unnamed-chunk-16-
+1.png  used on input line 632.
+(pdftex.def)             Requested size: 650.47092pt x 650.47092pt.
+
+Overfull \hbox (180.7159pt too wide) in paragraph at lines 632--632
+[][]
+ []
+
+
+LaTeX Warning: Float too large for page by 36.54091pt on input line 633.
+
+[18] [19pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.12}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.648 \end{document}
-                     <./coyle_paper_draft_files/figure-latex/unnamed-chunk-10-1
-.png>] [16pdfTeX warning (ext4): destination with the same identifier (name{fig
-ure.11}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.648 \end{document}
-                     <./coyle_paper_draft_files/figure-latex/unnamed-chunk-11-1
-.png>] [17pdfTeX warning (ext4): destination with the same identifier (name{fig
-ure.12}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.648 \end{document}
+l.699 \end{document}
                      <./coyle_paper_draft_files/figure-latex/unnamed-chunk-12-1
-.png>] [18pdfTeX warning (ext4): destination with the same identifier (name{fig
+.png>] [20pdfTeX warning (ext4): destination with the same identifier (name{fig
 ure.13}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.648 \end{document}
+l.699 \end{document}
                      <./coyle_paper_draft_files/figure-latex/unnamed-chunk-13-1
-.png>] [19pdfTeX warning (ext4): destination with the same identifier (name{fig
+.png>] [21pdfTeX warning (ext4): destination with the same identifier (name{fig
 ure.14}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.648 \end{document}
+l.699 \end{document}
                      <./coyle_paper_draft_files/figure-latex/unnamed-chunk-14-1
+.png>] [22pdfTeX warning (ext4): destination with the same identifier (name{fig
+ure.15}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.699 \end{document}
+                     <./coyle_paper_draft_files/figure-latex/unnamed-chunk-15-1
+.png>] [23pdfTeX warning (ext4): destination with the same identifier (name{fig
+ure.16}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.699 \end{document}
+                     <./coyle_paper_draft_files/figure-latex/unnamed-chunk-16-1
 .png>] (./coyle_paper_draft.aux)
 Package rerunfilecheck Info: File `coyle_paper_draft.out' has not changed.
-(rerunfilecheck)             Checksum: 4DACAC1A7897625117789A26463BE531;3088.
+(rerunfilecheck)             Checksum: 9F7B5E11FC4AB426A855CBD8E8C0FC40;2862.
  ) 
 Here is how much of TeX's memory you used:
- 12607 strings out of 480971
- 188502 string characters out of 5906254
- 511439 words of memory out of 5000000
- 29475 multiletter control sequences out of 15000+600000
+ 12638 strings out of 480971
+ 189617 string characters out of 5906254
+ 511803 words of memory out of 5000000
+ 29492 multiletter control sequences out of 15000+600000
  458030 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  71i,9n,74p,392b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.e
-nc}{c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1
-.enc}<c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/l
-mbx10.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public
-/lm/lmbx12.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/p
-ublic/lm/lmr10.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/typ
-e1/public/lm/lmr12.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts
-/type1/public/lm/lmr17.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/f
-onts/type1/public/lm/lmri10.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-d
-ist/fonts/type1/public/lm/lmri12.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/te
-xmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on coyle_paper_draft.pdf (19 pages, 453654 bytes).
+{c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-math
+it.enc}{c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm
+-ec.enc}{c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/l
+m-ts1.enc}<c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public
+/lm/lmbx10.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/p
+ublic/lm/lmbx12.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fonts/ty
+pe1/public/lm/lmmi10.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist/fon
+ts/type1/public/lm/lmr10.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-dist
+/fonts/type1/public/lm/lmr12.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/texmf-
+dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/acoyl/AppData/Roaming/TinyTeX/te
+xmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/acoyl/AppData/Roaming/TinyT
+eX/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/Users/acoyl/AppData/Roaming/
+TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on coyle_paper_draft.pdf (23 pages, 584434 bytes).
 PDF statistics:
- 295 PDF objects out of 1000 (max. 8388607)
- 241 compressed objects within 3 object streams
- 81 named destinations out of 1000 (max. 500000)
- 231 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 331 PDF objects out of 1000 (max. 8388607)
+ 270 compressed objects within 3 object streams
+ 93 named destinations out of 1000 (max. 500000)
+ 233 words of extra memory for PDF output out of 10000 (max. 10000000)
 
