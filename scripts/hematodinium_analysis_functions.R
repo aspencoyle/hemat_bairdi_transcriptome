@@ -353,7 +353,7 @@ WGCNA_modules_accessions_kMEs <- function(module_name, transcriptome,
                                           output_accessions) {
   # Load in module data, which is just one column of transcript IDs in module
   module.dat <- read.delim(file = paste0("../output/WGCNA_output/", transcriptome, "/", 
-                                         compar, "/hemat_level_as_var/GeneList-", 
+                                         compar, "/day_as_var/GeneList-", 
                                          module_name, ".txt"),
                            sep = "\t",
                            col.names = "Transcript_ID")
@@ -367,7 +367,7 @@ WGCNA_modules_accessions_kMEs <- function(module_name, transcriptome,
   # Load kME data, which is a column of all transcript IDs in WGCNA, plus the kME scores for each module
   # Each module is a separate column, but we just care about the one being examined here.
   kME.dat <- read.delim(file = paste0("../output/WGCNA_output/", transcriptome, "/", 
-                                      compar, "/hemat_level_as_var/ kME_table.txt"),
+                                      compar, "/day_as_var/kME_table.txt"),
                         sep = "\t")
   
   # Move rownames (the transcript IDs) to columns
