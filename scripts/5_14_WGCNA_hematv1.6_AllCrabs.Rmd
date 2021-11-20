@@ -17,7 +17,7 @@ We will now run WGCNA on all individual libraries
 
 This will be ran on libraries aligned to hemat_transcriptomev1.6, which only includes genes that are presumably _Hematodinium_.
 
-Note the additional column compared to previous runs - since we are including crabs D and F, which are uninfected, infection status is now an included variable
+Note the additional column compared to previous runs - since we are including crabs D and F, which are uninfected according to cPCR, infection status is now an included variable
 
 Table of crabs and libraries included in analysis:
 | Crab ID | Treatment Group | Day 0 Sample ID | Day 2 Sample ID | Day 17 Sample ID |Infection Status |
@@ -85,37 +85,36 @@ libraries <- c("178", "118", "132", "073", "151", "113", "173", "072", "127", "3
 # For each row, crab and day should correspond to the order of libraries (ex: 4th row of crabTraits should match libraries[4])
 
 crabTraits <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c("A", "B", "C", "D", "E", "F", "G", "H", "I"), times = 2), 
-                                    "A", "B", "C", "D", "E", "F"),
-                                    includePairwise = FALSE,
-                                    includeLevelVsAll = TRUE,
-                                    minCount = 2),
+                                                                    "A", "B", "C", "D", "E", "F"),
+                                                              includePairwise = FALSE,
+                                                              includeLevelVsAll = TRUE,
+                                                              minCount = 2),
                          "day" = factor(c(rep(0, times = 9),
                                           rep(2, times = 9),
                                           rep(17, times = 6))),
                          "temp" = binarizeCategoricalVariable(x = c(rep("Ambient", times = 12),
-                                    rep("Lowered", times = 3),
-                                    rep("Elevated", times = 3),
-                                    rep("Ambient", times = 3),
-                                    rep("Lowered", times = 3)),
-                                    includePairwise = TRUE,
-                                    includeLevelVsAll = TRUE),
+                                                                    rep("Lowered", times = 3),
+                                                                    rep("Elevated", times = 3),
+                                                                    rep("Ambient", times = 3),
+                                                                    rep("Lowered", times = 3)),
+                                                              includePairwise = TRUE,
+                                                              includeLevelVsAll = TRUE),
                          "infection" = c(rep(c(rep("Infected", times = 3),
                                                "Uninfected", "Infected", "Uninfected",
                                                rep("Infected", times = 3)), times = 2),
                                          rep("Infected", times = 3),
                                          "Uninfected", "Infected", "Uninfected"),
-                         "hemat_level" = c(rep(c("L", "H", "H",
-                                                 "H", "L", "L",
-                                                 "L", "H", "H"),
-                                               times = 2),
-                                           "L", "H", "H",
-                                           "H", "L", "L"),
+                         "hemat_level" = scale(c(rep(c(1117, 158230, 333000,
+                                                       380503, 1550, 4586,
+                                                       4510, 120000, 211000), times = 2),
+                                                 1117, 158230, 333000,
+                                                 380503, 1550, 4586)),
                          "CW" = scale(c(rep(c(132.2, 128.8, 145, 
-                                        127.4, 134.1, 133.3, 
-                                        95.7, 111.8, 133.7), 
-                                      times = 2),
-                                  132.2, 128.8, 145, 
-                                  127.4, 134.1, 133.3), center = TRUE),
+                                              127.4, 134.1, 133.3, 
+                                              95.7, 111.8, 133.7), 
+                                            times = 2),
+                                        132.2, 128.8, 145, 
+                                        127.4, 134.1, 133.3), center = TRUE),
                          "SC" = c(rep("New", times = 5),
                                   rep("Old", times = 2),
                                   rep("New", times = 7),
@@ -144,12 +143,11 @@ crabClinicalData <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c(
                                                rep(2, times = 3)), times = 2),
                                          rep(2, times = 3),
                                          1, 2, 1),
-                         "hemat_level" = c(rep(c(1, 2, 2,
-                                                 2, 1, 1,
-                                                 1, 2, 1),
-                                               times = 2),
-                                           1, 2, 2,
-                                           1, 1, 1),
+                         "hemat_level" = scale(c(rep(c(1117, 158230, 333000,
+                                                       380503, 1550, 4586,
+                                                       4510, 120000, 211000), times = 2),
+                                                 1117, 158230, 333000,
+                                                 380503, 1550, 4586)),
                          "CW" = scale(c(rep(c(132.2, 128.8, 145, 
                                         127.4, 134.1, 133.3, 
                                         95.7, 111.8, 133.7), 
@@ -382,13 +380,7 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
      col = "red")
 ```
 
-Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. However, no eligible soft-thresholding power reached 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), this indicates the following:
-
-`"If the scale-free topology fit index fails to reach values above 0.8 for reasonable powers (less than 15 for unsigned or signed hybrid networks, and less than 30 for signed networks) and the mean connectivity remains relatively high (in the hundreds or above), chances are that the data exhibit a strong driver that makes a subset of the samples globally different from the rest. The difference causes high correlation among large groups of genes which invalidates the assumption of the scale-free topology approximation."`
-
-Our mean connectivity drops below the hundreds, so we can safely continue.
-
-I chose to use a signed network, since that's generally recommended over unsigned. Therefore, the WGCNA FAQ recommends choosing a soft-thresholding power of 16, since we have between 20 and 30 samples total.
+Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. However, no eligible soft-thresholding power reached 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), I should choose a soft-thresholding power of 16, since we have between 20 and 30 samples total.
 
 
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
