@@ -1,78 +1,78 @@
 "delta.rank" "pval" "level" "nseqs" "term" "name" "p.adj"
-0 0.0576523863394929 4 16 "GO:0000165;GO:0035556;GO:0007165" "signal transduction" 0.958333333333333
-0 0.115304772678986 9 16 "GO:0000209;GO:0016567;GO:0032446;GO:0070647" "protein modification by small protein conjugation or removal" 1
-0 0.00250753510316013 3 8 "GO:0005975" "carbohydrate metabolic process" 0.15
-0 0.000913529675106754 2 5 "GO:0005976" "polysaccharide metabolic process" 0.1
-0 0.220451460822838 3 21 "GO:0006810;GO:0006811" "transport" 1
-0 0.101381946076875 2 9 "GO:0008104;GO:0033036;GO:0071705;GO:0015031;GO:0015833;GO:0045184;GO:0042886" "nitrogen compound transport" 1
-0 0.0188449365662964 2 22 "GO:0009056;GO:1901575" "catabolic process" 0.39
+0 0.0576523863394929 5 16 "GO:0000165;GO:0035556;GO:0007165" "signal transduction" 0.875
+0 0.115304772678986 5 16 "GO:0000209;GO:0016567;GO:0032446;GO:0070647" "protein modification by small protein conjugation or removal" 1
+0 0.00250753510316013 2 8 "GO:0005975" "carbohydrate metabolic process" 0.1
+0 0.000913529675106754 3 5 "GO:0005976" "polysaccharide metabolic process" 0.05
+0 0.240955230851045 5 38 "GO:0006464;GO:0036211;GO:0043412" "macromolecule modification" 1
+0 0.220451460822838 2 21 "GO:0006810;GO:0006811" "transport" 1
 0 0.00897571312984462 2 15 "GO:0009057" "macromolecule catabolic process" 0.283333333333333
-0 0.0151085101549823 3 8 "GO:0042592;GO:0065008" "regulation of biological quality" 0.3625
-0 0.240955230851045 2 38 "GO:0043412;GO:0006464;GO:0036211" "macromolecule modification" 1
-0 0.287420662955362 4 48 "GO:0044267;GO:0019538" "protein metabolic process" 1
-0 0.118278937089688 2 9 "GO:0048513" "animal organ development" 1
-0 0.329210701796425 2 28 "GO:0048856" "anatomical structure development" 1
+0 0.101381946076875 4 9 "GO:0015031;GO:0015833;GO:0042886;GO:0071705;GO:0045184;GO:0008104;GO:0033036" "nitrogen compound transport" 1
+0 0.0151085101549823 2 8 "GO:0042592;GO:0065008" "regulation of biological quality" 0.45
+0 0.287420662955362 4 48 "GO:0044267;GO:0019538" "protein metabolic process" 0.975
+0 0.118278937089688 2 9 "GO:0048513" "animal organ development" 0.961111111111111
+0 0.329210701796425 2 28 "GO:0048856" "anatomical structure development" 0.936666666666667
 0 0.273689597765064 2 27 "GO:0051234;GO:0051179" "establishment of localization" 1
-0 0.132805600891443 5 12 "GO:0071702;GO:0006820" "anion transport" 1
-0 1 3 13 "GO:0000027" "ribosomal large subunit assembly" 1
-0 1 2 8 "GO:0000028" "ribosomal small subunit assembly" 1
+0 0.132805600891443 4 12 "GO:0071702;GO:0006820" "anion transport" 0.955
+0 0.0188449365662964 3 22 "GO:1901575;GO:0009056" "catabolic process" 0.46
+0 1 2 13 "GO:0000027" "ribosomal large subunit assembly" 1
+0 1 6 8 "GO:0000028" "ribosomal small subunit assembly" 1
 0 1 2 12 "GO:0000045;GO:0070925;GO:1905037;GO:0007033" "organelle assembly" 1
-0 1 4 5 "GO:0000086;GO:0044839" "cell cycle G2/M phase transition" 1
-0 1 6 6 "GO:0000132;GO:0040001;GO:0051294;GO:0051293;GO:1902850;GO:0051653" "establishment of mitotic spindle localization" 1
+0 1 2 5 "GO:0000086;GO:0044839" "G2/M transition of mitotic cell cycle" 1
+0 1 7 54 "GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903507;GO:2000113;GO:1903506;GO:2000112;GO:1902679;GO:0010558;GO:0031327;GO:2001141;GO:0010556;GO:0031326;GO:0051253;GO:0009890;GO:0031324;GO:0009889;GO:0045934;GO:0051172" "regulation of transcription, DNA-templated" 1
+0 1 6 6 "GO:0000132;GO:0040001;GO:0051294;GO:0051293;GO:1902850;GO:0051653" "establishment of spindle orientation" 1
 0 1 2 5 "GO:0000184" "nuclear-transcribed mRNA catabolic process, nonsense-mediated decay" 1
-0 1 4 20 "GO:0000226;GO:0007010;GO:0007017" "microtubule-based process" 1
-0 1 3 6 "GO:0000278;GO:0007049" "mitotic cell cycle" 1
+0 1 3 20 "GO:0000226;GO:0007010;GO:0007017" "microtubule-based process" 1
+0 1 2 6 "GO:0000278;GO:0007049" "mitotic cell cycle" 1
 0 1 3 14 "GO:0000281;GO:0061640;GO:0000910" "cytokinesis" 1
-0 1 4 16 "GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311" "regulation of RNA splicing" 1
+0 1 7 16 "GO:0000381;GO:0048024;GO:0043484;GO:0050684;GO:1903311" "regulation of mRNA splicing, via spliceosome" 1
 0 1 2 8 "GO:0000387" "spliceosomal snRNP assembly" 1
-0 1 3 43 "GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0016071;GO:0008380" "mRNA metabolic process" 1
-0 1 4 8 "GO:0000413;GO:0018208;GO:0018193" "protein peptidyl-prolyl isomerization" 1
-0 1 2 6 "GO:0000463" "maturation of LSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)" 1
-0 1 2 10 "GO:0000470" "maturation of LSU-rRNA" 1
-0 1 2 10 "GO:0000902" "cell morphogenesis" 1
-0 1 3 10 "GO:0001525" "angiogenesis" 1
+0 1 8 43 "GO:0000398;GO:0000377;GO:0006397;GO:0000375;GO:0008380;GO:0016071" "mRNA metabolic process" 1
+0 1 3 8 "GO:0000413;GO:0018208;GO:0018193" "protein peptidyl-prolyl isomerization" 1
+0 1 4 6 "GO:0000463" "maturation of LSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)" 1
+0 1 3 10 "GO:0000470" "maturation of LSU-rRNA" 1
+0 1 3 10 "GO:0000902" "cell morphogenesis" 1
+0 1 2 10 "GO:0001525" "angiogenesis" 1
 0 1 6 6 "GO:0001701;GO:0043009;GO:0009792;GO:0009790" "embryo development ending in birth or egg hatching" 1
-0 1 3 12 "GO:0001732" "formation of cytoplasmic translation initiation complex" 1
-0 1 5 16 "GO:0001932;GO:0031399;GO:0042325;GO:0032268;GO:0051246;GO:0019220;GO:0051174" "regulation of phosphorus metabolic process" 1
-0 1 4 7 "GO:0002009;GO:0048729" "morphogenesis of an epithelium" 1
-0 1 3 5 "GO:0002164;GO:0009791" "larval development" 1
-0 1 5 21 "GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518;GO:0043604;GO:0043603" "cellular macromolecule biosynthetic process" 1
+0 1 2 12 "GO:0001732" "formation of cytoplasmic translation initiation complex" 1
+0 1 3 16 "GO:0001932;GO:0031399;GO:0042325;GO:0019220;GO:0051174;GO:0032268;GO:0051246" "regulation of phosphorylation" 1
+0 1 3 7 "GO:0002009;GO:0048729" "tissue morphogenesis" 1
+0 1 2 5 "GO:0002164;GO:0009791" "larval development" 1
 0 1 1 8 "GO:0002376" "immune system process" 1
-0 1 2 7 "GO:0002684;GO:0002682;GO:0050778;GO:0050776" "regulation of immune system process" 1
 0 1 2 8 "GO:0006259" "DNA metabolic process" 1
-0 1 8 22 "GO:0006364;GO:0016072;GO:0034470;GO:0034660" "ncRNA processing" 1
-0 1 5 5 "GO:0006886" "intracellular protein transport" 1
+0 1 2 5 "GO:0006886" "intracellular protein transport" 1
 0 1 2 22 "GO:0006950;GO:0050896" "response to stimulus" 1
-0 1 3 7 "GO:0006974;GO:0033554;GO:0051716" "cellular response to DNA damage stimulus" 1
-0 1 3 43 "GO:0006996" "organelle organization" 1
-0 1 2 6 "GO:0007005" "mitochondrion organization" 1
+0 1 4 7 "GO:0006974;GO:0033554;GO:0051716" "cellular response to DNA damage stimulus" 1
+0 1 2 43 "GO:0006996" "organelle organization" 1
+0 1 3 6 "GO:0007005" "mitochondrion organization" 1
 0 1 2 12 "GO:0007275" "multicellular organism development" 1
-0 1 3 8 "GO:0009451" "RNA modification" 1
+0 1 2 8 "GO:0009451" "RNA modification" 1
 0 1 2 22 "GO:0009653" "anatomical structure morphogenesis" 1
 0 1 4 7 "GO:0019752;GO:0043436;GO:0006082" "organic acid metabolic process" 1
+0 1 2 35 "GO:0022402;GO:1903047" "cell cycle process" 1
 0 1 1 7 "GO:0022414" "reproductive process" 1
-0 1 6 52 "GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933" "cellular protein-containing complex assembly" 1
-0 1 6 54 "GO:0031324;GO:0051172;GO:0000122;GO:0006357;GO:0045892;GO:0006355;GO:1903506;GO:2000112;GO:2001141;GO:0010556;GO:0031326;GO:0009889;GO:1903507;GO:2000113;GO:1902679;GO:0010558;GO:0031327;GO:0051253;GO:0009890;GO:0045934" "regulation of cellular macromolecule biosynthetic process" 1
-0 1 7 7 "GO:0032147;GO:0045860;GO:0001934;GO:0033674;GO:0031401;GO:0042327;GO:0051347;GO:0032270;GO:0045937;GO:0043085;GO:0031325;GO:0051247;GO:0010562;GO:0009893;GO:0044093;GO:0010604;GO:0051173" "positive regulation of metabolic process" 1
+0 1 4 52 "GO:0022618;GO:0034622;GO:0071826;GO:0065003;GO:0043933" "protein-containing complex assembly" 1
+0 1 8 7 "GO:0032147;GO:0045860;GO:0001934;GO:0033674;GO:0031401;GO:0042327;GO:0051347;GO:0032270;GO:0045937;GO:0010562;GO:0031325;GO:0009893;GO:0043085;GO:0051247;GO:0044093;GO:0010604;GO:0051173" "positive regulation of metabolic process" 1
 0 1 1 25 "GO:0032501" "multicellular organismal process" 1
-0 1 4 11 "GO:0034655;GO:0044265;GO:0019439;GO:0044270;GO:0046700;GO:1901361;GO:0000956;GO:0006402;GO:0006401" "cellular macromolecule catabolic process" 1
-0 1 5 7 "GO:0043405;GO:0043408;GO:1902531;GO:0009966;GO:0010646;GO:0023051" "regulation of signaling" 1
+0 1 2 22 "GO:0034470;GO:0034660;GO:0006364;GO:0016072" "ncRNA processing" 1
+0 1 8 7 "GO:0043405;GO:0043408;GO:1902531;GO:0009966;GO:0010646;GO:0023051" "regulation of signaling" 1
+0 1 3 21 "GO:0043604;GO:0043603;GO:0002181;GO:0006412;GO:0034645;GO:0043043;GO:0009059;GO:0006518" "cellular macromolecule biosynthetic process" 1
 0 1 2 16 "GO:0044248" "cellular catabolic process" 1
 0 1 3 10 "GO:0044255;GO:0006629" "lipid metabolic process" 1
+0 1 2 11 "GO:0044265;GO:0000956;GO:0006402;GO:0006401;GO:0034655;GO:0019439;GO:0044270;GO:0046700;GO:1901361" "cellular macromolecule catabolic process" 1
 0 1 2 12 "GO:0044281" "small molecule metabolic process" 1
-0 1 4 8 "GO:0044772;GO:0044770" "mitotic cell cycle phase transition" 1
-0 1 3 11 "GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790;GO:0071900" "regulation of kinase activity" 1
+0 1 2 8 "GO:0044772;GO:0044770" "mitotic cell cycle phase transition" 1
+0 1 4 11 "GO:0045859;GO:0043549;GO:0051338;GO:0065009;GO:0050790;GO:0071900" "regulation of kinase activity" 1
 0 1 2 7 "GO:0046907" "intracellular transport" 1
 0 1 3 15 "GO:0048518" "positive regulation of biological process" 1
-0 1 2 10 "GO:0048522" "positive regulation of cellular process" 1
-0 1 2 14 "GO:0048583" "regulation of response to stimulus" 1
-0 1 4 10 "GO:0048584" "positive regulation of response to stimulus" 1
+0 1 4 10 "GO:0048522" "positive regulation of cellular process" 1
+0 1 3 14 "GO:0048583" "regulation of response to stimulus" 1
+0 1 2 10 "GO:0048584" "positive regulation of response to stimulus" 1
 0 1 2 14 "GO:0048646" "anatomical structure formation involved in morphogenesis" 1
 0 1 2 7 "GO:0048869" "cellular developmental process" 1
-0 1 5 7 "GO:0051276" "chromosome organization" 1
-0 1 3 14 "GO:0051649;GO:0051641" "establishment of localization in cell" 1
-0 1 3 9 "GO:0051656;GO:0051640" "establishment of organelle localization" 1
-0 1 2 6 "GO:0051726" "regulation of cell cycle" 1
-0 1 2 5 "GO:0090305" "nucleic acid phosphodiester bond hydrolysis" 1
-0 1 2 25 "GO:1901576;GO:0009058;GO:0044249;GO:1901566;GO:0044271" "organic substance biosynthetic process" 1
-0 1 3 35 "GO:1903047;GO:0022402" "cell cycle process" 1
+0 1 2 7 "GO:0050778;GO:0002684;GO:0050776;GO:0002682" "regulation of immune response" 1
+0 1 3 7 "GO:0051276" "chromosome organization" 1
+0 1 2 14 "GO:0051649;GO:0051641" "establishment of localization in cell" 1
+0 1 3 9 "GO:0051656;GO:0051640" "organelle localization" 1
+0 1 4 6 "GO:0051726" "regulation of cell cycle" 1
+0 1 4 5 "GO:0090305" "nucleic acid phosphodiester bond hydrolysis" 1
+0 1 2 25 "GO:1901566;GO:0044271;GO:0044249;GO:0009058;GO:1901576" "cellular biosynthetic process" 1
