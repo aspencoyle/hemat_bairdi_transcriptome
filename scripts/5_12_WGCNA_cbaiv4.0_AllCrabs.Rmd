@@ -20,17 +20,17 @@ This will be ran on libraries aligned to cbai_transcriptomev4.0, which includes 
 Note the additional column compared to previous runs - since we are including crabs D and F, which are uninfected, infection status is now an included variable
 
 Table of crabs and libraries included in analysis:
-| Crab ID | Treatment Group | Day 0 Sample ID | Day 2 Sample ID | Day 17 Sample ID |Infection Status |
-|---------|-----------------|-----------------|-----------------|------------------|-----------------|
-| A       | ambient         | 178             | 359             | 463              | infected        |  
-| B       | ambient         | 118             | 349             | 481              | infected        | 
-| C       | ambient         | 132             | 334             | 485              | infected        | 
-| D       | decreased       | 073             | 221             | 427              | uninfected      | 
-| E       | decreased       | 151             | 254             | 445              | infected        | 
-| F       | decreased       | 113             | 222             | 425              | uninfected      | 
-| G       | elevated        | 173             | 272             | NA               | infected        | 
-| H       | elevated        | 072             | 294             | NA               | infected        | 
-| I       | elevated        | 127             | 280             | NA               | infected        | 
+| Crab ID | Treatment Group | Day 0 Sample ID | Day 2 Sample ID | Day 17 Sample ID |
+|---------|-----------------|-----------------|-----------------|------------------|
+| A       | ambient         | 178             | 359             | 463              |
+| B       | ambient         | 118             | 349             | 481              |
+| C       | ambient         | 132             | 334             | 485              |
+| D       | decreased       | 073             | 221             | 427              |
+| E       | decreased       | 151             | 254             | 445              |
+| F       | decreased       | 113             | 222             | 425              |
+| G       | elevated        | 173             | 272             | NA               | 
+| H       | elevated        | 072             | 294             | NA               |
+| I       | elevated        | 127             | 280             | NA               |
 
 Again, script is based largely on [Yaamini's script](https://github.com/eimd-2019/project-EWD-transcriptomics/blob/master/analyses/WGCNA/WGCNA.md), which is based largely on [the official WGCNA tutorial](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/)
 
@@ -96,11 +96,6 @@ crabTraits <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c("A", "
                                     rep("Lowered", times = 3)),
                                     includePairwise = TRUE,
                                     includeLevelVsAll = TRUE),
-                         "infection" = c(rep(c(rep("Infected", times = 3),
-                                               "Uninfected", "Infected", "Uninfected",
-                                               rep("Infected", times = 3)), times = 2),
-                                         rep("Infected", times = 3),
-                                         "Uninfected", "Infected", "Uninfected"),
                          "hemat_level" = scale(c(rep(c(1117, 158230, 333000,
                                                        380503, 1550, 4586,
                                                        4510, 120000, 211000), times = 2),
@@ -135,11 +130,6 @@ crabClinicalData <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c(
                                     rep(1, times = 3)),
                                     includePairwise = TRUE,
                                     includeLevelVsAll = TRUE),
-                         "infection" = c(rep(c(rep(2, times = 3),
-                                               1, 2, 1,
-                                               rep(2, times = 3)), times = 2),
-                                         rep(2, times = 3),
-                                         1, 2, 1),
                          "hemat_level" = scale(c(rep(c(1117, 158230, 333000,
                                                        380503, 1550, 4586,
                                                        4510, 120000, 211000), times = 2),
