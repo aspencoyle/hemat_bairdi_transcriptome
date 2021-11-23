@@ -1,0 +1,44 @@
+---
+title: "8_9_examining_temperature_genes"
+author: "Aidan Coyle"
+date: "11/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This is a quick analysis meant to see the overlap in DEGs for elevated day 0/2 and lowered day 0/2 for each transcriptome
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+# Read in DEGs for low days 0 vs 2
+low_adapt <- read.delim(file = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/low0_vs_low2_indiv_DEG_IDs.txt", 
+                        header = FALSE,
+                        col.names = "Accession_ID")
+
+
+hi_adapt <- read.delim(file = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/elev0_vs_elev2_indiv_DEG_IDs.txt",
+                       header = FALSE,
+                       col.names = "Accession_ID")
+
+overlap <- inner_join(low_adapt, hi_adapt, by = "Accession_ID")
+```
+
+```{r}
+blastx_table <- read.delim(file = "../data/blast_tables/cbai_transcriptomev2.0_blast_table.txt",
+                           header = FALSE,
+                           col.names = c("Transcript_ID", "Accession_ID", 1:10))
+
+
+sum(!duplicated(blastx_table$Transcript_ID))
+
+```
+

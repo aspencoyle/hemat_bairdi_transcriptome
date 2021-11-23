@@ -86,6 +86,12 @@ uniprot_to_GO(accession_path = "../output/accession_n_GOids/cbai_transcriptomev4
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
               output_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/allgenes_IDs/amb0_vs_amb17_indiv_All_GOIDs.txt")
 
+
+# Ambient Day 2 vs. Ambient Day 17. Individual libraries
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/allgenes_IDs/amb2_vs_amb17_indiv_All_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",
+              output_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/allgenes_IDs/amb2_vs_amb17_indiv_All_GOIDs.txt")
+
 # Lowered Day 0 vs. Lowered Day 2
 uniprot_to_GO(accession_path = "../output/accession_n_GOids/cbai_transcriptomev4.0/allgenes_IDs/low0_vs_low2_indiv_All_GeneIDs.txt",
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab",

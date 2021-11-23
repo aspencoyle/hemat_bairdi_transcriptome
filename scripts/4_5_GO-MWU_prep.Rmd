@@ -76,6 +76,11 @@ geneIDs_foldchange(input_file = "../graphs/DESeq2_output/cbai_transcriptomev4.0/
               blast_file = "../output/BLASTs/uniprot_swissprot/cbai4.0_blastxres.tab",
               output_file = "../scripts/4_6_running_GO-MWU/cbai4.0_amb0_vs_amb17_indiv_l2FC.csv")
 
+# Ambient Day 2 vs. Ambient Day 17, indiv. libraries only
+geneIDs_foldchange(input_file = "../graphs/DESeq2_output/cbai_transcriptomev4.0/amb2_vs_amb17_indiv/AllGenes_wcols.txt",
+              blast_file = "../output/BLASTs/uniprot_swissprot/cbai4.0_blastxres.tab",
+              output_file = "../scripts/4_6_running_GO-MWU/cbai4.0_amb2_vs_amb17_indiv_l2FC.csv")
+
 # Lowered Day 0 vs. Lowered Day 2
 geneIDs_foldchange(input_file = "../graphs/DESeq2_output/cbai_transcriptomev4.0/low0_vs_low2_indiv/AllGenes_wcols.txt",
               blast_file = "../output/BLASTs/uniprot_swissprot/cbai4.0_blastxres.tab",

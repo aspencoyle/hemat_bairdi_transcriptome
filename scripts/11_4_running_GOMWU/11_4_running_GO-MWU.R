@@ -410,7 +410,7 @@ filepath <- paste0("../../output/GO-MWU_output/WGCNA_modules/hemat_transcriptome
 # It's a problem with the function, but I don't want to touch the prebuilt GO-MWU stuff,
 # so I'm just going to remove part of the name
 files <- list.files(getwd(), pattern = "BP_")
-newfiles <- gsub("\\.csv_cbai.*", ".txt", files)
+newfiles <- gsub("\\.csv_hemat.*", ".txt", files)
 file.rename(files, newfiles)
 
 file.copy(list.files(getwd(), pattern = "BP_"), filepath)

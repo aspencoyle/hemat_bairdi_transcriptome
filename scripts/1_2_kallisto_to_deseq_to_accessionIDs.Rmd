@@ -54,11 +54,11 @@ Almost all analysis takes place in function deseq_analysis(). Documentation in f
 
 These blocks take quite a long time to run, so **in the markdown file, I have set eval to FALSE**. I recommend only re-running blocks that you are certain you want to run - again, run times are quite lengthy.
 
-For all code blocks, **the order of rows in temperature and day values in exp_design should match the order of columns of the `kallisto.isoforms.counts.matrix` input file from Trinity for the pairwise comparison**. As an example, here's what the `exp_design` table should look like for hypothetical libraries A (day 0, lowered temp), B (day 2, ambient temp), and C (day 17, elevated temp) if the `kallisto.isoforms.counts.matrix` file columns are ordered A, B, C:
+For all code blocks, **the order of rows in temperature and day values in exp_design should match the order of columns of the `kallisto.isoforms.counts.matrix` input file from Trinity for the pairwise comparison**. As an example, here's what the `exp_design` table should look like for hypothetical libraries X (day 0, lowered temp), Y (day 2, ambient temp), and Z (day 17, elevated temp) if the `kallisto.isoforms.counts.matrix` file columns are ordered X, Y, Z:
 
 ```{r example_table}
-exp_design <- data.frame(temp = factor(c("Low", "Amb", "Elev")),
-                         day = factor(c(0, 2, 17)))
+exp_design <- data.frame(Temperature = factor(c("Decreased", "Ambient", "Elevated")),
+                         Day = factor(c("Day 0", "Day 2", "Day 17")))
 
 exp_design
 ```
@@ -79,7 +79,7 @@ Takes 4 inputs
 
   + Example: Day and temperature data for libraries 118, 132, 178, 463, 481, 485 (in order)
 
-  + exp_design <- data.frame(day = factor(c(0, 0, 0, 17, 17, 17)), temp = factor(c("Amb", "Amb", "Amb", "Amb", "Amb", "Amb")))
+  + exp_design <- data.frame(day = factor(c(0, 0, 0, 17, 17, 17)), Temperature = factor(c("Ambient", "Ambient", "Ambient", "Ambient", "Ambient", "Ambient")))
 
 3. output_path: path to the output folder
 
@@ -91,25 +91,25 @@ Takes 4 inputs
 exp_design = day and temperature data for libraries 178, 118, 132, 359, 349, 334, 272, 294, 280 (in order).
 
 ```{r elev2vsamb02}
-exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb", "Amb", "Amb", "Amb",
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient", "Ambient", "Ambient", "Ambient",
                                          "Elev", "Elev", "Elev")),
                          day = factor(c(0, 0, 0, 2, 2, 2, 2, 2, 2)))
   
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/elev2_vs_amb02_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/elev2_vs_amb02_indiv",
-               variable = "temp")
+               variable = "Temperature")
 ```
 
 ### All Elevated and Ambient Libraries, Pooled And Individual
 exp_design = day and temperature data for libraries 178, 359, 463, 118, 349, 481, 132, 334, 485, 151, 173, 072, 127, 380821, 272, 294, 280, 380825 (in order). 
 
 ```{r elevallvsamball}
-exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb", 
-                                         "Amb", "Amb", "Amb",
-                                         "Amb", "Amb", "Amb",
-                                         "Amb", "Amb", "Amb",
-                                         "Amb", "Amb", "Elev",
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient", 
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Elev",
                                          "Elev", "Elev", "Elev")),
                              day = factor(c(0, 2, 17, 
                                             0, 2, 17, 
@@ -121,36 +121,37 @@ exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb",
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/amb0217_elev0_low0_vs_elev2/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb0217_elev0_low0_vs_elev2",
-               variable = "temp")
+               variable = "Temperature")
 ```
 
 ### Elevated Day 0 vs. Elevated Day 2, Individual Libraries Only
 exp_design = day and temperature data for libraries 173, 072, 127, 272, 294, 280 (in order). 
 
 ```{r elev0vselev2}
-exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb",
-                                         "Elev", "Elev", "Elev")),
-                         day = factor(c(0, 0, 0, 2, 2, 2)))
+exp_design <- data.frame(Temperature = factor(c("7.5C", "7.5C", "7.5C",
+                                         "10C", "10C", "10C")),
+                         Day = factor(c("Day 0", "Day 0", "Day 0",
+                                        "Day 2", "Day 2", "Day 2")))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/elev0_vs_elev2_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/elev0_vs_elev2_indiv",
-               variable = "temp")
+               variable = "Day")
 ```
 
 ### Ambient Day 0 vs. Ambient Day 2, Individual Libraries Only
 exp_design = day and temperature data for libraries 178, 118, 132, 359, 349, 334 (in order)
 
 ```{r amb0vsamb2}
-exp_design <- data.frame(day = factor(c(0, 0, 0, 
-                                        2, 2, 2)),
-                         temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb")))
+exp_design <- data.frame(day = factor(c("Day 0", "Day 0", "Day 0",
+                                        "Day 2", "Day 2", "Day 2")),
+                         Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient")))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/amb0_vs_amb2_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb0_vs_amb2_indiv",
-               variable = "day")
+               variable = "Day")
 ```
 
 ### Ambient Day 0 vs. Ambient Day 17, Individual Libraries Only
@@ -159,13 +160,13 @@ exp_design = day and temperature data for libraries 178, 118, 132, 463, 481, 485
 ```{r amb0vsamb17}
 exp_design <- data.frame(day = factor(c(0, 0, 0, 
                                         17, 17, 17)),
-                         temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb")))
+                         Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient")))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/amb0_vs_amb17_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb0_vs_amb17_indiv",
-               variable = "day")
+               variable = "Day")
 ```
 
 ### Ambient Day 2 vs. Ambient Day 17, Individual Libraries Only
@@ -174,20 +175,20 @@ exp_design = day and temperature data for libraries 359, 349, 334, 463, 481, 485
 ```{r amb2vsamb17}
 exp_design <- data.frame(day = factor(c(2, 2, 2, 
                                         17, 17, 17)),
-                         temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb")))
+                         Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient")))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/amb2_vs_amb17_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb2_vs_amb17_indiv",
-               variable = "day")
+               variable = "Day")
 ```
 
 ### Ambient Day 2 vs. Elevated Day 2, Individual Libraries Only
 exp_design = day and temperature data for libraries 359, 349, 334, 272, 294, 280 (in order)
 
 ```{r amb2vselev2}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
                                          "elev", "elev", "elev")),
                          day = factor(c(2, 2, 2,
                                         2, 2, 2)))
@@ -195,7 +196,7 @@ exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/amb2_vs_elev2_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb2_vs_elev2_indiv",
-               variable = "temp")
+               variable = "Temperature")
 ```
 
 # Lowered Day 0 vs. Lowered Day 2, Individual Libraries Only
@@ -355,15 +356,15 @@ That corresponds to Crab A Day 0, Crab A Day 2, Crab A Day 17, Crab B Day 0, Cra
 Using temperature at time of sampling, not treatment  group
 
 ```{r all_libs_temp, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         day = factor(c(0, 2, 17,
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "elev", "Ambient",
+                                         "elev", "Ambient", "elev")),
+                         Day = factor(c(0, 2, 17,
                                         0, 2, 17,
                                         0, 2, 17,
                                         0, 2, 17,
@@ -384,7 +385,7 @@ exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/all_indiv_libraries/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/all_indiv_libraries/temp_as_var/",
-               variable = "temp")
+               variable = "Temperature")
 ```
 
 
@@ -392,15 +393,15 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 
 
 ```{r all_libs_crab, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         day = factor(c(0, 2, 17,
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "elev", "Ambient",
+                                         "elev", "Ambient", "elev")),
+                         Day = factor(c(0, 2, 17,
                                         0, 2, 17,
                                         0, 2, 17,
                                         0, 2, 17,
@@ -428,15 +429,15 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 
 
 ```{r all_libs_day, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         day = factor(c(0, 2, 17,
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "elev", "Ambient",
+                                         "elev", "Ambient", "elev")),
+                         Day = factor(c(0, 2, 17,
                                         0, 2, 17,
                                         0, 2, 17,
                                         0, 2, 17,
@@ -457,21 +458,21 @@ exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2.0/all_indiv_libraries/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev2.0/all_indiv_libraries/day_as_var/",
-               variable = "day")
+               variable = "Day")
 ```
 
 #### Infection as variable
 
 
 ```{r all_libs_inf, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "elev", "Ambient",
+                                         "elev", "Ambient", "elev")),
                          crab = factor(c(rep("A", times = 3),
                                          rep("B", times = 3),
                                          rep("C", times = 3),
@@ -524,15 +525,15 @@ Crab I = 211000
 
 
 ```{r all_libs_inf_status, eval = FALSE}
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         day = factor(c(0, 2, 17,
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "elev", "Ambient",
+                                         "elev", "Ambient", "elev")),
+                         Day = factor(c(0, 2, 17,
                                         0, 2, 17,
                                         0, 2, 17,
                                         0, 2, 17,
@@ -563,15 +564,15 @@ After that, we'll also calculate the plasticity by getting the data from our PCA
 ```{r}
 # Create experimental table. Again, order should correspond to order of columns in our data file
 
-exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "amb", "amb",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "low", "low",
-                                         "amb", "elev", "amb",
-                                         "elev", "amb", "elev")),
-                         day = factor(c(0, 2, 17,
+exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "Ambient", "Ambient",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "low", "low",
+                                         "Ambient", "elev", "Ambient",
+                                         "elev", "Ambient", "elev")),
+                         Day = factor(c(0, 2, 17,
                                         0, 2, 17,
                                         0, 2, 17,
                                         0, 2, 17,
@@ -738,26 +739,32 @@ Takes three inputs:
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/elev2_vs_amb02_indiv/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
                        output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/elev2_vs_amb02_indiv_DEG_IDs.txt")
+
 # Ambient Day 0+2+17 + Elevated Day 0 + Lowered Day 0 vs. Elevated Day 2
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb0217_elev0_low0_vs_elev2/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
                        output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/amb0217_elev0_low0_vs_elev2_DEG_IDs.txt")
+
 # Elevated Day 0 vs. Elevated Day 2
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/elev0_vs_elev2_indiv/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
                        output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/elev0_vs_elev2_indiv_DEG_IDs.txt")
+
 # Ambient Day 0 vs. Ambient Day 2
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb0_vs_amb2_indiv/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
                        output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/amb0_vs_amb2_indiv_DEG_IDs.txt")
+
 # Ambient Day 0 vs. Ambient Day 17
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb0_vs_amb17_indiv/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
                        output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/amb0_vs_amb17_indiv_DEG_IDs.txt")
+
 # Ambient Day 2 vs. Ambient Day 17
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb2_vs_amb17_indiv/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",
                        output_path = "../output/accession_n_GOids/cbai_transcriptomev2.0/DEG_IDs/amb2_vs_amb17_indiv_DEG_IDs.txt")
+
 # Ambient Day 2 vs. Elevated Day 2
 transcripts_to_geneIDs(deseq_filepath = "../graphs/DESeq2_output/cbai_transcriptomev2.0/amb2_vs_elev2_indiv/DEGlist_wcols.txt", 
                        blast_filepath = "../data/cbai_diamond_blastx_table_transcriptomev2.0.txt",

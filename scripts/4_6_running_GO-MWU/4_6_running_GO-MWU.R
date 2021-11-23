@@ -317,7 +317,55 @@ file.rename(files, newfiles)
 file.copy(list.files(getwd(), pattern = "BP_"), filepath)
 file.remove(list.files(getwd(), pattern = "BP_"))
 
-#### GO-MWU Run 5: Decreased Day 0 vs. Decreased Day 2, Indiv. Libraries Only ---------------------------------------
+#### GO-MWU Run 5: Ambient Day 2 vs. Ambient Day 17, Individual Libraries --------------------------
+
+# Edit these to match your data file names: 
+input="cbai4.0_amb2_vs_amb17_indiv_l2FC.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
+goAnnotations="cbai4.0_amb2_vs_amb17_indiv_GOIDs_norepeats.txt" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
+goDatabase="go.obo" # download from http://www.geneontology.org/GO.downloads.ontology.shtml
+goDivision="BP" # either MF, or BP, or CC
+source("gomwu.functions.R")
+
+
+# ------------- Calculating stats
+# It might take a few minutes for MF and BP. Do not rerun it if you just want to replot the data with different cutoffs, go straight to gomwuPlot. If you change any of the numeric values below, delete the files that were generated in previos runs first.
+
+gomwuStats(input, goDatabase, goAnnotations, goDivision,
+           perlPath="C:/Users/acoyl/Documents/GradSchool/RobertsLab/Tools/perl/bin/perl.exe", # replace with full path to perl executable if it is not in your system's PATH already
+           largest=0.1,  # a GO category will not be considered if it contains more than this fraction of the total number of genes
+           smallest=5,   # a GO category should contain at least this many genes to be considered
+           clusterCutHeight=0.25, # threshold for merging similar (gene-sharing) terms. See README for details.
+           #	Alternative="g" # by default the MWU test is two-tailed; specify "g" or "l" of you want to test for "greater" or "less" instead. 
+           #	Module=TRUE,Alternative="g" # un-remark this if you are analyzing a SIGNED WGCNA module (values: 0 for not in module genes, kME for in-module genes). In the call to gomwuPlot below, specify absValue=0.001 (count number of "good genes" that fall into the module)
+           #	Module=TRUE # un-remark this if you are analyzing an UNSIGNED WGCNA module 
+)
+
+# --------------- Results
+# 0 GO terms at 10% FDR
+
+# Ending analysis here
+
+# Move the 3 files we created to a permanent folder, since GO-MWU automatically puts them in
+# the same folder you run the script in
+
+file_loc <- input %>%
+  str_remove("cbai4.0_") %>%
+  str_remove("_l2FC.csv")
+
+filepath <- paste0("../../output/GO-MWU_output/cbai_transcriptomev4.0/",
+                   file_loc, "/")
+
+# We're encountering some issues with a double-named filename (something like "dissim_BP_cbai4.0_amb0217_elev0_low0_vs_elev2_l2FC.csv_cbai4.0_amb0217_elev0_low0_vs_elev2_GOIDs_norepeats.txt")
+# It's a problem with the function, but I don't want to touch the prebuilt GO-MWU stuff,
+# so I'm just going to remove part of the name
+files <- list.files(getwd(), pattern = "BP_")
+newfiles <- gsub("\\.csv_cbai.*", ".txt", files)
+file.rename(files, newfiles)
+
+file.copy(list.files(getwd(), pattern = "BP_"), filepath)
+file.remove(list.files(getwd(), pattern = "BP_"))
+
+#### GO-MWU Run 6: Decreased Day 0 vs. Decreased Day 2, Indiv. Libraries Only ---------------------------------------
 
 # Edit these to match your data file names: 
 input="cbai4.0_low0_vs_low2_indiv_l2FC.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
@@ -364,7 +412,7 @@ file.rename(files, newfiles)
 file.copy(list.files(getwd(), pattern = "BP_"), filepath)
 file.remove(list.files(getwd(), pattern = "BP_"))
 
-#### GO-MWU Run 6: Decreased Day 0 vs. Decreased Day 2 + 17, Indiv. Libraries Only ---------------------------------------
+#### GO-MWU Run 7: Decreased Day 0 vs. Decreased Day 2 + 17, Indiv. Libraries Only ---------------------------------------
 
 # Edit these to match your data file names: 
 input="cbai4.0_low0_vs_low217_indiv_l2FC.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
@@ -411,7 +459,7 @@ file.rename(files, newfiles)
 file.copy(list.files(getwd(), pattern = "BP_"), filepath)
 file.remove(list.files(getwd(), pattern = "BP_"))
 
-#### GO-MWU Run 7: Decreased Day 0 + Ambient Day 0 + 2 + 17 vs. Decreased Day 2 + 17, Indiv. Libraries Only ---------------------------------------
+#### GO-MWU Run 8: Decreased Day 0 + Ambient Day 0 + 2 + 17 vs. Decreased Day 2 + 17, Indiv. Libraries Only ---------------------------------------
 
 # Edit these to match your data file names: 
 input="cbai4.0_low0_amb0217_vs_low217_indiv_l2FC.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
@@ -458,7 +506,7 @@ file.rename(files, newfiles)
 file.copy(list.files(getwd(), pattern = "BP_"), filepath)
 file.remove(list.files(getwd(), pattern = "BP_"))
 
-#### GO-MWU Run 8: Decreased Day 2 + 17 vs. Ambient Day 2 + 17, Indiv. Libraries Only ---------------------------------------
+#### GO-MWU Run 9: Decreased Day 2 + 17 vs. Ambient Day 2 + 17, Indiv. Libraries Only ---------------------------------------
 
 # Edit these to match your data file names: 
 input="cbai4.0_low217_vs_amb217_indiv_l2FC.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
@@ -557,7 +605,7 @@ file.rename(files, newfiles)
 file.copy(list.files(getwd(), pattern = "BP_"), filepath)
 file.remove(list.files(getwd(), pattern = "BP_"))
 
-#### GO-MWU Run 9: Decreased Day 0 vs. Ambient Day 0, Indiv. Libraries Only ---------------------------------------
+#### GO-MWU Run 10: Decreased Day 0 vs. Ambient Day 0, Indiv. Libraries Only ---------------------------------------
 
 # Edit these to match your data file names: 
 input="cbai4.0_low0_vs_amb0_indiv_l2FC.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
@@ -656,7 +704,7 @@ file.rename(files, newfiles)
 file.copy(list.files(getwd(), pattern = "BP_"), filepath)
 file.remove(list.files(getwd(), pattern = "BP_"))
 
-#### GO-MWU Run 10: Decreased Day 0 vs. Decreased Day 17, Indiv. Libraries Only ---------------------------------------
+#### GO-MWU Run 11: Decreased Day 0 vs. Decreased Day 17, Indiv. Libraries Only ---------------------------------------
 
 # Edit these to match your data file names: 
 input="cbai4.0_low0_vs_low17_indiv_l2FC.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
@@ -702,7 +750,7 @@ file.rename(files, newfiles)
 file.copy(list.files(getwd(), pattern = "BP_"), filepath)
 file.remove(list.files(getwd(), pattern = "BP_"))
 
-#### GO-MWU Run 11: Decreased Day 0 + Ambient Day 0 vs. Decreased Day 17 + Ambient Day 17, Indiv. Libraries Only ---------------------------------------
+#### GO-MWU Run 12: Decreased Day 0 + Ambient Day 0 vs. Decreased Day 17 + Ambient Day 17, Indiv. Libraries Only ---------------------------------------
 
 # Edit these to match your data file names: 
 input="cbai4.0_low0_amb0_vs_low17_amb17_indiv_l2FC.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
@@ -749,7 +797,7 @@ file.copy(list.files(getwd(), pattern = "BP_"), filepath)
 file.remove(list.files(getwd(), pattern = "BP_"))
 
 
-#### GO-MWU Run 12: Decreased Day 0 + Elevated Day 0 vs. Decreased Day 2 + Elevated Day 2, Indiv. Libraries Only ---------------------------------------
+#### GO-MWU Run 13: Decreased Day 0 + Elevated Day 0 vs. Decreased Day 2 + Elevated Day 2, Indiv. Libraries Only ---------------------------------------
 
 # Edit these to match your data file names: 
 input="cbai4.0_low0_elev0_vs_low2_elev2_indiv_l2FC.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
