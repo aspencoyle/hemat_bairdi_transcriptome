@@ -90,7 +90,7 @@ Takes 4 inputs
 ### Elevated Day 2 vs. Ambient Day 0+2, Individual Libraries Only
 exp_design = day and temperature data for libraries 178, 118, 132, 359, 349, 334, 272, 294, 280 (in order).
 
-```{r elev2vsamb02, eval = FALSE}
+```{r elev2vsamb02}
 exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb", "Amb", "Amb", "Amb",
                                          "Elev", "Elev", "Elev")),
                          day = factor(c(0, 0, 0, 2, 2, 2, 2, 2, 2)))
@@ -104,7 +104,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 ### All Elevated and Ambient Libraries, Pooled And Individual
 exp_design = day and temperature data for libraries 178, 359, 463, 118, 349, 481, 132, 334, 485, 151, 173, 072, 127, 380821, 272, 294, 280, 380825 (in order). 
 
-```{r elevallvsamball, eval = FALSE}
+```{r elevallvsamball}
 exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb", 
                                          "Amb", "Amb", "Amb",
                                          "Amb", "Amb", "Amb",
@@ -127,7 +127,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 ### Elevated Day 0 vs. Elevated Day 2, Individual Libraries Only
 exp_design = day and temperature data for libraries 173, 072, 127, 272, 294, 280 (in order). 
 
-```{r elev0vselev2, eval = FALSE}
+```{r elev0vselev2}
 exp_design <- data.frame(temp = factor(c("Amb", "Amb", "Amb",
                                          "Elev", "Elev", "Elev")),
                          day = factor(c(0, 0, 0, 2, 2, 2)))
@@ -141,7 +141,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 ### Ambient Day 0 vs. Ambient Day 2, Individual Libraries Only
 exp_design = day and temperature data for libraries 178, 118, 132, 359, 349, 334 (in order)
 
-```{r amb0vsamb2, eval = FALSE}
+```{r amb0vsamb2}
 exp_design <- data.frame(day = factor(c(0, 0, 0, 
                                         2, 2, 2)),
                          temp = factor(c("amb", "amb", "amb",
@@ -156,7 +156,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 ### Ambient Day 0 vs. Ambient Day 17, Individual Libraries Only
 exp_design = day and temperature data for libraries 178, 118, 132, 463, 481, 485 (in order)
 
-```{r amb0vsamb17, eval = FALSE}
+```{r amb0vsamb17}
 exp_design <- data.frame(day = factor(c(0, 0, 0, 
                                         17, 17, 17)),
                          temp = factor(c("amb", "amb", "amb",
@@ -171,7 +171,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 ### Ambient Day 2 vs. Ambient Day 17, Individual Libraries Only
 exp_design = day and temperature data for libraries 359, 349, 334, 463, 481, 485 (in order)
 
-```{r amb2vsamb17, eval = FALSE}
+```{r amb2vsamb17}
 exp_design <- data.frame(day = factor(c(2, 2, 2, 
                                         17, 17, 17)),
                          temp = factor(c("amb", "amb", "amb",
@@ -186,7 +186,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 ### Ambient Day 2 vs. Elevated Day 2, Individual Libraries Only
 exp_design = day and temperature data for libraries 359, 349, 334, 272, 294, 280 (in order)
 
-```{r amb2vselev2, eval = FALSE}
+```{r amb2vselev2}
 exp_design <- data.frame(temp = factor(c("amb", "amb", "amb",
                                          "elev", "elev", "elev")),
                          day = factor(c(2, 2, 2,
@@ -202,7 +202,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 
 exp_design = day and temperature data for libraries 073, 151, 113, 221, 254, 222 (in order)
 
-```{r low0vslow2, eval = FALSE}
+```{r low0vslow2}
 exp_design <- data.frame(Day = factor(c(0, 0, 0,
                                         2, 2, 2)))
 
@@ -216,7 +216,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 
 exp_design = day and temperature data for libraries 073, 151, 113, 221, 254, 222, 427, 445, 425 (in order)
 
-```{r low0vslow217, eval = FALSE}
+```{r low0vslow217}
 exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
                                                 "Decreased", "Decreased", "Decreased",
                                                 "Decreased", "Decreased", "Decreased")),
@@ -234,7 +234,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 
 exp_design = day and temperature data for libraries 073, 151, 113, 178, 118, 132, 359, 349, 334, 463, 481, 485, 221, 254, 222, 427, 445, 425
 
-```{r low0amb0217vslow217, eval = FALSE}
+```{r low0amb0217vslow217}
 exp_design <- data.frame(Temperature = factor(c("Ambient", "Ambient", "Ambient",
                                                 "Ambient", "Ambient", "Ambient",
                                                 "Ambient", "Ambient", "Ambient",
@@ -258,7 +258,7 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 
 exp_design = day and temperature data for libraries 221, 254, 222, 427, 445, 425, 359, 349, 334, 463, 481, 485 (in order)
 
-```{r low217vsamb217, eval = FALSE}
+```{r low217vsamb217}
 exp_design <- data.frame(Temperature = factor(c("Decreased", "Decreased", "Decreased",
                                                 "Decreased", "Decreased", "Decreased",
                                                 "Ambient", "Ambient", "Ambient",
@@ -275,11 +275,12 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 ```
 
 ### Decreased Day 0 vs. Ambient Day 0, Individual Libraries Only
+
 exp_design = day and temperature data for libraries 073, 151, 113, 178, 118, 132 (in order)
 
 Note: In this case, "Temperature" stands for TREATMENT temperature, not ACTUAL temperature (in all others, it's the actual temperature). However, this is a test for differences in base infection rate for treatment groups.
 
-```{r low0vsamb0, eval = FALSE}
+```{r low0vsamb0}
 exp_design <- data.frame(Temperature = factor(c("Decreased", "Decreased", "Decreased",
                                          "Ambient", "Ambient", "Ambient")))
 
@@ -290,9 +291,10 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 ```
 
 ### Decreased Day 0 vs. Decreased Day 17, Individual Libraries Only
+
 exp_design = day and temperature data for libraries 178, 118, 132, 427, 445, 425 (in order)
 
-```{r low0vlow17, eval = FALSE}
+```{r low0vlow17}
 exp_design <- data.frame(Day = factor(c("Day 0", "Day 0", "Day 0", 
                                         "Day 17", "Day 17", "Day 17")))
 
@@ -303,9 +305,10 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 ```
 
 ### Decreased Day 0 + Ambient Day 0 vs. Decreased Day 17 + Ambient Day 17, Individual Libraries Only
-#exp_design = day and temperature data for libraries 073, 151, 113, 178, 118, 132, 427, 445, 425, #463, 481, 485 (in order)
 
-```{r low0amb0vslow17amb17, eval = FALSE}
+exp_design = day and temperature data for libraries 073, 151, 113, 178, 118, 132, 427, 445, 425, #463, 481, 485 (in order)
+
+```{r low0amb0vslow17amb17}
 exp_design <- data.frame(Day = factor(c("Day 0", "Day 0", "Day 0", 
                                         "Day 0", "Day 0", "Day 0", 
                                         "Day 17", "Day 17", "Day 17",
@@ -323,9 +326,10 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev2
 
 
 ### Decreased Day 0 + Elevated Day 0 vs. Decreased Day 2 + Elevated Day 2, Individual Libraries Only
+
 exp_design = day and temperature data for libraries 073, 151, 113, 173, 072, 127, 221, 254, 222, 272, 294, 280 (in order)
 
-```{r low0amb0vslow17amb17, eval = FALSE}
+```{r low0amb0vslow17amb17}
 exp_design <- data.frame(Day = factor(c("Day 0", "Day 0", "Day 0", 
                                         "Day 0", "Day 0", "Day 0", 
                                         "Day 2", "Day 2", "Day 2",
