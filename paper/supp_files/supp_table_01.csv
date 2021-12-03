@@ -1,0 +1,12 @@
+Pooled Library ID,Treatment Group,Sampling Day,cPCR Infection,Number of Samples
+304428,Combined,17,Combined,15
+329774,Combined,2,Infected,10
+329775,Combined,2,Uninfected,11
+329776,Combined,17,Infected,12
+329777,Combined,17,Uninfected,11
+380820,Ambient,0,Uninfected,10
+380821,Ambient,0,Infected,10
+380822,Decreased,2,Uninfected,10
+380823,Decreased,2,Infected,10
+380824,Elevated,2,Uninfected,10
+380825,Elevated,2,Infected,10
