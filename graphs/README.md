@@ -3,15 +3,18 @@
 Contact: Aidan Coyle, afcoyle@uw.edu
 Roberts Lab, UW-SAFS
 
-Last edited README: 2021-03-04
+Last edited README: 2021-12-06
 
 ## DEG_venn_diagrams:
 
 An outdated folder containing a Venn diagram of the overlap in differentially-expressed accession IDs and sequence IDs between treatment groups
 
+## DEGPatterns_output:
+Output from the R package DEGPatterns, which examines expression over time and creates graphs.
+
 ## DESeq2_output:
 
-Output from the R package DESeq2, which takes matrices of sequence counts and determines the likelihood that those sequences are differentially expressed between conditions
+Output from the R package DESeq2, which takes matrices of sequence counts and determines the likelihood that those sequences are differentially expressed between conditions. Importantly, this output contains **all** output from DESeq2, including text files containing descriptions of all genes and DEGs.
 
 ## GOMWU_output:
 

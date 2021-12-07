@@ -19,7 +19,15 @@ Analysis 6: Visualizing WGCNA output by graphing expression of individual module
 
 Analysis 7: "Manual" gene clustering - an alternative to WGCNA, where genes are clustered by expression patterns into modules by setting distinct cut heights
 
-Analysis 8: Using goseq to examine enrichment within individual modules
+Analysis 8: Expression within immune genes is examined
+
+Analysis 9: Examining Pam Jensen's samples in detail. These scripts are now removed, but can be found at https://github.com/afcoyle/historical_hemat under Analysis 1
+
+Analysis 10: Creating a correlation matrix
+
+Analysis 11: Running GO-MWU on significant WGCNA clusters
+
+Analysis 12: Creating supplemental files
 
 **1_1_download_libraries_run_kallisto.ipynb** 
 
@@ -92,7 +100,7 @@ Steps are broadly the same, with the addition of 40_cbai5.0_indexcreation.ipynb.
 
 Each script contains a different analysis using WGCNA. The first portion of the name refers to the transcriptome that each library is aligned to - either cbai_transcriptomev4.0 (in which case, only _Chionoecetes_ genes are compared), hemat_transcriptomev1.6 (for which only _Hematodinium_ genes are compared), or cbai_transcriptomev2.0, which is unfiltered by taxa.
 
-The second portion of the name refers to the comparison being made. If it is simply AmbCrabs or ElevCrabs, then it examines expression among crabs in that treatment group (ambient or elevated) throughout the course of the experiment. If it is instead AmbVsElev, it examines expression between treatment groups (Ambient and Elevated), though also takes both day and crab into account.
+The second portion of the name refers to the comparison being made. If it is simply AmbCrabs or ElevCrabs, then it examines expression among crabs in that treatment group (ambient or elevated) throughout the course of the experiment. If it is instead AmbVsElev, it examines expression between treatment groups (Ambient and Elevated), though also takes both day and crab into account. As of 2021-12-06, the only relevant scripts are those which examine _all_ crabs, which is 5_12, 5_13, and 5_14.
 
 **Analysis 6** 
 
@@ -101,6 +109,27 @@ Here, modules created in Analysis 5 are graphed to examine expression over time 
 **Analysis 7**
 
 In each file, expression over time is manually clustered, in an alternative to WGCNA, where genes are clustered by expression patterns into modules by setting distinct cut heights
+
+**Analysis 8**
+
+Immune genes are determined by pulling genes with the GO term for immune response (GO:0006955). PCAs of immune gene expression are created, and then immune genes are clustered based on the same protocol used in Analysis 7. Files for all genes, and those linked to temperature, are also created.
+
+**Analysis 9**
+
+As mentioned, these scripts can now be found at https://github.com/afcoyle/historical_hemat
+
+**Analysis 10**
+
+Correlation between variables is examined using the base corr() function in R. 
+
+**Analysis 11**
+
+Significant WGCNA clusters (in WGCNA examinations of all crabs) found in Analysis 5 are analyzed using GO-MWU. Roughly the same flow is followed as in Analyses 1, 3, and 4 (starting after the DESeq2 stage), albeit with some modifications made for WGCNA data recommended by the creators of GO-MWU
+
+**Analysis 12**
+
+Supplemental files for the upcoming paper are created
+
 
 **hematodinium_analysis_functions.R**
 
