@@ -9,9 +9,8 @@
 **/*.nsq
 **/*.nal
 
-# All Access databases
-**/*.accdb
-**/*.laccdb
+# BLAST tables
+blast_tables/*.txt
 
 # indiv_libraries
 !indiv_libraries/**
@@ -37,4 +36,7 @@ transcriptomes/**
 !uniprot_taxa_seqs/**
 uniprot_taxa_seqs/**
 !uniprot_taxa_seqs/README.md
+
+# Uniprot info file
+all_uniprot_info_inc_GOterms.tab
 
