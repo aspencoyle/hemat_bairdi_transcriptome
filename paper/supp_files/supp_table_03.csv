@@ -1,0 +1,18 @@
+,Complete,Tanner crab,Hematodinium
+Number of bases of all isoforms,"819,000,346","44,829,042","4,327,777"
+Number of isoforms,"1,412,254","88,302","6,176"
+Number of genes,"783,006","47,097","5,395"
+GC content,45.41%,52.86%,50.22%
+Median contig length,325,317,582
+Mean contig length,579.92,507.68,700.74
+N50 of isoforms (bases),811,635,868
+Number of bases of longest isoforms,"339,947,966","22,822,315","3,611,911"
+Median contig length of longest isoforms,285,294,548
+Mean contig length of longest isoforms,434.16,484.58,669.49
+N50 of longest isoforms,431,605,835
+BUSCO: Complete,98.80%,73.80%,26.50%
+BUSCO: Single,24.90%,45.80%,20.70%
+BUSCO: Duplicate,73.90%,28%,5.80%
+BUSCO: Fragmented,0.90%,7.90%,11.20%
+BUSCO: Missing,0.30%,18.30%,62.30%
+Annotated contigs,"147,454","30,635","53,485"

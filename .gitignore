@@ -3,7 +3,9 @@
 # For data directory .gitignore, I created a separate .gitignore directory within to manage subdirectories
 data/all_uniprot_info_inc_GOterms.tab
 data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt
+data/cbai_transcriptomev4.0_blastx.txt
 data/*blastx_table*
+data/blast_tables/
 
 # Ignore the indices we create for Kallisto - too big
 output/*/*.idx
@@ -23,6 +25,9 @@ graphs/DESeq2_output/*/*/*/AllGene*.txt
 
 # Ignore our merged libraries - also too big
 output/libraries_merged/**
+
+# Ignore complete transcriptome created in supplemental file
+paper/supp_files/annotation_tables/complete_transcriptome.csv
 
 # Ignore scripts file created when running .Rstudio on Mox
 scripts/core.5096

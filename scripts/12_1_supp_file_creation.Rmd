@@ -1,0 +1,151 @@
+---
+title: "12_1_supp_file_creation"
+author: "Aidan Coyle"
+date: "12/6/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Supplemental File Creation
+
+In this script, I will create the supplemental files for the paper.
+
+Since the numbering hasn't been nailed down yet, I'll name the sections by describing the table I'm creating, rather than with numbering.
+
+## Load libraries
+
+```{r}
+# Add all required libraries that are installed with install.packages() here
+list.of.packages <- "tidyverse"
+
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+# Load all required libraries
+all.packages <- list.of.packages
+lapply(all.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+```
+
+## Annotation Tables
+
+I'll create an annotation file for each transcriptome. This will be done by merging the existing annotation table with the GO terms for that annotation.
+
+Annotated tables and the GO term database have been downloaded in previous scripts, but for the sake of reproducibility, here are the links to each:
+
+**Transcriptome Annotation Tables**
+
+All are in outfmt 6 and were annotated with BLASTx
+
+[Complete transcriptome, AKA cbai_transcriptome_v2.0](https://gannet.fish.washington.edu/Atumefaciens/20200508_cbai_diamond_blastx_transcriptome-v2.0/20200507.C_bairdi.Trinity.blastx.outfmt6). MD5 is ace82a75cb947574ac807d868427253c
+
+[Tanner crab transcriptome, AKA cbai_transcriptome_v4.0](https://gannet.fish.washington.edu/Atumefaciens/20210318_cbai_diamond_blastx_transcriptome-v4.0/cbai_transcriptome_v4.0.blastx.outfmt6). MD5 is 8fd2ab9c27e59653fcb4f32574be1f61
+
+[Hematodinium transcriptome, AKA hemat_transcriptomev1.6](https://gannet.fish.washington.edu/Atumefaciens/20200814_hemat_diamond_blastx_v1.6_v1.7_v2.1_v3.1/hemat_transcriptome_v1.6.fasta.blastx.outfmt6). MD5 is 698513d787f92a65debb9f70dbb2e32f
+
+**GO terms**
+
+To get GO terms, we downloaded the full Swiss-ProtKB/Uniprot database (which includes all GO terms) on 2021-02-09 from https://www.uniprot.org/uniprot/
+MD5sum for that download was ace82a75cb947574ac807d868427253c
+
+**Build annotation tables**
+```{r}
+#### Setup ----------------
+# These will be used to build each full annotation table
+
+# Set up header for outfmt 6
+table_head <- c("query_seqid", "subj_seqid", "pident",
+                "length", "mismatch", "gapopen",
+                "qstart", "qend", "sstart",
+                "send", "evalue", "bitscore")
+
+# Read in full Swiss-ProtKB/Uniprot database
+sprot_db <- read.delim(file = "../data/all_uniprot_info_inc_GOterms.tab",
+                       header = TRUE)
+
+# Rename:
+#   Entry column to Accession_ID 
+#   length to sprot.length 
+sprot_db <- sprot_db %>%
+  dplyr::rename(Accession_ID = Entry,
+                sprot.length = Length)
+
+#### Complete Transcriptome ---------------------------------
+
+# Read in data
+annotation <- read.delim(file = "../data/blast_tables/cbai_transcriptomev2.0_blast_table.txt",
+                         header = FALSE,
+                         col.names = table_head)
+
+# Second column contains several relevant pieces of info
+# Split to extract relevant info (accession ID), which we'll use to merge
+# and then remove the "sp" column, which just reads "sp" for all entries
+annotation <- annotation %>%
+  separate(col = subj_seqid,
+           into = c("sp", "Accession_ID", "species"), 
+           sep = "\\|") %>%
+  select(-sp)
+
+# Left join annotation table with Swiss-Prot database by accession ID
+full_annot <- left_join(annotation, sprot_db, by = "Accession_ID")
+
+# Write table to file
+write.csv(full_annot, file = "../paper/supp_files/annotation_tables/complete_transcriptome.csv",
+          row.names = FALSE)
+
+#### Tanner Crab Transcriptome ---------------------------------
+
+# Read in data
+annotation <- read.delim(file = "../data/blast_tables/cbai_transcriptomev4.0_blast_table.txt",
+                         header = FALSE,
+                         col.names = table_head)
+
+# Second column contains several relevant pieces of info
+# Split to extract relevant info (accession ID), which we'll use to merge
+# and then remove the "sp" column, which just reads "sp" for all entries
+annotation <- annotation %>%
+  separate(col = subj_seqid,
+           into = c("sp", "Accession_ID", "species"), 
+           sep = "\\|") %>%
+  select(-sp)
+
+# Left join annotation table with Swiss-Prot database by accession ID
+full_annot <- left_join(annotation, sprot_db, by = "Accession_ID")
+
+# Write table to file
+write.csv(full_annot, file = "../paper/supp_files/annotation_tables/Tanner_crab_transcriptome.csv",
+          row.names = FALSE)
+
+#### Hematodinium Transcriptome ---------------------------------
+
+# Read in data
+annotation <- read.delim(file = "../data/blast_tables/hemat_transcriptomev1.6_blast_table.txt",
+                         header = FALSE,
+                         col.names = table_head)
+
+# Second column contains several relevant pieces of info
+# Split to extract relevant info (accession ID), which we'll use to merge
+# and then remove the "sp" column, which just reads "sp" for all entries
+annotation <- annotation %>%
+  separate(col = subj_seqid,
+           into = c("sp", "Accession_ID", "species"), 
+           sep = "\\|") %>%
+  select(-sp)
+
+# Left join annotation table with Swiss-Prot database by accession ID
+full_annot <- left_join(annotation, sprot_db, by = "Accession_ID")
+
+# Write table to file
+write.csv(full_annot, file = "../paper/supp_files/annotation_tables/Hematodinium_transcriptome.csv",
+          row.names = FALSE)
+```
+
+
+
+
