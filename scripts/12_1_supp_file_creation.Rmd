@@ -58,7 +58,17 @@ MD5sum for that download was ace82a75cb947574ac807d868427253c
 
 Additionally, we will add columns describing the membership of each transcript to its module (as determined by our earlier run of WGCNA).
 
-**Build annotation tables**
+**DEG status**
+
+A column will be added to denote DEGs for each pairwise comparison. 1 will signify DEGs, 0 will signify non-DEGs.
+
+**Setup constants**
+We'll keep a few things constant between runs
+
+- The head of each table will be the same
+
+- The Swiss-Prot database will be the same. It's also large, so we only want to read in once.
+
 ```{r}
 #### Setup ----------------
 # These will be used to build each full annotation table
@@ -79,6 +89,159 @@ sprot_db <- read.delim(file = "../data/all_uniprot_info_inc_GOterms.tab",
 sprot_db <- sprot_db %>%
   dplyr::rename(Accession_ID = Entry,
                 sprot.length = Length)
+```
+
+**Write function**
+
+This function will:
+- Read in original BLAST table
+- Join with Swiss-Prot database
+- Read in module color and join
+- Read in DEGs and join
+
+Inputs:
+- transcriptome: Should be kept in ../data/blast_tables/[transcriptome]_blast_table.txt
+    - cbai_transcriptomev2.0: complete transcriptome
+    - cbai_transcriptomev4.0: Tanner crab transcriptome
+    - hemat_transcriptomev1.6: Parasite transcriptome
+    
+- out_name: Should match the more formal name as the transcriptome with no spaces 
+    - if transcriptome is cbai_transcriptomev4.0, out_name = "Tanner_crab")
+    
+- sprot_db: Swiss-Prot database table. Should be already called above
+
+- pairwise_compars: Relevant pairwise comparisons to include in table.
+    - Use same notation as found in ../graphs/DESeq2_output/[transcriptome]/[compaison]_indiv/
+        - ex: Elevated Day 0 vs. Day 2 is elev0_vs_elev2
+    
+```{r}
+make_annot_table <- function(transcriptome, out_name, sprot_db, pairwise_compars){
+  # Read in original BLASTx table
+  annotation <- read.delim(file = paste0("../data/blast_tables/", 
+                                         transcriptome, 
+                                         "_blast_table.txt"),
+                           header = FALSE,
+                           col.names = table_head) 
+  
+  # Second column contains several relevant pieces of info
+  # Split to extract relevant info (accession ID), which we'll use to merge
+  # and then remove the "sp" column, which just reads "sp" for all entries
+  annotation <- annotation %>%
+    separate(col = subj_seqid,
+             into = c("sp", "Accession_ID", "species"), 
+             sep = "\\|") %>%
+    select(-sp)
+  
+  # Left join annotation table with Swiss-Prot database by accession ID
+  full_annot <- left_join(annotation, sprot_db, by = "Accession_ID")
+  
+  # Get a string of all files describing module membership
+  mod_files <- list.files(path = paste0("../output/WGCNA_output/", 
+                                        transcriptome, 
+                                        "/all_crabs_no_filter/day_as_var/"),
+                          pattern = "^GeneList",
+                          full.names = TRUE)
+  
+  # Create empty matrix for adding module data
+  modules <- matrix(ncol = 2, nrow = 0)
+  
+  # Loop through module names, adding each to table
+  for (i in 1:length(mod_files)) {
+    # Extract color of module for name
+    mod_col <- unlist(str_split(mod_files[i], 
+                                pattern = "GeneList-"))[2]
+    mod_col <- unlist(str_split(mod_col,
+                                pattern = ".txt"))[1]
+    # Read in each module (one column of transcript IDs)
+    mod <- read.delim(mod_files[i],
+                      header = FALSE)
+    
+    # Add module color as column
+    mod[, 2] <- rep(mod_col, times = nrow(mod))
+    
+    # Append to end of full module data matrix
+    modules <- rbind(modules, mod)
+  }
+  
+  # Now that it's full, rename columns of module matrix
+  colnames(modules) <- c("query_seqid", "module_color")
+  
+  # Left join module membership data to full annotation table
+  full_annot <- left_join(full_annot, modules, by = "query_seqid")
+  
+  # We have a number of files of DEGs. Each pairwise comparison will be a separate column.
+  
+  # Loop through pairwise comparisons
+  for (i in 1:length(pairwise_compars)) {
+    pairwise <- pairwise_compars[i]
+    DEG_table <- read.delim(file = paste0("../graphs/DESeq2_output/",
+                                          transcriptome,
+                                          "/",
+                                          pairwise,
+                                          "_indiv/DEGlist_wcols.txt"))
+    # Move rownames to columns, then remove all other columns
+    DEG_table <- DEG_table %>%
+      rownames_to_column(var = "query_seqid")
+    DEG_table <- select(DEG_table, query_seqid)
+    
+    # Add a second column of ones, since all DEGs will be marked with a one
+    DEG_table[ ,2] <- rep(1, times = nrow(DEG_table))
+    
+    # Rename column to show which pairwise comparison is being described
+    colnames(DEG_table)[2] <- paste0("DEG_", pairwise)
+    
+    # Left join with full annotation table
+    full_annot <- left_join(full_annot, DEG_table, by = "query_seqid")
+    
+  }
+  
+  # Write table to file
+  write_delim(full_annot, 
+            file = paste0("../paper/supp_files/annotation_tables/",
+                          out_name, 
+                          "_transcriptome.txt"),
+            delim = "\t")
+}
+```
+
+**Call function to create annotation tables**
+
+Do this once for each transcriptome
+
+```{r}
+# Complete transcriptome
+make_annot_table(transcriptome = "cbai_transcriptomev2.0",
+                 out_name = "complete",
+                 sprot_db = sprot_db,
+                 pairwise_compars = c("elev0_vs_elev2",
+                                      "low0_vs_low2",
+                                      "amb0_vs_amb2",
+                                      "amb0_vs_amb17"))
+
+# Tanner crab transcriptome
+make_annot_table(transcriptome = "cbai_transcriptomev4.0",
+                 out_name = "Tanner_crab",
+                 sprot_db = sprot_db,
+                 pairwise_compars = c("elev0_vs_elev2",
+                                      "low0_vs_low2",
+                                      "amb0_vs_amb2",
+                                      "amb0_vs_amb17"))
+
+# Hematodinium transcriptome
+make_annot_table(transcriptome = "hemat_transcriptomev1.6",
+                 out_name = "parasite",
+                 sprot_db = sprot_db,
+                 pairwise_compars = c("elev0_vs_elev2",
+                                      "low0_vs_low2",
+                                      "amb0_vs_amb2",
+                                      "amb0_vs_amb17"))
+```
+
+
+
+```{r}
+
+
 
 #### Complete Transcriptome ---------------------------------
 
@@ -130,6 +293,8 @@ colnames(modules) <- c("query_seqid", "module_color")
 
 # Left join module membership data to full annotation table
 full_annot <- left_join(full_annot, modules, by = "query_seqid")
+
+# Extract table of DEGs
 
 # Write table to file
 write.csv(full_annot, file = "../paper/supp_files/annotation_tables/complete_transcriptome.csv",

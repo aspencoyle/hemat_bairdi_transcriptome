@@ -96,11 +96,12 @@ crabTraits <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c("A", "
                                     rep("Lowered", times = 3)),
                                     includePairwise = TRUE,
                                     includeLevelVsAll = TRUE),
-                         "hemat_level" = scale(c(rep(c(1117, 158230, 333000,
-                                                       380503, 1550, 4586,
+                         # For this run, using hemat_level on Day 0
+                         "hemat_level" = scale(c(rep(c(283, 316000, 546000,
+                                                       761000, 210, 9140,
                                                        4510, 120000, 211000), times = 2),
-                                                 1117, 158230, 333000,
-                                                 380503, 1550, 4586)),
+                                                 283, 316000, 546000,
+                                                 761000, 210, 4510)),
                          "CW" = scale(c(rep(c(132.2, 128.8, 145, 
                                         127.4, 134.1, 133.3, 
                                         95.7, 111.8, 133.7), 
@@ -130,11 +131,11 @@ crabClinicalData <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c(
                                     rep(1, times = 3)),
                                     includePairwise = TRUE,
                                     includeLevelVsAll = TRUE),
-                         "hemat_level" = scale(c(rep(c(1117, 158230, 333000,
-                                                       380503, 1550, 4586,
+                         "hemat_level" = scale(c(rep(c(283, 316000, 546000,
+                                                       761000, 210, 9140,
                                                        4510, 120000, 211000), times = 2),
-                                                 1117, 158230, 333000,
-                                                 380503, 1550, 4586)),
+                                                 283, 316000, 546000,
+                                                 761000, 210, 4510)),
                          "CW" = scale(c(rep(c(132.2, 128.8, 145, 
                                         127.4, 134.1, 133.3, 
                                         95.7, 111.8, 133.7), 
@@ -149,7 +150,7 @@ crabClinicalData <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c(
                                   2))
 
 # Variable being examined - should match column in two data frames above
-variable <- "SC"
+variable <- "day"
 
 # Start and ending we want for each file and graph saved
 file_start <- paste0("../output/WGCNA_output/cbai_transcriptomev4.0/all_crabs_no_filter/", variable, "_as_var/")
