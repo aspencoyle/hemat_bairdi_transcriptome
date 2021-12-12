@@ -62,7 +62,7 @@ accession_path: A newline-separated file of accession IDs
 
 swissprot_path: path to a downloaded uncompressed copy of the SwissProt database with all GO terms included, available at https://www.uniprot.org/uniprot/
 
-output_path: path to output .txt file
+output_path: path to output .txt files
 
 ```{r}
 

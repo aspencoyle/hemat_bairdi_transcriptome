@@ -94,13 +94,13 @@ exp_design = day and temperature data for libraries 173, 072, 127, 272, 294, 280
 
 ```{r elev0vselev2}
 
-exp_design <- data.frame(Day = factor(c("Day 0", "Day 0", "Day 0",
-                                        "Day 2", "Day 2", "Day 2")))
+exp_design <- data.frame(Temperature = factor(c("7.5C", "7.5C", "7.5C",
+                                         "10C", "10C", "10C")))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4.0/elev0_vs_elev2_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
                output_path = "../graphs/DESeq2_output/cbai_transcriptomev4.0/elev0_vs_elev2_indiv",
-               variable = "Day")
+               variable = "Temperature")
 ```
   
 
@@ -216,8 +216,8 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4
 exp_design = day and temperature data for libraries 178, 118, 132, 427, 445, 425 (in order)
 
 ```{r low0vslow17}
-exp_design <- data.frame(Day = factor(c("Day 0", "Day 0", "Day 0", 
-                                        "Day 17", "Day 17", "Day 17")))
+exp_design <- data.frame(Day = factor(c("0", "0", "0", 
+                                        "17", "17", "17")))
 
 deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4.0/low0_vs_low17_indiv/kallisto.isoform.counts.matrix",
                experiment_table = exp_design,
@@ -288,12 +288,12 @@ deseq_analysis(kallisto_path = "../output/kallisto_matrices/cbai_transcriptomev4
 exp_design = day and temperature data for libraries 073, 151, 113, 173, 072, 127, 221, 254, 222, 272, 294, 280 (in order)
 
 ```{r low0amb0vslow17amb17}
-exp_design <- data.frame(Day = factor(c("Day 0", "Day 0", "Day 0", 
-                                        "Day 0", "Day 0", "Day 0", 
-                                        "Day 2", "Day 2", "Day 2",
-                                        "Day 2", "Day 2", "Day 2")),
-                         Temperature = factor(c("Decreased", "Decreased", "Decreased", 
-                                                "Elevated", "Elevated", "Elevated", 
+exp_design <- data.frame(Day = factor(c("0", "0", "0", 
+                                        "0", "0", "0", 
+                                        "2", "2", "2",
+                                        "2", "2", "2")),
+                         Temperature = factor(c("Ambient", "Ambient", "Ambient", 
+                                                "Ambient", "Ambient", "Ambient", 
                                                 "Decreased", "Decreased", "Decreased",
                                                 "Elevated", "Elevated", "Elevated")))
 

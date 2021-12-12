@@ -1,0 +1,113 @@
+---
+title: "10_1_getting_transcript_nums.Rmd'"
+author: "Aidan Coyle"
+date: "8/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This is a quick script meant to give us the number of transcripts present in each crab for each transcriptome. These numbers will be used to create a summary table of each crab.
+
+Load packages, install if necessary
+
+```{r}
+# Add all required libraries here
+list.of.packages <- c("tidyverse", "janitor")
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+```
+
+## cbai_transcriptomev2.0
+
+```{r}
+# Get all files of crabs
+crab.files <- Sys.glob("../output/TPM_counts/cbai_transcriptomev2.0/Crab_*_TPMcts.txt")
+
+# Initialize dataframe with blank column for counts.
+crab_tab <- data.frame(crabs = crab.files, counts = rep(NA, times = length(crab.files)))
+
+# Remove most of the filepath so our column name is clearer
+crab_tab$crabs <- gsub(pattern = "../output/TPM_counts/cbai_transcriptomev2.0/", "", as.character(crab_tab$crabs))
+
+for (i in 1:length(crab.files)) {
+  # Read in data for crab
+  crab_dat <- read.delim(crab.files[i], header = TRUE, sep = "\t")
+  
+  # Move first column to rowname
+  crab_dat <- crab_dat %>%
+    column_to_rownames(var = "Transcript_ID")
+  
+  # Remove all rows with all zeros
+  crab_dat <- crab_dat[rowSums(crab_dat) > 0, ]
+  
+  crab_tab[i,2] <- nrow(crab_dat)
+}
+```
+
+## cbai_transcriptomev4.0
+
+```{r}
+# Get all files of crabs
+crab.files <- Sys.glob("../output/TPM_counts/cbai_transcriptomev4.0/Crab_*_TPMcts.txt")
+
+# Initialize dataframe with blank column for counts.
+crab_tab <- data.frame(crabs = crab.files, counts = rep(NA, times = length(crab.files)))
+
+# Remove most of the filepath so our column name is clearer
+crab_tab$crabs <- gsub(pattern = "../output/TPM_counts/cbai_transcriptomev4.0/", "", as.character(crab_tab$crabs))
+
+for (i in 1:length(crab.files)) {
+  # Read in data for crab
+  crab_dat <- read.delim(crab.files[i], header = TRUE, sep = "\t")
+  
+  # Move first column to rowname
+  crab_dat <- crab_dat %>%
+    column_to_rownames(var = "Transcript_ID")
+  
+  # Remove all rows with all zeros
+  crab_dat <- crab_dat[rowSums(crab_dat) > 0, ]
+  
+  crab_tab[i,2] <- nrow(crab_dat)
+
+}
+```
+
+## hemat_transcriptomev1.6
+
+```{r}
+# Get all files of crabs
+crab.files <- Sys.glob("../output/TPM_counts/hemat_transcriptomev1.6/Crab_*_TPMcts.txt")
+
+# Initialize dataframe with blank column for counts.
+crab_tab <- data.frame(crabs = crab.files, counts = rep(NA, times = length(crab.files)))
+
+# Remove most of the filepath so our column name is clearer
+crab_tab$crabs <- gsub(pattern = "../output/TPM_counts/hemat_transcriptomev1.6/", "", as.character(crab_tab$crabs))
+
+for (i in 1:length(crab.files)) {
+  # Read in data for crab
+  crab_dat <- read.delim(crab.files[i], header = TRUE, sep = "\t")
+  
+  # Move first column to rowname
+  crab_dat <- crab_dat %>%
+    column_to_rownames(var = "Transcript_ID")
+  
+  # Remove all rows with all zeros
+  crab_dat <- crab_dat[rowSums(crab_dat) > 0, ]
+  
+  crab_tab[i,2] <- nrow(crab_dat)
+}
+```

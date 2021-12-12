@@ -76,7 +76,7 @@ deseq_analysis <- function(kallisto_path,
   # Look specifically at results w/ adjusted p-value < 0.05
   deseq_res05 <- results(deseq2.dds, alpha = 0.05)
   print("Number of DEGs (padj <= 0.05)")
-  print(sum(deseq_res05$padj < 0.05, na.rm = TRUE))
+  print(sum(deseq_res05$padj <= 0.05, na.rm = TRUE))
   
   # Plot of full results, not shrunken
   plotMA(deseq2.res, ylim = c(-28, 28))

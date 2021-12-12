@@ -22,7 +22,7 @@ graphs/DESeq2_output/*/*/AllGene*.txt
 graphs/DESeq2_output/*/*/*/AllGene*.txt
 
 # Ignore complete transcriptome created in supplemental file
-paper/supp_files/annotation_tables/complete_transcriptome.csv
+paper/supp_files/annotation_tables/complete_transcriptome.txt
 
 # Ignore scripts file created when running .Rstudio on Mox
 scripts/core.5096
