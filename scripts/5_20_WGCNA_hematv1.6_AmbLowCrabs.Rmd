@@ -1,5 +1,5 @@
 ---
-title: "5_12_WGCNA_cbai4.0_AllCrabs"
+title: "5_20_WGCNA_hemat1.6_AmbLowCrabs"
 author: "Aidan Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: 
@@ -11,13 +11,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## Analysis of  Gene Expression using WGCNA
+## Analysis of Ambient and Elevated-Temperature Gene Expression using WGCNA
 
 We will now run WGCNA on all individual libraries 
 
-This will be ran on libraries aligned to cbai_transcriptomev4.0, which includes only genes that are presumably _Chionoecetes_. 
+This will be ran on libraries aligned to hemat_transcriptomev1.6, which only includes genes that are presumably _Hematodinium_.
 
-Note the additional column compared to previous runs - since we are including crabs D and F, which are uninfected, infection status is now an included variable
+In this analysis, we will exclude the elevated-temperature treatment group (crabs G, H, and I). Ordinarily, you want all possible samples in your WGCNA analysis. However, this script is meant to specifically examine the effect of _change_ in qPCR Hematodinium infection level over time. Since we only have Day 0 qPCR data for the elevated-temperature treatment group (and no Day 17), we will drop these 3 samples, leaving us still with 18. This is above the WGCNA minimum of 15.
+
+This will also remove the Shell Condition variable, as only one crab (F) has an old shell condition.
 
 Table of crabs and libraries included in analysis:
 | Crab ID | Treatment Group | Day 0 Sample ID | Day 2 Sample ID | Day 17 Sample ID |
@@ -28,18 +30,17 @@ Table of crabs and libraries included in analysis:
 | D       | decreased       | 073             | 221             | 427              |
 | E       | decreased       | 151             | 254             | 445              |
 | F       | decreased       | 113             | 222             | 425              |
-| G       | elevated        | 173             | 272             | NA               | 
-| H       | elevated        | 072             | 294             | NA               |
-| I       | elevated        | 127             | 280             | NA               |
 
 Again, script is based largely on [Yaamini's script](https://github.com/eimd-2019/project-EWD-transcriptomics/blob/master/analyses/WGCNA/WGCNA.md), which is based largely on [the official WGCNA tutorial](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/)
 
 We will first extract the TPM (transcripts per million) counts from the kallisto libraries created earlier in the pipeline. We will then change those to logTPM counts, and then begin the WGCNA analysis
 
-All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, cbai_diamond_blastx_table_transcriptomev4.0.txt,is not. This is a BLASTx annotation of cbai_transcriptomev4.0.fasta.
+All kallisto libraries should be available within the GitHub repo. However, one datafile - our blastx table, hemat_blastx_table_transcriptomev1.6.txt,is not. This is a BLASTx annotation of hemat_transcriptomev1.6.fasta.
 
-Annotation description available [here](https://robertslab.github.io/resources/Genomic-Resources/), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20210318_cbai_diamond_blastx_transcriptome-v4.0/cbai_transcriptome_v4.0.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210317_cbai_trinity_RNAseq_transcriptome-v4.0/cbai_transcriptome_v4.0.fasta_trinity_out_dir/cbai_transcriptome_v4.0.fasta), 
-md5sum: 8fd2ab9c27e59653fcb4f32574be1f61
+Annotation description available [here](https://robertslab.github.io/sams-notebook/2020/08/14/Transcriptome-Annotation-Hematodinium-Transcriptomes-v1.6-v1.7-v2.1-v3.1-with-DIAMOND-BLASTx-on-Mox.html), [direct file available here](https://gannet.fish.washington.edu/Atumefaciens/20200814_hemat_diamond_blastx_v1.6_v1.7_v2.1_v3.1/hemat_transcriptome_v1.6.fasta.blastx.outfmt6), and [original transcriptome available here](https://gannet.fish.washington.edu/Atumefaciens/20210308_hemat_trinity_v1.6_v1.7/hemat_transcriptome_v1.6.fasta_trinity_out_dir/hemat_transcriptome_v1.6.fasta), 
+md5sum: 698513d787f92a65debb9f70dbb2e32f
+
+Note that for this, minimum module size was reduced to 10, due to the much smaller number of Hematodinium genes
 
 
 ```{r libraries, message = FALSE, warning=FALSE}
@@ -75,91 +76,69 @@ Later in the script, you will need to specify a soft thresholding power to choos
 
 ```{r TPMextract}
 # Path to kallisto libraries
-kallisto_path <- "../output/kallisto_libraries/cbai_transcriptomev4.0/"
+kallisto_path <- "../output/kallisto_libraries/hemat_transcriptomev1.6/"
 
 # Libraries we want to read in to our TPM matrix
-libraries <- c("178", "118", "132", "073", "151", "113", "173", "072", "127", "359", "349", "334", "221", "254", "222", "272", "294", "280", "463", "481", "485", "427", "445", "425")
+libraries <- c("178", "118", "132", "073", "151", "113", "359", "349", "334", "221", "254", "222", "463", "481", "485", "427", "445", "425")
 
 # For each row, crab and day should correspond to the order of libraries (ex: 4th row of crabTraits should match libraries[4])
-crabTraits <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c("A", "B", "C", "D", "E", "F", "G", "H", "I"), times = 2), 
-                                    "A", "B", "C", "D", "E", "F"),
+crabTraits <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c("A", "B", "C", "D", "E", "F"), times = 3)),
                                     includePairwise = FALSE,
                                     includeLevelVsAll = TRUE,
                                     minCount = 2),
-                         "day" = factor(c(rep(0, times = 9),
-                                          rep(2, times = 9),
+                         "day" = factor(c(rep(0, times = 6),
+                                          rep(2, times = 6),
                                           rep(17, times = 6))),
-                         "temp" = binarizeCategoricalVariable(x = c(rep("Ambient", times = 12),
+                         "temp" = c(rep("Ambient", times = 9),
                                     rep("Lowered", times = 3),
-                                    rep("Elevated", times = 3),
                                     rep("Ambient", times = 3),
                                     rep("Lowered", times = 3)),
-                                    includePairwise = TRUE,
-                                    includeLevelVsAll = TRUE),
                          # For this run, using hemat_level on Day 0
-                         "hemat_level" = scale(c(rep(c(283, 316000, 546000,
-                                                       761000, 210, 9140,
-                                                       4510, 120000, 211000), times = 2),
-                                                 283, 316000, 546000,
-                                                 761000, 210, 4510)),
-                         "CW" = scale(c(rep(c(132.2, 128.8, 145, 
-                                        127.4, 134.1, 133.3, 
-                                        95.7, 111.8, 133.7), 
-                                      times = 2),
-                                  132.2, 128.8, 145, 
-                                  127.4, 134.1, 133.3), center = TRUE),
-                         "SC" = c(rep("New", times = 5),
-                                  rep("Old", times = 2),
-                                  rep("New", times = 7),
-                                  rep("Old", times = 2),
-                                  rep("New", times = 7),
-                                  "Old"))
+                         "hemat_level" = scale(rep(c(283, 316000, 546000,
+                                                       761000, 210, 9140), times = 3)),
+                         # Also creating variable for difference in Hematodinium level (qPCR
+                         # Day 17 SQ mean as percent of first timepoint, on a log scale.
+                         "hemat_diff" = scale(rep(c(2.838, -0.8379, 1.341, 
+                                                    -3.103, 3.139, -0.4558), times = 3)),
+                         "CW" = scale(rep(c(132.2, 128.8, 145, 
+                                        127.4, 134.1, 133.3), times = 3), center = TRUE))
 
 # Create clinical data trait matrix. Same rules as above, but all columns are numeric are numeric. Crab A will be noted as 1, B as 2, and C as 3. 
-crabClinicalData <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c(1, 2, 3, 4, 5, 6, 7, 8, 9), times = 2), 
-                                    1, 2, 3, 4, 5, 6),
+
+
+crabClinicalData <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c(1, 2, 3, 4, 5, 6), times = 3)),
                                     includePairwise = FALSE,
                                     includeLevelVsAll = TRUE,
                                     minCount = 2),
-                         "day" = c(rep(0, times = 9),
-                                   rep(2, times = 9),
+                         "day" = c(rep(0, times = 6),
+                                   rep(2, times = 6),
                                    rep(17, times = 6)),
-                         "temp" = binarizeCategoricalVariable(x = c(rep(2, times = 12),
+                         "temp" = c(rep(2, times = 9),
                                     rep(1, times = 3),
-                                    rep(3, times = 3),
                                     rep(2, times = 3),
                                     rep(1, times = 3)),
-                                    includePairwise = TRUE,
-                                    includeLevelVsAll = TRUE),
                          "hemat_level" = scale(c(rep(c(283, 316000, 546000,
-                                                       761000, 210, 9140,
-                                                       4510, 120000, 211000), times = 2),
-                                                 283, 316000, 546000,
-                                                 761000, 210, 4510)),
-                         "CW" = scale(c(rep(c(132.2, 128.8, 145, 
-                                        127.4, 134.1, 133.3, 
-                                        95.7, 111.8, 133.7), 
-                                      times = 2),
-                                  132.2, 128.8, 145, 
-                                  127.4, 134.1, 133.3), center = TRUE),
-                         "SC" = c(rep(1, times = 5),
-                                  rep(2, times = 2),
-                                  rep(1, times = 7),
-                                  rep(2, times = 2),
-                                  rep(1, times = 7),
-                                  2))
+                                                       761000, 210, 9140), times = 3))),
+                         "hemat_diff" = scale(rep(c(2.838, -0.8379, 1.341, 
+                                                    -3.103, 3.139, -0.4558), times = 3)),
+                         "CW" = scale(rep(c(132.2, 128.8, 145, 
+                                        127.4, 134.1, 133.3), 
+                                      times = 3), center = TRUE))
 
 # Variable being examined - should match column in two data frames above
-variable <- "SC"
+variable <- "hemat_level"
 
 # Start and ending we want for each file and graph saved
-file_start <- paste0("../output/WGCNA_output/cbai_transcriptomev4.0/all_crabs_no_filter/", variable, "_as_var/")
+file_start <- paste0("../output/WGCNA_output/hemat_transcriptomev1.6/amb_low/", variable, "_as_var/")
 
 # Location of blastx table
-blastx_table_site <- "../data/cbai_blastx_table_transcriptome_v4.0.txt"
+blastx_table_site <- "../data/hemat_blastx_table_transcriptome_v1.6.txt"
 
 # Number of samples we're examining
-numsamples <- 24
+numsamples <- 18
+
+# Minimum module size (number of genes per module)
+minimum_module <- 10
 ```
 
 Then, we begin creating our TPM matrix for all transcripts
@@ -365,12 +344,13 @@ text(sft$fitIndices[,1], sft$fitIndices[,5],
      col = "red")
 ```
 
-Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. Here, that means we will choose a soft-thresholding power of 9 for all runs
+Typically, we would choose the lowest power below 15 that reached an R2 value of 0.8 or higher. However, no eligible soft-thresholding power reached 0.8. According to the [WGCNA FAQ](https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html), I should choose a soft-thresholding power of 18, since we have under 20 samples total.
+
 
 #### Co-expression similarity and adjacency, and Topological Overlap Matrix (TOM)
 
 ```{r coexpression}
-softPower <- 9
+softPower <- 18
 adjacency <- adjacency(CrabExpr0, power = softPower,
                        type = "signed")
 
@@ -404,8 +384,8 @@ plot(geneTree, xlab = "", sub = "",
 ```
 
 ```{r min_module_size}
-# Set minimum module size, AKA num of genes that need to be in a module. Here, using WGCNA default
-minModuleSize <- 30
+# Set minimum module size, AKA num of genes that need to be in a module. WGCNA default is 30
+minModuleSize <- minimum_module
 # Cut branches of dendrogram to ID WGCNA modules
 dynamicMods <- cutreeDynamic(dendro =  geneTree,
                              method = "hybrid",
@@ -623,7 +603,6 @@ names(MMPvalue) <- paste("p.MM", modNames, sep = "")
 # Confirm formatting
 head(MMPvalue)
 ```
-
 
 ### Obtain gene lists - for each module, and a master list with membership and gene significance info
 
