@@ -25,18 +25,26 @@ GO-MWU also requires another input file which we already created - a tab-delimit
 
 In this script, we'll work to create the first of those two files.
 
-First, here's a list of all significant modules for all 3 transcriptomes where the association doesn't seem due to a single crab. Names correspond to what they're called in the "day" analysis for that respective transcriptome/comparison combination
+First, here's a list of all significant modules for all 3 transcriptomes where the association isn't due to a single crab. Names correspond to what they're called in the "day" analysis for that respective transcriptome/comparison combination
 
+| Transcriptome | Module | Trait(s)                               | p-value(s)    |
+|---------------|--------|----------------------------------------|---------------|
+| Complete      | yellow | Lowered vs. Elevated, Elevated vs. All | 0.02, 0.03    |
+| Complete      | cyan   | Lowered vs. Ambient, Elevated vs. All  | 0.02, 0.04    |
+| Complete      | salmon | Lowered vs. Ambient                    | 0.04          |
+| Complete      | blue   | day                                    | 0.03          |
+| Tanner crab   | black  | Lowered vs. Ambient, Elevated vs. All  | 8x10^-4, 0.05 |
+| Tanner crab   | brown  | Lowered vs. Elevated, Elevated vs. All | 0.02, 0.03    |
+| Parasite      | brown  | Hematodinium level                     | 0.02          |
+| Parasite      | pink   | day                                    | 0.03          |
 
-| Transcriptome | Module | Trait(s)                                     | p-value(s)    |
-|---------------|--------|----------------------------------------------|---------------|
-| Unfiltered    | blue   | Day                                          | 0.03          |
-| Unfiltered    | salmon | Temperature (lowered vs. ambient)            | 0.04          |
-| Unfiltered    | cyan   | Temperature (lowered vs. ambient; elevated)  | 0.02; 0.04    |
-| Unfiltered    | yellow | Temperature (lowered vs. ambient; elevated)  | 0.02; 0.03    |
-| Host          | brown  | Temperature (lowered vs. elevated; elevated) | 0.02; 0.03    |
-| Host          | black  | Temperature (lowered vs. ambient; elevated)  | 8x10^-4; 0.05 |
-| Parasite      | pink   | day                                          | 0.03          |
+We also ran WGCNA on only Lowered and Ambient-temperature crab to examine the effect of changes in Hematodinium level. Here's significant modules (again, where association is not due to expression in a single crab). For all, Trait is hemat_diff (change in Hematodinium level on log scale), as other significant traits were discarded
+
+| Transcriptome | Module | p-value |
+|---------------|--------|---------|
+| Complete      | blue   | 0.02    |
+| Tanner crab   | red    | 0.04    |
+| Parasite      | green  | 0.05    |
 
 Alright, let's get started:
 
@@ -89,75 +97,142 @@ Output:
 Function arguments:
 - module_name: color of the module you want to examine
 - transcriptome: name of the relevant transcriptome
-- compar: libraries used in WGCNA. Should be all_crabs_no_filter or amb_vs_elev_no_filter
+- compar: libraries used in WGCNA. Should be all_crabs or amb_low
+- key_var: variable selected as main variable to examine in WGCNA run
 - blast_path: path to the BLAST file for your relevant transcriptome
 - output_GOMWU: path to the folder you want to put your files in (should be the one you run GO-MWU in)
 - output_accessions: path to the folder you want to put your single column of accession IDs in
 
+## ALL CRABS
+
+This section analyzes output from WGCNA analysis of all crabs
+
 ```{r inputs}
 
-# UNFILTERED TRANSCRIPTOME ------------------------------
+# COMPLETE TRANSCRIPTOME ------------------------------
 
-# Blue module, cbai2.0, all crabs
-WGCNA_modules_accessions_kMEs(module_name = "blue",
+# Yellow module, cbai2.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "yellow",
                               transcriptome = "cbai_transcriptomev2.0",
-                              compar = "all_crabs_no_filter",
-                              blast_path = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
-                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
-                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
-
-# Salmon module, cbai2.0, all crabs
-WGCNA_modules_accessions_kMEs(module_name = "salmon",
-                              transcriptome = "cbai_transcriptomev2.0",
-                              compar = "all_crabs_no_filter",
-                              blast_path = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                              compar = "all_crabs",
+                              key_var = "day",
+                              blast_path = "../data/blast_tables/cbai_transcriptomev2.0_blast_table.txt",
                               output_GOMWU = "../scripts/11_4_running_GOMWU/",
                               output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
 
 # Cyan module, cbai2.0, all crabs
 WGCNA_modules_accessions_kMEs(module_name = "cyan",
                               transcriptome = "cbai_transcriptomev2.0",
-                              compar = "all_crabs_no_filter",
-                              blast_path = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                              compar = "all_crabs",
+                              key_var = "day",
+                              blast_path = "../data/blast_tables/cbai_transcriptomev2.0_blast_table.txt",
                               output_GOMWU = "../scripts/11_4_running_GOMWU/",
                               output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
 
-# Yellow module, cbai2.0, all crabs
-WGCNA_modules_accessions_kMEs(module_name = "yellow",
+# Salmon module, cbai2.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "salmon",
                               transcriptome = "cbai_transcriptomev2.0",
-                              compar = "all_crabs_no_filter",
-                              blast_path = "../data/cbai_hemat_diamond_blastx_table_transcriptome_v2.0.txt",
+                              compar = "all_crabs",
+                              key_var = "day",
+                              blast_path = "../data/blast_tables/cbai_transcriptomev2.0_blast_table.txt",
                               output_GOMWU = "../scripts/11_4_running_GOMWU/",
                               output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
 
-#### HOST TRANSCRIPTOME -------------------------------
-
-# Brown module, cbai4.0, all crabs
-WGCNA_modules_accessions_kMEs(module_name = "brown",
-                              transcriptome = "cbai_transcriptomev4.0",
-                              compar = "all_crabs_no_filter",
-                              blast_path = "../data/cbai_blastx_table_transcriptome_v4.0.txt",
+# Blue module, cbai2.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "blue",
+                              transcriptome = "cbai_transcriptomev2.0",
+                              compar = "all_crabs",
+                              key_var = "day",
+                              blast_path = "../data/blast_tables/cbai_transcriptomev2.0_blast_table.txt",
                               output_GOMWU = "../scripts/11_4_running_GOMWU/",
                               output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
+#### TANNER CRAB TRANSCRIPTOME -------------------------------
 
 # Black module, cbai4.0, all crabs
 WGCNA_modules_accessions_kMEs(module_name = "black",
                               transcriptome = "cbai_transcriptomev4.0",
-                              compar = "all_crabs_no_filter",
-                              blast_path = "../data/cbai_blastx_table_transcriptome_v4.0.txt",
+                              compar = "all_crabs",
+                              key_var = "day",
+                              blast_path = "../data/blast_tables/cbai_transcriptomev4.0_blast_table.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
+# Brown module, cbai4.0, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "brown",
+                              transcriptome = "cbai_transcriptomev4.0",
+                              compar = "all_crabs",
+                              key_var = "day",
+                              blast_path = "../data/blast_tables/cbai_transcriptomev4.0_blast_table.txt",
                               output_GOMWU = "../scripts/11_4_running_GOMWU/",
                               output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
 
 
 #### PARASITE TRANSCRIPTOME -------------------------
 
+# Brown module, hemat1.6, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "brown",
+                              transcriptome = "hemat_transcriptomev1.6",
+                              compar = "all_crabs",
+                              key_var = "day",
+                              blast_path = "../data/blast_tables/hemat_transcriptomev1.6_blast_table.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
 # Pink module, hemat1.6, all crabs
 WGCNA_modules_accessions_kMEs(module_name = "pink",
                               transcriptome = "hemat_transcriptomev1.6",
-                              compar = "all_crabs_no_filter",
-                              blast_path = "../data/hemat_blastx_table_transcriptome_v1.6.txt",
+                              compar = "all_crabs",
+                              key_var = "day",
+                              blast_path = "../data/blast_tables/hemat_transcriptomev1.6_blast_table.txt",
                               output_GOMWU = "../scripts/11_4_running_GOMWU/",
                               output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
 
 
 ```
+
+
+
+## Ambient and Low Crabs
+
+This section analyzes output from WGCNA analysis of only Ambient and Low-temperature samples.
+
+It specifically only looks at modules that are associated with change in _Hematodinium_ expression over the course of the experiment.
+
+```{r inputs}
+
+# COMPLETE TRANSCRIPTOME ------------------------------
+
+# Blue module, cbai2.0, ambient and low
+WGCNA_modules_accessions_kMEs(module_name = "blue",
+                              transcriptome = "cbai_transcriptomev2.0",
+                              compar = "amb_low",
+                              key_var = "hemat_diff",
+                              blast_path = "../data/blast_tables/cbai_transcriptomev2.0_blast_table.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
+#### TANNER CRAB TRANSCRIPTOME -------------------------------
+
+# Red module, cbai4.0, ambient and low
+WGCNA_modules_accessions_kMEs(module_name = "red",
+                              transcriptome = "cbai_transcriptomev4.0",
+                              compar = "amb_low",
+                              key_var = "hemat_diff",
+                              blast_path = "../data/blast_tables/cbai_transcriptomev4.0_blast_table.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+
+
+#### PARASITE TRANSCRIPTOME -------------------------
+
+# Green module, hemat1.6, all crabs
+WGCNA_modules_accessions_kMEs(module_name = "green",
+                              transcriptome = "hemat_transcriptomev1.6",
+                              compar = "amb_low",
+                              key_var = "hemat_diff",
+                              blast_path = "../data/blast_tables/hemat_transcriptomev1.6_blast_table.txt",
+                              output_GOMWU = "../scripts/11_4_running_GOMWU/",
+                              output_accessions = "../output/accession_n_GOids/WGCNA_modules/")
+```
+

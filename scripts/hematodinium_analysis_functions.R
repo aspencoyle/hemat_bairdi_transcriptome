@@ -344,16 +344,17 @@ uniprot_to_GO <- function(accession_path, swissprot_path, output_path) {
 # - module_name: color of the module you want to examine
 # - transcriptome: name of the relevant transcriptome
 # - compar: libraries used in WGCNA. Should be all_crabs_no_filter or amb_vs_elev_no_filter
+# - key_var: variable selected as main variable in WGCNA analysis
 # - blast_path: path to the BLAST file for your relevant transcriptome
 # - output_GOMWU: path to the folder you want to put your files in (should be the one you run GO-MWU in)
 # - output_accessions: path to the folder you want to put your single column of accession IDs in
 
 WGCNA_modules_accessions_kMEs <- function(module_name, transcriptome, 
-                                          compar, blast_path, output_GOMWU, 
+                                          compar, key_var, blast_path, output_GOMWU, 
                                           output_accessions) {
   # Load in module data, which is just one column of transcript IDs in module
   module.dat <- read.delim(file = paste0("../output/WGCNA_output/", transcriptome, "/", 
-                                         compar, "/day_as_var/GeneList-", 
+                                         compar, "/", key_var, "_as_var/GeneList-", 
                                          module_name, ".txt"),
                            sep = "\t",
                            col.names = "Transcript_ID")
@@ -367,7 +368,7 @@ WGCNA_modules_accessions_kMEs <- function(module_name, transcriptome,
   # Load kME data, which is a column of all transcript IDs in WGCNA, plus the kME scores for each module
   # Each module is a separate column, but we just care about the one being examined here.
   kME.dat <- read.delim(file = paste0("../output/WGCNA_output/", transcriptome, "/", 
-                                      compar, "/day_as_var/kME_table.txt"),
+                                      compar, "/", key_var, "_as_var/kME_table.txt"),
                         sep = "\t")
   
   # Move rownames (the transcript IDs) to columns

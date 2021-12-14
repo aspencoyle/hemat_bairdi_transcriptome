@@ -55,46 +55,82 @@ swissprot_path: path to a downloaded uncompressed copy of the SwissProt database
 
 output_path: path to output .txt file
 
+## All Samples
+
+This WGCNA run examined samples from all crabs to look at correlation to a variety of variables
+
 ```{r}
-# UNFILTERED TRANSCRIPTOME ------------------------------
+# COMPLETE TRANSCRIPTOME ------------------------------
 
 # Blue module, cbai2.0, all crabs
-uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_blue_GeneIDs.txt",
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_blue_GeneIDs.txt ",
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
-              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_blue_GOIDs.txt")
-
-# Salmon module, cbai2.0, all crabs
-uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_salmon_GeneIDs.txt",
-              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
-              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_salmon_GOIDs.txt")
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_blue_GOIDs.txt")
 
 # Cyan module, cbai2.0, all crabs
-uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_cyan_GeneIDs.txt",
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_cyan_GeneIDs.txt",
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
-              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_cyan_GOIDs.txt")
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_cyan_GOIDs.txt")
+
+# Salmon module, cbai2.0, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_salmon_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_salmon_GOIDs.txt")
 
 # Yellow module, cbai2.0, all crabs
-uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_yellow_GeneIDs.txt",
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_yellow_GeneIDs.txt",
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
-              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_no_filter_yellow_GOIDs.txt")
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/all_crabs_yellow_GOIDs.txt")
 
-#### HOST TRANSCRIPTOME -------------------------------
+#### TANNER CRAB TRANSCRIPTOME -------------------------------
 
 # Brown module, cbai4.0, all crabs
-uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_brown_GeneIDs.txt",
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_black_GeneIDs.txt",
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
-              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_brown_GOIDs.txt")
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_black_GOIDs.txt")
 
 # Black module, cbai4.0, all crabs
-uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_black_GeneIDs.txt",
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_brown_GeneIDs.txt",
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
-              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_no_filter_black_GOIDs.txt")
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/all_crabs_brown_GOIDs.txt")
 
 #### PARASITE TRANSCRIPTOME -------------------------
 
-# Pink module, hemat1.6, all crabs
-uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_pink_GeneIDs.txt",
+# Brown module, hemat1.6, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_brown_GeneIDs.txt",
               swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
-              output_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_no_filter_pink_GOIDs.txt")
+              output_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_brown_GOIDs.txt")
+
+# Pink module, hemat1.6, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_pink_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/all_crabs_pink_GOIDs.txt")
+```
+
+## Ambient and Lowered-Temp Samples
+
+This WGCNA run looked to analyze correlation to change in _Hematodinium_ level. It used samples from all crabs where two qPCR timepoints were available. Due to the elevated-treatment mortality event, that means it only included crabs A-F (the Ambient and Lowered treatment groups).
+
+```{r}
+# COMPLETE TRANSCRIPTOME ------------------------------
+
+# Blue module, cbai2.0, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/amb_low_blue_GeneIDs.txt ",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev2.0/amb_low_blue_GOIDs.txt")
+
+#### TANNER CRAB TRANSCRIPTOME -------------------------------
+
+# Red module, cbai4.0, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/amb_low_red_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/cbai_transcriptomev4.0/amb_low_red_GOIDs.txt")
+
+#### PARASITE TRANSCRIPTOME -------------------------
+
+# Green module, hemat1.6, all crabs
+uniprot_to_GO(accession_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/amb_low_green_GeneIDs.txt",
+              swissprot_path = "../data/all_uniprot_info_inc_GOterms.tab", 
+              output_path = "../output/accession_n_GOids/WGCNA_modules/hemat_transcriptomev1.6/amb_low_green_GOIDs.txt")
 ```
 
