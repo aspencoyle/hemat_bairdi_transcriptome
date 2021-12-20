@@ -346,7 +346,7 @@ gomwuStats(input, goDatabase, goAnnotations, goDivision,
 )
 
 # --------------- Results
-# 7 GO terms at 10% FDR
+# 8 GO terms at 10% FDR
 
 grDevices::windows()
 results=gomwuPlot(input,goAnnotations,goDivision,

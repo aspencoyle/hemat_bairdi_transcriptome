@@ -135,14 +135,14 @@ make_annot_table <- function(transcriptome, out_name, sprot_db, pairwise_compars
   # Left join annotation table with Swiss-Prot database by accession ID
   full_annot <- left_join(annotation, sprot_db, by = "Accession_ID")
   
-  # Get a string of all files describing module membership
+  # Get a string of all files describing module membership from WGCNA run of all samples
   mod_files <- list.files(path = paste0("../output/WGCNA_output/", 
                                         transcriptome, 
-                                        "/all_crabs_no_filter/day_as_var/"),
+                                        "/all_crabs/day_as_var/"),
                           pattern = "^GeneList",
                           full.names = TRUE)
   
-  # Create empty matrix for adding module data
+  # Create empty matrix for adding module data from WGCNA run of all samples
   modules <- matrix(ncol = 2, nrow = 0)
   
   # Loop through module names, adding each to table
@@ -164,7 +164,44 @@ make_annot_table <- function(transcriptome, out_name, sprot_db, pairwise_compars
   }
   
   # Now that it's full, rename columns of module matrix
-  colnames(modules) <- c("query_seqid", "module_color")
+  colnames(modules) <- c("query_seqid", "all_samples_module_color")
+  
+  # Left join module membership data to full annotation table
+  full_annot <- left_join(full_annot, modules, by = "query_seqid")
+  
+  # We'll redo the same as above, but using the modules created in our WGCNA analysis of ambient and decreased samples only
+  # This analysis examined the impact of change in Hematodinium level over time.
+  
+   # Get a string of all files describing module membership from WGCNA run of all samples
+  ambdec_mod_files <- list.files(path = paste0("../output/WGCNA_output/", 
+                                        transcriptome, 
+                                        "/amb_low/hemat_diff_as_var/"),
+                          pattern = "^GeneList",
+                          full.names = TRUE)
+  
+  # Create empty matrix for adding module data from WGCNA run of all samples
+  ambdec_modules <- matrix(ncol = 2, nrow = 0)
+  
+  # Loop through module names, adding each to table
+  for (i in 1:length(ambdec_mod_files)) {
+    # Extract color of module for name
+    ambdec_mod_col <- unlist(str_split(ambdec_mod_files[i], 
+                                pattern = "GeneList-"))[2]
+    ambdec_mod_col <- unlist(str_split(ambdec_mod_col,
+                                pattern = ".txt"))[1]
+    # Read in each module (one column of transcript IDs)
+    ambdec_mod <- read.delim(ambdec_mod_files[i],
+                      header = FALSE)
+    
+    # Add module color as column
+    ambdec_mod[, 2] <- rep(ambdec_mod_col, times = nrow(ambdec_mod))
+    
+    # Append to end of full module data matrix
+    ambdec_modules <- rbind(ambdec_modules, ambdec_mod)
+  }
+  
+  # Now that it's full, rename columns of module matrix
+  colnames(modules) <- c("query_seqid", "amb_dec_samples_module_color")
   
   # Left join module membership data to full annotation table
   full_annot <- left_join(full_annot, modules, by = "query_seqid")
