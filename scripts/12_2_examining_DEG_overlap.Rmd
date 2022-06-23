@@ -1,0 +1,74 @@
+---
+title: "12_2_examining_DEG_overlap.Rmd"
+author: "Aidan Coyle"
+date: "1/25/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Script Summary
+
+This should be a relatively quick and straightforward script. Essentially, the goal of the script is to examine our DEGs and see if there is any overlap with the DEGs found in a study of snow crab and their exposure to seismic noise (in the context of oil and gas drilling). The purpose of this is to look for generalized stress response genes.
+
+Paper is available at https://doi.org/10.1016/j.fishres.2020.105794
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+Temp_DEGs <- read.delim("../graphs/DESeq2_output/cbai_transcriptomev4.0/elev0_vs_elev2_indiv/DEGlist_wcols.txt")
+
+Time_DEGs <- read.delim("../graphs/DESeq2_output/cbai_transcriptomev4.0/amb0_vs_amb17_indiv/DEGlist_wcols.txt")
+
+# Remove all irrelevant columns from each - we only want log2foldchange and isoform name
+
+Temp_DEGs <- rename(Temp_DEGs, "log2FoldChange" = "Temp_Chg") %>%
+  select(Temp_Chg) %>%
+  rownames_to_column(var = "contig")
+
+Time_DEGs <- rename(Time_DEGs, "log2FoldChange" = "Time_Chg") %>%
+  select(Time_Chg) %>%
+  rownames_to_column(var = "contig")
+
+overlap <- inner_join(Temp_DEGs, Time_DEGs, by = "contig")
+
+overlap[overlap$contig == "TRINITY_DN10431_c0_g1_i2", ]
+
+Temp_DEGs[Temp_DEGs$contig == "TRINITY_DN6393_c0_g1_i5", ]
+
+Time_DEGs[Time_DEGs$contig == "TRINITY_DN168_c0_g1_i2", ]
+
+# Examining overlap between Ambient and Elevated DEGs 
+
+Tanner_transcriptome <- read.delim("../paper/supp_files/annotation_tables/Tanner_crab_transcriptome.txt")
+
+colnames(Tanner_transcriptome)
+
+Tanner_ambs <- filter(Tanner_transcriptome, DEG_amb0_vs_amb17 == 1)
+
+Tanner_ambs %>%
+  group_by(Accession_ID) %>%
+  summarize(count = n()) %>%
+  nrow()
+
+# 151 unique accession IDs between Day 0 and 17
+
+Tanner_overlap <- filter(Tanner_ambs, DEG_elev0_vs_elev2 == 1)
+Tanner_overlap %>%
+  group_by(Accession_ID) %>%
+  summarize(count = n()) %>%
+  nrow()
+
+nrow(filter(overlap, Temp_Chg < 0 & Time_Chg < 0))
+
++ nrow(filter(overlap, Temp_Chg < 0 & Time_Chg > 0))
+
+
+
+```
+

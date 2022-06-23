@@ -19,3 +19,7 @@ Output from the R package DESeq2, which takes matrices of sequence counts and de
 ## GOMWU_output:
 
 Output from [GO-MWU](https://github.com/z0on/GO_MWU), which performs a rank-based gene ontology analysis. This folder contains hierarchical clustering trees of significant Biological Processes GO categories for a variety of pairwise comparisons.
+
+## paper_figures
+
+Contains figures made specifically for the paper (explanatory figures, etc)

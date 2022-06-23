@@ -318,7 +318,10 @@ uniprot_to_GO <- function(accession_path, swissprot_path, output_path) {
   
   # Select only accession IDs and GO IDs in new table
   GO_terms <- all_terms %>%
-    select(accessionID, Gene.ontology.IDs)
+    select(accessionID, Gene.ontology.IDs, Gene.names)
+  
+  # Search for specific genes
+  test <- GO_terms[grep("rps12", GO_terms$Gene.names, ignore.case = TRUE), ]
   
   write.table(x = GO_terms, file = output_path, sep = "\t",
               row.names = FALSE, 

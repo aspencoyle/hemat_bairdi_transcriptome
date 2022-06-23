@@ -1,0 +1,66 @@
+---
+title: "12_3_figure_1_creation"
+author: "Aidan Coyle"
+date: "6/6/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Load libraries, install all required new libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+# Add all required libraries here
+list.of.packages <- c("ggplot2", "tidyverse", "viridis")
+# Get names of all required packages that aren't installed
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, "Package"])]
+# Install all new packages
+if(length(new.packages)) install.packages(new.packages)
+
+
+# Load all required libraries
+lapply(list.of.packages, FUN = function(X) {
+  do.call("require", list(X))
+})
+```
+
+## Background
+
+This document will be used to create a figure which shows the timeline of the experiment and the temperatures that treatment groups were held at.
+
+```{r}
+# Create data points for graph
+# Low, Control, and High are the temperatures in celsius for each
+# All values of 7.6 and 7.4 are just to jitter the graph
+
+days <- c(-9, 0, 2, 17)
+Low <- c(7.4, 7.4, 4, 4)
+Control <- rep(7.5, times = 4)
+High <- c(7.6, 7.6, 10, NA)
+
+# Assemble into data frame
+exp_data <- data.frame(days, Low, Control, High)
+# Pivot longer
+exp_data <- pivot_longer(exp_data, cols = c(Low, Control, High), names_to = "Treatment")
+
+# Create another data table for sample events
+# This means just removing all data points where day < 0
+sample_data <- exp_data %>%
+  filter(days > -1)
+
+
+# Begin to plot
+ggplot(data = exp_data, aes(x = days, y = value, group = Treatment)) +
+  geom_line(size = 1.5, aes(color = Treatment)) +
+  geom_point(data = sample_data, size = 3, color = "gray30") +
+  theme_bw() +
+  scale_color_manual(values = c("#00BA38", "#F8766D", "#619CFF")) +
+  xlab("Days") +
+  ylab("Temperature (Celsius)") 
+
+
+```
+
