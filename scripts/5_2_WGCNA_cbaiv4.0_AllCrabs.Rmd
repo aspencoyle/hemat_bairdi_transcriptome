@@ -20,9 +20,9 @@ This will be ran on libraries aligned to cbai_transcriptomev4.0, which includes 
 Table of crabs and libraries included in analysis:
 | Crab ID | Treatment Group | Day 0 Sample ID | Day 2 Sample ID | Day 17 Sample ID |
 |---------|-----------------|-----------------|-----------------|------------------|
-| A       | ambient         | 178             | 359             | 463              |
-| B       | ambient         | 118             | 349             | 481              |
-| C       | ambient         | 132             | 334             | 485              |
+| A       | control         | 178             | 359             | 463              |
+| B       | control         | 118             | 349             | 481              |
+| C       | control         | 132             | 334             | 485              |
 | D       | decreased       | 073             | 221             | 427              |
 | E       | decreased       | 151             | 254             | 445              |
 | F       | decreased       | 113             | 222             | 425              |
@@ -87,10 +87,10 @@ crabTraits <- data.frame("crab" = binarizeCategoricalVariable(x = c(rep(c("A", "
                          "day" = factor(c(rep(0, times = 9),
                                           rep(2, times = 9),
                                           rep(17, times = 6))),
-                         "temp" = binarizeCategoricalVariable(x = c(rep("Ambient", times = 12),
+                         "temp" = binarizeCategoricalVariable(x = c(rep("control", times = 12),
                                     rep("Lowered", times = 3),
                                     rep("Elevated", times = 3),
-                                    rep("Ambient", times = 3),
+                                    rep("control", times = 3),
                                     rep("Lowered", times = 3)),
                                     includePairwise = TRUE,
                                     includeLevelVsAll = TRUE),
@@ -542,39 +542,9 @@ textMatrix <- paste(signif(moduleTraitCor, 2), "\n(",
   
 # Ensure matrix has same dimensions 
 dim(textMatrix) == dim(moduleTraitCor)
-```
 
-```{r heatmap}
-# Create labeled heat map of correlation values from textMatrix. Red = positive correlation, blue = negative correlation
-path <- paste0(file_start, "ModuleTreatmentHeatMap.png")
-png(path)
-par(mar = c(4, 8.5, 3, 3))
-labeledHeatmap(Matrix = moduleTraitCor,
-               xLabels = names(crabTraits),
-               yLabels = names(MEs),
-               ySymbols = names(MEs),
-               colorLabels = FALSE,
-               colors = blueWhiteRed(50),
-               textMatrix = textMatrix,
-               setStdMargins = FALSE,
-               cex.text = 0.5,
-               zlim = c(-1, 1),
-               main = paste("Module-Treatment relationships"))
-dev.off()
+# We've now made our heatmap, we'll just graph it later
 
-# Plot image again, so it shows up in knitted .Rmd
-par(mar = c(4, 8.5, 3, 3))
-labeledHeatmap(Matrix = moduleTraitCor,
-               xLabels = names(crabTraits),
-               yLabels = names(MEs),
-               ySymbols = names(MEs),
-               colorLabels = FALSE,
-               colors = blueWhiteRed(50),
-               textMatrix = textMatrix,
-               setStdMargins = FALSE,
-               cex.text = 0.5,
-               zlim = c(-1, 1),
-               main = paste("Module-Treatment relationships"))
 ```
 
 ### Gene Significance and Module Membership
@@ -628,11 +598,15 @@ head(MMPvalue)
 ```{r genelists}
 # Save gene names as probes
 probes <- names(CrabExpr0)
+# Create dataframe for storing module length (just for heatmap use)
+
+mod_length <- data.frame(modNames, contigs = rep(NA, times = length(modNames)))
 # Write out the gene lists for each module of interest
 for (module in modNames) {
   modGenes <- (moduleColors == module) # Select module probes
   modLLIDs <- probes[modGenes] # Get gene IDs
   fileName <- paste(file_start, "GeneList-", module, ".txt", sep = "") # Assign filename for each module
+  mod_length[modNames == module, ]$contigs <- length(modLLIDs) # Get length of each module (for heatmap only)
   write.table(as.data.frame(modLLIDs), file = fileName, sep = "\t", row.names = FALSE, col.names = FALSE) # Write out files
 }
 ```
@@ -653,4 +627,74 @@ write.table(kME_table, file = fileName,
             sep = "\t",
             row.names = TRUE,
             col.names = TRUE)
+```
+
+
+```{r heatmap}
+# Create labeled heat map of correlation values from textMatrix. Red = positive correlation, blue = negative correlation
+path <- paste0(file_start, "ModuleTreatmentHeatMap.png")
+png(path)
+par(mar = c(10, 8.5, 3, 3))
+labeledHeatmap(Matrix = moduleTraitCor,
+               xLabels = c("Crab A vs. all",
+                           "Crab B vs. all",
+                           "Crab C vs. all",
+                           "Crab D vs. all",
+                           "Crab E vs. all",
+                           "Crab F vs. all",
+                           "Crab G vs. all",
+                           "Grab H vs. all",
+                           "Crab I vs. all",
+                           "Day",
+                           "Elev. vs. Ctrl",
+                           "Low. vs. Ctrl",
+                           "Low. vs. Elev.",
+                           "Ctrl vs. all",
+                           "Elev. vs. all",
+                           "Low. vs. all",
+                           "Infection Level",
+                           "Carapace Width",
+                           "Shell Condition"),
+               xLabelsAngle = 90,
+               yLabels = names(MEs),
+               ySymbols = mod_length$contigs,
+               colorLabels = FALSE,
+               colors = blueWhiteRed(50),
+               textMatrix = textMatrix,
+               setStdMargins = TRUE,
+               cex.text = 0.5,
+               zlim = c(-1, 1))
+dev.off()
+
+# Plot image again, so it shows up in knitted .Rmd
+par(mar = c(10, 8.5, 3, 3))
+labeledHeatmap(Matrix = moduleTraitCor,
+               xLabels = c("Crab A",
+                           "Crab B",
+                           "Crab C",
+                           "Crab D",
+                           "Crab E",
+                           "Crab F",
+                           "Crab G",
+                           "Grab H",
+                           "Crab I",
+                           "Day",
+                           "Elev. vs. Ctrl",
+                           "Low. vs. Ctrl",
+                           "Low. vs. Elev.",
+                           "Ctrl vs. all",
+                           "Elev. vs. all",
+                           "Low. vs. all",
+                           "Infection Level",
+                           "Carapace Width",
+                           "Shell Condition"),
+               xLabelsAngle = 90,
+               yLabels = names(MEs),
+               ySymbols = mod_length$contigs,
+               colorLabels = FALSE,
+               colors = blueWhiteRed(50),
+               textMatrix = textMatrix,
+               setStdMargins = TRUE,
+               cex.text = 0.5,
+               zlim = c(-1, 1))
 ```
