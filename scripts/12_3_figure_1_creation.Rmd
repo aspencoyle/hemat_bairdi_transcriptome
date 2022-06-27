@@ -36,31 +36,36 @@ This document will be used to create a figure which shows the timeline of the ex
 # Low, Control, and High are the temperatures in celsius for each
 # All values of 7.6 and 7.4 are just to jitter the graph
 
-days <- c(-9, 0, 2, 17)
-Low <- c(7.4, 7.4, 4, 4)
-Control <- rep(7.5, times = 4)
-High <- c(7.6, 7.6, 10, NA)
+days <- c(-9, 0, 2, 15, 17)
+Decreased <- c(7.4, 7.4, 4, 4, 4)
+Control <- rep(7.5, times = 5)
+Elevated <- c(7.6, 7.6, 10, 10, NA)
 
 # Assemble into data frame
-exp_data <- data.frame(days, Low, Control, High)
+exp_data <- data.frame(days, Decreased, Control, Elevated)
 # Pivot longer
-exp_data <- pivot_longer(exp_data, cols = c(Low, Control, High), names_to = "Treatment")
+exp_data <- pivot_longer(exp_data, cols = c(Decreased, Control, Elevated), names_to = "Treatment")
 
 # Create another data table for sample events
 # This means just removing all data points where day < 0
+# as well as the Day 15 data (used to show when the last elevated-temp crab died)
 sample_data <- exp_data %>%
-  filter(days > -1)
+  filter(days > -1) %>%
+  filter(days != 15)
 
 
-# Begin to plot
+# Plot figure
+png(file = "../graphs/paper_figures/exp_diagram.png")
 ggplot(data = exp_data, aes(x = days, y = value, group = Treatment)) +
   geom_line(size = 1.5, aes(color = Treatment)) +
   geom_point(data = sample_data, size = 3, color = "gray30") +
   theme_bw() +
-  scale_color_manual(values = c("#00BA38", "#F8766D", "#619CFF")) +
-  xlab("Days") +
+  scale_color_manual(values = c("#00BA38", "#619CFF", "#F8766D")) +
+  xlab("Experimental Days") +
   ylab("Temperature (Celsius)") 
-
+dev.off()
 
 ```
+
+green: #00BA38" red: "#F8766D", blue: "#619CFF"
 
