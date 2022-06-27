@@ -536,6 +536,9 @@ nSamples <- nrow(CrabExpr0)
 MEs0 <- moduleEigengenes(CrabExpr0, moduleColors)$eigengenes
 MEs <- orderMEs(MEs0)
 
+# Remove grey ME (we find out later it only has 5 contigs in it)
+MEs <- MEs[names(MEs) != "MEgrey"]
+
 # Calculate trait correlations and obtain p-values
 moduleTraitCor <- cor(MEs, crabClinicalData, use = "p")
 moduleTraitPvalue <- corPvalueStudent(moduleTraitCor, nSamples)
@@ -700,3 +703,5 @@ labeledHeatmap(Matrix = moduleTraitCor,
                cex.text = 0.5,
                zlim = c(-1, 1))
 ```
+
+
