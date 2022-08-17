@@ -261,8 +261,7 @@ geneIDs_foldchange <- function(input_file, blast_file, output_file) {
   } else {
     # If no pipes in accession ID column, remove all rows with an NA accession ID,
     # remove the first column (transcript ID), and reorder the 2nd and 3rd (should be accession ID, then log2-fold change)
-    transcript_key <- transcript_key %>%
-      rename("Accession_ID" = "Gene_ID")
+    transcript_key <- dplyr::rename(transcript_key, "Accession_ID" = "Gene_ID")
     transcript_key <- transcript_key[!is.na(transcript_key$Accession_ID), c(3, 2)]
     
   }
