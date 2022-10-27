@@ -1,0 +1,10 @@
+Crab,Temperature Regime,Day 0 qPCR SQ,Day 17 qPCR SQ
+A,Ambient,283,1950
+B,Ambient,"316,000",459
+C,Ambient,"546,000","120,000"
+D,Decreased,"761,000",6
+E,Decreased,210,2890
+F,Decreased,9140,32
+G,Elevated,4510,NA
+H,Elevated,"120,000",NA
+I,Elevated,"211,000",NA

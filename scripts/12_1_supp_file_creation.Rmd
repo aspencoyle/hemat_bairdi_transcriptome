@@ -448,6 +448,29 @@ write.csv(full_annot, file = "../paper/supp_files/annotation_tables/Hematodinium
           row.names = FALSE)
 ```
 
+### Create file of all temperature-related contigs
+```{r}
+# Read in DESeq2 files
+temp_DEGs <- read.delim(file = "../graphs/DESeq2_output/cbai_transcriptomev4.0/elev0_vs_elev2_indiv/DEGlist.txt", header = FALSE)
+cold_DEGs <- read.delim(file = "../graphs/DESeq2_output/cbai_transcriptomev4.0/low0_vs_low2_indiv/DEGlist.txt", header = FALSE)
 
+# Bind files together
+temp_DEGs <- rbind(temp_DEGs, cold_DEGs)
+
+# Select first column (contig info)
+temp_DEGs <- temp_DEGs %>%
+  dplyr::select(1)
+
+# Read in brown and black modules (temp-linked)
+brown_contigs <- read.delim(file = "../output/WGCNA_output/cbai_transcriptomev4.0/all_crabs/day_as_var/GeneList-brown.txt", header = FALSE)
+black_contigs <- read.delim(file = "../output/WGCNA_output/cbai_transcriptomev4.0/all_crabs/day_as_var/GeneList-black.txt", header = FALSE)
+
+# Bind all contig info together
+all_contigs <- rbind(temp_DEGs, brown_contigs, black_contigs)
+
+sum(!duplicated(all_contigs$V1))
+
+
+```
 
 
