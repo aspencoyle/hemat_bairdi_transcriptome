@@ -1,6 +1,6 @@
 ---
 title: "sample_summary"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "11/1/2021"
 output: html_document
 ---

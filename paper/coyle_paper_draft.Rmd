@@ -1,6 +1,6 @@
 ---
 title: "Differential Expression in _Hematodinium sp._"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "2021-11-09"
 output: pdf_document
 ---

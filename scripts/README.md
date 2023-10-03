@@ -1,4 +1,4 @@
-Aidan Coyle, afcoyle@uw.edu
+Aspen Coyle, afcoyle@uw.edu
 Updated 2021-06-15
 
 ### Notation

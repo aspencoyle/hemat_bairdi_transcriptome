@@ -1,5 +1,5 @@
 #############################
-# Aidan Coyle, afcoyle@uw.edu
+# Aspen Coyle, afcoyle@uw.edu
 # Roberts lab, UW-SAFS
 # 2021-03-15
 #############################

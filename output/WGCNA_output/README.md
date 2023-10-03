@@ -1,6 +1,6 @@
 # output/WGCNA_output
 
-Contact: Aidan Coyle, afcoyle@uw.edu
+Contact: Aspen Coyle, afcoyle@uw.edu
 Roberts Lab, UW-SAFS
 
 Last edited README: 2021-12-06

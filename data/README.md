@@ -1,6 +1,6 @@
 # data
 
-Contact: Aidan Coyle, afcoyle@uw.edu
+Contact: Aspen Coyle, afcoyle@uw.edu
 
 Roberts Lab, UW-SAFS
 
