@@ -1,6 +1,6 @@
 ---
 title: "12_3_figure_1_creation"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "6/6/2022"
 output: html_document
 ---
@@ -55,7 +55,7 @@ sample_data <- exp_data %>%
 
 
 # Plot figure
-png(file = "../graphs/paper_figures/exp_diagram.png")
+png(file = "../graphs/paper_figures/fig_1.png")
 ggplot(data = exp_data, aes(x = days, y = value, group = Treatment)) +
   geom_line(size = 1.5, aes(color = Treatment)) +
   geom_point(data = sample_data, size = 3, color = "gray30") +

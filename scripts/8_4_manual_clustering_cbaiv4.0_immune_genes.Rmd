@@ -1,6 +1,6 @@
 ---
 title: "8_4_manual_clustering_immune_genes.Rmd"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "8/18/2021"
 output: html_document
 ---

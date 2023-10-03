@@ -1,6 +1,6 @@
 ---
 title: "5_3_WGCNA_cbai2.0_AllCrabs"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: 
   html_document

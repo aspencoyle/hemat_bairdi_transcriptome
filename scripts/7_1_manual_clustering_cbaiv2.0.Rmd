@@ -1,6 +1,6 @@
 ---
 title: "72_manual_clustering_cbaiv2.0"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: html_document
 ---

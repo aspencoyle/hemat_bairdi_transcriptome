@@ -1,6 +1,6 @@
 ---
 title: "62 - Mapping Pink Module"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: 
   html_document:

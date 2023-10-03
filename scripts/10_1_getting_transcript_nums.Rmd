@@ -1,6 +1,6 @@
 ---
 title: "10_1_getting_transcript_nums.Rmd'"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "8/26/2021"
 output: html_document
 ---

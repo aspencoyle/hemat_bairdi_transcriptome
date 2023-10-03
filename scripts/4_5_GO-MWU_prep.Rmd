@@ -1,6 +1,6 @@
 ---
 title: "4_5_GO-MWU_prep"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: html_document
 ---
@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Aidan Coyle, afcoyle@uw.edu
+Aspen Coyle, afcoyle@uw.edu
 
 Originally written 2021/03/10
 

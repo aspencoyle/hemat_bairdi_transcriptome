@@ -1,6 +1,6 @@
 ---
 title: "5_4_WGCNA_hemat1.6_AllCrabs"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "Last compiled on `r format(Sys.time(), '%Y-%m-%d')`"
 output: 
   html_document
@@ -178,7 +178,7 @@ TPMcounts <- read.delim(file = kallisto_files[1],
                         sep = "\t")
 # Eliminate all columns except transcript ID and TPM
 TPMcounts <- TPMcounts %>%
-  select(target_id, tpm)
+  dplyr::select(target_id, tpm)
 
 # Rename columns for consistency and to ID TPM counts
 colnames(TPMcounts)[1:2] <- c("Transcript_ID",
@@ -192,7 +192,7 @@ for (i in 2:length(kallisto_files)){
                                 sep = "\t")
   # Select only transcript ID and TPM (transcripts per million) columns
   kallisto_output <- kallisto_output %>%
-    select(target_id, tpm)
+    dplyr::select(target_id, tpm)
   # Rename kallisto column names to give ID to count column
   colnames(kallisto_output)[1:2] <- c("Transcript_ID", 
                                       paste0(idnum, "_TPM"))

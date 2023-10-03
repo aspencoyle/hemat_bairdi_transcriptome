@@ -1,6 +1,6 @@
 ---
 title: "8_9_examining_temperature_genes"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "11/22/2021"
 output: html_document
 ---

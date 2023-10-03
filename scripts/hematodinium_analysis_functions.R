@@ -1,5 +1,5 @@
 ###################################
-# Aidan Coyle, afcoyle@uw.edu
+# Aspen Coyle, afcoyle@uw.edu
 # Roberts Lab, UW-SAFS
 # 2021-01-19
 # File containing functions created during analysis of Hematodinium transcriptome

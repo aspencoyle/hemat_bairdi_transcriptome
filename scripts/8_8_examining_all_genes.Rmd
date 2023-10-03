@@ -1,6 +1,6 @@
 ---
 title: "8_8_examining_all_genes"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "11/2/2021"
 output: html_document
 ---

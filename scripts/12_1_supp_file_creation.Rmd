@@ -1,6 +1,6 @@
 ---
 title: "12_1_supp_file_creation"
-author: "Aidan Coyle"
+author: "Aspen Coyle"
 date: "12/6/2021"
 output: html_document
 ---
