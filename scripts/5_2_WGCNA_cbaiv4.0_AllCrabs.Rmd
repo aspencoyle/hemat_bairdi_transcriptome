@@ -539,7 +539,7 @@ moduleTraitPvalue
 # Create text matrix for correlations and their p-values
 textMatrix <- paste(signif(moduleTraitCor, 2), "\n(",
                         signif(moduleTraitPvalue, 1), ")", sep = "")
-  
+
 # Ensure matrix has same dimensions 
 dim(textMatrix) == dim(moduleTraitCor)
 
@@ -627,74 +627,43 @@ write.table(kME_table, file = fileName,
             sep = "\t",
             row.names = TRUE,
             col.names = TRUE)
+
+
 ```
 
 
-```{r heatmap}
-# Create labeled heat map of correlation values from textMatrix. Red = positive correlation, blue = negative correlation
-path <- paste0(file_start, "ModuleTreatmentHeatMap.png")
-png(path)
-par(mar = c(10, 8.5, 3, 3))
+```{r, fig.height=10, fig.width=15}
+par(mar = c(15, 15, 2, 2))
 labeledHeatmap(Matrix = moduleTraitCor,
-               xLabels = c("Crab A vs. all",
-                           "Crab B vs. all",
-                           "Crab C vs. all",
-                           "Crab D vs. all",
-                           "Crab E vs. all",
-                           "Crab F vs. all",
-                           "Crab G vs. all",
-                           "Grab H vs. all",
-                           "Crab I vs. all",
+               xLabels = c("Crab C1",
+                           "Crab C2",
+                           "Crab C3",
+                           "Crab D1",
+                           "Crab D2",
+                           "Crab D3",
+                           "Crab E1",
+                           "Crab E2",
+                           "Crab E3",
                            "Day",
-                           "Elev. vs. Ctrl",
-                           "Low. vs. Ctrl",
-                           "Low. vs. Elev.",
-                           "Ctrl vs. all",
-                           "Elev. vs. all",
-                           "Low. vs. all",
+                           "Elevated. vs. Control",
+                           "Decreased. vs. Control",
+                           "Decreased. vs. Elevated.",
+                           "Control vs. all",
+                           "Elevated. vs. all",
+                           "Decreased vs. all",
                            "Infection Level",
                            "Carapace Width",
                            "Shell Condition"),
-               xLabelsAngle = 90,
-               yLabels = names(MEs),
+               xLabelsAngle = 45,
+               yLabels = c("Red (n = 128)", "Black (n = 117)", "Blue (n = 5741)", "Pink (n = 106)", "Brown (n = 1903)", "Yellow (n = 1890)"),
                ySymbols = mod_length$contigs,
-               colorLabels = FALSE,
+               colorLabels = TRUE,
                colors = blueWhiteRed(50),
-               textMatrix = textMatrix,
-               setStdMargins = TRUE,
-               cex.text = 0.5,
-               zlim = c(-1, 1))
-dev.off()
+               textMatrix = format(textMatrix, scientific = FALSE),
+               setStdMargins = FALSE,
+               cex.text = 1.2,
+               cex.lab = 1.4,
+               zlim = c(-1, 1),
+               plotLegend = FALSE)
+```   
 
-# Plot image again, so it shows up in knitted .Rmd
-par(mar = c(10, 8.5, 3, 3))
-labeledHeatmap(Matrix = moduleTraitCor,
-               xLabels = c("Crab A",
-                           "Crab B",
-                           "Crab C",
-                           "Crab D",
-                           "Crab E",
-                           "Crab F",
-                           "Crab G",
-                           "Grab H",
-                           "Crab I",
-                           "Day",
-                           "Elev. vs. Ctrl",
-                           "Low. vs. Ctrl",
-                           "Low. vs. Elev.",
-                           "Ctrl vs. all",
-                           "Elev. vs. all",
-                           "Low. vs. all",
-                           "Infection Level",
-                           "Carapace Width",
-                           "Shell Condition"),
-               xLabelsAngle = 90,
-               yLabels = names(MEs),
-               ySymbols = mod_length$contigs,
-               colorLabels = FALSE,
-               colors = blueWhiteRed(50),
-               textMatrix = textMatrix,
-               setStdMargins = TRUE,
-               cex.text = 0.5,
-               zlim = c(-1, 1))
-```

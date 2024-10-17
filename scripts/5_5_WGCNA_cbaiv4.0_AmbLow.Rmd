@@ -519,44 +519,6 @@ textMatrix <- paste(signif(moduleTraitCor, 2), "\n(",
 # Ensure matrix has same dimensions 
 dim(textMatrix) == dim(moduleTraitCor)
 ```
-
-```{r heatmap}
-# Create labeled heat map of correlation values from textMatrix. Red = positive correlation, blue = negative correlation
-path <- paste0(file_start, "ModuleTreatmentHeatMap.png")
-png(path)
-par(mar = c(4, 8.5, 3, 3))
-labeledHeatmap(Matrix = moduleTraitCor,
-               xLabels = names(crabTraits),
-               yLabels = names(MEs),
-               ySymbols = names(MEs),
-               colorLabels = FALSE,
-               colors = blueWhiteRed(50),
-               textMatrix = textMatrix,
-               setStdMargins = FALSE,
-               cex.text = 0.5,
-               zlim = c(-1, 1),
-               main = paste("Module-Treatment relationships"))
-dev.off()
-
-# Plot image again, so it shows up in knitted .Rmd
-par(mar = c(4, 8.5, 3, 3))
-labeledHeatmap(Matrix = moduleTraitCor,
-               xLabels = names(crabTraits),
-               yLabels = names(MEs),
-               ySymbols = names(MEs),
-               colorLabels = FALSE,
-               colors = blueWhiteRed(50),
-               textMatrix = textMatrix,
-               setStdMargins = FALSE,
-               cex.text = 0.5,
-               zlim = c(-1, 1),
-               main = paste("Module-Treatment relationships"))
-```
-
-### Gene Significance and Module Membership
-
-Module membership info is needed for a possible downstream GO-MWU analysis. 
-
 ``` {r gene_significance}
 # Define variable using information from trait matrix
 key_var <- as.data.frame(crabClinicalData[, variable])
@@ -598,19 +560,71 @@ names(MMPvalue) <- paste("p.MM", modNames, sep = "")
 head(MMPvalue)
 ```
 
-
 ### Obtain gene lists - for each module, and a master list with membership and gene significance info
 
 ```{r genelists}
 # Save gene names as probes
 probes <- names(CrabExpr0)
+# Create dataframe for storing module length (just for heatmap use)
+
+mod_length <- data.frame(modNames, contigs = rep(NA, times = length(modNames)))
 # Write out the gene lists for each module of interest
 for (module in modNames) {
   modGenes <- (moduleColors == module) # Select module probes
   modLLIDs <- probes[modGenes] # Get gene IDs
   fileName <- paste(file_start, "GeneList-", module, ".txt", sep = "") # Assign filename for each module
+  mod_length[modNames == module, ]$contigs <- length(modLLIDs) # Get length of each module (for heatmap only)
   write.table(as.data.frame(modLLIDs), file = fileName, sep = "\t", row.names = FALSE, col.names = FALSE) # Write out files
 }
+```
+
+
+```{r, fig.height=10, fig.width=15}
+ylabs <- c("Magenta (n = 174)", "Red (n = 4843)", "Tan (n = 82)", "Green (n = 129)", "Black (n = 1573)", "Yellow (n = 1195)", "Grey (n = 5)")
+
+par(mar = c(15, 15, 2, 2))
+labeledHeatmap(Matrix = moduleTraitCor,
+               xLabels = c("Crab C1",
+                           "Crab C2",
+                           "Crab C3",
+                           "Crab D1",
+                           "Crab D2",
+                           "Crab D3",
+                           "Day",
+                           "Temperature",
+                           "Infection Level",
+                           "Change in Infection",
+                           "Carapace Width"),
+               xLabelsAngle = 45,
+               yLabels = ylabs,
+               colors = blueWhiteRed(50),
+               textMatrix = format(textMatrix, scientific = FALSE),
+               setStdMargins = FALSE,
+               cex.text = 1.2,
+               cex.lab = 1.4,
+               zlim = c(-1, 1),
+               plotLegend = FALSE)
+```   
+
+
+```{r heatmap}
+# Create labeled heat map of correlation values from textMatrix. Red = positive correlation, blue = negative correlation
+path <- paste0(file_start, "ModuleTreatmentHeatMap.png")
+png(path)
+par(mar = c(4, 8.5, 3, 3))
+# Plot image again, so it shows up in knitted .Rmd
+par(mar = c(4, 8.5, 3, 3))
+labeledHeatmap(Matrix = moduleTraitCor,
+               xLabels = names(crabTraits),
+               yLabels = names(MEs),
+               ySymbols = names(MEs),
+               colorLabels = FALSE,
+               colors = blueWhiteRed(50),
+               textMatrix = textMatrix,
+               setStdMargins = FALSE,
+               cex.text = 0.5,
+               zlim = c(-1, 1),
+               main = paste("Module-Treatment relationships"))
 ```
 
 #### Get kME
