@@ -705,3 +705,37 @@ labeledHeatmap(Matrix = moduleTraitCor,
 ```
 
 
+```{r, fig.height=10, fig.width=15}
+par(mar = c(15, 15, 2, 2))
+labeledHeatmap(Matrix = moduleTraitCor,
+               xLabels = c("Crab C1",
+                           "Crab C2",
+                           "Crab C3",
+                           "Crab D1",
+                           "Crab D2",
+                           "Crab D3",
+                           "Crab E1",
+                           "Crab E2",
+                           "Crab E3",
+                           "Day",
+                           "Elevated. vs. Control",
+                           "Decreased. vs. Control",
+                           "Decreased. vs. Elevated.",
+                           "Control vs. all",
+                           "Elevated. vs. all",
+                           "Decreased vs. all",
+                           "Infection Level",
+                           "Carapace Width",
+                           "Shell Condition"),
+               xLabelsAngle = 45,
+               yLabels = c("Brown (n = 21)", "Pink (n = 14)", "Blue (n = 42)", "Turquoise (n = 202)", "Yellow (n = 48)"),
+               ySymbols = mod_length$contigs,
+               colorLabels = TRUE,
+               colors = blueWhiteRed(50),
+               textMatrix = format(textMatrix, scientific = FALSE),
+               setStdMargins = FALSE,
+               cex.text = 1.2,
+               cex.lab = 1.4,
+               zlim = c(-1, 1),
+               plotLegend = FALSE)
+```   
