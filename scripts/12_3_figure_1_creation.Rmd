@@ -59,10 +59,13 @@ png(file = "../graphs/paper_figures/fig_1.png")
 ggplot(data = exp_data, aes(x = days, y = value, group = Treatment)) +
   geom_line(size = 1.5, aes(color = Treatment)) +
   geom_point(data = sample_data, size = 3, color = "gray30") +
-  theme_bw() +
+  theme_bw()  +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()) +
   scale_color_manual(values = c("#00BA38", "#619CFF", "#F8766D")) +
   xlab("Experimental Days") +
-  ylab("Temperature (Celsius)") 
+  ylab("Temperature (°C)") +
+  scale_x_continuous(breaks = c(-9, 0, 2, 17))
 dev.off()
 
 ```
